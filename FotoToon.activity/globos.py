@@ -88,28 +88,33 @@ class Globo:
 
 		# si esta seleccionado se dibujan los controles
 		if self.selec:
-			context.set_line_width(1)
-			context.set_source_rgb(0.4, 0.9, 0.4)
-			context.rectangle(self.x-self.ancho,self.y-self.alto,\
-				2*self.ancho,2*self.alto)
+			context.set_line_width(2)
+			# rectangulo alrededor del globo
+			context.set_source_rgb(1, 1, 1)
+			context.rectangle(self.x-self.ancho,self.y-self.alto,2*self.ancho,2*self.alto)
 			context.stroke()
-			context.set_source_rgb(0.3, 0.3, 0.8)
-			context.rectangle(self.x-self.ancho-5,self.y-self.alto-5,\
-				10,10)
+			
+			ancho_marcador = 15
+
+			# cuadrado esquina superior izq
+			context.set_source_rgb(1, 1, 1)
+			context.rectangle(self.x-self.ancho-(ancho_marcador/2),self.y-self.alto-(ancho_marcador/2),ancho_marcador,ancho_marcador)
 			context.stroke()
-			context.set_source_rgb(0.3, 0.3, 0.8)
+
+			# circulo en la punta del globo
+			context.set_source_rgb(1, 1, 1)
 			
 			if self.direccion=="abajo":
-				context.arc(self.x+self.punto[0],self.y+self.alto+self.punto[1],5, 0,x*math.pi)
+				context.arc(self.x+self.punto[0],self.y+self.alto+self.punto[1],(ancho_marcador/2), 0,x*math.pi)
 					
 			elif self.direccion=="der":
-				context.arc(self.x+self.ancho+self.punto[0],self.y+self.punto[1],5, 0,x*math.pi)
+				context.arc(self.x+self.ancho+self.punto[0],self.y+self.punto[1],(ancho_marcador/2), 0,x*math.pi)
 					
 			elif self.direccion=="izq":
-				context.arc(self.x-self.ancho-self.punto[0],self.y+self.punto[1],5, 0,x*math.pi)
+				context.arc(self.x-self.ancho-self.punto[0],self.y+self.punto[1],(ancho_marcador/2), 0,x*math.pi)
 			
 			else: #arriba
-				context.arc(self.x+self.punto[0],self.y-self.alto-self.punto[1],5, 0,x*math.pi)
+				context.arc(self.x+self.punto[0],self.y-self.alto-self.punto[1],(ancho_marcador/2), 0,x*math.pi)
 					
 			context.stroke()
 

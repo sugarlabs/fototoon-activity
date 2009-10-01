@@ -88,33 +88,34 @@ class HistorietaActivity(activity.Activity):
 		self.show()
 
 	def keypress(self, widget, event):
-		self.pagina.cuadro_activo.keypress(event.string,event.keyval)
+		if (self.pagina.get_cuadro_activo() != None):
+			self.pagina.get_cuadro_activo().keypress(event.string,event.keyval)
 
 	def add_photo(self, boton):
 		self.pagina.add_photo()
 
 	def agrega_gnormal(self, boton):
-		self.pagina.cuadro_activo.add_globo(40, 40)
+		self.pagina.get_cuadro_activo().add_globo(60, 60)
 
 	def agrega_gnormal(self, boton):
 		#dir=self.direccion_combo_valores[self.direccion_combo.get_active()]
 		#self.pagina.cuadro_activo.add_globo(40, 40,gdireccion=dir)
-		self.pagina.cuadro_activo.add_globo(40, 40)
+		self.pagina.get_cuadro_activo().add_globo(60, 60)
 	
 	def agrega_gpensar(self, boton):
-		self.pagina.cuadro_activo.add_nube(40, 40)
+		self.pagina.get_cuadro_activo().add_nube(60, 60)
 	
 	def agrega_gdespacio(self, boton):
-		self.pagina.cuadro_activo.add_globo(40, 40,gmodo="despacio")
+		self.pagina.get_cuadro_activo().add_globo(60, 60,gmodo="despacio")
 	
 	def agrega_ggrito(self, boton):
-		self.pagina.cuadro_activo.add_grito(40, 40)
+		self.pagina.get_cuadro_activo().add_grito(60, 60)
 	
 	def agrega_grect(self, boton):
-		self.pagina.cuadro_activo.add_rectangulo(40, 40)
+		self.pagina.get_cuadro_activo().add_rectangulo(60, 60)
 	
 	def agrega_imagen(self, boton):
-		self.pagina.cuadro_activo.add_imagen(40, 40)
+		self.pagina.get_cuadro_activo().add_imagen(60, 60)
 	
 	def setWaitCursor( self ):
 		self.window.set_cursor( gtk.gdk.Cursor(gtk.gdk.WATCH) )
@@ -134,25 +135,37 @@ class Pagina(gtk.Table):
 		self.set_col_spacings(DEF_SPACING)
 
 		self.cuadros = []
-		self.cuadro_activo = None
+		self._cuadro_activo = None
 
 
 	def add_photo(self):
 		appdir = activity.get_bundle_path()
 		posi = len(self.cuadros)
-		cuadro = Cuadro(gtk.gdk.pixbuf_new_from_file(os.path.join(appdir,'fotos/foto'+str(posi)+'.jpg')))
+		cuadro = Cuadro(os.path.join(appdir,'fotos/foto'+str(posi)+'.png'))
 		cuadro.show()
 		reng = int(posi / 2)
 		column = posi - (reng * 2)
 		self.attach(cuadro,column,column+1,reng,reng+1,)
-		self.cuadro_activo = cuadro
+		self.set_cuadro_activo(cuadro)
 		self.cuadros.append(cuadro)
 		cuadro.pagina = self
+
+	def set_cuadro_activo(self,cuadro):
+		cuadro_anterior = None 
+		if (self._cuadro_activo != None):
+			cuadro_anterior =  self._cuadro_activo
+		self._cuadro_activo = cuadro
+		cuadro.queue_draw()
+		if (cuadro_anterior != None):
+			cuadro_anterior.queue_draw()			
+
+	def get_cuadro_activo(self):
+		return self._cuadro_activo
 
 
 class Cuadro(gtk.DrawingArea):
 
-	def __init__(self, pixbuf):
+	def __init__(self, image_name):
 		print ("Cuadro INIT")
 		gtk.DrawingArea.__init__(self)
 		#se agregan los eventos de pulsación y movimiento del ratón
@@ -162,11 +175,13 @@ class Cuadro(gtk.DrawingArea):
 		#self.globos es una lista que contiene los globos de ese cuadro
 		self.globos = []
         
-		self.pixbuf = pixbuf
+		#self.pixbuf = pixbuf
 		self.glob_press = False
 		self.is_dimension = False
 		self.is_punto = False
 		self.pagina = None
+
+		self.image = cairo.ImageSurface.create_from_png (image_name)
 
 		self.connect("expose_event", self.expose)
 		self.connect("button_press_event", self.pressing)
@@ -203,7 +218,6 @@ class Cuadro(gtk.DrawingArea):
 		self.queue_draw()
      
 	def expose(self,widget,event):
-		print "EXPOSE"
 		self.context = widget.window.cairo_create()
 		self.draw(self.context, event.area)
 		return False
@@ -214,19 +228,37 @@ class Cuadro(gtk.DrawingArea):
 		self.imagesink.set_xwindow_id(self.window.xid)
 
 
-	def draw(self, context, area):
+	def draw(self, ctx, area):
 		# Dibujamos la foto
-		context.set_line_width(DEF_WIDTH)
-		context.set_source_pixbuf(self.pixbuf, area.x, area.y)
-		context.paint()
+		ctx.set_line_width(DEF_WIDTH)
+
+		w = self.image.get_width()
+		h = self.image.get_height()
+
+		#print "width",area.width,"height",area.height,"w",w,"h",h
+		scale = (1.0 * area.width) / (1.0 * w)
+		#print "scale",scale
+		ctx.scale  (scale, scale)
+
+		ctx.set_source_surface (self.image, 0, 0)
+		ctx.paint ()
+		ctx.scale  (1/scale, 1/scale)
+
+
+		#context.set_source_pixbuf(self.pixbuf, area.x, area.y)
+		#conext.scale(2,2)
+		#context.paint()
 
 		# Dibujamos el recuadro
-		context.rectangle(area.x, area.y, area.width, area.height)
-		context.set_source_rgb(0, 0, 0)
-		context.stroke() 
+		ctx.rectangle(area.x, area.y, area.width, area.height)
+		if (self.pagina.get_cuadro_activo() == self):
+			ctx.set_source_rgb(1, 1, 1)
+		else :
+			ctx.set_source_rgb(0, 0, 0)
+		ctx.stroke() 
 
 		# Por ultimo dibujamos los globos
-		self.draw_globos(context)
+		self.draw_globos(ctx)
 
 	def draw_globos(self, context):
 		if len(self.globos) > 0:
@@ -240,7 +272,10 @@ class Cuadro(gtk.DrawingArea):
 			#print gtk.gdk.keyval_name(keyval)
 		
 	def pressing(self, widget, event):
-		self.pagina.cuadro_activo = self
+		# si no es el cuadro seleccionado actualmente redibujo este y el anterior seleccionado
+		if (self.pagina.get_cuadro_activo() != self):
+			self.pagina.set_cuadro_activo(self)
+
 		#Verifica si al pulsar el mouse se hizo sobre algun globo
 		if self.glob_press:
 			if self.glob_press.is_selec_tam(event.x,event.y):
