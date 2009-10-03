@@ -10,6 +10,8 @@ import pango
 
 import sugar.env
 from sugar.activity import activity
+
+ANCHO_LINEAS_CONTROLES = 2
     
 class Globo:
 	
@@ -85,10 +87,17 @@ class Globo:
 		
 		# se dibuja el correspondiente texto
 		self.texto.imprimir(context)
+		self.dibujar_controles(context)
+
+	def dibujar_controles(self,context):
 
 		# si esta seleccionado se dibujan los controles
 		if self.selec:
-			context.set_line_width(2)
+			context.set_line_width(ANCHO_LINEAS_CONTROLES)
+
+			x=self.x*self.radio/(self.ancho*1.0)
+			y=self.y*self.radio/(self.alto*1.0)
+
 			# rectangulo alrededor del globo
 			context.set_source_rgb(1, 1, 1)
 			context.rectangle(self.x-self.ancho,self.y-self.alto,2*self.ancho,2*self.alto)
@@ -119,7 +128,6 @@ class Globo:
 			context.stroke()
 
 
-
 	def set_texto(self,key,keyval,context,rect):
 		self.texto.insertar_texto(key,keyval,context)
 		self.calc_area(self.texto.ancho,self.texto.alto)
@@ -128,9 +136,6 @@ class Globo:
 			#y verifica si entra en cuadro si no es asi deshace la accion
 			self.texto.deshacer(context)
 			self.calc_area(self.texto.ancho,self.texto.alto)
-			
-	
-			
 			
 	def mover_a(self,x,y,rect):
 		if self.dx+x>(self.ancho):
@@ -276,6 +281,8 @@ class Globo:
 	def calc_area(self,ancho_text,alto_text):
 		self.ancho=self.texto.ancho/(1-12/(self.radio*1.0))
 		self.alto=self.texto.alto/(1-12/(self.radio*1.0))
+
+
 		
 class Rectangulo(Globo):
 	
@@ -308,19 +315,19 @@ class Rectangulo(Globo):
 		
 		# se dibuja el correspondiente texto
 		self.texto.imprimir(context)
-		
+		self.dibujar_controles(context)		
+
+	def dibujar_controles(self,context):
 		# Si esta seleccionado pintamos un recuadro alrededor del globo
 		# y un par de controles
 		if self.selec:
-			context.set_line_width(1)
-			context.set_source_rgb(0.4, 0.9, 0.4)
-			context.rectangle(self.x-self.ancho-2,self.y-self.alto-2,\
-			2*self.ancho+4,2*self.alto+4)
+			context.set_line_width(ANCHO_LINEAS_CONTROLES)
+			context.set_source_rgb(1, 1, 1)
+			context.rectangle(self.x-self.ancho-2,self.y-self.alto-2,2*self.ancho+4,2*self.alto+4)
 			context.stroke()
-			context.set_source_rgb(0.3, 0.3, 0.8)
+			context.set_source_rgb(1, 1, 1)
 			context.rectangle(self.x-self.ancho-5,self.y-self.alto-5,10,10)
 			context.stroke()
-
 
 	def mover_punto(self,x,y,rect):
 		pass
@@ -426,31 +433,7 @@ class Nube(Globo):
 		# se dibuja el correspondiente texto
 		self.texto.imprimir(context)
 		
-		# si esta seleccionado se dibujan los controles
-		if self.selec:
-			
-			context.set_line_width(1)
-			context.set_source_rgb(0.4, 0.9, 0.4)
-			context.rectangle(self.x-self.ancho,self.y-self.alto,\
-				2*self.ancho,2*self.alto)
-			context.stroke()
-			context.set_source_rgb(0.3, 0.3, 0.8)
-			context.rectangle(self.x-self.ancho-5,self.y-self.alto-5,\
-				10,10)
-			context.stroke()
-			
-			context.set_source_rgb(0.3, 0.3, 0.8)
-			if self.direccion=="abajo":
-				context.arc(self.x+self.punto[0],self.y+self.alto+self.punto[1],6, 0,2*math.pi)
-			elif self.direccion=="der":
-				context.arc(self.x+self.ancho+self.punto[0],self.y+self.punto[1],6, 0,2*math.pi)
-			elif self.direccion=="izq":
-				context.arc(self.x-self.ancho-self.punto[0],self.y+self.punto[1],6, 0,2*math.pi)
-			else: #arriba
-				context.arc(self.x+self.punto[0],self.y-self.alto-self.punto[1],6, 0,2*math.pi)
-		
-			context.stroke()
-			
+		self.dibujar_controles(context)		
 
 	def calc_area_texto(self):
 		ancho_text=self.ancho-12*self.ancho/(self.radio*1.0)
@@ -517,22 +500,9 @@ class Grito(Globo):
 		
 		# se dibuja el correspondiente texto
 		self.texto.imprimir(context)
-		
-		if self.selec:
-			context.set_line_width(1)
-			context.set_source_rgb(0.4, 0.9, 0.4)
-			context.rectangle(self.x-self.ancho,self.y-self.alto,\
-				2*self.ancho,2*self.alto)
-			context.stroke()
-			context.set_source_rgb(0.3, 0.3, 0.8)
-			context.rectangle(self.x-self.ancho-5,self.y-self.alto-5,\
-				10,10)
-			context.stroke()
+
+		self.dibujar_controles(context)		
 	
-			context.set_source_rgb(0.3, 0.3, 0.8)
-			context.arc(self.x+self.punto[0],self.y+self.alto+self.punto[1],5, 0,x*math.pi)
-			context.stroke()
-			
 	def calc_area_texto(self):
 		ancho_text=self.ancho-12*self.ancho/(self.radio*1.0)
 		alto_text=self.alto-12*self.alto/(self.radio*1.0)
@@ -583,14 +553,12 @@ class Imagen(Globo):
 		
 		# si esta seleccionado se dibujan los controles
 		if self.selec:
-			context.set_line_width(1)
-			context.set_source_rgb(0.4, 0.9, 0.4)
-			context.rectangle(self.x-self.ancho,self.y-self.alto,\
-				2*self.ancho,2*self.alto)
+			context.set_line_width(ANCHO_LINEAS_CONTROLES)
+			context.set_source_rgb(1, 1, 1)
+			context.rectangle(self.x-self.ancho,self.y-self.alto,2*self.ancho,2*self.alto)
 			context.stroke()
-			context.set_source_rgb(0.3, 0.3, 0.8)
-			context.rectangle(self.x-self.ancho-5,self.y-self.alto-5,\
-				10,10)
+			context.set_source_rgb(1, 1, 1)
+			context.rectangle(self.x-self.ancho-5,self.y-self.alto-5,10,10)
 			context.stroke()
 			
 

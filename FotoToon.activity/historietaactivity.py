@@ -29,61 +29,50 @@ class HistorietaActivity(activity.Activity):
 		self.b_add_photo = ToolButton('add-photo')
 		self.b_add_photo.connect('clicked', self.add_photo)
 		self.botonera.insert(self.b_add_photo, -1)
-		self.b_add_photo.show()
 
 		# agrega globo
 		self.b_agregar = ToolButton('add-globe')
 		self.b_agregar.connect('clicked', self.agrega_gnormal)
 		self.botonera.insert(self.b_agregar, -1)
-		self.b_agregar.show()
 	
 		#agrega nube
 		self.b_agregar = ToolButton('add-nube')
 		self.b_agregar.connect('clicked', self.agrega_gpensar)
 		self.botonera.insert(self.b_agregar, -1)
-		self.b_agregar.show()
 	
 		# agrega susurro
 		self.b_agregar = ToolButton('add-susurro')
 		self.b_agregar.connect('clicked', self.agrega_gdespacio)
 		self.botonera.insert(self.b_agregar, -1)
-		self.b_agregar.show()
 	
 		# agrega grito
 		self.b_agregar = ToolButton('add-grito')
 		self.b_agregar.connect('clicked', self.agrega_ggrito)
 		self.botonera.insert(self.b_agregar, -1)
-		self.b_agregar.show()
 	
 		# agrega caja
 		self.b_agregar = ToolButton('add-box')
 		self.b_agregar.connect('clicked', self.agrega_grect)
 		self.botonera.insert(self.b_agregar, -1)
-		self.b_agregar.show()
 	
 		# girar
-		self.b_agregar = ToolButton('turn')
-		self.b_agregar.connect('clicked', self.agrega_grect)
-		self.botonera.insert(self.b_agregar, -1)
-		self.b_agregar.show()
+		self.b_girar = ToolButton('turn')
+		self.b_girar.connect('clicked', self.girar)
+		self.botonera.insert(self.b_girar, -1)
 
 		# font 
-
-
-
-        
+      
 		toolbox.add_toolbar('Globos', self.botonera)
-		self.botonera.show()
 	
 		self.set_toolbox(toolbox)
-		toolbox.show()
+		toolbox.show_all()
 		toolbox.set_current_toolbar(1)        
 
 		scrolled = gtk.ScrolledWindow()
+		scrolled.set_policy(gtk.POLICY_NEVER, gtk.POLICY_ALWAYS)
 		self.pagina = Pagina()
 		scrolled.add_with_viewport(self.pagina)
-		self.pagina.show()
-		scrolled.show()
+		scrolled.show_all()
 		self.set_canvas(scrolled)
 		self.show()
 
@@ -98,8 +87,6 @@ class HistorietaActivity(activity.Activity):
 		self.pagina.get_cuadro_activo().add_globo(60, 60)
 
 	def agrega_gnormal(self, boton):
-		#dir=self.direccion_combo_valores[self.direccion_combo.get_active()]
-		#self.pagina.cuadro_activo.add_globo(40, 40,gdireccion=dir)
 		self.pagina.get_cuadro_activo().add_globo(60, 60)
 	
 	def agrega_gpensar(self, boton):
@@ -116,6 +103,25 @@ class HistorietaActivity(activity.Activity):
 	
 	def agrega_imagen(self, boton):
 		self.pagina.get_cuadro_activo().add_imagen(60, 60)
+
+	def girar(self, boton):
+		print "girando"
+		#veo cual es el globo seleccionado y o giro
+		cuadro = self.pagina.get_cuadro_activo()
+		if (cuadro.globo_activo != None):
+			print "globo activo",
+			if (cuadro.globo_activo.direccion == "abajo"):
+				cuadro.globo_activo.direccion = "izq"		
+
+			elif (cuadro.globo_activo.direccion == "izq"):
+				cuadro.globo_activo.direccion = "arriba"		
+
+			elif (cuadro.globo_activo.direccion == "arriba"):
+				cuadro.globo_activo.direccion = "der"		
+
+			elif (cuadro.globo_activo.direccion == "der"):
+				cuadro.globo_activo.direccion = "abajo"		
+			cuadro.queue_draw()
 	
 	def setWaitCursor( self ):
 		self.window.set_cursor( gtk.gdk.Cursor(gtk.gdk.WATCH) )
@@ -126,10 +132,13 @@ class HistorietaActivity(activity.Activity):
 DEF_SPACING = 6
 DEF_WIDTH = 4
 
+SCREEN_HEIGHT = gtk.gdk.screen_height()
+SCREEN_WIDTH = gtk.gdk.screen_width()
+
 class Pagina(gtk.Table):
 
 	def __init__(self):
-		gtk.Table.__init__(self, 2, 2, True)
+		gtk.Table.__init__(self, 10, 2, True)
 		self.set_homogeneous(True)
 		self.set_row_spacings(DEF_SPACING)
 		self.set_col_spacings(DEF_SPACING)
@@ -137,15 +146,35 @@ class Pagina(gtk.Table):
 		self.cuadros = []
 		self._cuadro_activo = None
 
+		'''
+		cuadro_titulo = Cuadro(None)
+		cuadro_titulo.show()
+		self.attach(cuadro_titulo,0,2,0,1)
+		self.set_cuadro_activo(cuadro_titulo)
+		self.cuadros.append(cuadro_titulo)
+		cuadro_titulo.pagina = self
+		cuadro_titulo.set_size_request(SCREEN_WIDTH,20)
+		'''
+
 
 	def add_photo(self):
 		appdir = activity.get_bundle_path()
-		posi = len(self.cuadros)
+		'''
+		posi = len(self.cuadros)-1
 		cuadro = Cuadro(os.path.join(appdir,'fotos/foto'+str(posi)+'.png'))
 		cuadro.show()
 		reng = int(posi / 2)
 		column = posi - (reng * 2)
-		self.attach(cuadro,column,column+1,reng,reng+1,)
+		self.attach(cuadro,column,column+1,reng+1,reng+2)
+		'''
+		posi = len(self.cuadros)
+
+		num_foto = posi -  (posi / 4) * 4
+		cuadro = Cuadro(os.path.join(appdir,'fotos/foto'+str(num_foto)+'.png'))
+		cuadro.show()
+		reng = int(posi / 2)
+		column = posi - (reng * 2)
+		self.attach(cuadro,column,column+1,reng,reng+1)
 		self.set_cuadro_activo(cuadro)
 		self.cuadros.append(cuadro)
 		cuadro.pagina = self
@@ -181,7 +210,14 @@ class Cuadro(gtk.DrawingArea):
 		self.is_punto = False
 		self.pagina = None
 
-		self.image = cairo.ImageSurface.create_from_png (image_name)
+		if (image_name != None):
+			self.image = cairo.ImageSurface.create_from_png (image_name)
+		else:
+			self.image = None
+
+		self.globo_activo = None
+
+		self.set_size_request(-1,450)
 
 		self.connect("expose_event", self.expose)
 		self.connect("button_press_event", self.pressing)
@@ -194,7 +230,9 @@ class Cuadro(gtk.DrawingArea):
         
 	def add_globo(self,xpos,ypos,gmodo="normal",gdireccion="abajo"):
 		#agrega un globo al cuadro
-		self.globos.append(globos.Globo(x=xpos,y=ypos,modo=gmodo,direccion=gdireccion))
+		globo = globos.Globo(x=xpos,y=ypos,modo=gmodo,direccion=gdireccion)
+		self.globos.append(globo)
+		self.globo_activo = globo
 		self.queue_draw()
 	
 	def add_rectangulo(self,xpos,ypos):
@@ -204,17 +242,23 @@ class Cuadro(gtk.DrawingArea):
 	
 	def add_nube(self,xpos,ypos):
 		#agrega un globo de pensamiento al cuadro
-		self.globos.append(globos.Nube(x=xpos,y=ypos))
+		globo = globos.Nube(x=xpos,y=ypos)
+		self.globos.append(globo)
+		self.globo_activo = globo
 		self.queue_draw()
 
 	def add_imagen(self,xpos,ypos):
 		#agrega una imagen al cuadro
-		self.globos.append(globos.Imagen(x=xpos,y=ypos))
+		globo = globos.Imagen(x=xpos,y=ypos)
+		self.globos.append(globo)
+		self.globo_activo = globo
 		self.queue_draw()
 	
 	def add_grito(self,xpos,ypos):
 		#agrega un globo de grito al cuadro
-		self.globos.append(globos.Grito(x=xpos,y=ypos))
+		globo = globos.Grito(x=xpos,y=ypos)
+		self.globos.append(globo)
+		self.globo_activo = globo
 		self.queue_draw()
      
 	def expose(self,widget,event):
@@ -232,18 +276,14 @@ class Cuadro(gtk.DrawingArea):
 		# Dibujamos la foto
 		ctx.set_line_width(DEF_WIDTH)
 
-		w = self.image.get_width()
-		h = self.image.get_height()
-
-		#print "width",area.width,"height",area.height,"w",w,"h",h
-		scale = (1.0 * area.width) / (1.0 * w)
-		#print "scale",scale
-		ctx.scale  (scale, scale)
-
-		ctx.set_source_surface (self.image, 0, 0)
-		ctx.paint ()
-		ctx.scale  (1/scale, 1/scale)
-
+		if (self.image != None):
+			w = self.image.get_width()
+			h = self.image.get_height()
+			scale = (1.0 * area.width) / (1.0 * w)
+			ctx.scale  (scale, scale)
+			ctx.set_source_surface (self.image, 0, 0)
+			ctx.paint ()
+			ctx.scale  (1/scale, 1/scale)
 
 		#context.set_source_pixbuf(self.pixbuf, area.x, area.y)
 		#conext.scale(2,2)
@@ -296,6 +336,7 @@ class Cuadro(gtk.DrawingArea):
 					if i.is_selec(event.x,event.y):
 						# i.mover_a(event.x,event.y,self.get_allocation())
 						self.glob_press=i
+						self.globo_activo = i
 						break
 					self.queue_draw()
 
