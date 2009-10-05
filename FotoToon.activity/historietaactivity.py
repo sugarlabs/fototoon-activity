@@ -60,7 +60,13 @@ class HistorietaActivity(activity.Activity):
 		self.b_girar.connect('clicked', self.girar)
 		self.botonera.insert(self.b_girar, -1)
 
-		# font 
+		# borrar
+		self.b_borrar = ToolButton('gtk-delete')
+		self.b_borrar.connect('clicked', self.borrar)
+		self.botonera.insert(self.b_borrar, -1)
+
+
+		# fonts (pendiente)
       
 		toolbox.add_toolbar('Globos', self.botonera)
 	
@@ -122,6 +128,29 @@ class HistorietaActivity(activity.Activity):
 			elif (cuadro.globo_activo.direccion == "der"):
 				cuadro.globo_activo.direccion = "abajo"		
 			cuadro.queue_draw()
+
+	def borrar(self, boton):
+		print "borrando"
+		cuadro = self.pagina.get_cuadro_activo()
+		if (cuadro.globo_activo != None):
+			print "borrando globo"
+			cuadro.globos.remove(cuadro.globo_activo)
+			cuadro.globo_activo = None
+			cuadro.queue_draw()
+		# Borrar un cuadro es mas complicado
+		"""
+		else:
+			print "borrando cuadro"
+			self.pagina.cuadros.remove(cuadro)
+			if (len(self.pagina.cuadros) > 0):
+				print "seteo el primero como activo"
+				self.pagina.set_cuadro_activo(self.pagina.cuadros[0])
+				for cu in self.pagina.cuadros:
+					print "redibujo"
+					cu.queue_draw()
+			else:
+				self.pagina._cuadro_activo = None
+		"""
 	
 	def setWaitCursor( self ):
 		self.window.set_cursor( gtk.gdk.Cursor(gtk.gdk.WATCH) )
@@ -135,26 +164,31 @@ DEF_WIDTH = 4
 SCREEN_HEIGHT = gtk.gdk.screen_height()
 SCREEN_WIDTH = gtk.gdk.screen_width()
 
-class Pagina(gtk.Table):
+class Pagina(gtk.VBox):
 
 	def __init__(self):
-		gtk.Table.__init__(self, 10, 2, True)
-		self.set_homogeneous(True)
-		self.set_row_spacings(DEF_SPACING)
-		self.set_col_spacings(DEF_SPACING)
+		gtk.VBox.__init__(self,False,0)		
+		self.set_homogeneous(False)
 
 		self.cuadros = []
 		self._cuadro_activo = None
 
-		'''
-		cuadro_titulo = Cuadro(None)
-		cuadro_titulo.show()
-		self.attach(cuadro_titulo,0,2,0,1)
-		self.set_cuadro_activo(cuadro_titulo)
-		self.cuadros.append(cuadro_titulo)
-		cuadro_titulo.pagina = self
-		cuadro_titulo.set_size_request(SCREEN_WIDTH,20)
-		'''
+		# Agrego cuadro titulo
+		self.cuadro_titulo = Cuadro(None)
+		self.cuadro_titulo.show()
+		self.cuadro_titulo.set_size_request(SCREEN_WIDTH,100)
+		self.pack_start(self.cuadro_titulo)		
+		self.set_cuadro_activo(self.cuadro_titulo)
+		self.cuadros.append(self.cuadro_titulo)
+		self.cuadro_titulo.pagina = self
+
+		# Agrego tabla para las fotos
+		self.table = gtk.Table(10, 2, True)
+		self.table.set_homogeneous(True)
+		self.table.set_row_spacings(DEF_SPACING)
+		self.table.set_col_spacings(DEF_SPACING)
+		self.pack_start(self.table)		
+
 
 
 	def add_photo(self):
@@ -167,14 +201,14 @@ class Pagina(gtk.Table):
 		column = posi - (reng * 2)
 		self.attach(cuadro,column,column+1,reng+1,reng+2)
 		'''
-		posi = len(self.cuadros)
+		posi = len(self.cuadros) - 1
 
 		num_foto = posi -  (posi / 4) * 4
 		cuadro = Cuadro(os.path.join(appdir,'fotos/foto'+str(num_foto)+'.png'))
 		cuadro.show()
-		reng = int(posi / 2)
+		reng = int(posi / 2) 
 		column = posi - (reng * 2)
-		self.attach(cuadro,column,column+1,reng,reng+1)
+		self.table.attach(cuadro,column,column+1,reng,reng+1)
 		self.set_cuadro_activo(cuadro)
 		self.cuadros.append(cuadro)
 		cuadro.pagina = self

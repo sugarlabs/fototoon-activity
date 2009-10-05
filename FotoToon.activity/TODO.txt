@@ -1,0 +1,19 @@
+Etapa 1
+
+* Giro de Globos (el giro no funciona bien)
+* Obtencion de las fotos desde el journal
+* Persistencia de las historietas
+* Borrado de globos (hecho) o cuadros
+
+Etapa 2
+
+* Cabecera para titulo de la historieta (hecho, falta que se dimensione bien al comienzo) 
+* Reemplazo de imagenes de Globo y Grito por dibujo con vectores
+* Seteo de fonts y colores en los globos
+
+Etapa 3
+
+* Colaboracion
+
+
+

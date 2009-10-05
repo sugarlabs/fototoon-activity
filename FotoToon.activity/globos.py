@@ -132,7 +132,7 @@ class Globo:
 		self.texto.insertar_texto(key,keyval,context)
 		self.calc_area(self.texto.ancho,self.texto.alto)
 		if self.y-self.alto<=0 or self.y+self.alto>=rect.height:
-			#si se redimenciono significa que crecio en un renglon 
+			#si se redimensiono significa que crecio en un renglon 
 			#y verifica si entra en cuadro si no es asi deshace la accion
 			self.texto.deshacer(context)
 			self.calc_area(self.texto.ancho,self.texto.alto)
