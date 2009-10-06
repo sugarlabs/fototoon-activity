@@ -177,7 +177,7 @@ class Pagina(gtk.VBox):
 		self.cuadro_titulo = Cuadro(None)
 		self.cuadro_titulo.show()
 		self.cuadro_titulo.set_size_request(SCREEN_WIDTH,100)
-		self.pack_start(self.cuadro_titulo)		
+		self.pack_start(self.cuadro_titulo,False)		
 		self.set_cuadro_activo(self.cuadro_titulo)
 		self.cuadros.append(self.cuadro_titulo)
 		self.cuadro_titulo.pagina = self

@@ -4,16 +4,23 @@ Etapa 1
 * Obtencion de las fotos desde el journal
 * Persistencia de las historietas
 * Borrado de globos (hecho) o cuadros
+* Cabecera para titulo de la historieta (hecho) 
 
 Etapa 2
 
-* Cabecera para titulo de la historieta (hecho, falta que se dimensione bien al comienzo) 
 * Reemplazo de imagenes de Globo y Grito por dibujo con vectores
 * Seteo de fonts y colores en los globos
+* Cambiar de orden los cuadros
 
 Etapa 3
 
 * Colaboracion
 
+
+Persitencia:
+Cuadro_titulo, globos[]
+Lista de cuadros, imagen de fondo, globos[]
+
+por cada globo: tipo, posicion (x,y), ancho, alto, direccion, pos_flecha (x,y), texto
 
 
