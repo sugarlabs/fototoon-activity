@@ -1,26 +1,24 @@
 Etapa 1
 
-* Giro de Globos (el giro no funciona bien)
-* Obtencion de las fotos desde el journal
-* Persistencia de las historietas
-* Borrado de globos (hecho) o cuadros
-* Cabecera para titulo de la historieta (hecho) 
+	* Borrado de globos (hecho)
+	* Cabecera para titulo de la historieta (hecho) 
+	* Persistencia de las historietas
+	* Obtencion de las fotos desde el journal
+	* Borrado de cuadros
+	* Giro de Globos (el giro en el grito no funciona bien)
 
 Etapa 2
 
-* Reemplazo de imagenes de Globo y Grito por dibujo con vectores
-* Seteo de fonts y colores en los globos
-* Cambiar de orden los cuadros
+	* Reemplazo de imagenes de Globo y Grito por dibujo con vectores
+	* Seteo de fonts y colores en los globos
+	* Cambiar de orden los cuadros
 
 Etapa 3
 
-* Colaboracion
+	* Colaboracion
 
 
-Persitencia:
-Cuadro_titulo, globos[]
-Lista de cuadros, imagen de fondo, globos[]
+Notas:
 
-por cada globo: tipo, posicion (x,y), ancho, alto, direccion, pos_flecha (x,y), texto
-
+	* Seria bueno implementar herencia en los globos, cuadros y paginas con los objetos que contienen la data
 
