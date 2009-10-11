@@ -26,17 +26,17 @@ class Globo:
         self.ancho = ancho        #dimensiones de la elipse
         self.alto = alto
         
-        self.punto=[5,10]
-        self.selec=False        #determina si esta seleccionado
+        self.punto = [5,10]
+        self.selec = False        #determina si esta seleccionado
         
-        self.direccion=direccion         #direccion ="abajo","arriba","der","izq"
+        self.direccion = direccion         #direccion ="abajo","arriba","der","izq"
         
-        self.modo=modo    #2 tipos de globos: "normal" o "despacio"
+        self.modo = modo    #2 tipos de globos: "normal" o "despacio"
         
-        self.x= x*self.ancho/(self.radio*1.0)    #Centro de la elipse
-        self.y= y*self.alto/(self.radio*1.0)
+        self.x = x * self.ancho / (self.radio*1.0)    #Centro de la elipse
+        self.y = y * self.alto / (self.radio*1.0)
         
-        ancho_text,alto_text=self.calc_area_texto()
+        ancho_text,alto_text = self.calc_area_texto()
         self.texto = CuadroTexto(self.x,self.y,ancho_text,alto_text)    #es el contenedor del texto
         
 
@@ -640,8 +640,8 @@ class CuadroTexto:
                 context.text_extents(self.renglones[i].replace(" ","-"))
             
                 context.move_to(self.x-width/2-1,self.y-self.alto+(i+1)*self.alto_renglon)
-                #context.set_source_rgb(self.color_r,self.color_g,self.color_b)
-                context.set_source_rgb(0,0,0)
+                context.set_source_rgb(self.color_r,self.color_g,self.color_b)
+                #context.set_source_rgb(0,0,0)
                 context.show_text(self.renglones[i])
         
                 if self.mostrar_cursor: 

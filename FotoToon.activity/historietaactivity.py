@@ -48,6 +48,7 @@ class HistorietaActivity(activity.Activity):
     def keypress(self, widget, event):
         if (self.pagina.get_cuadro_activo() != None):
             self.pagina.get_cuadro_activo().keypress(event.string,event.keyval)
+            return True
 
     
     def setWaitCursor( self ):
