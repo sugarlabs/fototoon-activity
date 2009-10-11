@@ -54,7 +54,7 @@ class Writer:
         Persitencia:
         Cuadro_titulo, globos[]
         Lista de cuadros, imagen de fondo, globos[]
-        por cada globo: tipo, posicion (x,y), ancho, alto, direccion, pos_flecha (x,y), texto
+        por cada globo: tipo, posicion (x,y), ancho, alto, direccion, pos_flecha (x,y), texto,font, tamanio, color
     
         """
 

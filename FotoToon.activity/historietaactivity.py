@@ -131,8 +131,8 @@ class Pagina(gtk.VBox):
     def get_globo_activo(self):
         cuadro = self.get_cuadro_activo()
         if cuadro != None:
-            if (cuadro.globo_activo != None):
-                return cuadro.globo_activo
+            if (cuadro.get_globo_activo() != None):
+                return cuadro.get_globo_activo()
         return None
 
 
@@ -161,7 +161,7 @@ class Cuadro(gtk.DrawingArea):
         else:
             self.image = None
 
-        self.globo_activo = None
+        self._globo_activo = None
 
         self.set_size_request(-1,450)
 
@@ -171,14 +171,18 @@ class Cuadro(gtk.DrawingArea):
         self.connect("button_release_event", self.releassing)
         self.queue_draw()
 
-    #def get_size_request(self)
-    #    return 100,100
+    def set_globo_activo(self,globo):
+        self._globo_activo = globo
+        self.pagina._text_toolbar.setToolbarState(globo.texto)
+        
+    def get_globo_activo(self):
+        return self._globo_activo
         
     def add_globo(self,xpos,ypos,gmodo="normal",gdireccion=globos.DIR_ABAJO):
         #agrega un globo al cuadro
         globo = globos.Globo(x=xpos,y=ypos,modo=gmodo,direccion=gdireccion)
         self.globos.append(globo)
-        self.globo_activo = globo
+        self._globo_activo = globo
         self.queue_draw()
     
     def add_rectangulo(self,xpos,ypos):
@@ -190,21 +194,21 @@ class Cuadro(gtk.DrawingArea):
         #agrega un globo de pensamiento al cuadro
         globo = globos.Nube(x=xpos,y=ypos)
         self.globos.append(globo)
-        self.globo_activo = globo
+        self._globo_activo = globo
         self.queue_draw()
 
     def add_imagen(self,xpos,ypos):
         #agrega una imagen al cuadro
         globo = globos.Imagen(x=xpos,y=ypos)
         self.globos.append(globo)
-        self.globo_activo = globo
+        self._globo_activo = globo
         self.queue_draw()
     
     def add_grito(self,xpos,ypos):
         #agrega un globo de grito al cuadro
         globo = globos.Grito(x=xpos,y=ypos)
         self.globos.append(globo)
-        self.globo_activo = globo
+        self._globo_activo = globo
         self.queue_draw()
      
     def expose(self,widget,event):
@@ -231,9 +235,6 @@ class Cuadro(gtk.DrawingArea):
             ctx.paint ()
             ctx.scale  (1/scale, 1/scale)
 
-        #context.set_source_pixbuf(self.pixbuf, area.x, area.y)
-        #conext.scale(2,2)
-        #context.paint()
 
         # Dibujamos el recuadro
         ctx.rectangle(area.x, area.y, area.width, area.height)
@@ -281,8 +282,8 @@ class Cuadro(gtk.DrawingArea):
                 for i in list_aux:
                     if i.is_selec(event.x,event.y):
                         # i.mover_a(event.x,event.y,self.get_allocation())
-                        self.glob_press=i
-                        self.globo_activo = i
+                        self.glob_press = i
+                        self.set_globo_activo(i)
                         break
                     self.queue_draw()
 

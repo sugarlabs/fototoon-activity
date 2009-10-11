@@ -58,6 +58,7 @@ class GlobesToolbar(gtk.Toolbar):
         # agregar cuadro
         self.b_add_photo = ToolButton('add-photo')
         self.b_add_photo.connect('clicked', self.add_photo)
+        self.b_add_photo.set_tooltip(_('Add Photo'))
         self.insert(self.b_add_photo, -1)
 
         separator = gtk.SeparatorToolItem()
@@ -67,26 +68,31 @@ class GlobesToolbar(gtk.Toolbar):
         # agrega globo
         self.b_agregar = ToolButton('add-globe')
         self.b_agregar.connect('clicked', self.agrega_gnormal)
+        self.b_agregar.set_tooltip(_('Add Globe'))
         self.insert(self.b_agregar, -1)
     
         #agrega nube
         self.b_agregar = ToolButton('add-nube')
         self.b_agregar.connect('clicked', self.agrega_gpensar)
+        self.b_agregar.set_tooltip(_('Add Think'))
         self.insert(self.b_agregar, -1)
     
         # agrega susurro
         self.b_agregar = ToolButton('add-susurro')
         self.b_agregar.connect('clicked', self.agrega_gdespacio)
+        self.b_agregar.set_tooltip(_('Add Whisper'))
         self.insert(self.b_agregar, -1)
     
         # agrega grito
         self.b_agregar = ToolButton('add-grito')
         self.b_agregar.connect('clicked', self.agrega_ggrito)
+        self.b_agregar.set_tooltip(_('Add Exclamation'))
         self.insert(self.b_agregar, -1)
     
         # agrega caja
         self.b_agregar = ToolButton('add-box')
         self.b_agregar.connect('clicked', self.agrega_grect)
+        self.b_agregar.set_tooltip(_('Add Box'))
         self.insert(self.b_agregar, -1)
     
         separator = gtk.SeparatorToolItem()
@@ -96,11 +102,13 @@ class GlobesToolbar(gtk.Toolbar):
         # girar
         self.b_girar = ToolButton('turn')
         self.b_girar.connect('clicked', self.girar)
+        self.b_girar.set_tooltip(_('Turn'))
         self.insert(self.b_girar, -1)
 
         # borrar
         self.b_borrar = ToolButton('gtk-delete')
         self.b_borrar.connect('clicked', self.borrar)
+        self.b_borrar.set_tooltip(_('Delete'))
         self.insert(self.b_borrar, -1)
 
 
@@ -132,30 +140,30 @@ class GlobesToolbar(gtk.Toolbar):
         print "girando"
         #veo cual es el globo seleccionado y o giro
         cuadro = self._pagina.get_cuadro_activo()
-        if (cuadro.globo_activo != None):
+        if (cuadro.get_globo_activo() != None):
             print "globo activo",
-            if (cuadro.globo_activo.direccion == globos.DIR_ABAJO):
-                cuadro.globo_activo.direccion = globos.DIR_IZQ        
+            if (cuadro.get_globo_activo().direccion == globos.DIR_ABAJO):
+                cuadro.get_globo_activo().direccion = globos.DIR_IZQ        
 
-            elif (cuadro.globo_activo.direccion == globos.DIR_IZQ):
-                cuadro.globo_activo.direccion = globos.DIR_ARRIBA        
+            elif (cuadro.get_globo_activo().direccion == globos.DIR_IZQ):
+                cuadro.get_globo_activo().direccion = globos.DIR_ARRIBA        
 
-            elif (cuadro.globo_activo.direccion == globos.DIR_ARRIBA):
-                cuadro.globo_activo.direccion = globos.DIR_DER        
+            elif (cuadro.get_globo_activo().direccion == globos.DIR_ARRIBA):
+                cuadro.get_globo_activo().direccion = globos.DIR_DER        
 
-            elif (cuadro.globo_activo.direccion == globos.DIR_DER):
-                cuadro.globo_activo.direccion = globos.DIR_ABAJO        
-            cuadro.globo_activo.punto[0],cuadro.globo_activo.punto[1] = cuadro.globo_activo.punto[1],cuadro.globo_activo.punto[0]
+            elif (cuadro.get_globo_activo().direccion == globos.DIR_DER):
+                cuadro.get_globo_activo().direccion = globos.DIR_ABAJO        
+            cuadro.get_globo_activo().punto[0],cuadro.get_globo_activo().punto[1] = cuadro.get_globo_activo().punto[1],cuadro.get_globo_activo().punto[0]
 
             cuadro.queue_draw()
 
     def borrar(self, boton):
         print "borrando"
         cuadro = self._pagina.get_cuadro_activo()
-        if (cuadro.globo_activo != None):
+        if (cuadro.get_globo_activo() != None):
             print "borrando globo"
-            cuadro.globos.remove(cuadro.globo_activo)
-            cuadro.globo_activo = None
+            cuadro.globos.remove(cuadro.get_globo_activo())
+            cuadro.set_globo_activo(None)
             cuadro.queue_draw()
         # Borrar un cuadro es mas complicado
         """
@@ -182,6 +190,7 @@ class TextToolbar(gtk.Toolbar):
         gtk.Toolbar.__init__(self)
 
         self._pagina = pagina
+        pagina._text_toolbar = self
 
         self._bold = ToggleToolButton('format-text-bold')
         self._bold.set_tooltip(_('Bold'))
@@ -223,7 +232,7 @@ class TextToolbar(gtk.Toolbar):
         tool_item.show_all()
 
         self._font_size_combo = ComboBox()
-        self._font_sizes = ['8', '9', '10', '11', '12', '14', '16', '20', '22', '24', '26', '28', '36', '48', '72']
+        self._font_sizes = ['8', '10', '12', '14', '16', '20', '22', '24', '26', '28', '36', '48', '72']
         self._font_size_changed_id = self._font_size_combo.connect('changed', self._font_size_changed_cb)
         for i, s in enumerate(self._font_sizes):
             self._font_size_combo.append_item(i, s, None)
@@ -272,10 +281,6 @@ class TextToolbar(gtk.Toolbar):
         self.insert(tool_item, -1)
         tool_item.show()
 
-    def setToggleButtonState(self,button,b,id):
-        button.handler_block(id)
-        button.set_active(b)
-        button.handler_unblock(id)
 
     def _bold_cb(self, button):
         globo_activo = self._pagina.get_globo_activo()
@@ -325,30 +330,28 @@ class TextToolbar(gtk.Toolbar):
 
 	"""
 
+    def setToggleButtonState(self,button,b,id):
+        button.handler_block(id)
+        button.set_active(b)
+        button.handler_unblock(id)
 
-    def _isBold_cb(self, abi, b):
-        self.setToggleButtonState(self._bold,b,self._bold_id)
-
-    def _isItalic_cb(self, abi, b):
-        self.setToggleButtonState(self._italic, b, self._italic_id)
-
-    def _isUnderline_cb(self, abi, b):
-        self.setToggleButtonState(self._underline, b, self._underline_id)
-
-    def _color_cb(self, abi, r, g, b):
-        self._text_color.set_color(gtk.gdk.Color(r * 256, g * 256, b * 256))
-
-
-    def _font_size_cb(self, abi, size):
+    def setToolbarState(self,globeText):
+        # seteo bold
+        self.setToggleButtonState(self._bold,globeText.bold ,self._bold_id)
+        # seteo italic
+        self.setToggleButtonState(self._italic, globeText.italic, self._italic_id)
+        # color
+        self._text_color.set_color(gtk.gdk.Color(int(globeText.color_r * 65535), int(globeText.color_g * 65535), int(globeText.color_b * 65535)))
+        # font size
         for i, s in enumerate(self._font_sizes):
-            if int(s) == int(size):
+            if int(s) == int(globeText.font_size):
                 self._font_size_combo.handler_block(self._font_size_changed_id)
                 self._font_size_combo.set_active(i)
                 self._font_size_combo.handler_unblock(self._font_size_changed_id)
                 break;
-
-
-    def _font_family_cb(self, abi, font_family):
+        
+        # font seleccionada
+        font_family = globeText.font_type
         font_index = -1
 
         # search for the font name in our font list

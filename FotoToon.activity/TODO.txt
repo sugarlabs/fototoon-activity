@@ -3,6 +3,7 @@ Etapa 1
 	* Borrado de globos (hecho)
 	* Cabecera para titulo de la historieta (hecho) 
 	* Seteo de fonts y colores del texto en los globos (hecho)
+	* Setear valores del toolbar de texto acordemente al globo seleccionado (hecho)
 	* Giro de Globos (hecho)
 	* Persistencia de las historietas
 	* Obtencion de las fotos desde el journal
