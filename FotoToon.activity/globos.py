@@ -297,7 +297,9 @@ class Rectangulo(Globo):
         self.ancho = ancho        #dimensiones del rectangulo
         self.alto = alto
         
-        #self.punto=[5,10]
+        self.punto = None
+        self.direccion = None
+        
         self.selec=False        #determina si esta seleccionado
         
         self.x= x*self.ancho/(self.radio*1.0)    #Centro del rectangulo

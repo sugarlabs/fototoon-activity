@@ -113,7 +113,7 @@ class GlobesToolbar(gtk.Toolbar):
 
 
     def add_photo(self, boton):
-        self._pagina.add_photo()
+        self._pagina.add_cuadro()
 
     def agrega_gnormal(self, boton):
         self._pagina.get_cuadro_activo().add_globo(60, 60)

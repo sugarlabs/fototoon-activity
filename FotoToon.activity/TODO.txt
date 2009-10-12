@@ -5,7 +5,7 @@ Etapa 1
 	* Seteo de fonts y colores del texto en los globos (hecho)
 	* Setear valores del toolbar de texto acordemente al globo seleccionado (hecho)
 	* Giro de Globos (hecho)
-	* Persistencia de las historietas
+	* Persistencia de las historietas (hecho)
 	* Obtencion de las fotos desde el journal
 	* Borrado de cuadros
 

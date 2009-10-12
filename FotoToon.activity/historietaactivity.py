@@ -58,9 +58,14 @@ class HistorietaActivity(activity.Activity):
         self.window.set_cursor( None )
         
     def write_file(self, file_path):
-        print "file path",file_path
-        writer = persistencia.Writer()
-        writer.write(file_path,self.pagina)
+        print "write file path",file_path
+        persistence = persistencia.Persistence()
+        persistence.write(file_path,self.pagina)
+
+    def read_file(self, file_path):
+        print "read file path",file_path
+        persistence = persistencia.Persistence()
+        persistence.read(file_path,self.pagina)
 
 
 DEF_SPACING = 6
@@ -94,7 +99,7 @@ class Pagina(gtk.VBox):
         self.table.set_col_spacings(DEF_SPACING)
         self.pack_start(self.table)        
 
-    def add_photo(self):
+    def add_cuadro(self):
         appdir = activity.get_bundle_path()
         '''
         posi = len(self.cuadros)-1
@@ -173,7 +178,8 @@ class Cuadro(gtk.DrawingArea):
 
     def set_globo_activo(self,globo):
         self._globo_activo = globo
-        self.pagina._text_toolbar.setToolbarState(globo.texto)
+        if (globo != None):
+            self.pagina._text_toolbar.setToolbarState(globo.texto)
         
     def get_globo_activo(self):
         return self._globo_activo
