@@ -21,7 +21,7 @@ class Globo:
     
     def __init__(self, x, y, ancho=50, alto=30,modo="normal",direccion=DIR_ABAJO):
         
-        self.radio = 30            #determina tamaño minimo
+        self.radio = 30            #determina tamanio minimo
         
         self.ancho = ancho        #dimensiones de la elipse
         self.alto = alto
@@ -292,7 +292,7 @@ class Rectangulo(Globo):
     
     def __init__(self, x, y, ancho=50, alto=15):
         
-        self.radio = 15        #determina tamaño minimo
+        self.radio = 15        #determina tamanio minimo
         
         self.ancho = ancho        #dimensiones del rectangulo
         self.alto = alto
@@ -372,7 +372,7 @@ class Nube(Globo):
         
         self.pixbuf = gtk.gdk.pixbuf_new_from_file(os.path.join(appdir,'old/nube.png'))
     
-        #determina tamaño minimo
+        #determina tamanio minimo
         #self.ancho=self.pixbuf.get_width()/2
         #self.alto = self.pixbuf.get_height()/2
         ancho_text,alto_text=self.calc_area_texto()
@@ -603,7 +603,7 @@ class CuadroTexto:
         self.italic = False
         self.bold = False
         
-        self.alto_renglon = 12    #Tamaño del renglon
+        self.alto_renglon = 12    #Tamanio del renglon
         
         self.mostrar_borde = False  #Permite dibujar o no recuadro
         

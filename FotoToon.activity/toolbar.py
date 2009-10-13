@@ -31,6 +31,8 @@ from sugar.graphics.toggletoolbutton import ToggleToolButton
 from sugar.graphics.combobox import ComboBox
 from sugar.graphics.toolcombobox import ToolComboBox
 from sugar.graphics import iconentry
+from sugar.graphics.objectchooser import ObjectChooser
+
 #from sugar.datastore import datastore
 
 #import sugar.profile
@@ -49,11 +51,12 @@ TOOLBAR_VIEW = 5
 
 class GlobesToolbar(gtk.Toolbar):
 
-    def __init__(self, pagina):
+    def __init__(self, page,activity):
 
         gtk.Toolbar.__init__(self)
 
-        self._pagina = pagina
+        self._page = page
+        self._activity = activity
 
         # agregar cuadro
         self.b_add_photo = ToolButton('add-photo')
@@ -111,86 +114,108 @@ class GlobesToolbar(gtk.Toolbar):
         self.b_borrar.set_tooltip(_('Delete'))
         self.insert(self.b_borrar, -1)
 
+        separator = gtk.SeparatorToolItem()
+        separator.set_draw(True)
+        self.insert(separator, -1)
+        
+        self._image = ToolButton('insert-image')
+        self._image.set_tooltip(_('Insert Image'))
+        self._image_id = self._image.connect('clicked', self._image_cb)
+        self.insert(self._image, -1)
+        
+
 
     def add_photo(self, boton):
-        self._pagina.add_cuadro()
+        self._page.add_box()
 
     def agrega_gnormal(self, boton):
-        self._pagina.get_cuadro_activo().add_globo(60, 60)
+        self._page.get_active_box().add_globo(60, 60)
 
-    def agrega_gnormal(self, boton):
-        self._pagina.get_cuadro_activo().add_globo(60, 60)
-    
     def agrega_gpensar(self, boton):
-        self._pagina.get_cuadro_activo().add_nube(60, 60)
+        self._page.get_active_box().add_nube(60, 60)
     
     def agrega_gdespacio(self, boton):
-        self._pagina.get_cuadro_activo().add_globo(60, 60,gmodo="despacio")
+        self._page.get_active_box().add_globo(60, 60,gmodo="despacio")
     
     def agrega_ggrito(self, boton):
-        self._pagina.get_cuadro_activo().add_grito(60, 60)
+        self._page.get_active_box().add_grito(60, 60)
     
     def agrega_grect(self, boton):
-        self._pagina.get_cuadro_activo().add_rectangulo(60, 60)
+        self._page.get_active_box().add_rectangulo(60, 60)
     
     def agrega_imagen(self, boton):
-        self._pagina.get_cuadro_activo().add_imagen(60, 60)
+        self._page.get_active_box().add_imagen(60, 60)
 
     def girar(self, boton):
         print "girando"
         #veo cual es el globo seleccionado y o giro
-        cuadro = self._pagina.get_cuadro_activo()
-        if (cuadro.get_globo_activo() != None):
+        box = self._page.get_active_box()
+        if (box.get_globo_activo() != None):
             print "globo activo",
-            if (cuadro.get_globo_activo().direccion == globos.DIR_ABAJO):
-                cuadro.get_globo_activo().direccion = globos.DIR_IZQ        
+            globe = box.get_globo_activo()
+            if (globe.direccion == globos.DIR_ABAJO):
+                globe.direccion = globos.DIR_IZQ        
 
-            elif (cuadro.get_globo_activo().direccion == globos.DIR_IZQ):
-                cuadro.get_globo_activo().direccion = globos.DIR_ARRIBA        
+            elif (globe.direccion == globos.DIR_IZQ):
+                globe.direccion = globos.DIR_ARRIBA        
 
-            elif (cuadro.get_globo_activo().direccion == globos.DIR_ARRIBA):
-                cuadro.get_globo_activo().direccion = globos.DIR_DER        
+            elif (globe.direccion == globos.DIR_ARRIBA):
+                globe.direccion = globos.DIR_DER        
 
-            elif (cuadro.get_globo_activo().direccion == globos.DIR_DER):
-                cuadro.get_globo_activo().direccion = globos.DIR_ABAJO        
-            cuadro.get_globo_activo().punto[0],cuadro.get_globo_activo().punto[1] = cuadro.get_globo_activo().punto[1],cuadro.get_globo_activo().punto[0]
+            elif (globe.direccion == globos.DIR_DER):
+                globe.direccion = globos.DIR_ABAJO        
+            globe.punto[0],globe.punto[1] = globe.punto[1],globe.punto[0]
 
-            cuadro.queue_draw()
+            box.queue_draw()
 
     def borrar(self, boton):
         print "borrando"
-        cuadro = self._pagina.get_cuadro_activo()
-        if (cuadro.get_globo_activo() != None):
+        box = self._page.get_active_box()
+        if (box.get_globo_activo() != None):
             print "borrando globo"
-            cuadro.globos.remove(cuadro.get_globo_activo())
-            cuadro.set_globo_activo(None)
-            cuadro.queue_draw()
-        # Borrar un cuadro es mas complicado
+            box.globos.remove(box.get_globo_activo())
+            box.set_globo_activo(None)
+            box.queue_draw()
+        # Borrar un box es mas complicado
         """
         else:
-            print "borrando cuadro"
-            self.pagina.cuadros.remove(cuadro)
-            if (len(self.pagina.cuadros) > 0):
+            print "borrando box"
+            self.page.boxs.remove(box)
+            if (len(self.page.boxs) > 0):
                 print "seteo el primero como activo"
-                self.pagina.set_cuadro_activo(self.pagina.cuadros[0])
-                for cu in self.pagina.cuadros:
+                self.page.set_active_box(self.page.boxs[0])
+                for cu in self.page.boxs:
                     print "redibujo"
                     cu.queue_draw()
             else:
-                self.pagina._cuadro_activo = None
+                self.page._active_box = None
         """
 
+    def _image_cb(self, button):
+        chooser = ObjectChooser(_('Choose image'), self._activity,
+                                gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT,what_filter='Image')
+        try:
+            result = chooser.run()
+            if result == gtk.RESPONSE_ACCEPT:
+                logging.debug('ObjectChooser: %r' % chooser.get_selected_object())
+                jobject = chooser.get_selected_object()
+                if jobject and jobject.file_path:
+                    print "imagen seleccionada:",jobject.file_path
+                    #self._abiword_canvas.insert_image(jobject.file_path, True)
+        finally:
+            chooser.destroy()
+            del chooser
 
 
 class TextToolbar(gtk.Toolbar):
 
-    def __init__(self, pagina):
+    def __init__(self, page):
         self._colorseldlg = None
 
         gtk.Toolbar.__init__(self)
 
-        self._pagina = pagina
-        pagina._text_toolbar = self
+        self._page = page
+        page._text_toolbar = self
 
         self._bold = ToggleToolButton('format-text-bold')
         self._bold.set_tooltip(_('Bold'))
@@ -283,43 +308,43 @@ class TextToolbar(gtk.Toolbar):
 
 
     def _bold_cb(self, button):
-        globo_activo = self._pagina.get_globo_activo()
+        globo_activo = self._page.get_globo_activo()
         if (globo_activo != None):
             globo_activo.texto.bold = not globo_activo.texto.bold
-            self._pagina.get_cuadro_activo().queue_draw()    
+            self._page.get_active_box().queue_draw()    
 
     def _italic_cb(self, button):
-        globo_activo = self._pagina.get_globo_activo()
+        globo_activo = self._page.get_globo_activo()
         if (globo_activo != None):
             globo_activo.texto.italic = not globo_activo.texto.italic
-            self._pagina.get_cuadro_activo().queue_draw()    
+            self._page.get_active_box().queue_draw()    
 
     def _text_color_cb(self, button):
-        globo_activo = self._pagina.get_globo_activo()
+        globo_activo = self._page.get_globo_activo()
         if (globo_activo != None):
             newcolor = self._text_color.get_color()
             texto = globo_activo.texto
             texto.color_r,texto.color_g,texto.color_b = (newcolor.red / 65535.0),(newcolor.green / 65535.0),(newcolor.blue / 65535.0)
-            self._pagina.get_cuadro_activo().queue_draw()    
+            self._page.get_active_box().queue_draw()    
 
 
     def _font_size_changed_cb(self, combobox):
         if self._font_size_combo.get_active() != -1:
             size = int(self._font_sizes[self._font_size_combo.get_active()])
             logger.debug('Setting font size: %d', size)
-            globo_activo = self._pagina.get_globo_activo()
+            globo_activo = self._page.get_globo_activo()
             if (globo_activo != None):
                 globo_activo.texto.font_size = size
                 globo_activo.texto.alto_renglon = size
-                self._pagina.get_cuadro_activo().queue_draw()    
+                self._page.get_active_box().queue_draw()    
 
     def _font_changed_cb(self, combobox):
         if self._font_combo.get_active() != -1:
             logger.debug('Setting font name: %s', self._fonts[self._font_combo.get_active()])
-            globo_activo = self._pagina.get_globo_activo()
+            globo_activo = self._page.get_globo_activo()
             if (globo_activo != None):
                 globo_activo.texto.font_type = self._fonts[self._font_combo.get_active()]
-                self._pagina.get_cuadro_activo().queue_draw()    
+                self._page.get_active_box().queue_draw()    
             
 
 

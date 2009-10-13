@@ -1,7 +1,7 @@
 [Activity]
 name = FotoToon
-id = org.eq.Historieta
-service_name = org.eq.Historieta
+id = org.eq.FotoToon
+service_name = org.eq.FotoToon
 icon = historieta
 class = historietaactivity.HistorietaActivity
 show_launcher = yes

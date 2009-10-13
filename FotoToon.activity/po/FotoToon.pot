@@ -1,0 +1,61 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-10-12 04:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: activity/activity.info:2
+msgid "FotoToon"
+msgstr ""
+
+#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:61
+msgid "Add Photo"
+msgstr ""
+
+#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:71
+msgid "Add Globe"
+msgstr ""
+
+#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:77
+msgid "Add Think"
+msgstr ""
+
+#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:83
+msgid "Add Whisper"
+msgstr ""
+
+#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:89
+msgid "Add Exclamation"
+msgstr ""
+
+#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:95
+msgid "Add Box"
+msgstr ""
+
+#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:105
+msgid "Turn"
+msgstr ""
+
+#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:111
+msgid "Delete"
+msgstr ""
+
+#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:196
+msgid "Bold"
+msgstr ""
+
+#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:202
+msgid "Italic"
+msgstr ""

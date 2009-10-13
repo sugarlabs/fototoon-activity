@@ -4,12 +4,12 @@ import os, sys
 import pickle
 import globos
 
-class PaginaData:
+class PageData:
 
     def __init__(self):
-        self.cuadros = []
+        self.boxs = []
 
-class CuadroData:
+class BoxData:
 
     def __init__(self):
         self.globos = []
@@ -17,7 +17,7 @@ class CuadroData:
 
 class Persistence:
 
-    def write(self,file_name,pagina):
+    def write(self,file_name,page):
         """
         Persitencia:
         Cuadro_titulo, globos[]
@@ -26,20 +26,21 @@ class Persistence:
     
         """
 
-        # Copio los datos de Pagina en PaginaData
+        # Copio los datos de Page en PageData
 
-        paginaData = PaginaData()
-        for cuadro in pagina.cuadros:
-            cuadroData = CuadroData()
-            cuadroData.image_name = cuadro.image_name
-            for globo in cuadro.globos:
+        pageData = PageData()
+        for box in page.boxs:
+            boxData = BoxData()
+            boxData.image_name = box.image_name
+            for globo in box.globos:
                 globoData = {}
                 print "Grabando",globo.__class__
                 globoData['tipo_globo'] = globo.__class__
                 globoData['radio'] = globo.radio
                 globoData['ancho'],globoData['alto'] = globo.ancho,globo.alto
-                globoData['punto_0'] = globo.punto[0]
-                globoData['punto_1'] = globo.punto[1]
+                if (globo.__class__ != globos.Rectangulo):
+                    globoData['punto_0'] = globo.punto[0]
+                    globoData['punto_1'] = globo.punto[1]
                 globoData['direccion'] = globo.direccion
                 if (globo.__class__ == globos.Globo):
                     globoData['modo'] = globo.modo
@@ -67,36 +68,36 @@ class Persistence:
                 globoData['text_mostrar_borde'] = globo.texto.mostrar_borde
                 globoData['text_mostrar_cursor'] = globo.texto.mostrar_cursor
 
-                cuadroData.globos.append(globoData)                        
-            paginaData.cuadros.append(cuadroData)
+                boxData.globos.append(globoData)                        
+            pageData.boxs.append(boxData)
     
-        # hago picle de paginaData
+        # hago picle de pageData
 
         f = open(file_name, 'w')
         try:
-            pickle.dump(paginaData, f)
+            pickle.dump(pageData, f)
         finally:
             f.close()
 
 
-    def read(self,file_name,pagina):
+    def read(self,file_name,page):
 
-        paginaData = PaginaData()
+        pageData = PageData()
         f = open(file_name, 'r')
         try:
-            paginaData = pickle.load(f)
+            pageData = pickle.load(f)
         finally:
             f.close()
 
         primero = True
-        for cuadroData in paginaData.cuadros:
+        for boxData in pageData.boxs:
             if not primero: 
-                # el primero ya está creado
-                pagina.add_cuadro()
+                # el primero ya esta creado
+                page.add_box()
             primero = False
-            cuadro = pagina.get_cuadro_activo()
-            cuadro.image_name = cuadroData.image_name
-            for globoData in cuadroData.globos:
+            box = page.get_active_box()
+            box.image_name = boxData.image_name
+            for globoData in boxData.globos:
                 globo_x,globo_y = globoData['x'],globoData['y']
                 globo_modo = None
                 if ('modo' in globoData):
@@ -113,11 +114,13 @@ class Persistence:
                 elif (tipo_globo == globos.Grito):   
                     globo = globos.Grito(x = globo_x , y = globo_y , direccion = globo_direccion)
                 elif (tipo_globo == globos.Rectangulo):   
-                    globo = globos.Grito(x = globo_x , y = globo_y)
+                    globo = globos.Rectangulo(x = globo_x , y = globo_y)
     
                 if globo != None:
                     globo.radio = globoData['radio']
-                    globo.ancho,globo.alto = globoData['ancho'],globoData['alto']                    globo.punto = [globoData['punto_0'],globoData['punto_1']]
+                    globo.ancho,globo.alto = globoData['ancho'],globoData['alto']
+                                        if (tipo_globo != globos.Rectangulo):
+                        globo.punto = [globoData['punto_0'],globoData['punto_1']]
 
                     globo.x,globo.y = globoData['x'],globoData['y']
                     
@@ -141,7 +144,7 @@ class Persistence:
 
                     globo.texto.mostrar_borde = globoData['text_mostrar_borde']
                     globo.texto.mostrar_cursor = globoData['text_mostrar_cursor']
-                    cuadro.globos.append(globo)
+                    box.globos.append(globo)
 
-            cuadro.queue_draw()    
+            box.queue_draw()    
 

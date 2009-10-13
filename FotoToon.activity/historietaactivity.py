@@ -17,21 +17,21 @@ from toolbar import GlobesToolbar
 
 class HistorietaActivity(activity.Activity):
     def __init__(self, handle):
-        print "INICIALIZANDO HISTORIETA"
+        print "INICIALIZANDO FOTOTOON"
         activity.Activity.__init__(self, handle)
-        self.set_title('Historieta')
+        self.set_title('FotoToon')
         
         self.connect("key_press_event", self.keypress)
     
         toolbox = activity.ActivityToolbox(self)
         
-        self.pagina = Pagina()
+        self.page = Page()
 
-        self.globesToolbar = GlobesToolbar(self.pagina)
+        self.globesToolbar = GlobesToolbar(self.page,self)
         toolbox.add_toolbar('Globos', self.globesToolbar)
 
         # fonts (pendiente)
-        self.textToolbar = TextToolbar(self.pagina)
+        self.textToolbar = TextToolbar(self.page)
         toolbox.add_toolbar('Texto', self.textToolbar)
     
         self.set_toolbox(toolbox)
@@ -40,14 +40,14 @@ class HistorietaActivity(activity.Activity):
 
         scrolled = gtk.ScrolledWindow()
         scrolled.set_policy(gtk.POLICY_NEVER, gtk.POLICY_ALWAYS)
-        scrolled.add_with_viewport(self.pagina)
+        scrolled.add_with_viewport(self.page)
         scrolled.show_all()
         self.set_canvas(scrolled)
         self.show()
 
     def keypress(self, widget, event):
-        if (self.pagina.get_cuadro_activo() != None):
-            self.pagina.get_cuadro_activo().keypress(event.string,event.keyval)
+        if (self.page.get_active_box() != None):
+            self.page.get_active_box().keypress(event.string,event.keyval)
             return True
 
     
@@ -60,12 +60,12 @@ class HistorietaActivity(activity.Activity):
     def write_file(self, file_path):
         print "write file path",file_path
         persistence = persistencia.Persistence()
-        persistence.write(file_path,self.pagina)
+        persistence.write(file_path,self.page)
 
     def read_file(self, file_path):
         print "read file path",file_path
         persistence = persistencia.Persistence()
-        persistence.read(file_path,self.pagina)
+        persistence.read(file_path,self.page)
 
 
 DEF_SPACING = 6
@@ -74,23 +74,23 @@ DEF_WIDTH = 4
 SCREEN_HEIGHT = gtk.gdk.screen_height()
 SCREEN_WIDTH = gtk.gdk.screen_width()
 
-class Pagina(gtk.VBox):
+class Page(gtk.VBox):
 
     def __init__(self):
         gtk.VBox.__init__(self,False,0)        
         self.set_homogeneous(False)
 
-        self.cuadros = []
-        self._cuadro_activo = None
+        self.boxs = []
+        self._active_box = None
 
         # Agrego cuadro titulo
-        self.cuadro_titulo = Cuadro(None)
-        self.cuadro_titulo.show()
-        self.cuadro_titulo.set_size_request(SCREEN_WIDTH,100)
-        self.pack_start(self.cuadro_titulo,False)        
-        self.set_cuadro_activo(self.cuadro_titulo)
-        self.cuadros.append(self.cuadro_titulo)
-        self.cuadro_titulo.pagina = self
+        self.title_box = ComicBox(None)
+        self.title_box.show()
+        self.title_box.set_size_request(SCREEN_WIDTH,100)
+        self.pack_start(self.title_box,False)        
+        self.set_active_box(self.title_box)
+        self.boxs.append(self.title_box)
+        self.title_box.page = self
 
         # Agrego tabla para las fotos
         self.table = gtk.Table(10, 2, True)
@@ -99,7 +99,7 @@ class Pagina(gtk.VBox):
         self.table.set_col_spacings(DEF_SPACING)
         self.pack_start(self.table)        
 
-    def add_cuadro(self):
+    def add_box(self):
         appdir = activity.get_bundle_path()
         '''
         posi = len(self.cuadros)-1
@@ -109,44 +109,44 @@ class Pagina(gtk.VBox):
         column = posi - (reng * 2)
         self.attach(cuadro,column,column+1,reng+1,reng+2)
         '''
-        posi = len(self.cuadros) - 1
+        posi = len(self.boxs) - 1
 
         num_foto = posi -  (posi / 4) * 4
-        cuadro = Cuadro(os.path.join(appdir,'fotos/foto'+str(num_foto)+'.png'))
-        cuadro.show()
+        box = ComicBox(os.path.join(appdir,'fotos/foto'+str(num_foto)+'.png'))
+        box.show()
         reng = int(posi / 2) 
         column = posi - (reng * 2)
-        self.table.attach(cuadro,column,column+1,reng,reng+1)
-        self.set_cuadro_activo(cuadro)
-        self.cuadros.append(cuadro)
-        cuadro.pagina = self
+        self.table.attach(box,column,column+1,reng,reng+1)
+        self.set_active_box(box)
+        self.boxs.append(box)
+        box.page = self
 
-    def set_cuadro_activo(self,cuadro):
-        cuadro_anterior = None 
-        if (self._cuadro_activo != None):
-            cuadro_anterior =  self._cuadro_activo
-        self._cuadro_activo = cuadro
-        cuadro.queue_draw()
-        if (cuadro_anterior != None):
-            cuadro_anterior.queue_draw()            
+    def set_active_box(self,box):
+        box_anterior = None 
+        if (self._active_box != None):
+            box_anterior =  self._active_box
+        self._active_box = box
+        box.queue_draw()
+        if (box_anterior != None):
+            box_anterior.queue_draw()            
 
-    def get_cuadro_activo(self):
-        return self._cuadro_activo
+    def get_active_box(self):
+        return self._active_box
 
     def get_globo_activo(self):
-        cuadro = self.get_cuadro_activo()
-        if cuadro != None:
-            if (cuadro.get_globo_activo() != None):
-                return cuadro.get_globo_activo()
+        box = self.get_active_box()
+        if box != None:
+            if (box.get_globo_activo() != None):
+                return box.get_globo_activo()
         return None
 
 
-class Cuadro(gtk.DrawingArea):
+class ComicBox(gtk.DrawingArea):
 
     def __init__(self, image_name):
         print ("Cuadro INIT")
         gtk.DrawingArea.__init__(self)
-        #se agregan los eventos de pulsación y movimiento del ratón
+        #se agregan los eventos de pulsacion y movimiento del raton
         self.add_events(gtk.gdk.BUTTON_PRESS_MASK | gtk.gdk.BUTTON_RELEASE_MASK \
                         |gtk.gdk.BUTTON1_MOTION_MASK)
 
@@ -157,7 +157,7 @@ class Cuadro(gtk.DrawingArea):
         self.glob_press = False
         self.is_dimension = False
         self.is_punto = False
-        self.pagina = None
+        self.page = None
         self.image_name = ""
 
         if (image_name != None):
@@ -179,7 +179,7 @@ class Cuadro(gtk.DrawingArea):
     def set_globo_activo(self,globo):
         self._globo_activo = globo
         if (globo != None):
-            self.pagina._text_toolbar.setToolbarState(globo.texto)
+            self.page._text_toolbar.setToolbarState(globo.texto)
         
     def get_globo_activo(self):
         return self._globo_activo
@@ -244,7 +244,7 @@ class Cuadro(gtk.DrawingArea):
 
         # Dibujamos el recuadro
         ctx.rectangle(area.x, area.y, area.width, area.height)
-        if (self.pagina.get_cuadro_activo() == self):
+        if (self.page.get_active_box() == self):
             ctx.set_source_rgb(1, 1, 1)
         else :
             ctx.set_source_rgb(0, 0, 0)
@@ -266,8 +266,8 @@ class Cuadro(gtk.DrawingArea):
         
     def pressing(self, widget, event):
         # si no es el cuadro seleccionado actualmente redibujo este y el anterior seleccionado
-        if (self.pagina.get_cuadro_activo() != self):
-            self.pagina.set_cuadro_activo(self)
+        if (self.page.get_active_box() != self):
+            self.page.set_active_box(self)
 
         #Verifica si al pulsar el mouse se hizo sobre algun globo
         if self.glob_press:
