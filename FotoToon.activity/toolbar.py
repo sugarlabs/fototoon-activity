@@ -192,10 +192,14 @@ class GlobesToolbar(gtk.Toolbar):
         """
 
     def _image_cb(self, button):
+    
+        #chooser = ObjectChooser(_('Choose image'), self._activity,
+        #                        gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT,what_filter='Image')
         chooser = ObjectChooser(_('Choose image'), self._activity,
-                                gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT,what_filter='Image')
+                                gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT)
         try:
             result = chooser.run()
+            print result, gtk.RESPONSE_ACCEPT
             if result == gtk.RESPONSE_ACCEPT:
                 logging.debug('ObjectChooser: %r' % chooser.get_selected_object())
                 jobject = chooser.get_selected_object()

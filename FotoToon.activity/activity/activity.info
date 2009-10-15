@@ -7,3 +7,4 @@ class = historietaactivity.HistorietaActivity
 show_launcher = yes
 activity_version = 1
 host_version = 1
+mime_types = image/bmp;image/gif;image/jpeg;image/png;image/tiff
