@@ -121,6 +121,20 @@ class Page(gtk.VBox):
         self.boxs.append(box)
         box.page = self
 
+    def add_box_from_journal_image(self,image_file_name):
+        posi = len(self.boxs) - 1
+        num_foto = posi -  (posi / 4) * 4
+        box = ComicBox(image_file_name)
+        box.show()
+        reng = int(posi / 2) 
+        column = posi - (reng * 2)
+        self.table.attach(box,column,column+1,reng,reng+1)
+        self.set_active_box(box)
+        self.boxs.append(box)
+        box.page = self
+
+
+
     def set_active_box(self,box):
         box_anterior = None 
         if (self._active_box != None):
@@ -143,7 +157,7 @@ class Page(gtk.VBox):
 
 class ComicBox(gtk.DrawingArea):
 
-    def __init__(self, image_name):
+    def __init__(self, image_file_name):
         print ("Cuadro INIT")
         gtk.DrawingArea.__init__(self)
         #se agregan los eventos de pulsacion y movimiento del raton
@@ -160,9 +174,20 @@ class ComicBox(gtk.DrawingArea):
         self.page = None
         self.image_name = ""
 
-        if (image_name != None):
-            self.image = cairo.ImageSurface.create_from_png (image_name)
-            self.image_name = image_name
+        if (image_file_name != None):
+            pixbuf = gtk.gdk.pixbuf_new_from_file(image_file_name)
+            width_pxb = pixbuf.get_width()
+            height_pxb = pixbuf.get_height()
+            scale = (450.0) / (1.0 * width_pxb)
+            
+            self.image = cairo.ImageSurface(0,450,(scale * height_pxb))
+            ct = cairo.Context(self.image)
+            ct2 = gtk.gdk.CairoContext(ct)
+            ct2.set_source_pixbuf(pixbuf,0,0)
+            ct2.scale  (scale, scale)
+            ct2.paint()
+        
+            self.image_name = image_file_name
         else:
             self.image = None
 
@@ -233,13 +258,13 @@ class ComicBox(gtk.DrawingArea):
         ctx.set_line_width(DEF_WIDTH)
 
         if (self.image != None):
-            w = self.image.get_width()
-            h = self.image.get_height()
-            scale = (1.0 * area.width) / (1.0 * w)
-            ctx.scale  (scale, scale)
+            #w = self.image.get_width()
+            #h = self.image.get_height()
+            #scale = (1.0 * area.width) / (1.0 * w)
+            #ctx.scale  (scale, scale)
             ctx.set_source_surface (self.image, 0, 0)
             ctx.paint ()
-            ctx.scale  (1/scale, 1/scale)
+            #ctx.scale  (1/scale, 1/scale)
 
 
         # Dibujamos el recuadro

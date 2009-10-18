@@ -60,7 +60,7 @@ class GlobesToolbar(gtk.Toolbar):
 
         # agregar cuadro
         self.b_add_photo = ToolButton('add-photo')
-        self.b_add_photo.connect('clicked', self.add_photo)
+        self.b_add_photo.connect('clicked', self._image_cb)
         self.b_add_photo.set_tooltip(_('Add Photo'))
         self.insert(self.b_add_photo, -1)
 
@@ -114,19 +114,7 @@ class GlobesToolbar(gtk.Toolbar):
         self.b_borrar.set_tooltip(_('Delete'))
         self.insert(self.b_borrar, -1)
 
-        separator = gtk.SeparatorToolItem()
-        separator.set_draw(True)
-        self.insert(separator, -1)
-        
-        self._image = ToolButton('insert-image')
-        self._image.set_tooltip(_('Insert Image'))
-        self._image_id = self._image.connect('clicked', self._image_cb)
-        self.insert(self._image, -1)
-        
 
-
-    def add_photo(self, boton):
-        self._page.add_box()
 
     def agrega_gnormal(self, boton):
         self._page.get_active_box().add_globo(60, 60)
@@ -193,10 +181,10 @@ class GlobesToolbar(gtk.Toolbar):
 
     def _image_cb(self, button):
     
-        #chooser = ObjectChooser(_('Choose image'), self._activity,
-        #                        gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT,what_filter='Image')
         chooser = ObjectChooser(_('Choose image'), self._activity,
-                                gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT)
+                                gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT,what_filter='Image')
+        #chooser = ObjectChooser(_('Choose image'), self._activity,
+        #                        gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT)
         try:
             result = chooser.run()
             print result, gtk.RESPONSE_ACCEPT
@@ -205,7 +193,9 @@ class GlobesToolbar(gtk.Toolbar):
                 jobject = chooser.get_selected_object()
                 if jobject and jobject.file_path:
                     print "imagen seleccionada:",jobject.file_path
-                    #self._abiword_canvas.insert_image(jobject.file_path, True)
+                    tempfile_name = os.path.join(self._activity.get_activity_root(), 'instance', 'tmp%i' % time.time())
+                    os.link(jobject.file_path, tempfile_name)
+                    self._page.add_box_from_journal_image(tempfile_name)
         finally:
             chooser.destroy()
             del chooser
