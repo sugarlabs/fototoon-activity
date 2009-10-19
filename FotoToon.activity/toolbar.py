@@ -141,20 +141,21 @@ class GlobesToolbar(gtk.Toolbar):
         if (box.get_globo_activo() != None):
             print "globo activo",
             globe = box.get_globo_activo()
-            if (globe.direccion == globos.DIR_ABAJO):
-                globe.direccion = globos.DIR_IZQ        
+            if (globe.__class__ != globos.Rectangulo):            
+                if (globe.direccion == globos.DIR_ABAJO):
+                    globe.direccion = globos.DIR_IZQ        
 
-            elif (globe.direccion == globos.DIR_IZQ):
-                globe.direccion = globos.DIR_ARRIBA        
+                elif (globe.direccion == globos.DIR_IZQ):
+                    globe.direccion = globos.DIR_ARRIBA        
 
-            elif (globe.direccion == globos.DIR_ARRIBA):
-                globe.direccion = globos.DIR_DER        
+                elif (globe.direccion == globos.DIR_ARRIBA):
+                    globe.direccion = globos.DIR_DER        
 
-            elif (globe.direccion == globos.DIR_DER):
-                globe.direccion = globos.DIR_ABAJO        
-            globe.punto[0],globe.punto[1] = globe.punto[1],globe.punto[0]
+                elif (globe.direccion == globos.DIR_DER):
+                    globe.direccion = globos.DIR_ABAJO        
+                globe.punto[0],globe.punto[1] = globe.punto[1],globe.punto[0]
 
-            box.queue_draw()
+                box.queue_draw()
 
     def borrar(self, boton):
         print "borrando"
@@ -181,8 +182,8 @@ class GlobesToolbar(gtk.Toolbar):
 
     def _image_cb(self, button):
     
-        chooser = ObjectChooser(_('Choose image'), self._activity,
-                                gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT,what_filter='Image')
+        #chooser = ObjectChooser(_('Choose image'), self._activity,gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT,what_filter='Image')
+        chooser = ObjectChooser(_('Choose image'), self._activity,gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT)
         #chooser = ObjectChooser(_('Choose image'), self._activity,
         #                        gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT)
         try:
