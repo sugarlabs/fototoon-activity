@@ -268,7 +268,13 @@ class ComicBox(gtk.DrawingArea):
 
 
         # Dibujamos el recuadro
-        ctx.rectangle(area.x, area.y, area.width, area.height)
+        # No podemos dibujar el recuadro asi, porque el area que viene no es toda 
+        # el drawingarea, sino el area a repintar y se producen errores con los redibujos por combos 
+        # o dialogos
+        #ctx.rectangle(area.x, area.y, area.width, area.height)
+        width,height = self.get_window().get_size()
+        ctx.rectangle(0, 0, width, height)
+
         if (self.page.get_active_box() == self):
             ctx.set_source_rgb(1, 1, 1)
         else :
