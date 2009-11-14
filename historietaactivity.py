@@ -125,15 +125,13 @@ class Page(gtk.VBox):
         posi = len(self.boxs) - 1
         num_foto = posi -  (posi / 4) * 4
         box = ComicBox(image_file_name)
-        box.show()
         reng = int(posi / 2) 
         column = posi - (reng * 2)
         self.table.attach(box,column,column+1,reng,reng+1)
         self.set_active_box(box)
         self.boxs.append(box)
         box.page = self
-
-
+        box.show()
 
     def set_active_box(self,box):
         box_anterior = None 
@@ -173,23 +171,13 @@ class ComicBox(gtk.DrawingArea):
         self.is_punto = False
         self.page = None
         self.image_name = ""
-
-        if (image_file_name != None):
-            pixbuf = gtk.gdk.pixbuf_new_from_file(image_file_name)
-            width_pxb = pixbuf.get_width()
-            height_pxb = pixbuf.get_height()
-            scale = (450.0) / (1.0 * width_pxb)
-            
-            self.image = cairo.ImageSurface(0,450,(scale * height_pxb))
-            ct = cairo.Context(self.image)
-            ct2 = gtk.gdk.CairoContext(ct)
-            ct2.set_source_pixbuf(pixbuf,0,0)
-            ct2.scale  (scale, scale)
-            ct2.paint()
+        self.image = None
         
+        #self.width,self.height = self.get_window().get_size()
+        self.width,self.height = 600 , 400
+        
+        if (image_file_name != None):       
             self.image_name = image_file_name
-        else:
-            self.image = None
 
         self._globo_activo = None
 
@@ -244,7 +232,7 @@ class ComicBox(gtk.DrawingArea):
      
     def expose(self,widget,event):
         self.context = widget.window.cairo_create()
-        self.draw(self.context, event.area)
+        self.draw(self.context, event.area,widget.window)
         return False
 
     def set_sink(self, sink):
@@ -253,27 +241,31 @@ class ComicBox(gtk.DrawingArea):
         self.imagesink.set_xwindow_id(self.window.xid)
 
 
-    def draw(self, ctx, area):
+    def draw(self, ctx, area,window):
         # Dibujamos la foto
         ctx.set_line_width(DEF_WIDTH)
 
+        self.width,self.height = window.get_size()
+        
+        if (self.image == None) and (self.image_name != ""):            
+            pixbuf = gtk.gdk.pixbuf_new_from_file(self.image_name)
+            width_pxb = pixbuf.get_width()
+            height_pxb = pixbuf.get_height()
+            scale = (self.width) / (1.0 * width_pxb)
+            print "self.width", self.width, "width_pxb",width_pxb, "scale",scale
+            self.image = cairo.ImageSurface(cairo.FORMAT_ARGB32, self.width, (scale * height_pxb))
+            ct = cairo.Context(self.image)
+            ct2 = gtk.gdk.CairoContext(ct)
+            ct2.scale  (scale,scale)
+            ct2.set_source_pixbuf(pixbuf,0,0)
+            ct2.paint()
+
         if (self.image != None):
-            #w = self.image.get_width()
-            #h = self.image.get_height()
-            #scale = (1.0 * area.width) / (1.0 * w)
-            #ctx.scale  (scale, scale)
             ctx.set_source_surface (self.image, 0, 0)
             ctx.paint ()
-            #ctx.scale  (1/scale, 1/scale)
-
 
         # Dibujamos el recuadro
-        # No podemos dibujar el recuadro asi, porque el area que viene no es toda 
-        # el drawingarea, sino el area a repintar y se producen errores con los redibujos por combos 
-        # o dialogos
-        #ctx.rectangle(area.x, area.y, area.width, area.height)
-        width,height = self.get_window().get_size()
-        ctx.rectangle(0, 0, width, height)
+        ctx.rectangle(0, 0, self.width, self.height)
 
         if (self.page.get_active_box() == self):
             ctx.set_source_rgb(1, 1, 1)
