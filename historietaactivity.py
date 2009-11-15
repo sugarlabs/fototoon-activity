@@ -99,20 +99,14 @@ class Page(gtk.VBox):
         self.table.set_col_spacings(DEF_SPACING)
         self.pack_start(self.table)        
 
+    """
+    # se usa solo para el primero (hay que sacarlo)
     def add_box(self):
         appdir = activity.get_bundle_path()
-        '''
-        posi = len(self.cuadros)-1
-        cuadro = Cuadro(os.path.join(appdir,'fotos/foto'+str(posi)+'.png'))
-        cuadro.show()
-        reng = int(posi / 2)
-        column = posi - (reng * 2)
-        self.attach(cuadro,column,column+1,reng+1,reng+2)
-        '''
         posi = len(self.boxs) - 1
 
         num_foto = posi -  (posi / 4) * 4
-        box = ComicBox(os.path.join(appdir,'fotos/foto'+str(num_foto)+'.png'))
+        box = ComicBox(None)
         box.show()
         reng = int(posi / 2) 
         column = posi - (reng * 2)
@@ -120,7 +114,8 @@ class Page(gtk.VBox):
         self.set_active_box(box)
         self.boxs.append(box)
         box.page = self
-
+    """
+    
     def add_box_from_journal_image(self,image_file_name):
         posi = len(self.boxs) - 1
         num_foto = posi -  (posi / 4) * 4

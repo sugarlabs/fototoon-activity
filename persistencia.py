@@ -99,7 +99,7 @@ class Persistence:
         for boxData in pageData["boxs"]:
             if not primero: 
                 # el primero ya esta creado
-                page.add_box()
+                page.add_box_from_journal_image(None)
             primero = False
             box = page.get_active_box()
             box.image_name = boxData["image_name"]
