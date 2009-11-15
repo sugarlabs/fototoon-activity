@@ -20,7 +20,8 @@ DIR_DER    = "der"
 class Globo:
     
     def __init__(self, x, y, ancho=50, alto=30,modo="normal",direccion=DIR_ABAJO):
-        
+      
+        self.globe_type = "GLOBE"  
         self.radio = 30            #determina tamanio minimo
         
         self.ancho = ancho        #dimensiones de la elipse
@@ -38,6 +39,7 @@ class Globo:
         
         ancho_text,alto_text = self.calc_area_texto()
         self.texto = CuadroTexto(self.x,self.y,ancho_text,alto_text)    #es el contenedor del texto
+      
         
 
     def imprimir(self,context):
@@ -292,6 +294,7 @@ class Rectangulo(Globo):
     
     def __init__(self, x, y, ancho=50, alto=15):
         
+        self.globe_type = "RECTANGLE"  
         self.radio = 15        #determina tamanio minimo
         
         self.ancho = ancho        #dimensiones del rectangulo
@@ -355,6 +358,7 @@ class Nube(Globo):
 
     def __init__(self, x, y, ancho=50, alto=30,direccion=DIR_ABAJO):
         
+        self.globe_type = "CLOUD"  
         self.radio = 30
         
         self.ancho = ancho        #dimensiones de la elipse
@@ -454,6 +458,7 @@ class Grito(Globo):
 
     def __init__(self, x, y, ancho=50, alto=30,direccion=DIR_ABAJO):
         
+        self.globe_type = "EXCLAMATION"  
         self.radio = 30
         
         self.ancho = ancho        #dimensiones de la elipse

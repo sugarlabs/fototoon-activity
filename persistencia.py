@@ -1,8 +1,9 @@
 # -*- coding: UTF_8 -*-
 
 import os, sys
-import pickle
+import simplejson
 import globos
+
 
 class PageData:
 
@@ -14,6 +15,8 @@ class BoxData:
     def __init__(self):
         self.globos = []
         self.image_name = None
+
+
 
 class Persistence:
 
@@ -28,14 +31,16 @@ class Persistence:
 
         # Copio los datos de Page en PageData
 
-        pageData = PageData()
+        pageData = {}
+        pageData["boxs"]  = []
         for box in page.boxs:
-            boxData = BoxData()
-            boxData.image_name = box.image_name
+            boxData = {}
+            boxData["image_name"] = box.image_name
+            boxData["globos"] = []
             for globo in box.globos:
                 globoData = {}
-                print "Grabando",globo.__class__
-                globoData['tipo_globo'] = globo.__class__
+                print "Grabando",globo.globe_type
+                globoData['globe_type'] = globo.globe_type
                 globoData['radio'] = globo.radio
                 globoData['ancho'],globoData['alto'] = globo.ancho,globo.alto
                 if (globo.__class__ != globos.Rectangulo):
@@ -68,14 +73,15 @@ class Persistence:
                 globoData['text_mostrar_borde'] = globo.texto.mostrar_borde
                 globoData['text_mostrar_cursor'] = globo.texto.mostrar_cursor
 
-                boxData.globos.append(globoData)                        
-            pageData.boxs.append(boxData)
+
+                boxData["globos"].append(globoData)                        
+            pageData["boxs"].append(boxData)
     
         # hago picle de pageData
-
+        print pageData        
         f = open(file_name, 'w')
         try:
-            pickle.dump(pageData, f)
+            simplejson.dump(pageData, f)
         finally:
             f.close()
 
@@ -85,41 +91,41 @@ class Persistence:
         pageData = PageData()
         f = open(file_name, 'r')
         try:
-            pageData = pickle.load(f)
+            pageData = simplejson.load(f)
         finally:
             f.close()
 
         primero = True
-        for boxData in pageData.boxs:
+        for boxData in pageData["boxs"]:
             if not primero: 
                 # el primero ya esta creado
                 page.add_box()
             primero = False
             box = page.get_active_box()
-            box.image_name = boxData.image_name
-            for globoData in boxData.globos:
+            box.image_name = boxData["image_name"]
+            for globoData in boxData["globos"]:
                 globo_x,globo_y = globoData['x'],globoData['y']
                 globo_modo = None
                 if ('modo' in globoData):
                     globo_modo = globoData['modo']
                 globo_direccion = globoData['direccion']
                 
-                tipo_globo = globoData['tipo_globo']
+                tipo_globo = globoData['globe_type']
                 print "tipo_globo", tipo_globo
                 globo = None
-                if (tipo_globo == globos.Globo):
+                if (tipo_globo == "GLOBE"):
                     globo = globos.Globo(x = globo_x , y = globo_y , modo = globo_modo , direccion = globo_direccion)
-                elif (tipo_globo == globos.Nube):   
+                elif (tipo_globo == "CLOUD"):   
                     globo = globos.Nube(x = globo_x , y = globo_y , direccion = globo_direccion)
-                elif (tipo_globo == globos.Grito):   
+                elif (tipo_globo == "EXCLAMATION"):   
                     globo = globos.Grito(x = globo_x , y = globo_y , direccion = globo_direccion)
-                elif (tipo_globo == globos.Rectangulo):   
+                elif (tipo_globo == "RECTANGLE"):   
                     globo = globos.Rectangulo(x = globo_x , y = globo_y)
     
                 if globo != None:
                     globo.radio = globoData['radio']
                     globo.ancho,globo.alto = globoData['ancho'],globoData['alto']
-                                        if (tipo_globo != globos.Rectangulo):
+                                        if (tipo_globo != "RECTANGLE"):
                         globo.punto = [globoData['punto_0'],globoData['punto_1']]
 
                     globo.x,globo.y = globoData['x'],globoData['y']
