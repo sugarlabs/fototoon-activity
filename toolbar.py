@@ -165,20 +165,26 @@ class GlobesToolbar(gtk.Toolbar):
             box.globos.remove(box.get_globo_activo())
             box.set_globo_activo(None)
             box.queue_draw()
-        # Borrar un box es mas complicado
-        """
+        
         else:
+            # Borrar un box es mas complicado
             print "borrando box"
-            self.page.boxs.remove(box)
-            if (len(self.page.boxs) > 0):
-                print "seteo el primero como activo"
-                self.page.set_active_box(self.page.boxs[0])
-                for cu in self.page.boxs:
-                    print "redibujo"
-                    cu.queue_draw()
-            else:
-                self.page._active_box = None
-        """
+            pos_box = self._page.boxs.index(box)
+            if (len(self._page.boxs) > pos_box):
+                for i in range(pos_box,len(self._page.boxs)-1):
+                    box1 = self._page.boxs[i]
+                    box2 = self._page.boxs[i+1]
+                    box1.image = None
+                    box1.image_name = box2.image_name
+                    box1.globos = []
+                    box1.globos.extend(box2.globos)
+                    box1.queue_draw()
+            last_box = self._page.boxs[-1]                    
+            last_box.image = None
+            last_box.image_name = ""
+            last_box.globos = []
+            last_box.queue_draw()
+            self._page.boxs.pop()
 
     def _image_cb(self, button):
     
