@@ -7,11 +7,12 @@ Etapa 1
 	* Giro de Globos (hecho)
 	* Persistencia de las historietas (hecho)
 	* Obtencion de las fotos desde el journal (hecho)
-	* Borrado de cuadros
-	* Terminar refactoring - Estabilizar persistencia
+	* Borrado de cuadros (hecho)
+	* Estabilizar persistencia
 
 Etapa 2
 
+	* Terminar refactoring 
     * Uso de clipboard
 	* Reemplazo de imagenes de Globo y Grito por dibujo con vectores
 	* Cambiar de orden los cuadros

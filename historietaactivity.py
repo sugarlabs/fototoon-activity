@@ -84,7 +84,7 @@ class Page(gtk.VBox):
         self._active_box = None
 
         # Agrego cuadro titulo
-        self.title_box = ComicBox(None)
+        self.title_box = ComicBox(None,0)
         self.title_box.show()
         self.title_box.set_size_request(SCREEN_WIDTH,100)
         self.pack_start(self.title_box,False)        
@@ -119,7 +119,7 @@ class Page(gtk.VBox):
     def add_box_from_journal_image(self,image_file_name):
         posi = len(self.boxs) - 1
         num_foto = posi -  (posi / 4) * 4
-        box = ComicBox(image_file_name)
+        box = ComicBox(image_file_name,posi)
         reng = int(posi / 2) 
         column = posi - (reng * 2)
         self.table.attach(box,column,column+1,reng,reng+1)
@@ -150,7 +150,7 @@ class Page(gtk.VBox):
 
 class ComicBox(gtk.DrawingArea):
 
-    def __init__(self, image_file_name):
+    def __init__(self, image_file_name,posi):
         print ("Cuadro INIT")
         gtk.DrawingArea.__init__(self)
         #se agregan los eventos de pulsacion y movimiento del raton
@@ -159,6 +159,7 @@ class ComicBox(gtk.DrawingArea):
 
         #self.globos es una lista que contiene los globos de ese cuadro
         self.globos = []
+        self.posi = posi
         
         #self.pixbuf = pixbuf
         self.glob_press = False
@@ -167,6 +168,7 @@ class ComicBox(gtk.DrawingArea):
         self.page = None
         self.image_name = ""
         self.image = None
+        self.image_saved = False
         
         #self.width,self.height = self.get_window().get_size()
         self.width,self.height = 600 , 400
@@ -242,13 +244,15 @@ class ComicBox(gtk.DrawingArea):
 
         self.width,self.height = window.get_size()
         
+        image_height = 0
         if (self.image == None) and (self.image_name != ""):            
             pixbuf = gtk.gdk.pixbuf_new_from_file(self.image_name)
             width_pxb = pixbuf.get_width()
             height_pxb = pixbuf.get_height()
-            scale = (self.width) / (1.0 * width_pxb)
+            scale = (self.width) / (1.0 * width_pxb)            
             print "self.width", self.width, "width_pxb",width_pxb, "scale",scale
-            self.image = cairo.ImageSurface(cairo.FORMAT_ARGB32, self.width, (scale * height_pxb))
+            image_height = scale * height_pxb
+            self.image = cairo.ImageSurface(cairo.FORMAT_ARGB32, self.width, image_height)
             ct = cairo.Context(self.image)
             ct2 = gtk.gdk.CairoContext(ct)
             ct2.scale  (scale,scale)
@@ -258,6 +262,15 @@ class ComicBox(gtk.DrawingArea):
         if (self.image != None):
             ctx.set_source_surface (self.image, 0, 0)
             ctx.paint ()
+            if (not self.image_saved):
+                # Grabamos la imagen escalada, que se usará para la persistencia
+                self.image_saved = True
+                temp_pixb = gtk.gdk.Pixbuf( gtk.gdk.COLORSPACE_RGB, False, 8, self.width,image_height)
+                temp_pixb.get_from_drawable(self.window, self.window.get_colormap(), 0, 0, 0, 0, self.width,image_height)
+                instance_path =  os.path.join(activity.get_activity_root(), "instance")
+                print instance_path
+                image_file_name = "image"+str(self.posi)+".jpg"
+                temp_pixb.save("/home/gonzalo/Desktop/"+image_file_name,"jpeg")
 
         # Dibujamos el recuadro
         ctx.rectangle(0, 0, self.width, self.height)

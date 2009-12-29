@@ -32,35 +32,35 @@ class Persistence:
         # Copio los datos de Page en PageData
 
         pageData = {}
+        pageData["version"] = "1"
         pageData["boxs"]  = []
         for box in page.boxs:
             boxData = {}
             boxData["image_name"] = box.image_name
-            boxData["globos"] = []
+            boxData["globes"] = []
             for globo in box.globos:
                 globoData = {}
                 print "Grabando",globo.globe_type
                 globoData['globe_type'] = globo.globe_type
                 globoData['radio'] = globo.radio
-                globoData['ancho'],globoData['alto'] = globo.ancho,globo.alto
+                globoData['width'],globoData['height'] = globo.ancho,globo.alto
                 if (globo.__class__ != globos.Rectangulo):
-                    globoData['punto_0'] = globo.punto[0]
-                    globoData['punto_1'] = globo.punto[1]
-                globoData['direccion'] = globo.direccion
+                    globoData['point_0'] = globo.punto[0]
+                    globoData['point_1'] = globo.punto[1]
+                globoData['direction'] = globo.direccion
                 if (globo.__class__ == globos.Globo):
-                    globoData['modo'] = globo.modo
+                    globoData['mode'] = globo.modo
                 globoData['x'],globoData['y'] = globo.x,globo.y
                 #globoData.ancho_text, globoData.alto_text = globo.ancho_text, globo.alto_text
                 
-                globoData['text_ancho'] = globo.texto.ancho
-                globoData['text_alto']  = globo.texto.alto
-                globoData['text_ancho'] = globo.texto.ancho
+                globoData['text_width'] = globo.texto.ancho
+                globoData['text_height']  = globo.texto.alto
                 globoData['text_x'], globoData['text_y']  = globo.texto.x, globo.texto.y
-                globoData['text_texto'] = globo.texto.texto
-                globoData['text_renglones'] = globo.texto.renglones
-                globoData['text_esp_renglones'] = globo.texto.esp_reg
+                globoData['text_text'] = globo.texto.texto
+                globoData['text_rows'] = globo.texto.renglones
+                globoData['text_sp_rows'] = globo.texto.esp_reg
                 
-                globoData['text_alto_renglon'] = globo.texto.alto_renglon
+                globoData['text_row_height'] = globo.texto.alto_renglon
                 globoData['text_font_size'] = globo.texto.font_size
                 globoData['text_font_type'] = globo.texto.font_type
                 globoData['text_bold'] = globo.texto.bold
@@ -70,11 +70,11 @@ class Persistence:
                 globoData['text_color_g'] = globo.texto.color_g
                 globoData['text_color_b'] = globo.texto.color_b
 
-                globoData['text_mostrar_borde'] = globo.texto.mostrar_borde
-                globoData['text_mostrar_cursor'] = globo.texto.mostrar_cursor
+                globoData['text_show_border'] = globo.texto.mostrar_borde
+                globoData['text_show_cursor'] = globo.texto.mostrar_cursor
 
 
-                boxData["globos"].append(globoData)                        
+                boxData["globes"].append(globoData)                        
             pageData["boxs"].append(boxData)
     
         # hago picle de pageData
@@ -103,12 +103,12 @@ class Persistence:
             primero = False
             box = page.get_active_box()
             box.image_name = boxData["image_name"]
-            for globoData in boxData["globos"]:
+            for globoData in boxData["globes"]:
                 globo_x,globo_y = globoData['x'],globoData['y']
                 globo_modo = None
-                if ('modo' in globoData):
-                    globo_modo = globoData['modo']
-                globo_direccion = globoData['direccion']
+                if ('mode' in globoData):
+                    globo_modo = globoData['mode']
+                globo_direccion = globoData['direction']
                 
                 tipo_globo = globoData['globe_type']
                 print "tipo_globo", tipo_globo
@@ -124,21 +124,20 @@ class Persistence:
     
                 if globo != None:
                     globo.radio = globoData['radio']
-                    globo.ancho,globo.alto = globoData['ancho'],globoData['alto']
+                    globo.ancho,globo.alto = globoData['width'],globoData['height']
                                         if (tipo_globo != "RECTANGLE"):
-                        globo.punto = [globoData['punto_0'],globoData['punto_1']]
+                        globo.punto = [globoData['point_0'],globoData['point_1']]
 
                     globo.x,globo.y = globoData['x'],globoData['y']
                     
-                    globo.texto.ancho = globoData['text_ancho']
-                    globo.texto.alto = globoData['text_alto'] 
-                    globo.texto.ancho = globoData['text_ancho']
+                    globo.texto.ancho = globoData['text_width']
+                    globo.texto.alto = globoData['text_height'] 
                     globo.texto.x, globo.texto.y = globoData['text_x'], globoData['text_y']
-                    globo.texto.texto = globoData['text_texto']
-                    globo.texto.renglones = globoData['text_renglones']
-                    globo.texto.esp_reg = globoData['text_esp_renglones']
+                    globo.texto.texto = globoData['text_text']
+                    globo.texto.renglones = globoData['text_rows']
+                    globo.texto.esp_reg = globoData['text_sp_rows']
 
-                    globo.texto.alto_renglon = globoData['text_alto_renglon']
+                    globo.texto.alto_renglon = globoData['text_row_height']
                     globo.texto.font_size = globoData['text_font_size']
                     globo.texto.font_type = globoData['text_font_type']
                     globo.texto.bold = globoData['text_bold']
@@ -148,8 +147,8 @@ class Persistence:
                     globo.texto.color_g = globoData['text_color_g']
                     globo.texto.color_b = globoData['text_color_b']
 
-                    globo.texto.mostrar_borde = globoData['text_mostrar_borde']
-                    globo.texto.mostrar_cursor = globoData['text_mostrar_cursor']
+                    globo.texto.mostrar_borde = globoData['text_show_border']
+                    globo.texto.mostrar_cursor = globoData['text_show_cursor']
                     box.globos.append(globo)
 
             box.queue_draw()    
