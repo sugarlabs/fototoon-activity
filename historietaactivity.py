@@ -44,6 +44,8 @@ class HistorietaActivity(activity.Activity):
         scrolled.show_all()
         self.set_canvas(scrolled)
         self.show()
+        #print "screen witdh " , SCREEN_WIDTH
+        #print "page witdh " , self.page.size_request()
 
     def keypress(self, widget, event):
         if (self.page.get_active_box() != None):
@@ -127,6 +129,17 @@ class Page(gtk.VBox):
         self.boxs.append(box)
         box.page = self
         box.show()
+
+        # Grabamos la imagen escalada, que se usará para la persistencia
+        # lo hacemos aca (aunque no es muy prolijo) porque necesito saber el tamaño al que va a ser mostrado)
+        #box.image_saved = True
+        #temp_pixb = gtk.gdk.Pixbuf( gtk.gdk.COLORSPACE_RGB, False, 8, box.width,box.image_height)
+        #temp_pixb.get_from_drawable(box.window, box.window.get_colormap(), 0, 0, 0, 0, box.width,box.image_height)
+        #instance_path =  os.path.join(activity.get_activity_root(), "instance")
+        #print instance_path
+        #image_file_name = "image"+str(self.posi)+".jpg"
+        #temp_pixb.save("/home/gonzalo/Desktop/tmp/"+image_file_name,"jpeg")
+        
 
     def set_active_box(self,box):
         box_anterior = None 
@@ -243,34 +256,40 @@ class ComicBox(gtk.DrawingArea):
         ctx.set_line_width(DEF_WIDTH)
 
         self.width,self.height = window.get_size()
-        
-        image_height = 0
+        self.image_height = 0
         if (self.image == None) and (self.image_name != ""):            
             pixbuf = gtk.gdk.pixbuf_new_from_file(self.image_name)
             width_pxb = pixbuf.get_width()
             height_pxb = pixbuf.get_height()
             scale = (self.width) / (1.0 * width_pxb)            
             print "self.width", self.width, "width_pxb",width_pxb, "scale",scale
-            image_height = scale * height_pxb
-            self.image = cairo.ImageSurface(cairo.FORMAT_ARGB32, self.width, image_height)
-            ct = cairo.Context(self.image)
-            ct2 = gtk.gdk.CairoContext(ct)
-            ct2.scale  (scale,scale)
-            ct2.set_source_pixbuf(pixbuf,0,0)
-            ct2.paint()
+            self.image_height = scale * height_pxb
+            self.image = cairo.ImageSurface(cairo.FORMAT_ARGB32, self.width, self.image_height)
+            if (scale != 1):
+                pixb_scaled = pixbuf.scale_simple(int(self.width), int(self.image_height), gtk.gdk.INTERP_BILINEAR)
+                ct = cairo.Context(self.image)
+                gtk_ct = gtk.gdk.CairoContext(ct)
+                gtk_ct.set_source_pixbuf(pixb_scaled,0,0)
+                gtk_ct.paint()
+                if (not self.image_saved):
+                    self.image_saved = True
+                    instance_path =  os.path.join(activity.get_activity_root(), "instance")
+                    #print instance_path
+                    image_file_name = "image"+str(self.posi)+".jpg"
+                    pixb_scaled.save(os.path.join(instance_path,image_file_name),"jpeg")
+                    # grabamos el nombre de la imagen sin el path
+                    self.image_name = image_file_name
+
+            else:                                                
+                ct = cairo.Context(self.image)
+                gtk_ct = gtk.gdk.CairoContext(ct)
+                gtk_ct.set_source_pixbuf(pixbuf,0,0)
+                gtk_ct.paint()
+
 
         if (self.image != None):
             ctx.set_source_surface (self.image, 0, 0)
             ctx.paint ()
-            if (not self.image_saved):
-                # Grabamos la imagen escalada, que se usará para la persistencia
-                self.image_saved = True
-                temp_pixb = gtk.gdk.Pixbuf( gtk.gdk.COLORSPACE_RGB, False, 8, self.width,image_height)
-                temp_pixb.get_from_drawable(self.window, self.window.get_colormap(), 0, 0, 0, 0, self.width,image_height)
-                instance_path =  os.path.join(activity.get_activity_root(), "instance")
-                print instance_path
-                image_file_name = "image"+str(self.posi)+".jpg"
-                temp_pixb.save("/home/gonzalo/Desktop/"+image_file_name,"jpeg")
 
         # Dibujamos el recuadro
         ctx.rectangle(0, 0, self.width, self.height)

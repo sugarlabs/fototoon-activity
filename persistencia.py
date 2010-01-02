@@ -3,6 +3,8 @@
 import os, sys
 import simplejson
 import globos
+from sugar.activity import activity
+import zipfile
 
 
 class PageData:
@@ -21,6 +23,7 @@ class BoxData:
 class Persistence:
 
     def write(self,file_name,page):
+
         """
         Persitencia:
         Cuadro_titulo, globos[]
@@ -28,6 +31,7 @@ class Persistence:
         por cada globo: tipo, posicion (x,y), ancho, alto, direccion, pos_flecha (x,y), texto,font, tamanio, color
     
         """
+        instance_path =  os.path.join(activity.get_activity_root(), "instance")
 
         # Copio los datos de Page en PageData
 
@@ -78,18 +82,40 @@ class Persistence:
             pageData["boxs"].append(boxData)
     
         # hago picle de pageData
-        print pageData        
-        f = open(file_name, 'w')
+        print pageData     
+           
+        data_file_name = "data.json"   
+        f = open(os.path.join(instance_path,data_file_name), 'w')
         try:
             simplejson.dump(pageData, f)
         finally:
             f.close()
+            
+        print "file_name", file_name
+
+        z = zipfile.ZipFile(file_name, "w")
+        z.write(os.path.join(instance_path,data_file_name),data_file_name)
+        for box in page.boxs:
+            z.write(os.path.join(instance_path,box.image_name),box.image_name)
+        z.close()    
 
 
     def read(self,file_name,page):
 
+        instance_path =  os.path.join(activity.get_activity_root(), "instance")
+        z = zipfile.ZipFile(file_name, "r")
+        for file_name in z.namelist():
+            if (file_name != "./"):
+                try: 
+                    print "extrayendo",file_name
+                    z.extract(file_name,instance_path)
+                finally:
+                    print ""
+        z.close()            
+        data_file_name = "data.json"   
+
         pageData = PageData()
-        f = open(file_name, 'r')
+        f = open(os.path.join(instance_path,data_file_name), 'r')
         try:
             pageData = simplejson.load(f)
         finally:
@@ -102,7 +128,7 @@ class Persistence:
                 page.add_box_from_journal_image(None)
             primero = False
             box = page.get_active_box()
-            box.image_name = boxData["image_name"]
+            box.image_name = os.path.join(instance_path,boxData["image_name"])
             for globoData in boxData["globes"]:
                 globo_x,globo_y = globoData['x'],globoData['y']
                 globo_modo = None
