@@ -96,7 +96,8 @@ class Persistence:
         z = zipfile.ZipFile(file_name, "w")
         z.write(os.path.join(instance_path,data_file_name),data_file_name)
         for box in page.boxs:
-            z.write(os.path.join(instance_path,box.image_name),box.image_name)
+            if (box.image_name != ''):
+                z.write(os.path.join(instance_path,box.image_name),box.image_name)
         z.close()    
 
 
@@ -108,9 +109,14 @@ class Persistence:
             if (file_name != "./"):
                 try: 
                     print "extrayendo",file_name
-                    z.extract(file_name,instance_path)
-                finally:
-                    print ""
+                    # la version de python en las xo no permite hacer extract :(
+                    # z.extract(file_name,instance_path)
+                    data = z.read(file_name)
+                    fout = open(os.path.join(instance_path, file_name), "w")
+                    fout.write(data)
+                    fout.close()
+                except:
+                    print "Error extrayendo",file_name
         z.close()            
         data_file_name = "data.json"   
 
