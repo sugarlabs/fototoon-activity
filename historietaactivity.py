@@ -257,6 +257,7 @@ class ComicBox(gtk.DrawingArea):
 
         self.width,self.height = window.get_size()
         self.image_height = 0
+        print "self.image_name", self.image_name
         if (self.image == None) and (self.image_name != ""):            
             pixbuf = gtk.gdk.pixbuf_new_from_file(self.image_name)
             width_pxb = pixbuf.get_width()

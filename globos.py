@@ -316,7 +316,8 @@ class Rectangulo(Globo):
         #imprimimos el rectangulo
         context.set_line_width(3)
         context.rectangle(self.x-self.ancho,self.y-self.alto,2*self.ancho,2*self.alto)
-        context.set_source_rgb(129*1.0/255,192*1.0/255, 1)
+        #context.set_source_rgb(129*1.0/255,192*1.0/255, 1)
+        context.set_source_rgb(1, 1, 1)
         context.fill_preserve()
         context.set_source_rgb(0, 0, 0)
         context.stroke()

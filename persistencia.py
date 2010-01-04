@@ -134,7 +134,10 @@ class Persistence:
                 page.add_box_from_journal_image(None)
             primero = False
             box = page.get_active_box()
-            box.image_name = os.path.join(instance_path,boxData["image_name"])
+            if (boxData["image_name"] != ''):
+                box.image_name = os.path.join(instance_path,boxData["image_name"])
+            else: 
+                box.image_name = ''                
             for globoData in boxData["globes"]:
                 globo_x,globo_y = globoData['x'],globoData['y']
                 globo_modo = None
