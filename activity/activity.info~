@@ -1,9 +1,0 @@
-[Activity]
-name = Historieta
-id = org.eq.Historieta
-service_name = org.eq.Historieta
-icon = historieta
-class = Historieta.HistorietaActivity
-show_launcher = yes
-activity_version = 1
-host_version = 1
