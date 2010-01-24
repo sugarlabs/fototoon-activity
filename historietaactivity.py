@@ -257,16 +257,23 @@ class ComicBox(gtk.DrawingArea):
 
         self.width,self.height = window.get_size()
         self.image_height = 0
-        print "self.image_name", self.image_name
+        #print "self.image_name", self.image_name
+        instance_path =  os.path.join(activity.get_activity_root(), "instance")
         if (self.image == None) and (self.image_name != ""):            
-            pixbuf = gtk.gdk.pixbuf_new_from_file(self.image_name)
+            # si la imagen no tiene el path viene del archivo de historieta ya grabado,
+            # si viene con path, es una imagen que se tomo del journal
+            if (not self.image_name.startswith(instance_path)):
+                pixbuf = gtk.gdk.pixbuf_new_from_file(os.path.join(instance_path,self.image_name))
+            else:
+                pixbuf = gtk.gdk.pixbuf_new_from_file(self.image_name)
             width_pxb = pixbuf.get_width()
             height_pxb = pixbuf.get_height()
             scale = (self.width) / (1.0 * width_pxb)            
-            print "self.width", self.width, "width_pxb",width_pxb, "scale",scale
+            #print "self.width", self.width, "width_pxb",width_pxb, "scale",scale
             self.image_height = scale * height_pxb
             self.image = cairo.ImageSurface(cairo.FORMAT_ARGB32, self.width, self.image_height)
             if (scale != 1):
+                # falta tener en cuenta el caso de una imagen que venga del journal y tenga el tamanio justo, es decir con scale = 1
                 pixb_scaled = pixbuf.scale_simple(int(self.width), int(self.image_height), gtk.gdk.INTERP_BILINEAR)
                 ct = cairo.Context(self.image)
                 gtk_ct = gtk.gdk.CairoContext(ct)
@@ -274,7 +281,6 @@ class ComicBox(gtk.DrawingArea):
                 gtk_ct.paint()
                 if (not self.image_saved):
                     self.image_saved = True
-                    instance_path =  os.path.join(activity.get_activity_root(), "instance")
                     #print instance_path
                     image_file_name = "image"+str(self.posi)+".jpg"
                     pixb_scaled.save(os.path.join(instance_path,image_file_name),"jpeg")

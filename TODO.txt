@@ -31,6 +31,7 @@ Notas:
 	* Seria bueno implementar herencia en los globos, cuadros y paginas con los objetos que contienen la data
 
 
+
 PAQUETES GRAFICOS:
 Fondos y personajes
 

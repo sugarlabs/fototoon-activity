@@ -188,8 +188,10 @@ class GlobesToolbar(gtk.Toolbar):
 
     def _image_cb(self, button):
     
-        #chooser = ObjectChooser(_('Choose image'), self._activity,gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT,what_filter='Image')
-        chooser = ObjectChooser(_('Choose image'), self._activity,gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT)
+        try:
+            chooser = ObjectChooser(_('Choose image'), self._activity,gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT,what_filter='Image')
+        except:    
+            chooser = ObjectChooser(_('Choose image'), self._activity,gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT)
         #chooser = ObjectChooser(_('Choose image'), self._activity,
         #                        gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT)
         try:

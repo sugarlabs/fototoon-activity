@@ -1,5 +1,3 @@
-# -*- coding: UTF_8 -*-
-
 import os, sys
 import simplejson
 import globos
@@ -94,10 +92,10 @@ class Persistence:
         print "file_name", file_name
 
         z = zipfile.ZipFile(file_name, "w")
-        z.write(os.path.join(instance_path,data_file_name),data_file_name)
+        z.write(os.path.join(instance_path,data_file_name).encode('ascii','ignore'),data_file_name.encode('ascii','ignore'))
         for box in page.boxs:
             if (box.image_name != ''):
-                z.write(os.path.join(instance_path,box.image_name),box.image_name)
+                z.write(os.path.join(instance_path,box.image_name).encode('ascii','ignore'),box.image_name.encode('ascii','ignore'))
         z.close()    
 
 
@@ -134,10 +132,7 @@ class Persistence:
                 page.add_box_from_journal_image(None)
             primero = False
             box = page.get_active_box()
-            if (boxData["image_name"] != ''):
-                box.image_name = os.path.join(instance_path,boxData["image_name"])
-            else: 
-                box.image_name = ''                
+            box.image_name = boxData["image_name"]
             for globoData in boxData["globes"]:
                 globo_x,globo_y = globoData['x'],globoData['y']
                 globo_modo = None
