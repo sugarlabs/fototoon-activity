@@ -643,25 +643,29 @@ class CuadroTexto:
             cursor_dib=self.cursor    #dibujar cursor
     
             for i in range(len (self.renglones)):
-        
+                #text_reng = unicode(self.renglones[i],'UTF8')
+                text_reng = self.renglones[i]
                 xbearing, ybearing, width, height, xadvance, yadvance =\
                 context.text_extents(self.renglones[i].replace(" ","-"))
             
                 context.move_to(self.x-width/2-1,self.y-self.alto+(i+1)*self.alto_renglon)
                 context.set_source_rgb(self.color_r,self.color_g,self.color_b)
-                #context.set_source_rgb(0,0,0)
                 context.show_text(self.renglones[i])
         
                 if self.mostrar_cursor: 
-                    if cursor_dib>=len(self.renglones[i])+self.esp_reg[i]: 
-                        cursor_dib-=(len(self.renglones[i])+self.esp_reg[i])
+                    if cursor_dib>=len(text_reng)+self.esp_reg[i]: 
+                        cursor_dib-=(len(text_reng)+self.esp_reg[i])
                     
                     elif cursor_dib <> -99:
-                        xbearing1, ybearing1, width1, height1, xadvance1, yadvance1 =\
-                            context.text_extents(self.renglones[i][0:cursor_dib].replace(" ","-"))
-                        context.move_to(self.x-width/2-1+width1,self.y-self.alto+(i+1)*self.alto_renglon)
-                        context.show_text("_")
-                        cursor_dib=-99 # para que no lo vuelva a dibujar en otro renglon
+                        try:
+                            print "Antes del cursor",text_reng[0:cursor_dib]
+                            xbearing1, ybearing1, width1, height1, xadvance1, yadvance1 =\
+                                context.text_extents(text_reng[0:cursor_dib].replace(" ","-"))
+                            context.move_to(self.x-width/2-1+width1,self.y-self.alto+(i+1)*self.alto_renglon)
+                            context.show_text("_")
+                            cursor_dib=-99 # para que no lo vuelva a dibujar en otro renglon
+                        except:    
+                            print "ERROR",text_reng[0:cursor_dib].replace(" ","-")
         
         elif  self.mostrar_cursor:
             context.move_to(self.x,self.y-self.alto+self.alto_renglon)
@@ -717,21 +721,27 @@ class CuadroTexto:
             
             
             else: 
-                self.texto=self.texto[0:self.cursor]+key+self.texto[self.cursor:len(self.texto)]
+                agregar = unicode(key,'UTF8')
+                self.texto=self.texto[0:self.cursor]+agregar+self.texto[self.cursor:len(self.texto)]
                 if key<>"":
-                    self.cursor+=1
+                    self.cursor+=len(agregar)
                     self.redimensionar(context)
             
         else: 
-            self.texto=key
-            self.cursor=1
+            self.texto=unicode(key,'UTF8')
+            self.cursor=len(self.texto)
             self.redimensionar(context)
 
+    """
+    ATENCION: redimensianar no funciona bien con utf8
+    
+    """
 
     def redimensionar(self,context):
+        pass
         "Establece el texto en cada renglon dependiendo de las dimensiones del cuadro, \
          manteniendo fijo el ancho, y redimensionando el alto si es necesario"
-
+        
         if self.texto is not None:
 
             texto_oracion=self.texto.split("\n")
@@ -740,6 +750,7 @@ class CuadroTexto:
             self.esp_reg=[] # 1 =indica si el renglon termino con un espacio. 
 
             for j in range(len(texto_oracion)):
+                
                 texto_renglon=texto_oracion[j]
             
 
@@ -792,6 +803,8 @@ class CuadroTexto:
 
                 if len(self.renglones)*self.alto_renglon>self.alto*2:
                     self.alto=len(self.renglones)*self.alto_renglon/2
+        
+
     
     def mover_a(self,x,y):
         "Mueve el centro del cuadro a la posicion (x,y)"

@@ -33,21 +33,8 @@ from sugar.graphics.toolcombobox import ToolComboBox
 from sugar.graphics import iconentry
 from sugar.graphics.objectchooser import ObjectChooser
 
-#from sugar.datastore import datastore
 
-#import sugar.profile
-
-#import dbus
-
-logger = logging.getLogger('write-activity')
-
-#ick
-TOOLBAR_ACTIVITY = 0
-TOOLBAR_EDIT = 1
-TOOLBAR_TEXT = 2
-TOOLBAR_IMAGE = 3
-TOOLBAR_TABLE = 4
-TOOLBAR_VIEW = 5
+logger = logging.getLogger('fototoon-activity')
 
 class GlobesToolbar(gtk.Toolbar):
 
