@@ -658,7 +658,6 @@ class CuadroTexto:
                     
                     elif cursor_dib <> -99:
                         try:
-                            print "Antes del cursor",text_reng[0:cursor_dib]
                             xbearing1, ybearing1, width1, height1, xadvance1, yadvance1 =\
                                 context.text_extents(text_reng[0:cursor_dib].replace(" ","-"))
                             context.move_to(self.x-width/2-1+width1,self.y-self.alto+(i+1)*self.alto_renglon)

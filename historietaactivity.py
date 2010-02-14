@@ -38,6 +38,8 @@ class HistorietaActivity(activity.Activity):
         toolbox.show_all()
         toolbox.set_current_toolbar(1)        
 
+        #toolbox.get_activity_toolbar().title.connect("focus-in-event", self.on_title)
+
         scrolled = gtk.ScrolledWindow()
         scrolled.set_policy(gtk.POLICY_NEVER, gtk.POLICY_ALWAYS)
         scrolled.add_with_viewport(self.page)
@@ -49,9 +51,20 @@ class HistorietaActivity(activity.Activity):
 
     def keypress(self, widget, event):
         if (self.page.get_active_box() != None):
-            self.page.get_active_box().keypress(event.string,event.keyval)
-            return True
-
+            return self.page.get_active_box().keypress(event.string,event.keyval)
+        else:    
+            return False
+            
+    """
+    # quiero que al ingresar al titulo se des seleccione el globo seleccionado        
+    def on_title(self, widget, event):
+        print "Ingresando al titulo"
+        if (self.page.get_active_box() != None):
+            self.page.get_active_box().set_globo_activo(None)
+            self.page.get_active_box().queue_draw()
+            #self.page.set_active_box(None)            
+            print "Fin de Ingresando al titulo"
+    """
     
     def setWaitCursor( self ):
         self.window.set_cursor( gtk.gdk.Cursor(gtk.gdk.WATCH) )
@@ -100,24 +113,7 @@ class Page(gtk.VBox):
         self.table.set_row_spacings(DEF_SPACING)
         self.table.set_col_spacings(DEF_SPACING)
         self.pack_start(self.table)        
-
-    """
-    # se usa solo para el primero (hay que sacarlo)
-    def add_box(self):
-        appdir = activity.get_bundle_path()
-        posi = len(self.boxs) - 1
-
-        num_foto = posi -  (posi / 4) * 4
-        box = ComicBox(None)
-        box.show()
-        reng = int(posi / 2) 
-        column = posi - (reng * 2)
-        self.table.attach(box,column,column+1,reng,reng+1)
-        self.set_active_box(box)
-        self.boxs.append(box)
-        box.page = self
-    """
-    
+   
     def add_box_from_journal_image(self,image_file_name):
         posi = len(self.boxs) - 1
         num_foto = posi -  (posi / 4) * 4
@@ -130,23 +126,14 @@ class Page(gtk.VBox):
         box.page = self
         box.show()
 
-        # Grabamos la imagen escalada, que se usará para la persistencia
-        # lo hacemos aca (aunque no es muy prolijo) porque necesito saber el tamaño al que va a ser mostrado)
-        #box.image_saved = True
-        #temp_pixb = gtk.gdk.Pixbuf( gtk.gdk.COLORSPACE_RGB, False, 8, box.width,box.image_height)
-        #temp_pixb.get_from_drawable(box.window, box.window.get_colormap(), 0, 0, 0, 0, box.width,box.image_height)
-        #instance_path =  os.path.join(activity.get_activity_root(), "instance")
-        #print instance_path
-        #image_file_name = "image"+str(self.posi)+".jpg"
-        #temp_pixb.save("/home/gonzalo/Desktop/tmp/"+image_file_name,"jpeg")
-        
 
     def set_active_box(self,box):
         box_anterior = None 
         if (self._active_box != None):
             box_anterior =  self._active_box
         self._active_box = box
-        box.queue_draw()
+        if (box != None):        
+            box.queue_draw()
         if (box_anterior != None):
             box_anterior.queue_draw()            
 
@@ -319,7 +306,9 @@ class ComicBox(gtk.DrawingArea):
         if self.glob_press:
             self.glob_press.set_texto(key,keyval,self.context,self.get_allocation())
             self.queue_draw()
-            #print gtk.gdk.keyval_name(keyval)
+            return True
+        else:    
+            return False
         
     def pressing(self, widget, event):
         # si no es el cuadro seleccionado actualmente redibujo este y el anterior seleccionado
