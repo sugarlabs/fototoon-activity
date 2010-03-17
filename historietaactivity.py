@@ -38,7 +38,7 @@ class HistorietaActivity(activity.Activity):
         toolbox.show_all()
         toolbox.set_current_toolbar(1)        
 
-        #toolbox.get_activity_toolbar().title.connect("focus-in-event", self.on_title)
+        toolbox.get_activity_toolbar().title.connect("focus-in-event", self.on_title)
 
         scrolled = gtk.ScrolledWindow()
         scrolled.set_policy(gtk.POLICY_NEVER, gtk.POLICY_ALWAYS)
@@ -54,23 +54,24 @@ class HistorietaActivity(activity.Activity):
             return self.page.get_active_box().keypress(event.string,event.keyval)
         else:    
             return False
-            
-    """
+
     # quiero que al ingresar al titulo se des seleccione el globo seleccionado        
     def on_title(self, widget, event):
         print "Ingresando al titulo"
         if (self.page.get_active_box() != None):
-            self.page.get_active_box().set_globo_activo(None)
-            self.page.get_active_box().queue_draw()
-            #self.page.set_active_box(None)            
+            box = self.page.get_active_box() 
+            self.page.set_active_box(None)            
+            box.glob_press = False
+            box.set_globo_activo(None)
+            box.queue_draw()
+            
             print "Fin de Ingresando al titulo"
-    """
     
-    def setWaitCursor( self ):
-        self.window.set_cursor( gtk.gdk.Cursor(gtk.gdk.WATCH) )
+#    def setWaitCursor( self ):
+#        self.window.set_cursor( gtk.gdk.Cursor(gtk.gdk.WATCH) )
 
-    def setDefaultCursor( self ):
-        self.window.set_cursor( None )
+#    def setDefaultCursor( self ):
+#        self.window.set_cursor( None )
         
     def write_file(self, file_path):
         print "write file path",file_path
@@ -187,6 +188,8 @@ class ComicBox(gtk.DrawingArea):
         self.queue_draw()
 
     def set_globo_activo(self,globo):
+        if (globo == None):
+            self._globo_activo.selec = False    
         self._globo_activo = globo
         if (globo != None):
             self.page._text_toolbar.setToolbarState(globo.texto)
