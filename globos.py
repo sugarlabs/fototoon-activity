@@ -616,8 +616,9 @@ class CuadroTexto:
         self.mostrar_cursor = False    #Dibujar o no el cursor
         
         self.renglones = []         #texto en cada renglon
-        self.esp_reg = []         # 1 =el renglon i termino con un espacio 
-                            # 0= el renglon i no termino con espacio
+        self.esp_reg = []          # 1 =el renglon i termino con un espacio 
+                                   # 0= el renglon i no termino con espacio
+        self.double_key = None     # Lo uso para acentuar letras con comilla simple                   
 
     def imprimir(self,context):
         context.set_source_rgb(self.color_r,self.color_g,self.color_b)
@@ -674,6 +675,36 @@ class CuadroTexto:
         context.stroke()
 
     def insertar_texto(self,key,keyval,context):
+
+        # correcion para teclado de uruguay -->
+        if (keyval == 65105):
+            # comilla simple
+            if self.double_key == None:
+                self.double_key = "'"
+            else:
+                key = "'"
+                self.double_key = None
+
+        if self.double_key == "'":
+            vocals = {"a": "á", "e": "é", "i": "í", "o": "ó", "u":"ú", "A": "Á", "E": "É", "I": "Í", "O": "Ó", "U":"Ú"}
+            if key in vocals:
+                key = vocals[key]
+                self.double_key = None
+                
+        if (keyval == 65111):
+            # comilla doble
+            if self.double_key == None:
+                self.double_key = '"'
+            else:
+                key = '"'
+                self.double_key = None
+
+        if self.double_key == '"':
+            vocals = {"a": "ä", "e": "ë", "i": "ï", "o": "ö", "u":"ü", "A": "Ä", "E": "Ë", "I": "Ï", "O": "Ö", "U":"Ü"}
+            if key in vocals:
+                key = vocals[key]
+                self.double_key = None
+        # <--
 
         if self.texto:
             
