@@ -1,4 +1,4 @@
-# -*- coding: UTF_8 -*-
+# -*- coding: UTF8 -*-
 
 import os
 import math
@@ -769,8 +769,10 @@ class CuadroTexto:
 
     def redimensionar(self,context):
         pass
-        "Establece el texto en cada renglon dependiendo de las dimensiones del cuadro, \
-         manteniendo fijo el ancho, y redimensionando el alto si es necesario"
+        """
+        Establece el texto en cada renglon dependiendo de las dimensiones del cuadro, \
+        manteniendo fijo el ancho, y redimensionando el alto si es necesario
+        """
         
         if self.texto is not None:
 
@@ -842,8 +844,10 @@ class CuadroTexto:
         self.x=x
 
     def set_dimension(self,ancho,alto):
-        "Establece las dimensiones del cuadro siendo el ancho del cuadro= 2*ancho \
-        y el alto del cuadro=2*alto"
+        """
+        Establece las dimensiones del cuadro siendo el ancho del cuadro= 2*ancho 
+        y el alto del cuadro=2*alto
+        """
         self.ancho=ancho
         self.alto=alto
 

@@ -1,86 +1,86 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# Spanish translations for PACKAGE package.
+# Copyright (C) 2010 THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Gonzalo Odiard <godiard@gmail.com>, 2010.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-08-16 04:16-0300\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2010-08-16 04:19-0300\n"
+"Last-Translator: Gonzalo Odiard <godiard@gmail.com>\n"
+"Language-Team: Spanish\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: activity/activity.info:2
 msgid "FotoToon"
-msgstr ""
+msgstr "FotoToon"
 
 #: /home/gonzalo/Activities/FotoToon.activity/historietaactivity.py:32
 msgid "Globes"
-msgstr ""
+msgstr "Globos"
 
 #: /home/gonzalo/Activities/FotoToon.activity/historietaactivity.py:36
 msgid "Text"
-msgstr ""
+msgstr "Texto"
 
 #: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:51
 #: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:64
 msgid "Add Photo"
-msgstr ""
+msgstr "Agregar Foto"
 
 #: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:61
 #: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:74
 msgid "Add Globe"
-msgstr ""
+msgstr "Agregar Globo"
 
 #: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:67
 #: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:80
 msgid "Add Think"
-msgstr ""
+msgstr "Agregar Pensamiento"
 
 #: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:73
 #: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:86
 msgid "Add Whisper"
-msgstr ""
+msgstr "Agregar Susurro"
 
 #: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:79
 #: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:92
 msgid "Add Exclamation"
-msgstr ""
+msgstr "Agregar Exclamación"
 
 #: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:85
 #: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:98
 msgid "Add Box"
-msgstr ""
+msgstr "Agregar Caja"
 
 #: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:95
 #: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:108
 msgid "Turn"
-msgstr ""
+msgstr "Girar"
 
 #: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:101
 #: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:114
 msgid "Delete"
-msgstr ""
+msgstr "Borrar"
 
 #: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:179
 #: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:181
 #: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:186
 msgid "Choose image"
-msgstr ""
+msgstr "Elegir Imagen"
 
 #: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:211
 #: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:216
 msgid "Bold"
-msgstr ""
+msgstr "Negrita"
 
 #: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:217
 #: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:222
 msgid "Italic"
-msgstr ""
+msgstr "Italica"

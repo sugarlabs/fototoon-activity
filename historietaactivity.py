@@ -11,6 +11,7 @@ import globos
 import persistencia
 
 from sugar.activity import activity
+from gettext import gettext as _
 
 from toolbar import TextToolbar
 from toolbar import GlobesToolbar
@@ -28,11 +29,11 @@ class HistorietaActivity(activity.Activity):
         self.page = Page()
 
         self.globesToolbar = GlobesToolbar(self.page,self)
-        toolbox.add_toolbar('Globos', self.globesToolbar)
+        toolbox.add_toolbar(_('Globes'), self.globesToolbar)
 
         # fonts (pendiente)
         self.textToolbar = TextToolbar(self.page)
-        toolbox.add_toolbar('Texto', self.textToolbar)
+        toolbox.add_toolbar(_('Text'), self.textToolbar)
     
         self.set_toolbox(toolbox)
         toolbox.show_all()
