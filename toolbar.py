@@ -30,6 +30,7 @@ from sugar.graphics.toolbutton import ToolButton
 from sugar.graphics.toggletoolbutton import ToggleToolButton
 from sugar.graphics.combobox import ComboBox
 from sugar.graphics.toolcombobox import ToolComboBox
+from sugar.graphics.colorbutton import ColorToolButton
 from sugar.graphics import iconentry
 from sugar.graphics.objectchooser import ObjectChooser
 
@@ -197,6 +198,32 @@ class GlobesToolbar(gtk.Toolbar):
             del chooser
 
 
+##Class to manage the Text Color
+class TextButtonColor(ColorToolButton):
+    ##The Constructor
+    def __init__(self, page):
+        ColorToolButton.__init__(self)
+        self._page = page
+        
+        self.connect('color-set', self._color_button_cb)
+        
+    def _color_button_cb(self, widget):
+        color = self.get_color()
+        self.set_text_color(color)
+        
+    def alloc_color(self, color):
+        colormap = self._page.get_colormap()
+        return colormap.alloc_color(color.red, color.green, color.blue)
+        
+    def set_text_color(self, color):
+        globo_activo = self._page.get_globo_activo()
+        if (globo_activo != None):
+            newcolor = self.alloc_color(color)
+            texto = globo_activo.texto
+            texto.color_r,texto.color_g,texto.color_b = (newcolor.red / 65535.0),(newcolor.green / 65535.0),(newcolor.blue / 65535.0)
+            self._page.get_active_box().queue_draw()    
+
+
 class TextToolbar(gtk.Toolbar):
 
     def __init__(self, page):
@@ -227,12 +254,11 @@ class TextToolbar(gtk.Toolbar):
         self._underline.show()
         """
 
-        self._text_color = gtk.ColorButton()
-        self._text_color_id = self._text_color.connect('color-set', self._text_color_cb)
-        tool_item = gtk.ToolItem()
-        tool_item.add(self._text_color)
-        self.insert(tool_item, -1)
-        tool_item.show_all()
+        self._text_color = TextButtonColor(page)
+        self._text_color.set_title(_('Text Color'))
+        item = gtk.ToolItem()
+        item.add(self._text_color)
+        self.insert(item, -1)
 
         separator = gtk.SeparatorToolItem()
         separator.set_draw(True)
@@ -309,13 +335,6 @@ class TextToolbar(gtk.Toolbar):
             globo_activo.texto.italic = not globo_activo.texto.italic
             self._page.get_active_box().queue_draw()    
 
-    def _text_color_cb(self, button):
-        globo_activo = self._page.get_globo_activo()
-        if (globo_activo != None):
-            newcolor = self._text_color.get_color()
-            texto = globo_activo.texto
-            texto.color_r,texto.color_g,texto.color_b = (newcolor.red / 65535.0),(newcolor.green / 65535.0),(newcolor.blue / 65535.0)
-            self._page.get_active_box().queue_draw()    
 
 
     def _font_size_changed_cb(self, combobox):
