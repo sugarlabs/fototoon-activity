@@ -30,10 +30,14 @@ from sugar.graphics.toolbutton import ToolButton
 from sugar.graphics.toggletoolbutton import ToggleToolButton
 from sugar.graphics.combobox import ComboBox
 from sugar.graphics.toolcombobox import ToolComboBox
-from sugar.graphics.colorbutton import ColorToolButton
 from sugar.graphics import iconentry
 from sugar.graphics.objectchooser import ObjectChooser
-
+WITH_COLOR_BUTTON = True
+try:
+    from sugar.graphics.colorbutton import ColorToolButton
+except:
+    WITH_COLOR_BUTTON = False
+    
 
 logger = logging.getLogger('fototoon-activity')
 
@@ -254,11 +258,20 @@ class TextToolbar(gtk.Toolbar):
         self._underline.show()
         """
 
-        self._text_color = TextButtonColor(page)
-        self._text_color.set_title(_('Text Color'))
-        item = gtk.ToolItem()
-        item.add(self._text_color)
-        self.insert(item, -1)
+        if WITH_COLOR_BUTTON:
+            self._text_color = TextButtonColor(page)
+            self._text_color.set_title(_('Text Color'))
+            item = gtk.ToolItem()
+            item.add(self._text_color)
+            self.insert(item, -1)
+        else:
+            self._text_color = gtk.ColorButton()
+            self._text_color_id = self._text_color.connect('color-set', self._text_color_cb)
+            tool_item = gtk.ToolItem()
+            tool_item.add(self._text_color)
+            self.insert(tool_item, -1)
+            tool_item.show_all()
+        
 
         separator = gtk.SeparatorToolItem()
         separator.set_draw(True)

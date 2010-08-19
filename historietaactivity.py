@@ -17,6 +17,7 @@ from toolbar import TextToolbar
 from toolbar import GlobesToolbar
 
 class HistorietaActivity(activity.Activity):
+
     def __init__(self, handle):
         print "INICIALIZANDO FOTOTOON"
         activity.Activity.__init__(self, handle)
@@ -31,13 +32,16 @@ class HistorietaActivity(activity.Activity):
         self.globesToolbar = GlobesToolbar(self.page,self)
         toolbox.add_toolbar(_('Globes'), self.globesToolbar)
 
-        # fonts (pendiente)
+        # fonts
         self.textToolbar = TextToolbar(self.page)
         toolbox.add_toolbar(_('Text'), self.textToolbar)
-    
+
+        self._max_participants = 0
+        
         self.set_toolbox(toolbox)
         toolbox.show_all()
         toolbox.set_current_toolbar(1)        
+
 
         toolbox.get_activity_toolbar().title.connect("focus-in-event", self.on_title)
 
