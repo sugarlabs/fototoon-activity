@@ -194,7 +194,9 @@ class ComicBox(gtk.DrawingArea):
 
     def set_globo_activo(self,globo):
         if (globo == None):
-            self._globo_activo.selec = False    
+            self._globo_activo.selec = False
+        else:
+            globo.selec = True
         self._globo_activo = globo
         if (globo != None):
             self.page._text_toolbar.setToolbarState(globo.texto)
@@ -344,8 +346,8 @@ class ComicBox(gtk.DrawingArea):
                         # i.mover_a(event.x,event.y,self.get_allocation())
                         self.glob_press = i
                         self.set_globo_activo(i)
+                        self.queue_draw()
                         break
-                    self.queue_draw()
 
     def releassing(self, widget, event):
         #Cuando se deja de pulsar el mouse
