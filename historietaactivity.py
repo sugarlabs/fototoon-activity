@@ -13,8 +13,17 @@ import persistencia
 from sugar.activity import activity
 from gettext import gettext as _
 
+from sugar.graphics.toolbutton import ToolButton
 from toolbar import TextToolbar
 from toolbar import GlobesToolbar
+
+import time
+from sugar.datastore import datastore
+from sugar import profile
+from sugar.graphics import style
+import dbus
+import logging
+
 
 class HistorietaActivity(activity.Activity):
 
@@ -35,6 +44,13 @@ class HistorietaActivity(activity.Activity):
         # fonts
         self.textToolbar = TextToolbar(self.page)
         toolbox.add_toolbar(_('Text'), self.textToolbar)
+
+        # agrego boton para grabar como imagen
+        toolbox._activity_toolbar
+        b_exportar = ToolButton('save-as-image')
+        b_exportar.connect('clicked', self.write_image)
+        b_exportar.set_tooltip(_('Save as Image'))
+        toolbox._activity_toolbar.insert(b_exportar, 4)
 
         self._max_participants = 0
         
@@ -88,12 +104,129 @@ class HistorietaActivity(activity.Activity):
         persistence = persistencia.Persistence()
         persistence.read(file_path,self.page)
 
+    def write_image(self,button):
+        # calculate image size 
+        image_height, image_width = 0,0
+        posi = 0
+        for box in self.page.boxs:
+            if posi > 0:
+                try:
+                    reng = int((posi + 1) / 2)
+                    column = (posi + 1) - (reng * 2)
+                    logging.error("reng %d column %d" % (reng,column))
+                    if column == 0:
+                        image_height = image_height + box.height
+                except:
+                    pass
+            else:
+                image_width = box.width
+                image_height = image_height + box.height
+            posi = posi + 1
+        
+        
+        logging.error( "image_width %d image_height %d" % (image_width,image_height))
+        #pixbuf = gtk.gdk.Pixbuf(gtk.gdk.COLORSPACE_RGB, 0, 8, width + 1, height + 1)
+        surface = cairo.ImageSurface (cairo.FORMAT_ARGB32, image_width + 1, image_height + 1)
+        ctx = cairo.Context (surface)
+
+        ctx.set_source_rgb(1, 1, 1)
+        ctx.rectangle(0, 0, image_width + 1, image_height + 1)
+        ctx.fill()
+
+        posi = 0
+        y_posi = 0
+        for box in self.page.boxs:
+            logging.error("posi %d" % (posi))
+
+            if posi > 0:
+                try:
+                    reng = int((posi + 1) / 2)
+                    column = (posi + 1) - (reng * 2)
+                    logging.error("reng %d column %d" % (reng,column))
+                    ctx.rectangle(column * box.width, y_posi, (column + 1) * box.width, y_posi + box.height)
+                    ctx.set_source_rgb(0, 0, 0)
+                    ctx.stroke() 
+                    ctx.translate(column * box.width, y_posi)
+                    box.draw_in_context(ctx)
+                    ctx.translate(- column * box.width, - y_posi)
+                    if column == 1:
+                        y_posi = y_posi + box.height
+                except:
+                    pass
+            else:
+                box.draw_in_context(ctx)
+                y_posi = box.height
+            
+            posi = posi + 1
+
+
+        temp_file_name = os.path.join(self.get_activity_root(), 'instance',
+                                 'tmp-%i.png' % time.time())
+
+        surface.write_to_png (temp_file_name)
+        logging.error("temp file name  %s" % (temp_file_name))
+
+        self.dl_jobject = datastore.create()
+
+        self.dl_jobject.metadata['progress'] = '0'
+        self.dl_jobject.metadata['keep'] = '0'
+        self.dl_jobject.metadata['buddies'] = ''
+        self.dl_jobject.metadata['icon-color'] = \
+                profile.get_color().to_string()
+        self.dl_jobject.metadata['mime_type'] = 'image/png'
+
+        self.dl_jobject.metadata['title'] = self._jobject.metadata['title'] + " as image"
+        self.dl_jobject.metadata['description'] = ""
+        self.dl_jobject.metadata['progress'] = '100'
+        self.dl_jobject.file_path = temp_file_name
+
+        self.dl_jobject.metadata['preview'] = self._get_preview_image(temp_file_name)
+
+        datastore.write(self.dl_jobject, transfer_ownership=True)
+
+
+    def _get_preview_image(self,file_name):
+        preview_width, preview_height = style.zoom(300), style.zoom(225)
+
+        pixbuf = gtk.gdk.pixbuf_new_from_file(file_name)
+        width, height = pixbuf.get_width(), pixbuf.get_height()
+
+        scale = 1
+        if (width > preview_width) or (height > preview_height):
+            scale_x = preview_width / float(width)
+            scale_y = preview_height / float(height)
+            scale = min(scale_x, scale_y)
+
+        pixbuf2 = gtk.gdk.Pixbuf(gtk.gdk.COLORSPACE_RGB, \
+                            pixbuf.get_has_alpha(), \
+                            pixbuf.get_bits_per_sample(), \
+                            preview_width, preview_height)
+        pixbuf2.fill(style.COLOR_WHITE.get_int())
+
+        margin_x = int((preview_width - (width * scale)) / 2)
+        margin_y = int((preview_height - (height * scale)) / 2)
+
+        pixbuf.scale(pixbuf2, margin_x, margin_y, \
+                            preview_width - (margin_x * 2), \
+                            preview_height - (margin_y * 2), \
+                            margin_x, margin_y, scale, scale, \
+                            gtk.gdk.INTERP_BILINEAR)
+
+        preview_data = []
+        def save_func(buf, data):
+            data.append(buf)
+
+        pixbuf2.save_to_callback(save_func, 'png', user_data=preview_data)
+        preview_data = ''.join(preview_data)
+        return dbus.ByteArray(preview_data)
 
 DEF_SPACING = 6
 DEF_WIDTH = 4
 
 SCREEN_HEIGHT = gtk.gdk.screen_height()
 SCREEN_WIDTH = gtk.gdk.screen_width()
+BOX_HEIGHT = 450
+
 
 class Page(gtk.VBox):
 
@@ -104,10 +237,13 @@ class Page(gtk.VBox):
         self.boxs = []
         self._active_box = None
 
+        logging.error('SCREEN WIDTH %d DEF_SPACING %d' % (SCREEN_WIDTH, DEF_SPACING))
+
         # Agrego cuadro titulo
         self.title_box = ComicBox(None,0)
         self.title_box.show()
-        self.title_box.set_size_request(SCREEN_WIDTH,100)
+        self.title_box.set_size_request(SCREEN_WIDTH, 100)
+        self.title_box.width, self.title_box.height = SCREEN_WIDTH, 100        
         self.pack_start(self.title_box,False)        
         self.set_active_box(self.title_box)
         self.boxs.append(self.title_box)
@@ -176,15 +312,15 @@ class ComicBox(gtk.DrawingArea):
         self.image = None
         self.image_saved = False
         
-        #self.width,self.height = self.get_window().get_size()
-        self.width,self.height = 600 , 400
+        self.width = (int) (SCREEN_WIDTH - DEF_SPACING) / 2
+        self.height = BOX_HEIGHT
         
         if (image_file_name != None):       
             self.image_name = image_file_name
 
         self._globo_activo = None
 
-        self.set_size_request(-1,450)
+        self.set_size_request(-1,BOX_HEIGHT)
 
         self.connect("expose_event", self.expose)
         self.connect("button_press_event", self.pressing)
@@ -249,12 +385,16 @@ class ComicBox(gtk.DrawingArea):
 
 
     def draw(self, ctx, area,window):
+        self.draw_in_context(ctx)
+
+    def draw_in_context(self, ctx):
         # Dibujamos la foto
         ctx.set_line_width(DEF_WIDTH)
 
-        self.width,self.height = window.get_size()
         self.image_height = 0
-        #print "self.image_name", self.image_name
+        
+        
+        # print "self.image_name", self.image_name
         instance_path =  os.path.join(activity.get_activity_root(), "instance")
         if (self.image == None) and (self.image_name != ""):            
             # si la imagen no tiene el path viene del archivo de historieta ya grabado,
@@ -266,7 +406,7 @@ class ComicBox(gtk.DrawingArea):
             width_pxb = pixbuf.get_width()
             height_pxb = pixbuf.get_height()
             scale = (self.width) / (1.0 * width_pxb)            
-            #print "self.width", self.width, "width_pxb",width_pxb, "scale",scale
+            # print "self.width", self.width, "width_pxb",width_pxb, "scale",scale
             self.image_height = scale * height_pxb
             self.image = cairo.ImageSurface(cairo.FORMAT_ARGB32, self.width, self.image_height)
             if (scale != 1):
@@ -278,7 +418,7 @@ class ComicBox(gtk.DrawingArea):
                 gtk_ct.paint()
                 if (not self.image_saved):
                     self.image_saved = True
-                    #print instance_path
+                    # print instance_path
                     image_file_name = "image"+str(self.posi)+".jpg"
                     pixb_scaled.save(os.path.join(instance_path,image_file_name),"jpeg")
                     # grabamos el nombre de la imagen sin el path
@@ -293,23 +433,27 @@ class ComicBox(gtk.DrawingArea):
 
         if (self.image != None):
             ctx.set_source_surface (self.image, 0, 0)
-            ctx.paint ()
+            ctx.rectangle(0,0, self.width, self.height)
+            ctx.paint()
+
 
         # Dibujamos el recuadro
-        ctx.rectangle(0, 0, self.width, self.height)
-
+        ctx.rectangle(0,0, self.width, self.height)
         if (self.page.get_active_box() == self):
             ctx.set_source_rgb(1, 1, 1)
         else :
             ctx.set_source_rgb(0, 0, 0)
         ctx.stroke() 
+        ctx.set_source_rgb(0, 0, 0)
 
         # Por ultimo dibujamos los globos
         self.draw_globos(ctx)
 
+
     def draw_globos(self, context):
         if len(self.globos) > 0:
             for g in self.globos:
+                logging.error("drawing globe %s", g.texto.texto)
                 g.imprimir(context)
 
     def keypress(self,key,keyval):
