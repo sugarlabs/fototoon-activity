@@ -21,11 +21,15 @@ import time
 from sugar.datastore import datastore
 from sugar import profile
 from sugar.graphics import style
+from sugar.graphics.menuitem import MenuItem
 import dbus
 import logging
 
 
 class HistorietaActivity(activity.Activity):
+
+    _EXPORT_FORMATS = [['image/png', _('Save as Image'), _('PNG'), ""]]
+
 
     def __init__(self, handle):
         print "INICIALIZANDO FOTOTOON"
@@ -45,12 +49,25 @@ class HistorietaActivity(activity.Activity):
         self.textToolbar = TextToolbar(self.page)
         toolbox.add_toolbar(_('Text'), self.textToolbar)
 
+        """
         # agrego boton para grabar como imagen
         toolbox._activity_toolbar
         b_exportar = ToolButton('save-as-image')
         b_exportar.connect('clicked', self.write_image)
         b_exportar.set_tooltip(_('Save as Image'))
         toolbox._activity_toolbar.insert(b_exportar, 4)
+        """
+
+        self._activity_toolbar = toolbox.get_activity_toolbar()
+        self._keep_palette = self._activity_toolbar.keep.get_palette()
+
+        # hook up the export formats to the Keep button
+        for i, f in enumerate(self._EXPORT_FORMATS):
+            menu_item = MenuItem(f[1])
+            #menu_item.connect('activate', self.write_image, f[0], f[2], f[3])
+            menu_item.connect('activate', self.write_image)
+            self._keep_palette.menu.append(menu_item)
+            menu_item.show()
 
         self._max_participants = 0
         
@@ -67,6 +84,7 @@ class HistorietaActivity(activity.Activity):
         scrolled.show_all()
         self.set_canvas(scrolled)
         self.show()
+        self.metadata['mime_type'] = 'application/x-fototoon-activity'
         #print "screen witdh " , SCREEN_WIDTH
         #print "page witdh " , self.page.size_request()
 
