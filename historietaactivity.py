@@ -474,10 +474,12 @@ class ComicBox(gtk.DrawingArea):
         self.draw_globos(ctx)
 
     def draw_globos(self, context):
+        logging.error("globes len %d", len(self.globos))
         if len(self.globos) > 0:
             for g in self.globos:
                 logging.error("drawing globe %s", g.texto.texto)
                 g.imprimir(context)
+                logging.error("after drawing globe %s", g.texto.texto)
 
     def keypress(self, key, keyval):
         if self.glob_press:

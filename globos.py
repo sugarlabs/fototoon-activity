@@ -410,29 +410,13 @@ class Nube(Globo):
 
         appdir = os.path.join(activity.get_bundle_path())
 
-        self.pixbuf = gtk.gdk.pixbuf_new_from_file( \
-                os.path.join(appdir, 'old/nube.png'))
-
         ancho_text, alto_text = self.calc_area_texto()
         self.texto = CuadroTexto(self.x, self.y, ancho_text, alto_text)
 
     def imprimir(self, context):
         logging.error("start printing cloud")
 
-        context.save()
-
-        context.scale(self.ancho / (self.pixbuf.get_width() * 0.5),
-                self.alto / (self.pixbuf.get_height() * 0.5))
-
-        x = self.x * self.pixbuf.get_width() / (self.ancho * 2.0)
-        y = self.y * self.pixbuf.get_height() / (self.alto * 2.0)
-        context.set_source_pixbuf(self.pixbuf, x - self.pixbuf.get_width() / 2,
-                y - self.pixbuf.get_height() / 2)
-        context.paint()
-        context.restore()
-
-        #dibuja punto
-        context.set_line_width(5 * self.ancho / self.pixbuf.get_width() * 0.5)
+        self.draw(context)
 
         x_circle, y_circle = self.get_second_circle_position()
 
@@ -449,59 +433,69 @@ class Nube(Globo):
         context.set_source_rgb(0, 0, 0)
         context.stroke()
 
-        """
-        if self.direccion == DIR_ABAJO:
-            context.arc(self.x + self.punto[0] / 2,
-                    self.y + self.alto + self.punto[1] / 2, 7, 0, 2 * math.pi)
-            context.set_source_rgb(1, 1, 1)
-            context.fill_preserve()
-            context.set_source_rgb(0, 0, 0)
-            context.stroke()
-            context.arc(self.x + self.punto[0],
-                    self.y + self.alto + self.punto[1], 5, 0, 2 * math.pi)
-
-        elif self.direccion==DIR_DER:
-            context.arc(self.x+self.ancho+self.punto[0]/2,
-                self.y+self.punto[1]/2,7, 0,2*math.pi)
-            context.set_source_rgb(1, 1, 1)
-            context.fill_preserve()
-            context.set_source_rgb(0, 0, 0)
-            context.stroke()
-            context.arc(self.x+self.ancho+self.punto[0],
-                self.y+self.punto[1],5, 0,2*math.pi)
-
-        elif self.direccion==DIR_IZQ:
-            context.arc(self.x-self.ancho-self.punto[0]/2,
-                self.y+self.punto[1]/2,7, 0,2*math.pi)
-            context.set_source_rgb(1, 1, 1)
-            context.fill_preserve()
-            context.set_source_rgb(0, 0, 0)
-            context.stroke()
-            context.arc(self.x-self.ancho-self.punto[0],
-                self.y+self.punto[1],5, 0,2*math.pi)
-
-        else: #arriba
-            context.arc(self.x+self.punto[0]/2,
-                self.y-self.alto-self.punto[1]/2,7, 0,2*math.pi)
-            context.set_source_rgb(1, 1, 1)
-            context.fill_preserve()
-            context.set_source_rgb(0, 0, 0)
-            context.stroke()
-            context.arc(self.x+self.punto[0],self.y-self.alto-self.punto[1],
-                5, 0,2*math.pi)
-
-        context.set_source_rgb(1, 1, 1)
-        context.fill_preserve()
-        context.set_source_rgb(0, 0, 0)
-        context.stroke()
-        """
-
-
         # se dibuja el correspondiente texto
         self.texto.imprimir(context)
 
         self.dibujar_controles(context)
         logging.error("end printing cloud")
+
+    def draw(self, cr):
+
+        x_cen = self.x
+        y_cen = self.y
+
+        points = []
+        steps = 36
+
+        ancho_int = self.ancho * 0.8
+        alto_int = self.alto * 0.8
+
+        x = x_cen + self.ancho
+        y = y_cen
+        cr.move_to(x, y)
+
+        state = 0
+
+        for i in range(steps):
+            alpha = 2.0 * i * (math.pi / steps)
+            #print "i", i, "alpha", alpha, "state", state
+            sinalpha = math.sin(alpha)
+            cosalpha = math.cos(alpha)
+
+            if state == 0:
+                x1 = x_cen + (1.0 * self.ancho * cosalpha)
+                y1 = y_cen + (1.0 * self.alto * sinalpha)
+            elif state == 1:
+                x2 = x_cen + (1.0 * self.ancho * cosalpha)
+                y2 = y_cen + (1.0 * self.alto * sinalpha)
+            elif state == 2:
+                x3 = x_cen + (1.0 * ancho_int * cosalpha)
+                y3 = y_cen + (1.0 * alto_int * sinalpha)
+
+            draw_line = False
+
+            if state == 2:
+                cr.curve_to(x1, y1, x2, y2, x3, y3)
+
+            state += 1
+            if state == 3:
+                state = 0        
+
+        x1 = x_cen + (1.0 * self.ancho * cosalpha)
+        y1 = y_cen + (1.0 * self.alto * sinalpha)
+        x2 = x_cen + (1.0 * self.ancho)
+        y2 = y_cen 
+        x3 = x_cen + (1.0 * self.ancho)
+        y3 = y_cen
+        cr.curve_to(x1, y1, x2, y2, x3, y3)
+
+        cr.set_source_rgb(1, 1, 1)
+        cr.fill_preserve()
+        cr.set_source_rgba(0, 0, 0, 1)
+        cr.set_line_width(4)
+        cr.stroke()
+
+
 
     def get_circle_position(self):
         if self.direccion == DIR_ABAJO:
@@ -580,8 +574,8 @@ class Grito(Globo):
         points = []
         steps = 24
 
-        width_int = width - 15
-        height_int = height - 15
+        width_int = width * 0.8
+        height_int = height * 0.8
 
         x = x_cen + width
         y = y_cen
