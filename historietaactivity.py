@@ -125,7 +125,7 @@ class HistorietaActivity(activity.Activity):
                 try:
                     reng = int((posi + 1) / 2)
                     column = (posi + 1) - (reng * 2)
-                    logging.error("reng %d column %d" % (reng, column))
+                    #logging.error("reng %d column %d" % (reng, column))
                     if column == 0:
                         image_height = image_height + box.height
                 except:
@@ -135,8 +135,8 @@ class HistorietaActivity(activity.Activity):
                 image_height = image_height + box.height
             posi = posi + 1
 
-        logging.error("image_width %d image_height %d" %
-            (image_width, image_height))
+        #logging.error("image_width %d image_height %d" %
+        #    (image_width, image_height))
         surface = cairo.ImageSurface(cairo.FORMAT_ARGB32,
             image_width + 1, image_height + 1)
         ctx = cairo.Context(surface)
@@ -148,13 +148,13 @@ class HistorietaActivity(activity.Activity):
         posi = 0
         y_posi = 0
         for box in self.page.boxs:
-            logging.error("posi %d" % (posi))
+            #logging.error("posi %d" % (posi))
 
             if posi > 0:
                 try:
                     reng = int((posi + 1) / 2)
                     column = (posi + 1) - (reng * 2)
-                    logging.error("reng %d column %d" % (reng, column))
+                    #logging.error("reng %d column %d" % (reng, column))
                     ctx.rectangle(column * box.width, y_posi,
                         (column + 1) * box.width, y_posi + box.height)
                     ctx.set_source_rgb(0, 0, 0)
@@ -176,7 +176,7 @@ class HistorietaActivity(activity.Activity):
                                  'tmp-%i.png' % time.time())
 
         surface.write_to_png(temp_file_name)
-        logging.error("temp file name  %s" % (temp_file_name))
+        #logging.error("temp file name  %s" % (temp_file_name))
 
         self.dl_jobject = datastore.create()
 
@@ -473,12 +473,12 @@ class ComicBox(gtk.DrawingArea):
         self.draw_globos(ctx)
 
     def draw_globos(self, context):
-        logging.error("globes len %d", len(self.globos))
+        #logging.error("globes len %d", len(self.globos))
         if len(self.globos) > 0:
             for g in self.globos:
-                logging.error("drawing globe %s", g.texto.texto)
+                #logging.error("drawing globe %s", g.texto.texto)
                 g.imprimir(context)
-                logging.error("after drawing globe %s", g.texto.texto)
+                #logging.error("after drawing globe %s", g.texto.texto)
 
     def keypress(self, key, keyval):
         if self.glob_press:

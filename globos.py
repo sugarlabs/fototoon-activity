@@ -45,7 +45,6 @@ class Globo:
         self.texto = CuadroTexto(self.x, self.y, ancho_text, alto_text)
 
     def imprimir(self, context):
-        logging.error("start printing")
         #dibujo al globo de dialogo
 
         context.save()
@@ -102,7 +101,6 @@ class Globo:
         self.dibujar_controles(context)
 
     def dibujar_controles(self, context):
-        logging.error("start printing controls")
 
         # si esta seleccionado se dibujan los controles
         if self.selec:
@@ -139,7 +137,6 @@ class Globo:
 
             context.stroke()
             context.restore()
-        logging.error("end printing controls")
 
     def get_circle_position(self):
         if self.direccion == DIR_ABAJO:
@@ -348,7 +345,6 @@ class Rectangulo(Globo):
         self.texto = CuadroTexto(self.x, self.y, ancho_text, alto_text)
 
     def imprimir(self, context):
-        logging.error("start printing rectangle")
         #imprimimos el rectangulo
         context.set_line_width(3)
         context.rectangle(self.x - self.ancho, self.y - self.alto,
@@ -418,7 +414,6 @@ class Nube(Globo):
         self.texto = CuadroTexto(self.x, self.y, ancho_text, alto_text)
 
     def imprimir(self, context):
-        logging.error("start printing cloud")
 
         self.draw(context)
 
@@ -441,7 +436,6 @@ class Nube(Globo):
         self.texto.imprimir(context)
 
         self.dibujar_controles(context)
-        logging.error("end printing cloud")
 
     def draw(self, cr):
 
@@ -739,7 +733,6 @@ class CuadroTexto:
         self.double_key = None
 
     def imprimir(self, context):
-        logging.error("start printing text")
         context.set_source_rgb(self.color_r, self.color_g, self.color_b)
         if self.mostrar_borde:
             #dibuja recuadro
@@ -800,7 +793,6 @@ class CuadroTexto:
             context.show_text("_")
 
         context.stroke()
-        logging.error("end printing text")
 
     def insertar_texto(self, key, keyval, context):
 
