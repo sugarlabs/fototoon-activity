@@ -106,6 +106,7 @@ class Globo:
 
         # si esta seleccionado se dibujan los controles
         if self.selec:
+            context.save()
             context.set_line_width(ANCHO_LINEAS_CONTROLES)
 
             x = self.x * self.radio / (self.ancho * 1.0)
@@ -115,6 +116,9 @@ class Globo:
             context.set_source_rgb(1, 1, 1)
             context.rectangle(self.x - self.ancho, self.y - self.alto,
                     2 * self.ancho, 2 * self.alto)
+            context.stroke_preserve()
+            context.set_source_rgb(0, 0, 0)
+            context.set_dash([2])
             context.stroke()
 
             ancho_marcador = 15
@@ -134,6 +138,7 @@ class Globo:
                         (ancho_marcador / 2), 0, x * math.pi)
 
             context.stroke()
+            context.restore()
         logging.error("end printing controls")
 
     def get_circle_position(self):
