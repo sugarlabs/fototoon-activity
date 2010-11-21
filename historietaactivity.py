@@ -106,12 +106,6 @@ class HistorietaActivity(activity.Activity):
 
             print "Fin de Ingresando al titulo"
 
-#    def setWaitCursor( self ):
-#        self.window.set_cursor( gtk.gdk.Cursor(gtk.gdk.WATCH) )
-
-#    def setDefaultCursor( self ):
-#        self.window.set_cursor( None )
-
     def write_file(self, file_path):
         print "write file path", file_path
         persistence = persistencia.Persistence()
