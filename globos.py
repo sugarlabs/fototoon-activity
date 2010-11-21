@@ -25,19 +25,17 @@ class Globo:
             direccion=DIR_ABAJO):
 
         self.globe_type = "GLOBE"
-        self.radio = 30            #determina tamanio minimo
-
-        self.ancho = ancho        #dimensiones de la elipse
+        #determina tamanio minimo
+        self.radio = 30
+        #dimensiones de la elipse
+        self.ancho = ancho
         self.alto = alto
-
         self.punto = [5, 10]
-        self.selec = False        #determina si esta seleccionado
-
+        #determina si esta seleccionado
+        self.selec = False
         self.direccion = direccion
-
         #2 tipos de globos: "normal" o "despacio"
         self.modo = modo
-
         #Centro de la elipse
         self.x = x * self.ancho / (self.radio * 1.0)
         self.y = y * self.alto / (self.radio * 1.0)
@@ -61,8 +59,8 @@ class Globo:
 
         if self.direccion == DIR_ABAJO:
 
-            context.arc(x, y, self.radio, 100 / (180 * 1.0) * math.pi,
-                        80 / (180 * 1.0) * math.pi)
+            context.arc(x, y, self.radio, 100 / (180.0) * math.pi,
+                        80 / (180.0) * math.pi)
             context.line_to( \
                         x + self.punto[0] * self.radio / (self.ancho * 1.0),
                         y + self.radio + \
@@ -350,7 +348,6 @@ class Rectangulo(Globo):
         context.set_line_width(3)
         context.rectangle(self.x - self.ancho, self.y - self.alto,
                 2 * self.ancho, 2 * self.alto)
-        #context.set_source_rgb(129*1.0/255,192*1.0/255, 1)
         context.set_source_rgb(1, 1, 1)
         context.fill_preserve()
         context.set_source_rgb(0, 0, 0)
@@ -397,11 +394,13 @@ class Nube(Globo):
         self.globe_type = "CLOUD"
         self.radio = 30
 
-        self.ancho = ancho        #dimensiones de la elipse
+        #dimensiones de la elipse
+        self.ancho = ancho
         self.alto = alto
 
         self.punto = [5, 10]
-        self.selec = False        #determina si esta seleccionado
+        #determina si esta seleccionado
+        self.selec = False
 
         self.direccion = direccion
 
@@ -495,8 +494,6 @@ class Nube(Globo):
         cr.set_line_width(4)
         cr.stroke()
 
-
-
     def get_circle_position(self):
         if self.direccion == DIR_ABAJO:
             return self.x + self.punto[0], self.y + self.alto + self.punto[1]
@@ -553,18 +550,12 @@ class Grito(Globo):
         self.texto = CuadroTexto(self.x, self.y, ancho_text, alto_text)
 
     def imprimir(self, context):
-        logging.error("start printing exclamation")
-
         context.save()
-
         self.draw_exclamation(context, self.x, self.y,
                 self.ancho, self.alto, self.direccion, self.punto)
-
         # se dibuja el correspondiente texto
         self.texto.imprimir(context)
-
         self.dibujar_controles(context)
-        logging.error("end printing exclamation")
 
     def draw_exclamation(self, cr, x_cen, y_cen,
         width, height, direction, punto):
@@ -704,32 +695,41 @@ class CuadroTexto:
 
     def __init__(self, x, y, ancho=50, alto=30):
 
-        self.ancho = ancho        #Ancho del cuadro = 2*self.ancho
-        self.alto = alto         #Alto del cuadro = 2*self.alto
+        #Ancho del cuadro = 2*self.ancho
+        self.ancho = ancho
+        #Alto del cuadro = 2*self.alto
+        self.alto = alto
 
-        self.x = x                #Centro del cuadro
-        self.y = y                #Centro del cuadro
+        #Centro del cuadro
+        self.x = x
+        self.y = y
 
         self.texto = None
-        self.cursor = 0            #Posicion del cursor(en nro de caracteres)
+        #Posicion del cursor(en nro de caracteres)
+        self.cursor = 0
 
-        self.font_size = 12        #Caracteristicas de la tipografia
+        #Caracteristicas de la tipografia
+        self.font_size = 12
         self.font_type = "Georgia"
-
         self.color_r, self.color_g, self.color_b = 0, 0, 0
-
         self.italic = False
         self.bold = False
 
-        self.alto_renglon = 12    #Tamanio del renglon
+        #Tamanio del renglon
+        self.alto_renglon = 12
 
-        self.mostrar_borde = False  #Permite dibujar o no recuadro
+        #Permite dibujar o no recuadro
+        self.mostrar_borde = False
 
-        self.mostrar_cursor = False    #Dibujar o no el cursor
+        #Dibujar o no el cursor
+        self.mostrar_cursor = False
 
-        self.renglones = []         #texto en cada renglon
-        self.esp_reg = []          # 1 =el renglon i termino con un espacio
-                                   # 0= el renglon i no termino con espacio
+        #texto en cada renglon
+        self.renglones = []
+        # 1 =el renglon i termino con un espacio
+        # 0= el renglon i no termino con espacio
+        self.esp_reg = []
+
         # Lo uso para acentuar letras con comilla simple
         self.double_key = None
 
