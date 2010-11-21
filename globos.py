@@ -517,15 +517,6 @@ class Nube(Globo):
             return self.x + self.punto[0] / 2, \
                     self.y - self.alto - self.punto[1] / 2
 
-    def calc_area_texto(self):
-        ancho_text = self.ancho - 12 * self.ancho / (self.radio * 1.0)
-        alto_text = self.alto - 12 * self.alto / (self.radio * 1.0)
-        return (ancho_text, alto_text)
-
-    def calc_area(self, ancho_text, alto_text):
-        self.ancho = self.texto.ancho / (1 - 12 / (self.radio * 1.0))
-        self.alto = self.texto.alto / (1 - 12 / (self.radio * 1.0))
-
 
 class Grito(Globo):
 
@@ -573,7 +564,7 @@ class Grito(Globo):
 
         for i in range(steps):
             alpha = 2.0 * i * (math.pi / steps)
-            print "i", i, "alpha", alpha
+            #print "i", i, "alpha", alpha
             sinalpha = math.sin(alpha)
             cosalpha = math.cos(alpha)
 
@@ -589,8 +580,8 @@ class Grito(Globo):
                (direction == DIR_IZQ and i == 12) or \
                (direction == DIR_ARRIBA and i == 18):
 
-                print "** POINT", "punto[0]", punto[0], "punto[1]", punto[1]
-                print "** x", x, "y", y
+                #print "** POINT", "punto[0]", punto[0], "punto[1]", punto[1]
+                #print "** x", x, "y", y
 
                 if direction == DIR_ABAJO:
                     x = x_cen + punto[0]
@@ -605,7 +596,7 @@ class Grito(Globo):
                     x = x_cen + punto[0]
                     y = y_cen - height - punto[1]
 
-            print x, y
+            #print x, y
             cr.line_to(x, y)
         cr.close_path()
         cr.set_source_rgb(1, 1, 1)
@@ -618,10 +609,6 @@ class Grito(Globo):
         ancho_text = self.ancho - 12 * self.ancho / (self.radio * 1.0)
         alto_text = self.alto - 20 * self.alto / (self.radio * 1.0)
         return (ancho_text, alto_text)
-
-    def calc_area(self, ancho_text, alto_text):
-        self.ancho = self.texto.ancho / (1 - 12 / (self.radio * 1.0))
-        self.alto = self.texto.alto / (1 - 12 / (self.radio * 1.0))
 
 
 class Imagen(Globo):
