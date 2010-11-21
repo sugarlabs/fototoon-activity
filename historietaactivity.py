@@ -346,8 +346,9 @@ class ComicBox(gtk.DrawingArea):
         self.queue_draw()
 
     def set_globo_activo(self, globo):
-        if (globo == None):
-            self._globo_activo.selec = False
+        if globo == None:
+            if self._globo_activo != None:
+                self._globo_activo.selec = False
         else:
             globo.selec = True
         self._globo_activo = globo
