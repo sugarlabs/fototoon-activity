@@ -291,6 +291,8 @@ class Page(gtk.VBox):
         if (box != None):
             box.queue_draw()
         if (box_anterior != None):
+            for g in box_anterior.globos:
+                g.selec = False
             box_anterior.queue_draw()
 
     def get_active_box(self):
@@ -394,10 +396,13 @@ class ComicBox(gtk.DrawingArea):
         self.draw(self.context, event.area, widget.window)
         return False
 
+    """
+    que hace esto? nadie lo llama...
     def set_sink(self, sink):
         assert self.window.xid
         self.imagesink = sink
         self.imagesink.set_xwindow_id(self.window.xid)
+    """
 
     def draw(self, ctx, area, window):
         self.draw_in_context(ctx)
