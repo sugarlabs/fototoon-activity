@@ -180,6 +180,32 @@ class Globo:
 
         self.texto.mover_a(self.x, self.y)
 
+    def get_over_state(self, x, y):
+        """
+        if (self.x - self.ancho) < x < (self.x + self.ancho) and \
+                (self.y - self.alto) < y < (self.y + self.alto):
+            return None
+        """
+        state = None
+        sensibility = 2
+        if abs((self.x - self.ancho) - x) < sensibility:
+            state = 'LEFT_SIDE'
+            if abs((self.y - self.alto) - y) < sensibility:
+                state = 'TOP_LEFT_CORNER'
+            if abs((self.y + self.alto) - y) < sensibility:
+                state = 'BOTTOM_LEFT_CORNER'
+        elif abs((self.x + self.ancho) - x) < sensibility:
+            state = 'RIGHT_SIDE'
+            if abs((self.y - self.alto) - y) < sensibility:
+                state = 'TOP_RIGHT_CORNER'
+            if abs((self.y + self.alto) - y) < sensibility:
+                state = 'BOTTOM_RIGHT_CORNER'
+        elif abs((self.y - self.alto) - y) < sensibility:
+            state = 'TOP_SIDE'
+        elif abs((self.y + self.alto) - y) < sensibility:
+            state = 'BOTTOM_SIDE'
+        return state
+
     def is_selec(self, x, y):
         #devuelve True si es seleccionado
         if (self.x - self.ancho) < x < (self.x + self.ancho) and \
@@ -276,6 +302,15 @@ class Globo:
     def set_dimension(self, x, y, rect, context):
         alto_ant = self.alto
         ancho_ant = self.ancho
+
+        # si estoy cambiando el tamaño desde la derecha o desde abajo
+        # cambio x / y como para que se calcule como si fuera desde
+        # arriba y a la izquierda
+        if x > self.x:
+            x = 2 * self.x - x
+        if y > self.y:
+            y = 2 * self.y - y
+
         if (2 * self.x - x) < rect.width:
             if 0 < x < (self.x - self.radio):
                 self.ancho = self.x - x
@@ -477,12 +512,12 @@ class Nube(Globo):
 
             state += 1
             if state == 3:
-                state = 0        
+                state = 0
 
         x1 = x_cen + (1.0 * self.ancho * cosalpha)
         y1 = y_cen + (1.0 * self.alto * sinalpha)
         x2 = x_cen + (1.0 * self.ancho)
-        y2 = y_cen 
+        y2 = y_cen
         x3 = x_cen + (1.0 * self.ancho)
         y3 = y_cen
         cr.curve_to(x1, y1, x2, y2, x3, y3)

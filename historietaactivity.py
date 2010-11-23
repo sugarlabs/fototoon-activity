@@ -312,7 +312,8 @@ class ComicBox(gtk.DrawingArea):
         print ('Cuadro INIT')
         gtk.DrawingArea.__init__(self)
         #se agregan los eventos de pulsacion y movimiento del raton
-        self.add_events(gtk.gdk.BUTTON_PRESS_MASK | \
+        self.add_events(gtk.gdk.POINTER_MOTION_MASK | \
+                        gtk.gdk.BUTTON_PRESS_MASK | \
                         gtk.gdk.BUTTON_RELEASE_MASK | \
                         gtk.gdk.BUTTON1_MOTION_MASK)
 
@@ -341,6 +342,7 @@ class ComicBox(gtk.DrawingArea):
 
         self.connect("expose_event", self.expose)
         self.connect("button_press_event", self.pressing)
+        self.connect("motion_notify_event", self.mouse_move)
         self.connect("motion_notify_event", self.moving)
         self.connect("button_release_event", self.releassing)
         self.queue_draw()
@@ -482,8 +484,8 @@ class ComicBox(gtk.DrawingArea):
                 #logging.error("after drawing globe %s", g.texto.texto)
 
     def keypress(self, key, keyval):
-        if self.glob_press:
-            self.glob_press.set_texto(key, keyval,
+        if self._globo_activo != None:
+            self._globo_activo.set_texto(key, keyval,
                 self.context, self.get_allocation())
             self.queue_draw()
             return True
@@ -497,16 +499,17 @@ class ComicBox(gtk.DrawingArea):
             self.page.set_active_box(self)
 
         #Verifica si al pulsar el mouse se hizo sobre algun globo
-        if self.glob_press:
-            if self.glob_press.is_selec_tam(event.x, event.y):
+        if self._globo_activo != None:
+            if self._globo_activo.is_selec_tam(event.x, event.y) or \
+                (self._globo_activo.get_over_state(event.x, event.y) != None):
                 self.is_dimension = True
-            elif self.glob_press.is_selec_punto(event.x, event.y):
+            elif self._globo_activo.is_selec_punto(event.x, event.y):
                 self.is_punto = True
 
         if (not self.is_dimension) and not (self.is_punto):
-            if self.glob_press:
+            if self._globo_activo != None:
                 #self.glob_press.is_selec(event.x,event.y)
-                self.glob_press.no_selec()
+                self._globo_activo.no_selec()
                 self.glob_press = False
 
             if self.globos:
@@ -522,20 +525,28 @@ class ComicBox(gtk.DrawingArea):
 
     def releassing(self, widget, event):
         #Cuando se deja de pulsar el mouse
-        #self.glob_press=False
+        self.glob_press=False
         self.is_dimension = False
         self.is_punto = False
 
+    def mouse_move(self, widget, event):
+        if self._globo_activo != None:
+            over_state = self._globo_activo.get_over_state(event.x, event.y)
+            cursor = None
+            if over_state != None:
+                cursor = gtk.gdk.Cursor(gtk.gdk.__dict__[over_state])
+            self.window.set_cursor(cursor)
+
     def moving(self, widget, event):
         if self.is_dimension:
-            self.glob_press.set_dimension(event.x, event.y,
+            self._globo_activo.set_dimension(event.x, event.y,
                 self.get_allocation(), self.context)
             self.queue_draw()
         elif self.is_punto:
-            self.glob_press.mover_punto(event.x, event.y,
+            self._globo_activo.mover_punto(event.x, event.y,
                 self.get_allocation())
             self.queue_draw()
         elif self.glob_press:
-            self.glob_press.mover_a(event.x, event.y,
+            self._globo_activo.mover_a(event.x, event.y,
                 self.get_allocation())
             self.queue_draw()
