@@ -120,21 +120,33 @@ class Globo:
             context.stroke()
 
             ancho_marcador = 15
+            context.restore()
+
 
             # cuadrado esquina superior izq
+            context.save()
+            context.set_line_width(ANCHO_LINEAS_CONTROLES)
             context.set_source_rgb(1, 1, 1)
             context.rectangle(self.x - self.ancho - (ancho_marcador / 2),
                     self.y - self.alto - (ancho_marcador / 2),
                     ancho_marcador, ancho_marcador)
+            context.stroke_preserve()
+            context.set_source_rgb(0, 0, 0)
+            context.set_dash([2])
             context.stroke()
+            context.restore()
 
             # circulo en la punta del globo
+            context.save()
+            context.set_line_width(ANCHO_LINEAS_CONTROLES)
             context.set_source_rgb(1, 1, 1)
 
             x_circle, y_circle = self.get_circle_position()
             context.arc(x_circle, y_circle,
                         (ancho_marcador / 2), 0, x * math.pi)
-
+            context.stroke_preserve()
+            context.set_source_rgb(0, 0, 0)
+            context.set_dash([2])
             context.stroke()
             context.restore()
 
