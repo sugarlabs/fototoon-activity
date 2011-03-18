@@ -431,7 +431,7 @@ class ComicBox(gtk.DrawingArea):
             width_pxb = pixbuf.get_width()
             height_pxb = pixbuf.get_height()
             scale = (self.width) / (1.0 * width_pxb)
-            self.image_height = scale * height_pxb
+            self.image_height = int(scale * height_pxb)
             self.image = cairo.ImageSurface(cairo.FORMAT_ARGB32,
                 self.width, self.image_height)
             if (scale != 1):
