@@ -67,11 +67,9 @@ except:
 
 logger = logging.getLogger('fototoon-activity')
 
-class GlobesToolbar(gtk.Toolbar):
+class GlobesManager():
 
-    def __init__(self, page,activity):
-
-        gtk.Toolbar.__init__(self)
+    def __init__(self, toolbar, page, activity):
 
         self._page = page
         self._activity = activity
@@ -80,57 +78,57 @@ class GlobesToolbar(gtk.Toolbar):
         self.b_add_photo = ToolButton('add-photo')
         self.b_add_photo.connect('clicked', self._image_cb)
         self.b_add_photo.set_tooltip(_('Add Photo'))
-        self.insert(self.b_add_photo, -1)
+        toolbar.insert(self.b_add_photo, -1)
 
         separator = gtk.SeparatorToolItem()
         separator.set_draw(True)
-        self.insert(separator, -1)
+        toolbar.insert(separator, -1)
 
         # agrega globo
         self.b_agregar = ToolButton('add-globe')
         self.b_agregar.connect('clicked', self.agrega_gnormal)
         self.b_agregar.set_tooltip(_('Add Globe'))
-        self.insert(self.b_agregar, -1)
+        toolbar.insert(self.b_agregar, -1)
     
         #agrega nube
         self.b_agregar = ToolButton('add-nube')
         self.b_agregar.connect('clicked', self.agrega_gpensar)
         self.b_agregar.set_tooltip(_('Add Think'))
-        self.insert(self.b_agregar, -1)
+        toolbar.insert(self.b_agregar, -1)
     
         # agrega susurro
         self.b_agregar = ToolButton('add-susurro')
         self.b_agregar.connect('clicked', self.agrega_gdespacio)
         self.b_agregar.set_tooltip(_('Add Whisper'))
-        self.insert(self.b_agregar, -1)
+        toolbar.insert(self.b_agregar, -1)
     
         # agrega grito
         self.b_agregar = ToolButton('add-grito')
         self.b_agregar.connect('clicked', self.agrega_ggrito)
         self.b_agregar.set_tooltip(_('Add Exclamation'))
-        self.insert(self.b_agregar, -1)
+        toolbar.insert(self.b_agregar, -1)
     
         # agrega caja
         self.b_agregar = ToolButton('add-box')
         self.b_agregar.connect('clicked', self.agrega_grect)
         self.b_agregar.set_tooltip(_('Add Box'))
-        self.insert(self.b_agregar, -1)
+        toolbar.insert(self.b_agregar, -1)
     
         separator = gtk.SeparatorToolItem()
         separator.set_draw(True)
-        self.insert(separator, -1)
+        toolbar.insert(separator, -1)
 
         # girar
         self.b_girar = ToolButton('turn')
         self.b_girar.connect('clicked', self.girar)
         self.b_girar.set_tooltip(_('Turn'))
-        self.insert(self.b_girar, -1)
+        toolbar.insert(self.b_girar, -1)
 
         # borrar
         self.b_borrar = ToolButton('gtk-delete')
         self.b_borrar.connect('clicked', self.borrar)
         self.b_borrar.set_tooltip(_('Delete'))
-        self.insert(self.b_borrar, -1)
+        toolbar.insert(self.b_borrar, -1)
 
 
 
@@ -243,13 +241,11 @@ class TextToolbar(gtk.Toolbar):
         self._bold.set_tooltip(_('Bold'))
         self._bold_id = self._bold.connect('clicked', self._bold_cb)
         self.insert(self._bold, -1)
-        self._bold.show()
 
         self._italic = ToggleToolButton('format-text-italic')
         self._italic.set_tooltip(_('Italic'))
         self._italic_id = self._italic.connect('clicked', self._italic_cb)
         self.insert(self._italic, -1)
-        self._italic.show()
 
         """
         self._underline = ToggleToolButton('format-text-underline')
@@ -273,10 +269,8 @@ class TextToolbar(gtk.Toolbar):
             self.insert(tool_item, -1)
             tool_item.show_all()
         
-
         separator = gtk.SeparatorToolItem()
         separator.set_draw(True)
-        separator.show()
         self.insert(separator, -1)
 
         # tamanio 
@@ -284,7 +278,6 @@ class TextToolbar(gtk.Toolbar):
         tool_item = gtk.ToolItem()
         tool_item.add(self._font_size_icon)
         self.insert(tool_item, -1)
-        tool_item.show_all()
 
         self._font_size_combo = ComboBox()
         self._font_sizes = ['8', '10', '12', '14', '16', '20', '22', '24', '26', '28', '36', '48', '72']
@@ -295,8 +288,6 @@ class TextToolbar(gtk.Toolbar):
                 self._font_size_combo.set_active(i)
         tool_item = ToolComboBox(self._font_size_combo)
         self.insert(tool_item, -1);
-        tool_item.show()
-
 
         # font 
         self._has_custom_fonts = False
@@ -315,13 +306,11 @@ class TextToolbar(gtk.Toolbar):
                 self._font_combo.set_active(i)
         tool_item = ToolComboBox(self._font_combo)
         self.insert(tool_item, -1);
-        tool_item.show()
 
         separator = gtk.SeparatorToolItem()
         separator.set_draw(True)
         self.insert(separator, -1)
-        separator.show()
-
+        self.show_all()
 
     def get_text_selected_handler(self):
         return self._text_selected_handler
@@ -335,7 +324,6 @@ class TextToolbar(gtk.Toolbar):
 
         self.insert(tool_item, -1)
         tool_item.show()
-
 
     def _bold_cb(self, button):
         globo_activo = self._page.get_globo_activo()
