@@ -13,9 +13,13 @@ import persistencia
 from sugar.activity import activity
 from gettext import gettext as _
 
+from sugar.graphics.toolbarbox import ToolbarBox, ToolbarButton
+from sugar.activity.widgets import StopButton
+from sugar.activity.widgets import ActivityToolbarButton
+
 from sugar.graphics.toolbutton import ToolButton
 from toolbar import TextToolbar
-from toolbar import GlobesToolbar
+from toolbar import GlobesManager
 
 import time
 from sugar.datastore import datastore
@@ -36,45 +40,49 @@ class HistorietaActivity(activity.Activity):
         self.set_title('FotoToon')
 
         self.connect("key_press_event", self.keypress)
+        self._max_participants = 1
 
-        toolbox = activity.ActivityToolbox(self)
+        toolbar_box = ToolbarBox()
+        activity_button = ActivityToolbarButton(self)
+        activity_toolbar = activity_button.page
+        toolbar_box.toolbar.insert(activity_button, 0)
+
+        #self._add_toolbar_buttons(toolbar_box)
+        self.set_toolbar_box(toolbar_box)
+
+        toolbar = toolbar_box.toolbar
 
         self.page = Page()
 
-        self.globesToolbar = GlobesToolbar(self.page, self)
-        toolbox.add_toolbar(_('Globes'), self.globesToolbar)
+        self.globes_manager = GlobesManager(toolbar, self.page, self)
 
         # fonts
-        self.textToolbar = TextToolbar(self.page)
-        toolbox.add_toolbar(_('Text'), self.textToolbar)
+        text_button = ToolbarButton()
+        text_button.props.page = TextToolbar(self.page)
+        text_button.props.icon_name = 'format-text-size'
+        text_button.props.label = _('Text')
+        toolbar_box.toolbar.insert(text_button, -1)
 
-        """
-        # agrego boton para grabar como imagen
-        toolbox._activity_toolbar
-        b_exportar = ToolButton('save-as-image')
-        b_exportar.connect('clicked', self.write_image)
-        b_exportar.set_tooltip(_('Save as Image'))
-        toolbox._activity_toolbar.insert(b_exportar, 4)
-        """
+        separator = gtk.SeparatorToolItem()
+        separator.props.draw = False
+        separator.set_expand(True)
+        toolbar_box.toolbar.insert(separator, -1)
 
-        self._activity_toolbar = toolbox.get_activity_toolbar()
-        self._keep_palette = self._activity_toolbar.keep.get_palette()
+        stop = StopButton(self)
+        toolbar_box.toolbar.insert(stop, -1)
+
+        toolbar_box.show_all()
+
+        self._keep_palette = activity_button.page.keep.get_palette()
 
         # hook up the export formats to the Keep button
         for i, f in enumerate(self._EXPORT_FORMATS):
             menu_item = MenuItem(f[1])
-            #menu_item.connect('activate', self.write_image, f[0], f[2], f[3])
             menu_item.connect('activate', self.write_image)
             self._keep_palette.menu.append(menu_item)
             menu_item.show()
 
-        self._max_participants = 0
-
-        self.set_toolbox(toolbox)
-        toolbox.show_all()
-        toolbox.set_current_toolbar(1)
-
-        toolbox.get_activity_toolbar().title.connect("focus-in-event",
+        activity_button.page.title.connect("focus-in-event",
             self.on_title)
 
         scrolled = gtk.ScrolledWindow()
@@ -330,7 +338,7 @@ class ComicBox(gtk.DrawingArea):
         self.image = None
         self.image_saved = False
 
-        self.width = (int) (SCREEN_WIDTH - DEF_SPACING) / 2
+        self.width = (int)(SCREEN_WIDTH - DEF_SPACING) / 2
         self.height = BOX_HEIGHT
 
         if (image_file_name != None):
@@ -525,7 +533,7 @@ class ComicBox(gtk.DrawingArea):
 
     def releassing(self, widget, event):
         #Cuando se deja de pulsar el mouse
-        self.glob_press=False
+        self.glob_press = False
         self.is_dimension = False
         self.is_punto = False
 
