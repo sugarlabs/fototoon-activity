@@ -76,44 +76,50 @@ class GlobesManager():
         self._activity = activity
 
         # agregar cuadro
-        self.b_add_photo = ToolButton('add-photo')
-        self.b_add_photo.connect('clicked', self._image_cb)
-        self.b_add_photo.set_tooltip(_('Add Photo'))
-        toolbar.insert(self.b_add_photo, -1)
+        self.add_photo = ToolButton()
+        self.add_photo.props.icon_name = 'add-photo'
+        self.add_photo.connect('clicked', self.__btn_clicked)
+        self.add_photo.set_tooltip(_('Add Photo'))
+        toolbar.insert(self.add_photo, -1)
 
         separator = gtk.SeparatorToolItem()
         separator.set_draw(True)
         toolbar.insert(separator, -1)
 
         # agrega globo
-        self.b_agregar = ToolButton('add-globe')
-        self.b_agregar.connect('clicked', self.agrega_gnormal)
-        self.b_agregar.set_tooltip(_('Add Globe'))
-        toolbar.insert(self.b_agregar, -1)
+        self.add_globe = ToolButton()
+        self.add_globe.props.icon_name = 'add-globe'
+        self.add_globe.connect('clicked', self.__btn_clicked)
+        self.add_globe.set_tooltip(_('Add Globe'))
+        toolbar.insert(self.add_globe, -1)
 
         #agrega nube
-        self.b_agregar = ToolButton('add-nube')
-        self.b_agregar.connect('clicked', self.agrega_gpensar)
-        self.b_agregar.set_tooltip(_('Add Think'))
-        toolbar.insert(self.b_agregar, -1)
+        self.add_cloud = ToolButton()
+        self.add_cloud.props.icon_name = 'add-nube'
+        self.add_cloud.connect('clicked', self.__btn_clicked)
+        self.add_cloud.set_tooltip(_('Add Think'))
+        toolbar.insert(self.add_cloud, -1)
 
         # agrega susurro
-        self.b_agregar = ToolButton('add-susurro')
-        self.b_agregar.connect('clicked', self.agrega_gdespacio)
-        self.b_agregar.set_tooltip(_('Add Whisper'))
-        toolbar.insert(self.b_agregar, -1)
+        self.add_whisp = ToolButton()
+        self.add_whisp.props.icon_name = 'add-susurro'
+        self.add_whisp.connect('clicked', self.__btn_clicked)
+        self.add_whisp.set_tooltip(_('Add Whisper'))
+        toolbar.insert(self.add_whisp, -1)
 
         # agrega grito
-        self.b_agregar = ToolButton('add-grito')
-        self.b_agregar.connect('clicked', self.agrega_ggrito)
-        self.b_agregar.set_tooltip(_('Add Exclamation'))
-        toolbar.insert(self.b_agregar, -1)
+        self.add_scream = ToolButton()
+        self.add_scream.props.icon_name = 'add-grito'
+        self.add_scream.connect('clicked', self.__btn_clicked)
+        self.add_scream.set_tooltip(_('Add Exclamation'))
+        toolbar.insert(self.add_scream, -1)
 
         # agrega caja
-        self.b_agregar = ToolButton('add-box')
-        self.b_agregar.connect('clicked', self.agrega_grect)
-        self.b_agregar.set_tooltip(_('Add Box'))
-        toolbar.insert(self.b_agregar, -1)
+        self.add_box = ToolButton()
+        self.add_box.props.icon_name = 'add-box'
+        self.add_box.connect('clicked', self.__btn_clicked)
+        self.add_box.set_tooltip(_('Add Box'))
+        toolbar.insert(self.add_box, -1)
 
         separator = gtk.SeparatorToolItem()
         separator.set_draw(True)
@@ -131,23 +137,25 @@ class GlobesManager():
         self.b_borrar.set_tooltip(_('Delete'))
         toolbar.insert(self.b_borrar, -1)
 
-    def agrega_gnormal(self, boton):
-        self._page.get_active_box().add_globo(60, 60)
+    def __btn_clicked(self, boton):
+        logging.error('boton clicked %s', boton.props.icon_name)
+        if boton == self.add_globe:
+            self._page.get_active_box().add_globo(60, 60)
 
-    def agrega_gpensar(self, boton):
-        self._page.get_active_box().add_nube(60, 60)
+        if boton == self.add_cloud:
+            self._page.get_active_box().add_nube(60, 60)
 
-    def agrega_gdespacio(self, boton):
-        self._page.get_active_box().add_globo(60, 60, gmodo="despacio")
+        if boton == self.add_whisp:
+            self._page.get_active_box().add_globo(60, 60, gmodo="despacio")
 
-    def agrega_ggrito(self, boton):
-        self._page.get_active_box().add_grito(60, 60)
+        if boton == self.add_scream:
+            self._page.get_active_box().add_grito(60, 60)
 
-    def agrega_grect(self, boton):
-        self._page.get_active_box().add_rectangulo(60, 60)
+        if boton == self.add_box:
+            self._page.get_active_box().add_rectangulo(60, 60)
 
-    def agrega_imagen(self, boton):
-        self._page.get_active_box().add_imagen(60, 60)
+        if boton == self.add_photo:
+            self.add_image()
 
     def girar(self, boton):
         print "girando"
@@ -200,7 +208,7 @@ class GlobesManager():
             last_box.queue_draw()
             self._page.boxs.pop()
 
-    def _image_cb(self, button):
+    def add_image(self):
         try:
             chooser = ObjectChooser(_('Choose image'),
                 self._activity, gtk.DIALOG_MODAL |

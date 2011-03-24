@@ -66,14 +66,16 @@
    inkscape:vp_z="1 : 0.5 : 1"
    inkscape:vp_y="0 : 1000 : 0"
    inkscape:vp_x="0 : 0.5 : 1"
-   sodipodi:type="inkscape:persp3d" /></defs><rect
+   sodipodi:type="inkscape:persp3d" /></defs>
+<!--rect
      style="fill:none;stroke:#ffffff;stroke-width:2;stroke-linecap:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;fill-opacity:1"
      id="rect1644"
      width="54.898254"
      height="55.122215"
      x="0.20989008"
      y="0.11581264"
-     ry="3.8061128" /><path
+     ry="3.8061128" / -->
+<path
      style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1.86975145;stroke-linecap:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:1.86975145, 3.73950291;stroke-dashoffset:0"
      d="m 31.559765,2.1577207 c -11.843026,0 -21.440125,6.7597343 -21.440125,15.0850343 0,8.325301 9.597099,15.057807 21.440125,15.057807 0.914185,0 1.811611,-0.03087 2.695688,-0.108917 2.643928,4.512539 7.805427,7.593994 13.760548,7.760352 -2.925897,-2.504111 -5.139787,-5.740724 -6.300388,-9.42134 6.719651,-2.545253 11.284277,-7.545962 11.284277,-13.287902 0,-8.3253 -9.597099,-15.0850343 -21.440125,-15.0850343 z"
      id="path1046" /><path
