@@ -1,10 +1,9 @@
 [Activity]
 name = FotoToon
-id = org.eq.FotoToon
 service_name = org.eq.FotoToon
 icon = historieta
-class = historietaactivity.HistorietaActivity
+exec = sugar-activity historietaactivity.HistorietaActivity
 show_launcher = yes
-activity_version = 5
+activity_version = 6
 host_version = 2
 mime_types = application/x-fototoon-activity;
