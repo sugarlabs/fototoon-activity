@@ -1,0 +1,86 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-08-16 04:16-0300\n"
+"PO-Revision-Date: 2011-02-16 22:20+0200\n"
+"Last-Translator: Florian <seibert.florian@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.0.1\n"
+
+#: activity/activity.info:2
+msgid "FotoToon"
+msgstr ""
+
+#: /home/gonzalo/Activities/FotoToon.activity/historietaactivity.py:32
+msgid "Globes"
+msgstr ""
+
+#: /home/gonzalo/Activities/FotoToon.activity/historietaactivity.py:36
+msgid "Text"
+msgstr "Text"
+
+#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:51
+#: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:64
+msgid "Add Photo"
+msgstr "Foto hinzufügen"
+
+#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:61
+#: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:74
+msgid "Add Globe"
+msgstr "Globus hinzufügen"
+
+#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:67
+#: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:80
+msgid "Add Think"
+msgstr "Gedanken hinzufügen"
+
+#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:73
+#: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:86
+msgid "Add Whisper"
+msgstr "Geflüster hinzufügen"
+
+#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:79
+#: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:92
+msgid "Add Exclamation"
+msgstr "Ausruf hinzufügen"
+
+#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:85
+#: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:98
+msgid "Add Box"
+msgstr "Box hinzufügen"
+
+#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:95
+#: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:108
+msgid "Turn"
+msgstr "Kurve"
+
+#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:101
+#: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:114
+msgid "Delete"
+msgstr "Löschen"
+
+#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:179
+#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:181
+#: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:186
+msgid "Choose image"
+msgstr "Bild auswählen"
+
+#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:211
+#: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:216
+msgid "Bold"
+msgstr "Fett"
+
+#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:217
+#: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:222
+msgid "Italic"
+msgstr ""
