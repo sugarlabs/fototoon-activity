@@ -7,23 +7,23 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-08-16 04:16-0300\n"
-"PO-Revision-Date: 2011-03-24 07:42+0200\n"
-"Last-Translator: Chris <cjl@laptop.org>\n"
+"PO-Revision-Date: 2011-07-29 19:33+0200\n"
+"Last-Translator:  <anush.mkrtchyan@ca1492.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hy\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Pootle 2.0.1\n"
 
 #: activity/activity.info:2
 msgid "FotoToon"
-msgstr ""
+msgstr "ՖոտոՏուն"
 
 #: /home/gonzalo/Activities/FotoToon.activity/historietaactivity.py:32
 msgid "Globes"
-msgstr ""
+msgstr "Գունդ"
 
 #: /home/gonzalo/Activities/FotoToon.activity/historietaactivity.py:36
 msgid "Text"
@@ -32,37 +32,37 @@ msgstr "Տեքստ"
 #: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:51
 #: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:64
 msgid "Add Photo"
-msgstr ""
+msgstr "Ավելացնել լուսանկար"
 
 #: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:61
 #: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:74
 msgid "Add Globe"
-msgstr ""
+msgstr "Ավելացնել գունդ"
 
 #: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:67
 #: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:80
 msgid "Add Think"
-msgstr ""
+msgstr "Ավելացնել խորհում"
 
 #: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:73
 #: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:86
 msgid "Add Whisper"
-msgstr ""
+msgstr "Ավելացնել շշնջյուն"
 
 #: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:79
 #: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:92
 msgid "Add Exclamation"
-msgstr ""
+msgstr "Ավելացնել բացականչություն"
 
 #: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:85
 #: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:98
 msgid "Add Box"
-msgstr ""
+msgstr "Ավելացնել արկղ"
 
 #: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:95
 #: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:108
 msgid "Turn"
-msgstr ""
+msgstr "Պտտել"
 
 #: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:101
 #: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:114
@@ -78,9 +78,9 @@ msgstr "Ընտրել պատկերը"
 #: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:211
 #: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:216
 msgid "Bold"
-msgstr ""
+msgstr "Թավ"
 
 #: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:217
 #: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:222
 msgid "Italic"
-msgstr ""
+msgstr "Շեղագիր"
