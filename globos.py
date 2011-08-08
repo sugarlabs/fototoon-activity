@@ -1,4 +1,4 @@
-# -*- coding: UTF8 -*-
+# -*- coding: UTF-8 -*-
 
 import os
 import math
@@ -315,9 +315,9 @@ class Globo:
         alto_ant = self.alto
         ancho_ant = self.ancho
 
-        # si estoy cambiando el tamaño desde la derecha o desde abajo
-        # cambio x / y como para que se calcule como si fuera desde
-        # arriba y a la izquierda
+        # if I am changing the size from the right or from the bottom
+        # change x / y to calculate like if changing from
+        # top and left
         if x > self.x:
             x = 2 * self.x - x
         if y > self.y:

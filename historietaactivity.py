@@ -1,4 +1,4 @@
-# -*- coding: UTF8 -*-
+# -*- coding: UTF-8 -*-
 
 import os
 import math
