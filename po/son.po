@@ -2,84 +2,81 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-08-08 09:01-0300\n"
-"PO-Revision-Date: 2011-08-08 19:10+0200\n"
-"Last-Translator: Aputsiaq Niels <aj@isit.gl>\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Pootle 2.0.1\n"
+"X-Generator: Translate Toolkit 1.7.0\n"
 
 #: activity/activity.info:2
 msgid "FotoToon"
-msgstr "FotoTegneseriefigur"
+msgstr ""
 
 #: toolbar.py:82
 msgid "Add Photo"
-msgstr "Tilføj foto"
+msgstr ""
 
 #: toolbar.py:93
 msgid "Add Globe"
-msgstr "Tilføj globe"
+msgstr ""
 
 #: toolbar.py:100
 msgid "Add Think"
-msgstr "Tilføj tanke"
+msgstr ""
 
 #: toolbar.py:107
 msgid "Add Whisper"
-msgstr "Tilføj hvisken"
+msgstr ""
 
 #: toolbar.py:114
 msgid "Add Exclamation"
-msgstr "Tilføj udråb"
+msgstr ""
 
 #: toolbar.py:121
 msgid "Add Box"
-msgstr "Tilføj boks"
+msgstr ""
 
 #: toolbar.py:131
 msgid "Turn"
-msgstr "Vend"
+msgstr ""
 
 #: toolbar.py:137
 msgid "Delete"
-msgstr "Slet"
+msgstr ""
 
 #: toolbar.py:213 toolbar.py:217
 msgid "Choose image"
-msgstr "Vælg billede"
+msgstr ""
 
 #: toolbar.py:250
 msgid "Bold"
-msgstr "Fed"
+msgstr ""
 
 #: toolbar.py:255
 msgid "Italic"
-msgstr "Kursiv"
+msgstr ""
 
 #: toolbar.py:270
 msgid "Text Color"
-msgstr "Tekstfarve"
+msgstr ""
 
 #: historietaactivity.py:35
 msgid "Save as Image"
-msgstr "Gem som billede"
+msgstr ""
 
 #: historietaactivity.py:35
 msgid "PNG"
-msgstr "PNG"
+msgstr ""
 
 #: historietaactivity.py:63
 msgid "Text"
-msgstr "Tekst"
-
-#~ msgid "Globes"
-#~ msgstr "Glober"
+msgstr ""

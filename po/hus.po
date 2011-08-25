@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-08-08 09:01-0300\n"
-"PO-Revision-Date: 2011-08-08 19:10+0200\n"
-"Last-Translator: Aputsiaq Niels <aj@isit.gl>\n"
+"PO-Revision-Date: 2011-08-10 16:36+0200\n"
+"Last-Translator: <saulleoart@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -19,59 +19,64 @@ msgstr ""
 
 #: activity/activity.info:2
 msgid "FotoToon"
-msgstr "FotoTegneseriefigur"
+msgstr "Foto Toon"
 
 #: toolbar.py:82
 msgid "Add Photo"
-msgstr "Tilføj foto"
+msgstr "Ka punk'uy an walek"
 
+# An kaw globo yab in kwa'al in bijil ti láb jaxtám nana´ u inkiy juni ít kaw.
+# tokow= nube
+# t'íl= ibnal ti al an kaw" t'ilomtaláb"
+# GLOBO= TOKOWT'ÏL
+#
 #: toolbar.py:93
 msgid "Add Globe"
-msgstr "Tilføj globe"
+msgstr "Ka punk'uy an t'iplab Tokowt'íl"
 
 #: toolbar.py:100
 msgid "Add Think"
-msgstr "Tilføj tanke"
+msgstr "Ka punk'uy an dhuchlab"
 
 #: toolbar.py:107
 msgid "Add Whisper"
-msgstr "Tilføj hvisken"
+msgstr "Ka punk'uy an t'iplab tokowt'íl-kwé'-kaw"
 
 #: toolbar.py:114
 msgid "Add Exclamation"
-msgstr "Tilføj udråb"
+msgstr "Ka punk'uy an t'iplab tokowt'íl-jik'paxtaláab"
 
 #: toolbar.py:121
 msgid "Add Box"
-msgstr "Tilføj boks"
+msgstr "Ka punk'uy an pek'madh balixtaláb"
 
 #: toolbar.py:131
 msgid "Turn"
-msgstr "Vend"
+msgstr "Wilk'iy"
 
 #: toolbar.py:137
 msgid "Delete"
-msgstr "Slet"
+msgstr "Pakuw"
 
 #: toolbar.py:213 toolbar.py:217
 msgid "Choose image"
-msgstr "Vælg billede"
+msgstr "Taluy an kot'bixtaláb"
 
 #: toolbar.py:250
 msgid "Bold"
-msgstr "Fed"
+msgstr "T'unk'ux"
 
 #: toolbar.py:255
 msgid "Italic"
-msgstr "Kursiv"
+msgstr "Itálica"
 
 #: toolbar.py:270
 msgid "Text Color"
-msgstr "Tekstfarve"
+msgstr "Mukuxtal an dhuchlab"
 
 #: historietaactivity.py:35
 msgid "Save as Image"
-msgstr "Gem som billede"
+msgstr "Ka dhaya' jant'ini' i k'ot'bixtaláb"
 
 #: historietaactivity.py:35
 msgid "PNG"
@@ -79,7 +84,4 @@ msgstr "PNG"
 
 #: historietaactivity.py:63
 msgid "Text"
-msgstr "Tekst"
-
-#~ msgid "Globes"
-#~ msgstr "Glober"
+msgstr "Dhuchlab"
