@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [
-	<!ENTITY ns_svg "http://www.w3.org/2000/svg">
-	<!ENTITY ns_xlink "http://www.w3.org/1999/xlink">
-	<!ENTITY stroke_color "#000000">
-	<!ENTITY fill_color "#AAAAAA">
+       <!ENTITY ns_svg "http://www.w3.org/2000/svg">
+       <!ENTITY ns_xlink "http://www.w3.org/1999/xlink">
+       <!ENTITY stroke_color "#000000">
+       <!ENTITY fill_color "#AAAAAA">
 ]>
 
 <svg
@@ -17,7 +17,8 @@
   <defs
      id="defs2175" />
   <g
-     id="layer1">
+     id="layer1"
+     transform="matrix(0.82620172,0,0,0.84182981,4.2805137,3.2126069)">
     <path
        d="m 22.127176,13.501917 c -6.036427,0.344835 -4.687469,-2.881599 -5.879094,-2.45094 -20.5401977,2.781211 -17.5450694,-13.706509 4.21034,-7.9049136 7.016126,3.3371866 -0.336581,6.7071706 -0.336581,6.7071706 0,0 -0.326222,2.023059 2.005335,3.648683 z"
        id="path621"
@@ -27,7 +28,7 @@
        id="rect877"
        style="fill:&fill_color;;fill-opacity:1;stroke:&stroke_color;;stroke-width:2;stroke-linecap:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
     <path
-       d="m 17.142858,26.428572 a 5.5,5.8571429 0 1 1 -11.0000004,0 5.5,5.8571429 0 1 1 11.0000004,0 z"
+       d="m 17.142858,26.428572 a 5.5000002,5.8571431 0 1 1 -11.0000004,0 5.5000002,5.8571431 0 1 1 11.0000004,0 z"
        transform="translate(20.5,-10.571429)"
        id="path235"
        style="fill:&fill_color;;fill-opacity:1;stroke:&stroke_color;;stroke-width:2;stroke-linecap:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
