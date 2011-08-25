@@ -77,7 +77,7 @@ class GlobesManager():
 
         # agregar cuadro
         self.add_photo = ToolButton()
-        self.add_photo.props.icon_name = 'add-photo'
+        self.add_photo.props.icon_name = 'insert-picture'
         self.add_photo.connect('clicked', self.__btn_clicked)
         self.add_photo.set_tooltip(_('Add Photo'))
         toolbar.insert(self.add_photo, -1)
