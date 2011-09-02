@@ -10,14 +10,15 @@
    height="55"
    viewBox="0 0 55 55"
    id="svg120"
-   xml:space="preserve"><rect
+   xml:space="preserve">
+   <rect
    width="37.177303"
    height="21.948048"
    ry="0.22275767"
    x="14.109459"
    y="5.2809548"
    id="rect1700"
-   style="fill-opacity:1;stroke:&fill_color;;stroke-width:2;stroke-linecap:square;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" /><g
+   style="fill-opacity:1;stroke:&fill_color;;fill:none;stroke-width:2;stroke-linecap:square;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" /><g
    transform="translate(25.519287,11.066432)"
    id="g3759"><path
      d="m -13.107667,23.926346 0,14.670779"
