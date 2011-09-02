@@ -95,21 +95,21 @@ class GlobesManager():
 
         #agrega nube
         self.add_cloud = ToolButton()
-        self.add_cloud.props.icon_name = 'add-nube'
+        self.add_cloud.props.icon_name = 'add-think'
         self.add_cloud.connect('clicked', self.__btn_clicked)
         self.add_cloud.set_tooltip(_('Add Think'))
         toolbar.insert(self.add_cloud, -1)
 
         # agrega susurro
         self.add_whisp = ToolButton()
-        self.add_whisp.props.icon_name = 'add-susurro'
+        self.add_whisp.props.icon_name = 'add-whisper'
         self.add_whisp.connect('clicked', self.__btn_clicked)
         self.add_whisp.set_tooltip(_('Add Whisper'))
         toolbar.insert(self.add_whisp, -1)
 
         # agrega grito
         self.add_scream = ToolButton()
-        self.add_scream.props.icon_name = 'add-grito'
+        self.add_scream.props.icon_name = 'add-scream'
         self.add_scream.connect('clicked', self.__btn_clicked)
         self.add_scream.set_tooltip(_('Add Exclamation'))
         toolbar.insert(self.add_scream, -1)
@@ -322,9 +322,6 @@ class TextToolbar(gtk.Toolbar):
         tool_item = ToolComboBox(self._font_combo)
         self.insert(tool_item, -1)
 
-        separator = gtk.SeparatorToolItem()
-        separator.set_draw(True)
-        self.insert(separator, -1)
         self.show_all()
 
     def get_text_selected_handler(self):
