@@ -73,14 +73,18 @@ class HistorietaActivity(activity.Activity):
 
         toolbar_box.show_all()
 
-        self._keep_palette = activity_button.page.keep.get_palette()
+        # add export button
 
-        # hook up the export formats to the Keep button
-        for i, f in enumerate(self._EXPORT_FORMATS):
-            menu_item = MenuItem(f[1])
-            menu_item.connect('activate', self.write_image)
-            self._keep_palette.menu.append(menu_item)
-            menu_item.show()
+        separator_2 = gtk.SeparatorToolItem()
+        separator_2.show()
+        activity_toolbar.insert(separator_2, -1)
+
+        self.bt_save_as_image = ToolButton()
+        self.bt_save_as_image.props.icon_name = 'save-as-image'
+        self.bt_save_as_image.connect('clicked', self.write_image)
+        self.bt_save_as_image.set_tooltip(_('Save as Image'))
+        activity_toolbar.insert(self.bt_save_as_image, -1)
+        self.bt_save_as_image.show()
 
         activity_button.page.title.connect("focus-in-event",
             self.on_title)
