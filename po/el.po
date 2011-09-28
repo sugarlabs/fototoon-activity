@@ -6,9 +6,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-16 04:16-0300\n"
-"PO-Revision-Date: 2011-02-20 01:25+0200\n"
-"Last-Translator: John Sarlis <sarlis@sch.gr>\n"
+"POT-Creation-Date: 2011-08-08 09:01-0300\n"
+"PO-Revision-Date: 2011-08-10 17:10+0200\n"
+"Last-Translator: Yannis <kiolalis@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -21,66 +21,65 @@ msgstr ""
 msgid "FotoToon"
 msgstr "ΦωτοΚόμικ"
 
-#: /home/gonzalo/Activities/FotoToon.activity/historietaactivity.py:32
-msgid "Globes"
-msgstr "Σφαίρα"
-
-#: /home/gonzalo/Activities/FotoToon.activity/historietaactivity.py:36
-msgid "Text"
-msgstr "Κείμενο"
-
-#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:51
-#: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:64
+#: toolbar.py:82
 msgid "Add Photo"
 msgstr "Προσθήκη Φωτογραφίας"
 
-#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:61
-#: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:74
+#: toolbar.py:93
 msgid "Add Globe"
 msgstr "Προσθήκη Σφαίρας"
 
-#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:67
-#: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:80
+#: toolbar.py:100
 msgid "Add Think"
 msgstr "Προσθήκη Σκέψης"
 
-#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:73
-#: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:86
+#: toolbar.py:107
 msgid "Add Whisper"
 msgstr "Προσθήκη Ψιθυρίσματος"
 
-#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:79
-#: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:92
+#: toolbar.py:114
 msgid "Add Exclamation"
 msgstr "Προσθήκη Θαυμαστικού"
 
-#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:85
-#: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:98
+#: toolbar.py:121
 msgid "Add Box"
 msgstr "Προσθήκη Κουτιού"
 
-#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:95
-#: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:108
+#: toolbar.py:131
 msgid "Turn"
 msgstr "Στροφή"
 
-#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:101
-#: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:114
+#: toolbar.py:137
 msgid "Delete"
 msgstr "Διαγραφή"
 
-#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:179
-#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:181
-#: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:186
+#: toolbar.py:213 toolbar.py:217
 msgid "Choose image"
 msgstr "Επιλογή εικόνας"
 
-#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:211
-#: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:216
+#: toolbar.py:250
 msgid "Bold"
 msgstr "Έντονα"
 
-#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:217
-#: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:222
+#: toolbar.py:255
 msgid "Italic"
 msgstr "Πλάγια"
+
+#: toolbar.py:270
+msgid "Text Color"
+msgstr "Χρώμα κειμένου"
+
+#: historietaactivity.py:35
+msgid "Save as Image"
+msgstr "Αποθήκευση ως εικόνα"
+
+#: historietaactivity.py:35
+msgid "PNG"
+msgstr "PNG"
+
+#: historietaactivity.py:63
+msgid "Text"
+msgstr "Κείμενο"
+
+#~ msgid "Globes"
+#~ msgstr "Σφαίρα"
