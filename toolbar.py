@@ -31,6 +31,9 @@ from sugar.graphics.combobox import ComboBox
 from sugar.graphics.toolcombobox import ToolComboBox
 from sugar.graphics import iconentry
 from sugar.graphics.objectchooser import ObjectChooser
+from sugar.activity.widgets import RadioMenuButton
+from sugar.graphics.menuitem import MenuItem
+
 WITH_COLOR_BUTTON = True
 try:
     from sugar.graphics.colorbutton import ColorToolButton
@@ -121,6 +124,21 @@ class GlobesManager():
         self.add_box.set_tooltip(_('Add Box'))
         toolbar.insert(self.add_box, -1)
 
+        # lineas de movimiento
+        # Agregar aqui el nombre de archivo de una linea de moviemiento
+        self._lines = {'curves': _('Curves'), 'straight': _('Straight'),
+                'highlight': _('Highlight'), 'idea': _('Idea')}
+
+        self._lines_menu = RadioMenuButton(icon_name='curves')
+        self._lines_menu.props.tooltip = _('Choose a movement line')
+
+        for line in self._lines.keys():
+            menu_item = MenuItem(icon_name=line, text_label=self._lines[line])
+            menu_item.connect('activate', self.__activate_add_line_cb, line)
+            self._lines_menu.props.palette.menu.append(menu_item)
+            menu_item.show()
+        toolbar.insert(self._lines_menu, -1)
+
         separator = gtk.SeparatorToolItem()
         separator.set_draw(True)
         toolbar.insert(separator, -1)
@@ -136,6 +154,10 @@ class GlobesManager():
         self.b_borrar.connect('clicked', self.borrar)
         self.b_borrar.set_tooltip(_('Delete'))
         toolbar.insert(self.b_borrar, -1)
+
+    def __activate_add_line_cb(self, widget, image_name):
+        active_box = self._page.get_active_box()
+        active_box.add_imagen("icons/" + image_name + ".svg", 60, 60)
 
     def __btn_clicked(self, boton):
         logging.error('boton clicked %s', boton.props.icon_name)

@@ -392,9 +392,9 @@ class ComicBox(gtk.DrawingArea):
         self._globo_activo = globo
         self.queue_draw()
 
-    def add_imagen(self, xpos, ypos):
+    def add_imagen(self, imagen, xpos, ypos):
         #agrega una imagen al cuadro
-        globo = globos.Imagen(x=xpos, y=ypos)
+        globo = globos.Imagen(imagen, x=xpos, y=ypos)
         self.globos.append(globo)
         self._globo_activo = globo
         self.queue_draw()

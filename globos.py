@@ -10,6 +10,7 @@ import logging
 
 import sugar.env
 from sugar.activity import activity
+from sugar.graphics.icon import _IconBuffer
 
 ANCHO_LINEAS_CONTROLES = 2
 
@@ -660,38 +661,40 @@ class Grito(Globo):
 
 class Imagen(Globo):
 
-    def __init__(self, x, y, ancho=50, alto=30):
+    def __init__(self, imagen, x, y, ancho=50, alto=30, direccion=DIR_ABAJO):
 
+        self.globe_type = "IMAGE"
         self.radio = 30
         self.ancho = ancho
         self.alto = alto
+        self.image_name = imagen
 
         self.selec = False
 
         self.x = x
         self.y = y
+        self.direccion = direccion
+        self.punto = [0, 0]  # fake, but needed for persistence
 
         appdir = os.path.join(activity.get_bundle_path())
-        self.pixbuf = \
-            gtk.gdk.pixbuf_new_from_file(os.path.join(appdir, 'mascota2.png'))
-
+        self.icon_buffer = _IconBuffer()
+        self.icon_buffer.file_name = os.path.join(appdir, imagen)
+        self.icon_buffer.stroke_color = '#000000'
         self.texto = CuadroTexto(self.x, self.y, 20, 20)
 
     def imprimir(self, context):
 
         context.save()
+        self.icon_buffer.width = self.ancho * 2
+        self.icon_buffer.height = self.alto * 2
 
-        context.scale(self.ancho / (self.pixbuf.get_width() * 0.5),
-            self.alto / (self.pixbuf.get_height() * 0.5))
+        surface =  self.icon_buffer.get_surface()
+        x = self.x - surface.get_width() / 2
+        y = self.y - surface.get_height() / 2
 
-        x = self.x * self.pixbuf.get_width() / (self.ancho * 2.0)
-        y = self.y * self.pixbuf.get_height() / (self.alto * 2.0)
+        context.set_source_surface(surface, x, y)
 
-
-        context.set_source_pixbuf(self.pixbuf, x - self.pixbuf.get_width() / 2,
-            y - self.pixbuf.get_height() / 2)
         context.paint()
-
         context.restore()
 
         # si esta seleccionado se dibujan los controles
@@ -699,11 +702,10 @@ class Imagen(Globo):
             context.set_line_width(ANCHO_LINEAS_CONTROLES)
             context.set_source_rgb(1, 1, 1)
             context.rectangle(self.x - self.ancho, self.y - self.alto,
-                2 * self.ancho, 2 * self.alto)
-            context.stroke()
-            context.set_source_rgb(1, 1, 1)
-            context.rectangle(self.x - self.ancho - 5, self.y - self.alto - 5,
-                10, 10)
+                    2 * self.ancho, 2 * self.alto)
+            context.stroke_preserve()
+            context.set_source_rgb(0, 0, 0)
+            context.set_dash([2])
             context.stroke()
 
     def calc_area_texto(self):

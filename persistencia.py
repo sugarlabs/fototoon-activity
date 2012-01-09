@@ -54,6 +54,8 @@ class Persistence:
                 globoData['direction'] = globo.direccion
                 if (globo.__class__ == globos.Globo):
                     globoData['mode'] = globo.modo
+                if (globo.__class__ == globos.Imagen):
+                    globoData['image_name'] = globo.image_name
                 globoData['x'], globoData['y'] = globo.x, globo.y
                 #globoData.ancho_text, globoData.alto_text =
                 #globo.ancho_text, globo.alto_text
@@ -160,6 +162,9 @@ class Persistence:
                         direccion=globo_direccion)
                 elif (tipo_globo == 'RECTANGLE'):
                     globo = globos.Rectangulo(x=globo_x, y=globo_y)
+                elif (tipo_globo == 'IMAGE'):
+                    image_name = globoData['image_name']
+                    globo = globos.Imagen(image_name, x=globo_x, y=globo_y)
 
                 if globo != None:
                     globo.radio = globoData['radio']
