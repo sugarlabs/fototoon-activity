@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-01-11 00:32-0500\n"
-"PO-Revision-Date: 2012-01-23 20:46+0200\n"
+"PO-Revision-Date: 2012-02-01 00:43+0200\n"
 "Last-Translator: Chris <cjl@laptop.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: en_GB\n"
@@ -99,7 +99,7 @@ msgstr "Italic"
 
 #: toolbar.py:292
 msgid "Text Color"
-msgstr "Text Color"
+msgstr "Text Colour"
 
 #~ msgid "Globes"
 #~ msgstr "Globes"
