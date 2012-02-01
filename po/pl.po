@@ -6,71 +6,23 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-08-08 09:01-0300\n"
-"PO-Revision-Date: 2011-06-13 17:15+0200\n"
-"Last-Translator: Chris <cjl@laptop.org>\n"
+"POT-Creation-Date: 2012-01-11 00:32-0500\n"
+"PO-Revision-Date: 2012-01-26 13:40+0200\n"
+"Last-Translator: Marcin <ulinski.marcin@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Pootle 2.0.1\n"
+"X-Generator: Pootle 2.0.5\n"
 
 #: activity/activity.info:2
 msgid "FotoToon"
 msgstr "FotoKomiks"
 
-#: toolbar.py:82
-msgid "Add Photo"
-msgstr "Dodaj zdjęcie"
-
-#: toolbar.py:93
-msgid "Add Globe"
-msgstr "Dodaj dymek"
-
-#: toolbar.py:100
-msgid "Add Think"
-msgstr "Dodaj myśl"
-
-#: toolbar.py:107
-msgid "Add Whisper"
-msgstr "Dodaj szept"
-
-#: toolbar.py:114
-msgid "Add Exclamation"
-msgstr "Dodaj okrzyk"
-
-#: toolbar.py:121
-msgid "Add Box"
-msgstr "Dodaj pole"
-
-#: toolbar.py:131
-msgid "Turn"
-msgstr "Przekręć"
-
-#: toolbar.py:137
-msgid "Delete"
-msgstr "Usuń"
-
-#: toolbar.py:213 toolbar.py:217
-msgid "Choose image"
-msgstr "Wybierz obraz"
-
-#: toolbar.py:250
-msgid "Bold"
-msgstr "Pogrubione"
-
-#: toolbar.py:255
-msgid "Italic"
-msgstr "Kursywa"
-
-#: toolbar.py:270
-msgid "Text Color"
-msgstr "Kolor tekstu"
-
-#: historietaactivity.py:35
+#: historietaactivity.py:35 historietaactivity.py:85
 msgid "Save as Image"
 msgstr "Zapisz jako obraz"
 
@@ -81,3 +33,72 @@ msgstr "PNG"
 #: historietaactivity.py:63
 msgid "Text"
 msgstr "Tekst"
+
+#: toolbar.py:85
+msgid "Add Photo"
+msgstr "Dodaj zdjęcie"
+
+#: toolbar.py:96
+msgid "Add Globe"
+msgstr "Dodaj dymek"
+
+#: toolbar.py:103
+msgid "Add Think"
+msgstr "Dodaj myśl"
+
+#: toolbar.py:110
+msgid "Add Whisper"
+msgstr "Dodaj szept"
+
+#: toolbar.py:117
+msgid "Add Exclamation"
+msgstr "Dodaj okrzyk"
+
+#: toolbar.py:124
+msgid "Add Box"
+msgstr "Dodaj pole"
+
+#: toolbar.py:129
+msgid "Curves"
+msgstr "Krzywe"
+
+#: toolbar.py:129
+msgid "Straight"
+msgstr "Prosto"
+
+#: toolbar.py:130
+#, fuzzy
+msgid "Highlight"
+msgstr "Podświetlenie"
+
+#: toolbar.py:130
+msgid "Idea"
+msgstr "Pomysł"
+
+#: toolbar.py:133
+msgid "Choose a movement line"
+msgstr "Wybierz linię ruchu"
+
+#: toolbar.py:149
+msgid "Turn"
+msgstr "Przekręć"
+
+#: toolbar.py:155
+msgid "Delete"
+msgstr "Usuń"
+
+#: toolbar.py:235 toolbar.py:239
+msgid "Choose image"
+msgstr "Wybierz obraz"
+
+#: toolbar.py:272
+msgid "Bold"
+msgstr "Pogrubione"
+
+#: toolbar.py:277
+msgid "Italic"
+msgstr "Kursywa"
+
+#: toolbar.py:292
+msgid "Text Color"
+msgstr "Kolor tekstu"
