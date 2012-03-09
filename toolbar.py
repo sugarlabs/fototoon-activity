@@ -186,20 +186,7 @@ class GlobesManager():
         if (box.get_globo_activo() != None):
             print "globo activo",
             globe = box.get_globo_activo()
-            if (globe.__class__ != globos.Rectangulo):
-                if (globe.direccion == globos.DIR_ABAJO):
-                    globe.direccion = globos.DIR_IZQ
-
-                elif (globe.direccion == globos.DIR_IZQ):
-                    globe.direccion = globos.DIR_ARRIBA
-
-                elif (globe.direccion == globos.DIR_ARRIBA):
-                    globe.direccion = globos.DIR_DER
-
-                elif (globe.direccion == globos.DIR_DER):
-                    globe.direccion = globos.DIR_ABAJO
-                globe.punto[0] = globe.punto[1]
-                globe.punto[1] = globe.punto[0]
+            if globe.girar():
                 box.queue_draw()
 
     def borrar(self, boton):

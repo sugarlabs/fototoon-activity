@@ -370,6 +370,29 @@ class Globo:
         self.ancho = self.texto.ancho / (1 - 12 / (self.radio * 1.0))
         self.alto = self.texto.alto / (1 - 12 / (self.radio * 1.0))
 
+    def girar(self):
+        if (self.__class__ == Rectangulo):
+            return False
+
+        if (self.direccion == DIR_ABAJO):
+            self.direccion = DIR_IZQ
+
+        elif (self.direccion == DIR_IZQ):
+            self.direccion = DIR_ARRIBA
+
+        elif (self.direccion == DIR_ARRIBA):
+            self.direccion = DIR_DER
+
+        elif (self.direccion == DIR_DER):
+            self.direccion = DIR_ABAJO
+        self.punto[0] = self.punto[1]
+        self.punto[1] = self.punto[0]
+
+        if (self.__class__ == Imagen):
+            self.ancho, self.alto = self.alto, self.ancho
+
+        return True
+
 
 class Rectangulo(Globo):
 
@@ -685,14 +708,40 @@ class Imagen(Globo):
     def imprimir(self, context):
 
         context.save()
-        self.icon_buffer.width = self.ancho * 2
-        self.icon_buffer.height = self.alto * 2
+
+        if self.direccion in (DIR_ARRIBA, DIR_ABAJO):
+            self.icon_buffer.width = self.ancho * 2
+            self.icon_buffer.height = self.alto * 2
+        else:
+            self.icon_buffer.width = self.alto * 2
+            self.icon_buffer.height = self.ancho * 2
 
         surface =  self.icon_buffer.get_surface()
         x = self.x - surface.get_width() / 2
         y = self.y - surface.get_height() / 2
 
-        context.set_source_surface(surface, x, y)
+        logging.error('translate x %s y %s' % (x, y))
+        context.translate (x, y)
+
+        if self.direccion != DIR_ABAJO:
+            if self.direccion == DIR_ARRIBA:
+                context.rotate(3.14)  # 180 degrees
+                context.translate (-self.icon_buffer.width,
+                        -self.icon_buffer.height)
+
+            elif self.direccion == DIR_IZQ:
+                context.rotate(3.14 / 2.0)  # 90 degrees
+                context.translate(
+                    (self.icon_buffer.height - self.icon_buffer.width) / 2,
+                    -(self.icon_buffer.width + self.icon_buffer.height) / 2)
+
+            elif self.direccion == DIR_DER:
+                context.rotate(3.0 * 3.14 / 2.0) # 270 degrees
+                context.translate(
+                    -(self.icon_buffer.height + self.icon_buffer.width) / 2,
+                    (self.icon_buffer.width - self.icon_buffer.height) / 2)
+
+        context.set_source_surface(surface, 0, 0)
 
         context.paint()
         context.restore()

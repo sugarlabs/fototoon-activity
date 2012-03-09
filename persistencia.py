@@ -165,6 +165,7 @@ class Persistence:
                 elif (tipo_globo == 'IMAGE'):
                     image_name = globoData['image_name']
                     globo = globos.Imagen(image_name, x=globo_x, y=globo_y)
+                    globo.direccion = globo_direccion
 
                 if globo != None:
                     globo.radio = globoData['radio']
