@@ -80,7 +80,7 @@ class Globo:
                             self.punto[0] * self.radio / (self.ancho * 1.0), \
                             y + self.punto[1] * self.radio / (self.alto * 1.0))
 
-        else: #arriba
+        else:
             context.arc(x, y, self.radio,
                         280 / 180.0 * math.pi, 620 / 180.0 * math.pi)
             context.line_to( \
@@ -92,7 +92,7 @@ class Globo:
         context.set_source_rgb(1, 1, 1)
         context.fill_preserve()
         context.set_source_rgb(0, 0, 0)
-        if self.modo <> "normal":
+        if self.modo != "normal":
             context.set_dash([2])
         context.stroke()
         context.restore()
@@ -122,7 +122,6 @@ class Globo:
 
             ancho_marcador = 15
             context.restore()
-
 
             # cuadrado esquina superior izq
             context.save()
@@ -158,9 +157,8 @@ class Globo:
             return self.x + self.ancho + self.punto[0], self.y + self.punto[1]
         elif self.direccion == DIR_IZQ:
             return self.x - self.ancho - self.punto[0], self.y + self.punto[1]
-        else: #arriba
+        else:
             return self.x + self.punto[0], self.y - self.alto - self.punto[1]
-
 
     # TODO: add a function to obtain to position (x, y)
     # where is the control circle
@@ -332,7 +330,7 @@ class Globo:
             else:
                 self.ancho = self.radio
 
-        elif self.x - self.ancho <> 0:
+        elif self.x - self.ancho != 0:
             self.ancho = rect.width - self.x
 
         if (2 * self.y - y) < rect.height:
@@ -342,7 +340,7 @@ class Globo:
                 self.alto = self.y
             else:
                 self.alto = self.radio
-        elif self.y - self.alto <> 0:
+        elif self.y - self.alto != 0:
             self.alto = rect.height - self.y
 
         ancho_text, alto_text = self.calc_area_texto()
@@ -571,7 +569,7 @@ class Nube(Globo):
             return self.x + self.ancho + self.punto[0], self.y + self.punto[1]
         elif self.direccion == DIR_IZQ:
             return self.x - self.ancho - self.punto[0], self.y + self.punto[1]
-        else: #arriba
+        else:
             return self.x + self.punto[0], self.y - self.alto - self.punto[1]
 
     def get_second_circle_position(self):
@@ -584,7 +582,7 @@ class Nube(Globo):
         elif self.direccion == DIR_IZQ:
             return self.x - self.ancho - self.punto[0] / 2, \
                     self.y + self.punto[1] / 2
-        else: #arriba
+        else:
             return self.x + self.punto[0] / 2, \
                     self.y - self.alto - self.punto[1] / 2
 
@@ -651,9 +649,6 @@ class Grito(Globo):
                (direction == DIR_IZQ and i == 12) or \
                (direction == DIR_ARRIBA and i == 18):
 
-                #print "** POINT", "punto[0]", punto[0], "punto[1]", punto[1]
-                #print "** x", x, "y", y
-
                 if direction == DIR_ABAJO:
                     x = x_cen + punto[0]
                     y = y_cen + height + punto[1]
@@ -663,11 +658,10 @@ class Grito(Globo):
                 elif direction == DIR_IZQ:
                     x = x_cen - width - punto[0]
                     y = y_cen + punto[1]
-                else: #arriba
+                else:
                     x = x_cen + punto[0]
                     y = y_cen - height - punto[1]
 
-            #print x, y
             cr.line_to(x, y)
         cr.close_path()
         cr.set_source_rgb(1, 1, 1)
@@ -716,17 +710,16 @@ class Imagen(Globo):
             self.icon_buffer.width = self.alto * 2
             self.icon_buffer.height = self.ancho * 2
 
-        surface =  self.icon_buffer.get_surface()
+        surface = self.icon_buffer.get_surface()
         x = self.x - surface.get_width() / 2
         y = self.y - surface.get_height() / 2
 
-        logging.error('translate x %s y %s' % (x, y))
-        context.translate (x, y)
+        context.translate(x, y)
 
         if self.direccion != DIR_ABAJO:
             if self.direccion == DIR_ARRIBA:
                 context.rotate(3.14)  # 180 degrees
-                context.translate (-self.icon_buffer.width,
+                context.translate(-self.icon_buffer.width,
                         -self.icon_buffer.height)
 
             elif self.direccion == DIR_IZQ:
@@ -736,7 +729,7 @@ class Imagen(Globo):
                     -(self.icon_buffer.width + self.icon_buffer.height) / 2)
 
             elif self.direccion == DIR_DER:
-                context.rotate(3.0 * 3.14 / 2.0) # 270 degrees
+                context.rotate(3.0 * 3.14 / 2.0)  # 270 degrees
                 context.translate(
                     -(self.icon_buffer.height + self.icon_buffer.width) / 2,
                     (self.icon_buffer.width - self.icon_buffer.height) / 2)
@@ -838,7 +831,7 @@ class CuadroTexto:
         context.set_font_size(self.font_size)
 
         if self.texto:
-            cursor_dib = self.cursor    #dibujar cursor
+            cursor_dib = self.cursor    # dibujar cursor
 
             for i in range(len(self.renglones)):
                 #text_reng = unicode(self.renglones[i],'UTF8')
@@ -856,7 +849,7 @@ class CuadroTexto:
                     if cursor_dib >= len(text_reng) + self.esp_reg[i]:
                         cursor_dib -= (len(text_reng) + self.esp_reg[i])
 
-                    elif cursor_dib <> -99:
+                    elif cursor_dib != -99:
                         try:
                             xbearing1, ybearing1, width1, \
                             height1, xadvance1, yadvance1 = \
@@ -916,7 +909,7 @@ class CuadroTexto:
 
             if keyval == gtk.gdk.keyval_from_name('BackSpace'):
                 if self.cursor >= 1:
-                    self.texto = self.texto[0:self.cursor-1] + \
+                    self.texto = self.texto[0:self.cursor - 1] + \
                         self.texto[self.cursor:len(self.texto)]
                     self.cursor -= 1
                 self.redimensionar(context)
@@ -941,12 +934,12 @@ class CuadroTexto:
                 for i in range(len(self.renglones)):
                     if sum_ren <= self.cursor < \
                         (sum_ren + len(self.renglones[i]) + self.esp_reg[i]):
-                        if i <> 0:
+                        if i != 0:
                             #calculo desplazamiento dentro de un renglon
                             cur_ren = self.cursor - sum_ren
                             self.cursor = \
-                                min(sum_ren - len(self.renglones[i-1])
-                                - self.esp_reg[i-1] + \
+                                min(sum_ren - len(self.renglones[i - 1])
+                                - self.esp_reg[i - 1] + \
                                 cur_ren, sum_ren - 1)
                         break
                     else:
@@ -958,7 +951,7 @@ class CuadroTexto:
                 for i in range(len(self.renglones)):
                     if sum_ren <= self.cursor < (sum_ren +
                         len(self.renglones[i]) + self.esp_reg[i]):
-                        if i <> len(self.renglones) - 1:
+                        if i != len(self.renglones) - 1:
                             #calculo desplazamiento dentro de un renglon
                             cur_ren = self.cursor - sum_ren
                             self.cursor = min(sum_ren + \
@@ -976,7 +969,7 @@ class CuadroTexto:
                 agregar = unicode(key, 'UTF8')
                 self.texto = self.texto[0:self.cursor] + agregar + \
                     self.texto[self.cursor:len(self.texto)]
-                if key <> "":
+                if key != "":
                     self.cursor += len(agregar)
                     self.redimensionar(context)
 
@@ -1001,15 +994,14 @@ class CuadroTexto:
 
             texto_oracion = self.texto.split("\n")
 
-            self.renglones = [] #texto en cada renglon
-            self.esp_reg = [] # 1 =indica si el renglon termino con un espacio.
+            self.renglones = []  # texto en cada renglon
+            self.esp_reg = []  # 1=indica si el renglon termino con un espacio.
 
             for j in range(len(texto_oracion)):
 
                 texto_renglon = texto_oracion[j]
 
-
-                while texto_renglon <> None:
+                while texto_renglon is not None:
 
                     for i in range(len(texto_renglon.split(" "))):
 
@@ -1028,10 +1020,11 @@ class CuadroTexto:
                                 i)[0])
                             self.esp_reg.append(1)
 
-                            if i <> 0:
-                                texto_renglon = texto_renglon.split(" ", \
-                                    len(texto_renglon.split(" ")) - i) \
-                                    [len(texto_renglon.split(" ")) - i]
+                            if i != 0:
+                                posi_space = len(texto_renglon.split(" "))
+                                texto_renglon = \
+                                    texto_renglon.split(" ",
+                                    posi_space - i)[posi_space - i]
                             else:
                                 texto_renglon = None
                             break
@@ -1043,11 +1036,11 @@ class CuadroTexto:
                             #empezando desde la izq
 
                             palabra = (texto_renglon.rsplit(" ", i)[0])
-                            if i <> 0:
+                            if i != 0:
+                                posi_space = len(texto_renglon.split(" "))
                                 texto_renglon = " " + \
-                                    texto_renglon.split(" ", \
-                                    len(texto_renglon.split(" ")) - i) \
-                                    [len(texto_renglon.split(" ")) - i]
+                                    texto_renglon.split(" ",
+                                    posi_space - i)[posi_space - i]
                             else:
                                 texto_renglon = ""
 
