@@ -431,15 +431,24 @@ class Rectangulo(Globo):
         # Si esta seleccionado pintamos un recuadro alrededor del globo
         # y un par de controles
         if self.selec:
+            context.save()
             context.set_line_width(ANCHO_LINEAS_CONTROLES)
             context.set_source_rgb(1, 1, 1)
             context.rectangle(self.x - self.ancho - 2, self.y - self.alto - 2,
                     2 * self.ancho + 4, 2 * self.alto + 4)
+            context.stroke_preserve()
+            context.set_source_rgb(0, 0, 0)
+            context.set_dash([2])
             context.stroke()
+
             context.set_source_rgb(1, 1, 1)
             context.rectangle(self.x - self.ancho - 5,
                     self.y - self.alto - 5, 10, 10)
+            context.stroke_preserve()
+            context.set_source_rgb(0, 0, 0)
+            context.set_dash([2])
             context.stroke()
+            context.restore()
 
     def mover_punto(self, x, y, rect):
         pass
