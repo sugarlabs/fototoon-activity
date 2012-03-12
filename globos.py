@@ -407,8 +407,8 @@ class Rectangulo(Globo):
         self.selec = False
 
         #Centro del rectangulo
-        self.x = x * self.ancho / (self.radio * 1.0)
-        self.y = y * self.alto / (self.radio * 1.0)
+        self.x = x
+        self.y = y
 
         ancho_text, alto_text = self.calc_area_texto()
         self.texto = CuadroTexto(self.x, self.y, ancho_text, alto_text)
@@ -809,6 +809,13 @@ class CuadroTexto:
 
         # Lo uso para acentuar letras con comilla simple
         self.double_key = None
+
+    def set_text(self, text):
+        self.texto = text
+        self.renglones = self.texto.split('\r')
+        for i in range(len(self.renglones)):
+            self.esp_reg.append(0)
+        self.cursor = len(text)
 
     def imprimir(self, context):
         context.set_source_rgb(self.color_r, self.color_g, self.color_b)

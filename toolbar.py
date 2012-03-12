@@ -194,6 +194,10 @@ class GlobesManager():
         box = self._page.get_active_box()
         if (box.get_globo_activo() != None):
             print "borrando globo"
+            # Do no remove the title globe
+            if box.get_globo_activo() == box.title_globe:
+                return
+
             box.globos.remove(box.get_globo_activo())
             box.set_globo_activo(None)
             box.queue_draw()

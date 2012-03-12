@@ -96,6 +96,9 @@ class HistorietaActivity(activity.Activity):
         self.set_canvas(scrolled)
         self.show()
         self.metadata['mime_type'] = 'application/x-fototoon-activity'
+
+        self.page.empty_page = handle.object_id is None
+
         #print "screen witdh " , SCREEN_WIDTH
         #print "page witdh " , self.page.size_request()
 
@@ -341,6 +344,7 @@ class ComicBox(gtk.DrawingArea):
         self.image_name = ''
         self.image = None
         self.image_saved = False
+        self.title_globe = None
 
         self.width = (int)(SCREEN_WIDTH - DEF_SPACING) / 2
         self.height = BOX_HEIGHT
@@ -408,6 +412,19 @@ class ComicBox(gtk.DrawingArea):
 
     def expose(self, widget, event):
         self.context = widget.window.cairo_create()
+
+        # check if is the title box and is a new page
+        if self.page.title_box == self and self.page.empty_page:
+            self.page.empty_page = False
+            # select title box
+            rect = self.get_allocation()
+            x = rect.width / 2
+            y = rect.height / 2
+            logging.error('Adding rectangle at %d %d', x, y)
+            self.add_rectangulo(x, y)
+            self.title_globe = self.globos[0]
+            self.title_globe.texto.set_text(_('Title:'))
+
         self.draw(self.context, event.area, widget.window)
         return False
 

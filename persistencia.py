@@ -43,6 +43,7 @@ class Persistence:
             boxData['globes'] = []
             for globo in box.globos:
                 globoData = {}
+                globoData['title_globe'] = (globo == box.title_globe)
                 print 'Grabando', globo.globe_type
                 globoData['globe_type'] = globo.globe_type
                 globoData['radio'] = globo.radio
@@ -199,5 +200,8 @@ class Persistence:
                     globo.texto.mostrar_borde = globoData['text_show_border']
                     globo.texto.mostrar_cursor = globoData['text_show_cursor']
                     box.globos.append(globo)
+
+                    if globoData['title_globe']:
+                        box.title_globe = globo
 
             box.queue_draw()
