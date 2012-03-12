@@ -144,7 +144,7 @@ class GlobesManager():
         toolbar.insert(separator, -1)
 
         # girar
-        self.b_girar = ToolButton('turn')
+        self.b_girar = ToolButton('object-rotate-right')
         self.b_girar.connect('clicked', self.girar)
         self.b_girar.set_tooltip(_('Turn'))
         toolbar.insert(self.b_girar, -1)
