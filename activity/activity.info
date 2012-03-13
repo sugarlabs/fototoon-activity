@@ -4,6 +4,6 @@ bundle_id = org.eq.FotoToon
 icon = historieta
 exec = sugar-activity historietaactivity.HistorietaActivity
 show_launcher = yes
-activity_version = 10
+activity_version = 11
 host_version = 2
 mime_types = application/x-fototoon-activity;
