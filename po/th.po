@@ -6,11 +6,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-15 00:31-0500\n"
-"PO-Revision-Date: 2011-11-19 06:27+0200\n"
-"Last-Translator: malaku <malaku38@hotmail.com>\n"
+"POT-Creation-Date: 2012-03-14 00:30-0400\n"
+"PO-Revision-Date: 2012-03-20 07:46+0200\n"
+"Last-Translator: Meechai <malaku38@hotmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"Language: th\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -33,72 +33,74 @@ msgstr "PNG"
 msgid "Text"
 msgstr "ข้อความ"
 
+#: historietaactivity.py:426
+msgid "Title:"
+msgstr "ชื่อเรื่อง:"
+
 #: toolbar.py:85
 msgid "Add Photo"
 msgstr "เพิ่ิมรูป"
 
 #: toolbar.py:96
 msgid "Add Globe"
-msgstr ""
+msgstr "เพิ่มแผนที่โลก"
 
 #: toolbar.py:103
-#, fuzzy
 msgid "Add Think"
 msgstr "เพิ่มความคิด"
 
 #: toolbar.py:110
 msgid "Add Whisper"
-msgstr ""
+msgstr "เพิ่มเสียงกระซิบ"
 
 #: toolbar.py:117
 msgid "Add Exclamation"
-msgstr ""
+msgstr "เพิ่มคำอุทาน"
 
 #: toolbar.py:124
-#, fuzzy
 msgid "Add Box"
 msgstr "เพิ่มกล่อง"
 
 #: toolbar.py:129
 msgid "Curves"
-msgstr ""
+msgstr "เส้นโค้ง"
 
 #: toolbar.py:129
 msgid "Straight"
-msgstr ""
+msgstr "เส้นตรง"
 
 #: toolbar.py:130
 msgid "Highlight"
-msgstr ""
+msgstr "เน้นจุดสำคัญ"
 
 #: toolbar.py:130
 msgid "Idea"
-msgstr ""
+msgstr "ความคิด"
 
 #: toolbar.py:133
 msgid "Choose a movement line"
-msgstr ""
+msgstr "เลือกลักษณะเส้น"
 
 #: toolbar.py:149
 msgid "Turn"
-msgstr ""
+msgstr "ย้อนกลับ"
 
 #: toolbar.py:155
 msgid "Delete"
 msgstr "ลบ"
 
-#: toolbar.py:235 toolbar.py:239
+#: toolbar.py:226 toolbar.py:230
 msgid "Choose image"
 msgstr "เลือกภาพ เลือกรูปภาพ"
 
-#: toolbar.py:272
+#: toolbar.py:263
 msgid "Bold"
 msgstr "หนา"
 
-#: toolbar.py:277
+#: toolbar.py:268
 msgid "Italic"
 msgstr "ตัวเอียง"
 
-#: toolbar.py:292
+#: toolbar.py:283
 msgid "Text Color"
 msgstr "สีตัวอักษร"
