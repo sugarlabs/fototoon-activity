@@ -2,85 +2,108 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-16 04:16-0300\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2012-03-14 00:30-0400\n"
+"PO-Revision-Date: 2012-03-21 19:25+0200\n"
+"Last-Translator: Yuan <yuanchao@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 1.6.0\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Pootle 2.0.5\n"
 
 #: activity/activity.info:2
 msgid "FotoToon"
-msgstr ""
+msgstr "相片塗鴉"
 
-#: /home/gonzalo/Activities/FotoToon.activity/historietaactivity.py:32
-msgid "Globes"
-msgstr ""
+#: historietaactivity.py:35 historietaactivity.py:85
+msgid "Save as Image"
+msgstr "另存為圖片"
 
-#: /home/gonzalo/Activities/FotoToon.activity/historietaactivity.py:36
+#: historietaactivity.py:35
+msgid "PNG"
+msgstr "PNG"
+
+#: historietaactivity.py:63
 msgid "Text"
-msgstr ""
+msgstr "文字"
 
-#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:51
-#: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:64
+#: historietaactivity.py:426
+msgid "Title:"
+msgstr "標題: "
+
+#: toolbar.py:85
 msgid "Add Photo"
-msgstr ""
+msgstr "新增照片"
 
-#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:61
-#: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:74
+#: toolbar.py:96
 msgid "Add Globe"
-msgstr ""
+msgstr "新增球"
 
-#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:67
-#: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:80
+#: toolbar.py:103
 msgid "Add Think"
-msgstr ""
+msgstr "新增思考"
 
-#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:73
-#: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:86
+#: toolbar.py:110
 msgid "Add Whisper"
-msgstr ""
+msgstr "新增悄悄話"
 
-#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:79
-#: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:92
+#: toolbar.py:117
 msgid "Add Exclamation"
-msgstr ""
+msgstr "增加感嘆"
 
-#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:85
-#: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:98
+#: toolbar.py:124
 msgid "Add Box"
-msgstr ""
+msgstr "增加盒子"
 
-#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:95
-#: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:108
+#: toolbar.py:129
+msgid "Curves"
+msgstr "曲線"
+
+#: toolbar.py:129
+msgid "Straight"
+msgstr "直線"
+
+#: toolbar.py:130
+msgid "Highlight"
+msgstr "強調"
+
+#: toolbar.py:130
+msgid "Idea"
+msgstr "構想"
+
+#: toolbar.py:133
+msgid "Choose a movement line"
+msgstr "選擇一個移動線條"
+
+#: toolbar.py:149
 msgid "Turn"
-msgstr ""
+msgstr "轉"
 
-#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:101
-#: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:114
+#: toolbar.py:155
 msgid "Delete"
-msgstr ""
+msgstr "删除"
 
-#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:179
-#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:181
-#: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:186
+#: toolbar.py:226 toolbar.py:230
 msgid "Choose image"
-msgstr ""
+msgstr "選擇圖片"
 
-#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:211
-#: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:216
+#: toolbar.py:263
 msgid "Bold"
-msgstr ""
+msgstr "粗體"
 
-#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:217
-#: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:222
+#: toolbar.py:268
 msgid "Italic"
-msgstr ""
+msgstr "斜體"
+
+#: toolbar.py:283
+msgid "Text Color"
+msgstr "文字色彩"
+
+#~ msgid "Globes"
+#~ msgstr "球"
