@@ -21,18 +21,17 @@ import logging
 import os
 import time
 import gtk
-import pango
-import  pangocairo
-import globos
 from sugar.graphics.icon import Icon
 from sugar.graphics.toolbutton import ToolButton
 from sugar.graphics.toggletoolbutton import ToggleToolButton
 from sugar.graphics.combobox import ComboBox
 from sugar.graphics.toolcombobox import ToolComboBox
-from sugar.graphics import iconentry
 from sugar.graphics.objectchooser import ObjectChooser
 from sugar.activity.widgets import RadioMenuButton
 from sugar.graphics.menuitem import MenuItem
+
+from fontcombobox import FontComboBox
+import globos
 
 WITH_COLOR_BUTTON = True
 try:
@@ -161,20 +160,26 @@ class GlobesManager():
 
     def __btn_clicked(self, boton):
         logging.error('boton clicked %s', boton.props.icon_name)
+        selected_font_name = self._activity.page.selected_font_name
         if boton == self.add_globe:
-            self._page.get_active_box().add_globo(60, 60)
+            self._page.get_active_box().add_globo(60, 60,
+                    font_name=selected_font_name)
 
         if boton == self.add_cloud:
-            self._page.get_active_box().add_nube(60, 60)
+            self._page.get_active_box().add_nube(60, 60,
+                    font_name=selected_font_name)
 
         if boton == self.add_whisp:
-            self._page.get_active_box().add_globo(60, 60, gmodo="despacio")
+            self._page.get_active_box().add_globo(60, 60, gmodo="despacio",
+                    font_name=selected_font_name)
 
         if boton == self.add_scream:
-            self._page.get_active_box().add_grito(60, 60)
+            self._page.get_active_box().add_grito(60, 60,
+                    font_name=selected_font_name)
 
         if boton == self.add_box:
-            self._page.get_active_box().add_rectangulo(60, 60)
+            self._page.get_active_box().add_rectangulo(60, 60,
+                    font_name=selected_font_name)
 
         if boton == self.add_photo:
             self.add_image()
@@ -317,21 +322,10 @@ class TextToolbar(gtk.Toolbar):
         self.insert(tool_item, -1)
 
         # font
-        self._has_custom_fonts = False
-
-        self._fonts = []
-        pango_context = gtk.Widget.create_pango_context(tool_item)
-        for family in pango_context.list_families():
-            self._fonts.append(family.get_name())
-        self._fonts.sort()
-
-        self._font_combo = ComboBox()
+        self._font_combo = FontComboBox()
+        self._font_combo.set_font_name(globos.DEFAULT_FONT)
         self._fonts_changed_id = self._font_combo.connect('changed',
                 self._font_changed_cb)
-        for i, f in enumerate(self._fonts):
-            self._font_combo.append_item(i, f, None)
-            if f == 'Times New Roman':
-                self._font_combo.set_active(i)
         tool_item = ToolComboBox(self._font_combo)
         self.insert(tool_item, -1)
 
@@ -383,12 +377,12 @@ class TextToolbar(gtk.Toolbar):
 
     def _font_changed_cb(self, combobox):
         if self._font_combo.get_active() != -1:
-            logger.debug('Setting font name: %s',
-                    self._fonts[self._font_combo.get_active()])
+            font_name = self._font_combo.get_font_name()
+            logger.debug('Setting font name: %s', font_name)
             globo_activo = self._page.get_globo_activo()
             if (globo_activo != None):
-                globo_activo.texto.font_type = \
-                        self._fonts[self._font_combo.get_active()]
+                globo_activo.texto.font_type = font_name
+                self._page.selected_font_name = font_name
                 self._page.get_active_box().queue_draw()
 
     """
@@ -422,35 +416,7 @@ class TextToolbar(gtk.Toolbar):
                 break
 
         # font seleccionada
-        font_family = globeText.font_type
-        font_index = -1
-
-        # search for the font name in our font list
-        for i, f in enumerate(self._fonts):
-            if f == font_family:
-                font_index = i
-                break
-
-        # if we don't know this font yet, then add it (temporary) to the list
-        if font_index == -1:
-            logger.debug('Font not found in font list: %s', font_family)
-            if not self._has_custom_fonts:
-                # add a separator to seperate the non-available fonts from
-                # the available ones
-                self._fonts.append('')  # ugly
-                self._font_combo.append_separator()
-                self._has_custom_fonts = True
-            # add the new font
-            self._fonts.append(font_family)
-            self._font_combo.append_item(0, font_family, None)
-            # see how many fonts we have now, so we can select the last one
-            model = self._font_combo.get_model()
-            num_children = model.iter_n_children(None)
-            logger.debug('Number of fonts in the list: %d', num_children)
-            font_index = num_children - 1
-
-        # activate the found font
-        if (font_index > -1):
-            self._font_combo.handler_block(self._fonts_changed_id)
-            self._font_combo.set_active(font_index)
-            self._font_combo.handler_unblock(self._fonts_changed_id)
+        self._font_combo.handler_block(self._fonts_changed_id)
+        self._font_combo.set_font_name(globeText.font_type)
+        self._page.selected_font_name = globeText.font_type
+        self._font_combo.handler_unblock(self._fonts_changed_id)

@@ -19,11 +19,13 @@ DIR_ARRIBA = "arriba"
 DIR_IZQ = "izq"
 DIR_DER = "der"
 
+DEFAULT_FONT = 'Sans'
+
 
 class Globo:
 
     def __init__(self, x, y, ancho=50, alto=30, modo="normal",
-            direccion=DIR_ABAJO):
+            direccion=DIR_ABAJO, font_name=DEFAULT_FONT):
 
         self.globe_type = "GLOBE"
         #determina tamanio minimo
@@ -43,7 +45,8 @@ class Globo:
 
         ancho_text, alto_text = self.calc_area_texto()
         #es el contenedor del texto
-        self.texto = CuadroTexto(self.x, self.y, ancho_text, alto_text)
+        self.texto = CuadroTexto(self.x, self.y, ancho_text, alto_text,
+                font_name)
 
     def imprimir(self, context):
         #dibujo al globo de dialogo
@@ -394,7 +397,7 @@ class Globo:
 
 class Rectangulo(Globo):
 
-    def __init__(self, x, y, ancho=50, alto=15):
+    def __init__(self, x, y, ancho=50, alto=15, font_name=DEFAULT_FONT):
 
         self.globe_type = "RECTANGLE"
         #determina tamanio minimo
@@ -411,7 +414,8 @@ class Rectangulo(Globo):
         self.y = y
 
         ancho_text, alto_text = self.calc_area_texto()
-        self.texto = CuadroTexto(self.x, self.y, ancho_text, alto_text)
+        self.texto = CuadroTexto(self.x, self.y, ancho_text, alto_text,
+                font_name)
 
     def imprimir(self, context):
         #imprimimos el rectangulo
@@ -468,7 +472,8 @@ class Rectangulo(Globo):
 
 class Nube(Globo):
 
-    def __init__(self, x, y, ancho=50, alto=30, direccion=DIR_ABAJO):
+    def __init__(self, x, y, ancho=50, alto=30, direccion=DIR_ABAJO,
+            font_name=DEFAULT_FONT):
 
         self.globe_type = "CLOUD"
         self.radio = 30
@@ -489,7 +494,8 @@ class Nube(Globo):
         appdir = os.path.join(activity.get_bundle_path())
 
         ancho_text, alto_text = self.calc_area_texto()
-        self.texto = CuadroTexto(self.x, self.y, ancho_text, alto_text)
+        self.texto = CuadroTexto(self.x, self.y, ancho_text, alto_text,
+                font_name)
 
     def imprimir(self, context):
 
@@ -598,7 +604,8 @@ class Nube(Globo):
 
 class Grito(Globo):
 
-    def __init__(self, x, y, ancho=50, alto=30, direccion=DIR_ABAJO):
+    def __init__(self, x, y, ancho=50, alto=30, direccion=DIR_ABAJO,
+            font_name=DEFAULT_FONT):
 
         self.globe_type = "EXCLAMATION"
         self.radio = 30
@@ -615,7 +622,8 @@ class Grito(Globo):
         self.y = y
 
         ancho_text, alto_text = self.calc_area_texto()
-        self.texto = CuadroTexto(self.x, self.y, ancho_text, alto_text)
+        self.texto = CuadroTexto(self.x, self.y, ancho_text, alto_text,
+                font_name)
 
     def imprimir(self, context):
         context.save()
@@ -687,7 +695,8 @@ class Grito(Globo):
 
 class Imagen(Globo):
 
-    def __init__(self, imagen, x, y, ancho=50, alto=30, direccion=DIR_ABAJO):
+    def __init__(self, imagen, x, y, ancho=50, alto=30, direccion=DIR_ABAJO,
+            font_name=DEFAULT_FONT):
 
         self.globe_type = "IMAGE"
         self.radio = 30
@@ -706,7 +715,7 @@ class Imagen(Globo):
         self.icon_buffer = _IconBuffer()
         self.icon_buffer.file_name = os.path.join(appdir, imagen)
         self.icon_buffer.stroke_color = '#000000'
-        self.texto = CuadroTexto(self.x, self.y, 20, 20)
+        self.texto = CuadroTexto(self.x, self.y, 20, 20, font_name)
 
     def imprimir(self, context):
 
@@ -779,7 +788,7 @@ class CuadroTexto:
 
     "Es un cuadro de texto con alineacion centralizada"
 
-    def __init__(self, x, y, ancho=50, alto=30):
+    def __init__(self, x, y, ancho=50, alto=30, font_name=DEFAULT_FONT):
 
         #Ancho del cuadro = 2*self.ancho
         self.ancho = ancho
@@ -796,7 +805,7 @@ class CuadroTexto:
 
         #Caracteristicas de la tipografia
         self.font_size = 12
-        self.font_type = "Georgia"
+        self.font_type = font_name
         self.color_r, self.color_g, self.color_b = 0, 0, 0
         self.italic = False
         self.bold = False

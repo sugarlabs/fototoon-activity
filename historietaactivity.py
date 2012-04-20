@@ -265,6 +265,7 @@ class Page(gtk.VBox):
 
         self.boxs = []
         self._active_box = None
+        self.selected_font_name = globos.DEFAULT_FONT
 
         logging.error('SCREEN WIDTH %d DEF_SPACING %d' %
             (SCREEN_WIDTH, DEF_SPACING))
@@ -377,21 +378,23 @@ class ComicBox(gtk.DrawingArea):
         return self._globo_activo
 
     def add_globo(self, xpos, ypos, gmodo="normal", \
-                    gdireccion=globos.DIR_ABAJO):
+                gdireccion=globos.DIR_ABAJO, font_name=globos.DEFAULT_FONT):
         #agrega un globo al cuadro
-        globo = globos.Globo(x=xpos, y=ypos, modo=gmodo, direccion=gdireccion)
+        globo = globos.Globo(x=xpos, y=ypos, modo=gmodo, direccion=gdireccion,
+                font_name=font_name)
         self.globos.append(globo)
         self._globo_activo = globo
         self.queue_draw()
 
-    def add_rectangulo(self, xpos, ypos):
+    def add_rectangulo(self, xpos, ypos, font_name=globos.DEFAULT_FONT):
         #agrega un cuadro de texto al cuadro
-        self.globos.append(globos.Rectangulo(x=xpos, y=ypos))
+        self.globos.append(globos.Rectangulo(x=xpos, y=ypos,
+                font_name=font_name))
         self.queue_draw()
 
-    def add_nube(self, xpos, ypos):
+    def add_nube(self, xpos, ypos, font_name=globos.DEFAULT_FONT):
         #agrega un globo de pensamiento al cuadro
-        globo = globos.Nube(x=xpos, y=ypos)
+        globo = globos.Nube(x=xpos, y=ypos, font_name=font_name)
         self.globos.append(globo)
         self._globo_activo = globo
         self.queue_draw()
@@ -403,9 +406,9 @@ class ComicBox(gtk.DrawingArea):
         self._globo_activo = globo
         self.queue_draw()
 
-    def add_grito(self, xpos, ypos):
+    def add_grito(self, xpos, ypos, font_name=globos.DEFAULT_FONT):
         #agrega un globo de grito al cuadro
-        globo = globos.Grito(x=xpos, y=ypos)
+        globo = globos.Grito(x=xpos, y=ypos, font_name=font_name)
         self.globos.append(globo)
         self._globo_activo = globo
         self.queue_draw()
