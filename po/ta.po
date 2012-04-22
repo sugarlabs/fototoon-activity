@@ -6,70 +6,22 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-08-08 09:01-0300\n"
-"PO-Revision-Date: 2011-08-30 05:41+0200\n"
+"POT-Creation-Date: 2012-03-14 00:30-0400\n"
+"PO-Revision-Date: 2012-03-09 10:05+0200\n"
 "Last-Translator: Thangamani <thangam.arunx@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"Language: ta\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Pootle 2.0.1\n"
+"X-Generator: Pootle 2.0.5\n"
 
 #: activity/activity.info:2
 msgid "FotoToon"
 msgstr "FotoToon"
 
-#: toolbar.py:82
-msgid "Add Photo"
-msgstr "படத்தை சேர்"
-
-#: toolbar.py:93
-msgid "Add Globe"
-msgstr "உலகஉருண்டையை சேர்"
-
-#: toolbar.py:100
-msgid "Add Think"
-msgstr "நினைத்தலை சேர்"
-
-#: toolbar.py:107
-msgid "Add Whisper"
-msgstr "விஷ்பரை சேர்"
-
-#: toolbar.py:114
-msgid "Add Exclamation"
-msgstr "ஆச்சியரத்தை சேர்"
-
-#: toolbar.py:121
-msgid "Add Box"
-msgstr "பெட்டியை சேர்"
-
-#: toolbar.py:131
-msgid "Turn"
-msgstr "திருப்பு"
-
-#: toolbar.py:137
-msgid "Delete"
-msgstr "அழி"
-
-#: toolbar.py:213 toolbar.py:217
-msgid "Choose image"
-msgstr "படத்தை தெரிவுசெய்"
-
-#: toolbar.py:250
-msgid "Bold"
-msgstr "பெரியதாக்கு"
-
-#: toolbar.py:255
-msgid "Italic"
-msgstr "சாய்வாக்கு"
-
-#: toolbar.py:270
-msgid "Text Color"
-msgstr "உரை நிறம்"
-
-#: historietaactivity.py:35
+#: historietaactivity.py:35 historietaactivity.py:85
 msgid "Save as Image"
 msgstr "படமாக மாற்றி சேமி"
 
@@ -80,6 +32,78 @@ msgstr "பிஎன்ஜி"
 #: historietaactivity.py:63
 msgid "Text"
 msgstr "உரை"
+
+#: historietaactivity.py:426
+msgid "Title:"
+msgstr ""
+
+#: toolbar.py:85
+msgid "Add Photo"
+msgstr "படத்தை சேர்"
+
+#: toolbar.py:96
+msgid "Add Globe"
+msgstr "உலகஉருண்டையை சேர்"
+
+#: toolbar.py:103
+msgid "Add Think"
+msgstr "நினைத்தலை சேர்"
+
+#: toolbar.py:110
+msgid "Add Whisper"
+msgstr "விஷ்பரை சேர்"
+
+#: toolbar.py:117
+msgid "Add Exclamation"
+msgstr "ஆச்சியரத்தை சேர்"
+
+#: toolbar.py:124
+msgid "Add Box"
+msgstr "பெட்டியை சேர்"
+
+#: toolbar.py:129
+msgid "Curves"
+msgstr "வளைவுகள்"
+
+#: toolbar.py:129
+msgid "Straight"
+msgstr "நேரான"
+
+#: toolbar.py:130
+msgid "Highlight"
+msgstr "தனிப்படுத்திக்காட்டு"
+
+#: toolbar.py:130
+msgid "Idea"
+msgstr "திட்டம்"
+
+#: toolbar.py:133
+msgid "Choose a movement line"
+msgstr "ஒரு இயக்க வரியை தேர்வு செய்"
+
+#: toolbar.py:149
+msgid "Turn"
+msgstr "திருப்பு"
+
+#: toolbar.py:155
+msgid "Delete"
+msgstr "அழி"
+
+#: toolbar.py:226 toolbar.py:230
+msgid "Choose image"
+msgstr "படத்தை தெரிவுசெய்"
+
+#: toolbar.py:263
+msgid "Bold"
+msgstr "பெரியதாக்கு"
+
+#: toolbar.py:268
+msgid "Italic"
+msgstr "சாய்வாக்கு"
+
+#: toolbar.py:283
+msgid "Text Color"
+msgstr "உரை நிறம்"
 
 #~ msgid "Globes"
 #~ msgstr "உலகஉருண்டைகள்"

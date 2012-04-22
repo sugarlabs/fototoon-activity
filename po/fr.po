@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-11 00:32-0500\n"
+"POT-Creation-Date: 2012-03-14 00:30-0400\n"
 "PO-Revision-Date: 2012-01-22 11:14+0200\n"
 "Last-Translator: samy boutayeb <s.boutayeb@free.fr>\n"
 "Language-Team: French\n"
@@ -36,6 +36,10 @@ msgstr "PNG"
 #: historietaactivity.py:63
 msgid "Text"
 msgstr "Texte"
+
+#: historietaactivity.py:426
+msgid "Title:"
+msgstr ""
 
 #: toolbar.py:85
 msgid "Add Photo"
@@ -89,19 +93,19 @@ msgstr "Tourner l'extension"
 msgid "Delete"
 msgstr "Supprimer"
 
-#: toolbar.py:235 toolbar.py:239
+#: toolbar.py:226 toolbar.py:230
 msgid "Choose image"
 msgstr "Choisir l'image"
 
-#: toolbar.py:272
+#: toolbar.py:263
 msgid "Bold"
 msgstr "Gras"
 
-#: toolbar.py:277
+#: toolbar.py:268
 msgid "Italic"
 msgstr "Italique"
 
-#: toolbar.py:292
+#: toolbar.py:283
 msgid "Text Color"
 msgstr "Couleur du texte"
 

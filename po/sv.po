@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-16 04:16-0300\n"
+"POT-Creation-Date: 2012-03-14 00:30-0400\n"
 "PO-Revision-Date: 2011-02-26 09:11+0200\n"
 "Last-Translator: Chris <cjl@laptop.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,66 +21,86 @@ msgstr ""
 msgid "FotoToon"
 msgstr ""
 
-#: /home/gonzalo/Activities/FotoToon.activity/historietaactivity.py:32
-msgid "Globes"
+#: historietaactivity.py:35 historietaactivity.py:85
+msgid "Save as Image"
 msgstr ""
 
-#: /home/gonzalo/Activities/FotoToon.activity/historietaactivity.py:36
+#: historietaactivity.py:35
+msgid "PNG"
+msgstr ""
+
+#: historietaactivity.py:63
 msgid "Text"
 msgstr "Text"
 
-#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:51
-#: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:64
+#: historietaactivity.py:426
+msgid "Title:"
+msgstr ""
+
+#: toolbar.py:85
 msgid "Add Photo"
 msgstr ""
 
-#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:61
-#: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:74
+#: toolbar.py:96
 msgid "Add Globe"
 msgstr ""
 
-#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:67
-#: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:80
+#: toolbar.py:103
 msgid "Add Think"
 msgstr ""
 
-#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:73
-#: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:86
+#: toolbar.py:110
 msgid "Add Whisper"
 msgstr ""
 
-#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:79
-#: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:92
+#: toolbar.py:117
 msgid "Add Exclamation"
 msgstr ""
 
-#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:85
-#: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:98
+#: toolbar.py:124
 msgid "Add Box"
 msgstr ""
 
-#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:95
-#: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:108
+#: toolbar.py:129
+msgid "Curves"
+msgstr ""
+
+#: toolbar.py:129
+msgid "Straight"
+msgstr ""
+
+#: toolbar.py:130
+msgid "Highlight"
+msgstr ""
+
+#: toolbar.py:130
+msgid "Idea"
+msgstr ""
+
+#: toolbar.py:133
+msgid "Choose a movement line"
+msgstr ""
+
+#: toolbar.py:149
 msgid "Turn"
 msgstr ""
 
-#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:101
-#: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:114
+#: toolbar.py:155
 msgid "Delete"
 msgstr "Ta bort"
 
-#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:179
-#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:181
-#: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:186
+#: toolbar.py:226 toolbar.py:230
 msgid "Choose image"
 msgstr ""
 
-#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:211
-#: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:216
+#: toolbar.py:263
 msgid "Bold"
 msgstr "Fet"
 
-#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:217
-#: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:222
+#: toolbar.py:268
 msgid "Italic"
 msgstr "Kursiv"
+
+#: toolbar.py:283
+msgid "Text Color"
+msgstr ""

@@ -2,85 +2,108 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-16 04:16-0300\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2012-03-14 00:30-0400\n"
+"PO-Revision-Date: 2011-07-14 23:10+0200\n"
+"Last-Translator: Chris <cjl@laptop.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 1.6.0\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.0.1\n"
 
 #: activity/activity.info:2
 msgid "FotoToon"
+msgstr "फटो टुन"
+
+#: historietaactivity.py:35 historietaactivity.py:85
+msgid "Save as Image"
 msgstr ""
 
-#: /home/gonzalo/Activities/FotoToon.activity/historietaactivity.py:32
-msgid "Globes"
+#: historietaactivity.py:35
+msgid "PNG"
 msgstr ""
 
-#: /home/gonzalo/Activities/FotoToon.activity/historietaactivity.py:36
+#: historietaactivity.py:63
 msgid "Text"
+msgstr "पाठ"
+
+#: historietaactivity.py:426
+msgid "Title:"
 msgstr ""
 
-#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:51
-#: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:64
+#: toolbar.py:85
 msgid "Add Photo"
-msgstr ""
+msgstr "फोटो थप"
 
-#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:61
-#: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:74
+#: toolbar.py:96
 msgid "Add Globe"
-msgstr ""
+msgstr "विश्व  थप"
 
-#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:67
-#: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:80
+#: toolbar.py:103
 msgid "Add Think"
-msgstr ""
+msgstr "थिंक  थप"
 
-#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:73
-#: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:86
+#: toolbar.py:110
 msgid "Add Whisper"
-msgstr ""
+msgstr "विइस्पर थप"
 
-#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:79
-#: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:92
+#: toolbar.py:117
 msgid "Add Exclamation"
-msgstr ""
+msgstr "विस्मय थप"
 
-#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:85
-#: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:98
+#: toolbar.py:124
 msgid "Add Box"
+msgstr "बाकस थप"
+
+#: toolbar.py:129
+msgid "Curves"
 msgstr ""
 
-#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:95
-#: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:108
+#: toolbar.py:129
+msgid "Straight"
+msgstr ""
+
+#: toolbar.py:130
+msgid "Highlight"
+msgstr ""
+
+#: toolbar.py:130
+msgid "Idea"
+msgstr ""
+
+#: toolbar.py:133
+msgid "Choose a movement line"
+msgstr ""
+
+#: toolbar.py:149
 msgid "Turn"
-msgstr ""
+msgstr "घुमाउनुहोस्"
 
-#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:101
-#: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:114
+#: toolbar.py:155
 msgid "Delete"
-msgstr ""
+msgstr "मेटाउ"
 
-#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:179
-#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:181
-#: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:186
+#: toolbar.py:226 toolbar.py:230
 msgid "Choose image"
-msgstr ""
+msgstr "चित्र छान"
 
-#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:211
-#: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:216
+#: toolbar.py:263
 msgid "Bold"
+msgstr "बाक्लो"
+
+#: toolbar.py:268
+msgid "Italic"
+msgstr "छड्के"
+
+#: toolbar.py:283
+msgid "Text Color"
 msgstr ""
 
-#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:217
-#: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:222
-msgid "Italic"
-msgstr ""
+#~ msgid "Globes"
+#~ msgstr "विश्वहरु"

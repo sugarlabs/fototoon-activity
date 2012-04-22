@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-08-08 09:01-0300\n"
+"POT-Creation-Date: 2012-03-14 00:30-0400\n"
 "PO-Revision-Date: 2011-04-19 06:12+0200\n"
 "Last-Translator: Chris <cjl@laptop.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,55 +21,7 @@ msgstr ""
 msgid "FotoToon"
 msgstr ""
 
-#: toolbar.py:82
-msgid "Add Photo"
-msgstr "បន្ថែម​រូបថត"
-
-#: toolbar.py:93
-msgid "Add Globe"
-msgstr ""
-
-#: toolbar.py:100
-msgid "Add Think"
-msgstr ""
-
-#: toolbar.py:107
-msgid "Add Whisper"
-msgstr ""
-
-#: toolbar.py:114
-msgid "Add Exclamation"
-msgstr ""
-
-#: toolbar.py:121
-msgid "Add Box"
-msgstr "បន្ថែម​​ប្រអប់"
-
-#: toolbar.py:131
-msgid "Turn"
-msgstr "វេន"
-
-#: toolbar.py:137
-msgid "Delete"
-msgstr "លុប​"
-
-#: toolbar.py:213 toolbar.py:217
-msgid "Choose image"
-msgstr "ជ្រើសរើស​រូបភាព"
-
-#: toolbar.py:250
-msgid "Bold"
-msgstr "ដិត"
-
-#: toolbar.py:255
-msgid "Italic"
-msgstr "ទ្រេត"
-
-#: toolbar.py:270
-msgid "Text Color"
-msgstr "ពណ៌​អត្ថបទ"
-
-#: historietaactivity.py:35
+#: historietaactivity.py:35 historietaactivity.py:85
 msgid "Save as Image"
 msgstr ""
 
@@ -80,3 +32,75 @@ msgstr "PNG"
 #: historietaactivity.py:63
 msgid "Text"
 msgstr "អត្ថបទ"
+
+#: historietaactivity.py:426
+msgid "Title:"
+msgstr ""
+
+#: toolbar.py:85
+msgid "Add Photo"
+msgstr "បន្ថែម​រូបថត"
+
+#: toolbar.py:96
+msgid "Add Globe"
+msgstr ""
+
+#: toolbar.py:103
+msgid "Add Think"
+msgstr ""
+
+#: toolbar.py:110
+msgid "Add Whisper"
+msgstr ""
+
+#: toolbar.py:117
+msgid "Add Exclamation"
+msgstr ""
+
+#: toolbar.py:124
+msgid "Add Box"
+msgstr "បន្ថែម​​ប្រអប់"
+
+#: toolbar.py:129
+msgid "Curves"
+msgstr ""
+
+#: toolbar.py:129
+msgid "Straight"
+msgstr ""
+
+#: toolbar.py:130
+msgid "Highlight"
+msgstr ""
+
+#: toolbar.py:130
+msgid "Idea"
+msgstr ""
+
+#: toolbar.py:133
+msgid "Choose a movement line"
+msgstr ""
+
+#: toolbar.py:149
+msgid "Turn"
+msgstr "វេន"
+
+#: toolbar.py:155
+msgid "Delete"
+msgstr "លុប​"
+
+#: toolbar.py:226 toolbar.py:230
+msgid "Choose image"
+msgstr "ជ្រើសរើស​រូបភាព"
+
+#: toolbar.py:263
+msgid "Bold"
+msgstr "ដិត"
+
+#: toolbar.py:268
+msgid "Italic"
+msgstr "ទ្រេត"
+
+#: toolbar.py:283
+msgid "Text Color"
+msgstr "ពណ៌​អត្ថបទ"
