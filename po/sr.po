@@ -2,85 +2,106 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-16 04:16-0300\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2012-03-14 00:30-0400\n"
+"PO-Revision-Date: 2012-02-13 06:48+0200\n"
+"Last-Translator: Opaky <opaki86@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"Language: sr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 1.6.0\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Pootle 2.0.5\n"
 
 #: activity/activity.info:2
 msgid "FotoToon"
-msgstr ""
+msgstr "ФотоТун"
 
-#: /home/gonzalo/Activities/FotoToon.activity/historietaactivity.py:32
-msgid "Globes"
-msgstr ""
+#: historietaactivity.py:35 historietaactivity.py:85
+msgid "Save as Image"
+msgstr "Сними као Слику"
 
-#: /home/gonzalo/Activities/FotoToon.activity/historietaactivity.py:36
+#: historietaactivity.py:35
+msgid "PNG"
+msgstr "ПНГ"
+
+#: historietaactivity.py:63
 msgid "Text"
+msgstr "Текст"
+
+#: historietaactivity.py:426
+msgid "Title:"
 msgstr ""
 
-#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:51
-#: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:64
+#: toolbar.py:85
 msgid "Add Photo"
-msgstr ""
+msgstr "Додај Фото"
 
-#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:61
-#: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:74
+#: toolbar.py:96
 msgid "Add Globe"
-msgstr ""
+msgstr "Додај Глобус"
 
-#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:67
-#: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:80
+#: toolbar.py:103
 msgid "Add Think"
-msgstr ""
+msgstr "Додај Мислити"
 
-#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:73
-#: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:86
+#: toolbar.py:110
 msgid "Add Whisper"
-msgstr ""
+msgstr "Додај Шаптача"
 
-#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:79
-#: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:92
+#: toolbar.py:117
 msgid "Add Exclamation"
-msgstr ""
+msgstr "Додај Узвик"
 
-#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:85
-#: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:98
+#: toolbar.py:124
 msgid "Add Box"
-msgstr ""
+msgstr "Додај Кутију"
 
-#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:95
-#: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:108
+#: toolbar.py:129
+msgid "Curves"
+msgstr "Кривине"
+
+#: toolbar.py:129
+msgid "Straight"
+msgstr "Право"
+
+#: toolbar.py:130
+msgid "Highlight"
+msgstr "Истаћи"
+
+#: toolbar.py:130
+msgid "Idea"
+msgstr "Идеја"
+
+#: toolbar.py:133
+msgid "Choose a movement line"
+msgstr "Изабари линију покрета"
+
+#: toolbar.py:149
 msgid "Turn"
-msgstr ""
+msgstr "Скрени"
 
-#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:101
-#: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:114
+#: toolbar.py:155
 msgid "Delete"
-msgstr ""
+msgstr "Обриши"
 
-#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:179
-#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:181
-#: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:186
+#: toolbar.py:226 toolbar.py:230
 msgid "Choose image"
-msgstr ""
+msgstr "Изабери слику"
 
-#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:211
-#: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:216
+#: toolbar.py:263
 msgid "Bold"
-msgstr ""
+msgstr "Jasan"
 
-#: /home/gonzalo/Activities/FotoToon.activity/toolbar.py:217
-#: /home/gonzalo/Activities/FotoToon.activity/mainline/toolbar.py:222
+#: toolbar.py:268
 msgid "Italic"
-msgstr ""
+msgstr "Коса"
+
+#: toolbar.py:283
+msgid "Text Color"
+msgstr "Боја текста"

@@ -6,75 +6,22 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-08-08 09:01-0300\n"
-"PO-Revision-Date: 2011-08-10 16:36+0200\n"
-"Last-Translator: <saulleoart@gmail.com>\n"
+"POT-Creation-Date: 2012-03-14 00:30-0400\n"
+"PO-Revision-Date: 2012-03-01 13:55+0200\n"
+"Last-Translator: Chris <cjl@laptop.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"Language: hus\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Pootle 2.0.1\n"
+"X-Generator: Pootle 2.0.5\n"
 
 #: activity/activity.info:2
 msgid "FotoToon"
 msgstr "Foto Toon"
 
-#: toolbar.py:82
-msgid "Add Photo"
-msgstr "Ka punk'uy an walek"
-
-# An kaw globo yab in kwa'al in bijil ti láb jaxtám nana´ u inkiy juni ít kaw.
-# tokow= nube
-# t'íl= ibnal ti al an kaw" t'ilomtaláb"
-# GLOBO= TOKOWT'ÏL
-#
-#: toolbar.py:93
-msgid "Add Globe"
-msgstr "Ka punk'uy an t'iplab Tokowt'íl"
-
-#: toolbar.py:100
-msgid "Add Think"
-msgstr "Ka punk'uy an dhuchlab"
-
-#: toolbar.py:107
-msgid "Add Whisper"
-msgstr "Ka punk'uy an t'iplab tokowt'íl-kwé'-kaw"
-
-#: toolbar.py:114
-msgid "Add Exclamation"
-msgstr "Ka punk'uy an t'iplab tokowt'íl-jik'paxtaláab"
-
-#: toolbar.py:121
-msgid "Add Box"
-msgstr "Ka punk'uy an pek'madh balixtaláb"
-
-#: toolbar.py:131
-msgid "Turn"
-msgstr "Wilk'iy"
-
-#: toolbar.py:137
-msgid "Delete"
-msgstr "Pakuw"
-
-#: toolbar.py:213 toolbar.py:217
-msgid "Choose image"
-msgstr "Taluy an kot'bixtaláb"
-
-#: toolbar.py:250
-msgid "Bold"
-msgstr "T'unk'ux"
-
-#: toolbar.py:255
-msgid "Italic"
-msgstr "Itálica"
-
-#: toolbar.py:270
-msgid "Text Color"
-msgstr "Mukuxtal an dhuchlab"
-
-#: historietaactivity.py:35
+#: historietaactivity.py:35 historietaactivity.py:85
 msgid "Save as Image"
 msgstr "Ka dhaya' jant'ini' i k'ot'bixtaláb"
 
@@ -85,3 +32,82 @@ msgstr "PNG"
 #: historietaactivity.py:63
 msgid "Text"
 msgstr "Dhuchlab"
+
+#: historietaactivity.py:426
+msgid "Title:"
+msgstr ""
+
+#: toolbar.py:85
+msgid "Add Photo"
+msgstr "Ka punk'uy an walek"
+
+# An kaw globo yab in kwa'al in bijil ti láb jaxtám nana´ u inkiy juni ít kaw.
+# tokow= nube
+# t'íl= ibnal ti al an kaw" t'ilomtaláb"
+# GLOBO= TOKOWT'ÏL
+#
+#: toolbar.py:96
+msgid "Add Globe"
+msgstr "Ka punk'uy an t'iplab Tokowt'íl"
+
+#: toolbar.py:103
+msgid "Add Think"
+msgstr "Ka punk'uy an dhuchlab"
+
+#: toolbar.py:110
+msgid "Add Whisper"
+msgstr "Ka punk'uy an t'iplab tokowt'íl-kwé'-kaw"
+
+#: toolbar.py:117
+msgid "Add Exclamation"
+msgstr "Ka punk'uy an t'iplab tokowt'íl-jik'paxtaláab"
+
+#: toolbar.py:124
+msgid "Add Box"
+msgstr "Ka punk'uy an pek'madh balixtaláb"
+
+#: toolbar.py:129
+#, fuzzy
+msgid "Curves"
+msgstr "Yunk'i'"
+
+#: toolbar.py:129
+msgid "Straight"
+msgstr ""
+
+#: toolbar.py:130
+#, fuzzy
+msgid "Highlight"
+msgstr "Tajaxbédha'"
+
+#: toolbar.py:130
+msgid "Idea"
+msgstr ""
+
+#: toolbar.py:133
+msgid "Choose a movement line"
+msgstr ""
+
+#: toolbar.py:149
+msgid "Turn"
+msgstr "Wilk'iy"
+
+#: toolbar.py:155
+msgid "Delete"
+msgstr "Pakuw"
+
+#: toolbar.py:226 toolbar.py:230
+msgid "Choose image"
+msgstr "Taluy an kot'bixtaláb"
+
+#: toolbar.py:263
+msgid "Bold"
+msgstr "T'unk'ux"
+
+#: toolbar.py:268
+msgid "Italic"
+msgstr "Itálica"
+
+#: toolbar.py:283
+msgid "Text Color"
+msgstr "Mukuxtal an dhuchlab"
