@@ -26,6 +26,8 @@ from sugar.datastore import datastore
 from sugar import profile
 from sugar.graphics import style
 from sugar.graphics.menuitem import MenuItem
+from sugar.graphics.alert import Alert
+from sugar.graphics.icon import Icon
 import dbus
 import logging
 
@@ -216,6 +218,30 @@ class HistorietaActivity(activity.Activity):
             self._get_preview_image(temp_file_name)
 
         datastore.write(self.dl_jobject, transfer_ownership=True)
+        self._object_id = self.dl_jobject.object_id
+        self._show_journal_alert(_('Success'),
+                _('A image was created in the Journal'))
+
+    def _show_journal_alert(self, title, msg):
+        _stop_alert = Alert()
+        _stop_alert.props.title = title
+        _stop_alert.props.msg = msg
+        _stop_alert.add_button(gtk.RESPONSE_APPLY,
+                _('Show in Journal'), Icon(icon_name='zoom-activity'))
+        _stop_alert.add_button(gtk.RESPONSE_OK, _('Ok'),
+                Icon(icon_name='dialog-ok'))
+        # Remove other alerts
+        for alert in self._alerts:
+            self.remove_alert(alert)
+
+        self.add_alert(_stop_alert)
+        _stop_alert.connect('response', self.__stop_response_cb)
+        _stop_alert.show_all()
+
+    def __stop_response_cb(self, alert, response_id):
+        if response_id is gtk.RESPONSE_APPLY:
+            activity.show_object_in_journal(self._object_id)
+        self.remove_alert(alert)
 
     def _get_preview_image(self, file_name):
         preview_width, preview_height = style.zoom(300), style.zoom(225)
