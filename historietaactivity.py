@@ -1,11 +1,8 @@
 # -*- coding: UTF-8 -*-
 
 import os
-import math
 import gtk
-import gobject
 import cairo
-import pango
 
 import globos
 import persistencia
@@ -25,7 +22,6 @@ import time
 from sugar.datastore import datastore
 from sugar import profile
 from sugar.graphics import style
-from sugar.graphics.menuitem import MenuItem
 from sugar.graphics.alert import Alert
 from sugar.graphics.icon import Icon
 import dbus
@@ -297,8 +293,8 @@ class Page(gtk.VBox):
         self._active_box = None
         self.selected_font_name = globos.DEFAULT_FONT
 
-        logging.error('SCREEN WIDTH %d DEF_SPACING %d' %
-            (SCREEN_WIDTH, DEF_SPACING))
+        logging.error('SCREEN WIDTH %d DEF_SPACING %d', SCREEN_WIDTH,
+                DEF_SPACING)
 
         # Agrego cuadro titulo
         self.title_box = ComicBox(None, 0)
