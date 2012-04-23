@@ -148,6 +148,10 @@ class HistorietaActivity(activity.Activity):
             else:
                 image_width = box.width
                 image_height = image_height + box.height
+            # hide the cursor
+            for globe in box.globos:
+                globe.no_selec()
+
             posi = posi + 1
 
         #logging.error("image_width %d image_height %d" %
