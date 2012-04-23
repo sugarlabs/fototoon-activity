@@ -1,5 +1,4 @@
 import os
-import sys
 import simplejson
 import globos
 from sugar.activity import activity

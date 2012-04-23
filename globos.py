@@ -3,16 +3,14 @@
 import os
 import math
 import gtk
-import gobject
 import cairo
-import pango
-import logging
 
-import sugar.env
 from sugar.activity import activity
 from sugar.graphics.icon import _IconBuffer
+from sugar.graphics import style
 
 ANCHO_LINEAS_CONTROLES = 2
+SIZE_RESIZE_AREA = style.GRID_CELL_SIZE / 2
 
 DIR_ABAJO = "abajo"
 DIR_ARRIBA = "arriba"
@@ -122,17 +120,15 @@ class Globo:
             context.set_source_rgb(0, 0, 0)
             context.set_dash([2])
             context.stroke()
-
-            ancho_marcador = 15
             context.restore()
 
             # cuadrado esquina superior izq
             context.save()
             context.set_line_width(ANCHO_LINEAS_CONTROLES)
             context.set_source_rgb(1, 1, 1)
-            context.rectangle(self.x - self.ancho - (ancho_marcador / 2),
-                    self.y - self.alto - (ancho_marcador / 2),
-                    ancho_marcador, ancho_marcador)
+            context.rectangle(self.x - self.ancho - (SIZE_RESIZE_AREA / 2),
+                    self.y - self.alto - (SIZE_RESIZE_AREA / 2),
+                    SIZE_RESIZE_AREA, SIZE_RESIZE_AREA)
             context.stroke_preserve()
             context.set_source_rgb(0, 0, 0)
             context.set_dash([2])
@@ -146,7 +142,7 @@ class Globo:
 
             x_circle, y_circle = self.get_circle_position()
             context.arc(x_circle, y_circle,
-                        (ancho_marcador / 2), 0, x * math.pi)
+                        (SIZE_RESIZE_AREA / 2), 0, x * math.pi)
             context.stroke_preserve()
             context.set_source_rgb(0, 0, 0)
             context.set_dash([2])
@@ -241,16 +237,18 @@ class Globo:
         self.texto.mostrar_cursor = False
 
     def is_selec_tam(self, x, y):
-        if self.x - self.ancho - 5 < x < self.x - self.ancho + 5 and \
-            self.y - self.alto - 5 < y < self.y - self.alto + 5:
+        width = SIZE_RESIZE_AREA / 2
+        if self.x - self.ancho - width < x < self.x - self.ancho + width and \
+            self.y - self.alto - width < y < self.y - self.alto + width:
             return True
         else:
             return False
 
     def is_selec_punto(self, x, y):
+        width = SIZE_RESIZE_AREA / 2
         x_circle, y_circle = self.get_circle_position()
-        return x_circle - 5 < x < x_circle + 5 and \
-                y_circle - 5 < y < y_circle + 5
+        return x_circle - width < x < x_circle + width and \
+                y_circle - width < y < y_circle + width
 
     def mover_punto(self, x, y, rect):
         if self.direccion == DIR_ABAJO:
@@ -446,8 +444,9 @@ class Rectangulo(Globo):
             context.stroke()
 
             context.set_source_rgb(1, 1, 1)
-            context.rectangle(self.x - self.ancho - 5,
-                    self.y - self.alto - 5, 10, 10)
+            context.rectangle(self.x - self.ancho - (SIZE_RESIZE_AREA / 2),
+                    self.y - self.alto - (SIZE_RESIZE_AREA / 2),
+                    SIZE_RESIZE_AREA, SIZE_RESIZE_AREA)
             context.stroke_preserve()
             context.set_source_rgb(0, 0, 0)
             context.set_dash([2])
