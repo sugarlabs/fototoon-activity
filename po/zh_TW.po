@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-14 00:30-0400\n"
-"PO-Revision-Date: 2012-03-21 19:25+0200\n"
+"POT-Creation-Date: 2012-04-24 00:34-0400\n"
+"PO-Revision-Date: 2012-05-19 16:27+0200\n"
 "Last-Translator: Yuan <yuanchao@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: zh_TW\n"
@@ -21,87 +21,103 @@ msgstr ""
 msgid "FotoToon"
 msgstr "相片塗鴉"
 
-#: historietaactivity.py:35 historietaactivity.py:85
+#: historietaactivity.py:33 historietaactivity.py:83
 msgid "Save as Image"
 msgstr "另存為圖片"
 
-#: historietaactivity.py:35
+#: historietaactivity.py:33
 msgid "PNG"
 msgstr "PNG"
 
-#: historietaactivity.py:63
+#: historietaactivity.py:61
 msgid "Text"
 msgstr "文字"
 
-#: historietaactivity.py:426
+#: historietaactivity.py:218
+msgid "Success"
+msgstr "成功"
+
+#: historietaactivity.py:219
+msgid "A image was created in the Journal"
+msgstr "新的圖片已加入日誌中"
+
+#: historietaactivity.py:226
+msgid "Show in Journal"
+msgstr "顯示在日誌中"
+
+#: historietaactivity.py:227
+msgid "Ok"
+msgstr "確定"
+
+#: historietaactivity.py:455
 msgid "Title:"
 msgstr "標題: "
 
-#: toolbar.py:85
+#: toolbar.py:84
 msgid "Add Photo"
 msgstr "新增照片"
 
-#: toolbar.py:96
+#: toolbar.py:95
 msgid "Add Globe"
 msgstr "新增球"
 
-#: toolbar.py:103
+#: toolbar.py:102
 msgid "Add Think"
 msgstr "新增思考"
 
-#: toolbar.py:110
+#: toolbar.py:109
 msgid "Add Whisper"
 msgstr "新增悄悄話"
 
-#: toolbar.py:117
+#: toolbar.py:116
 msgid "Add Exclamation"
 msgstr "增加感嘆"
 
-#: toolbar.py:124
+#: toolbar.py:123
 msgid "Add Box"
 msgstr "增加盒子"
 
-#: toolbar.py:129
+#: toolbar.py:128
 msgid "Curves"
 msgstr "曲線"
 
-#: toolbar.py:129
+#: toolbar.py:128
 msgid "Straight"
 msgstr "直線"
 
-#: toolbar.py:130
+#: toolbar.py:129
 msgid "Highlight"
 msgstr "強調"
 
-#: toolbar.py:130
+#: toolbar.py:129
 msgid "Idea"
 msgstr "構想"
 
-#: toolbar.py:133
+#: toolbar.py:132
 msgid "Choose a movement line"
 msgstr "選擇一個移動線條"
 
-#: toolbar.py:149
+#: toolbar.py:148
 msgid "Turn"
 msgstr "轉"
 
-#: toolbar.py:155
+#: toolbar.py:154
 msgid "Delete"
 msgstr "删除"
 
-#: toolbar.py:226 toolbar.py:230
+#: toolbar.py:231 toolbar.py:235
 msgid "Choose image"
 msgstr "選擇圖片"
 
-#: toolbar.py:263
+#: toolbar.py:268
 msgid "Bold"
 msgstr "粗體"
 
-#: toolbar.py:268
+#: toolbar.py:273
 msgid "Italic"
 msgstr "斜體"
 
-#: toolbar.py:283
+#: toolbar.py:288
 msgid "Text Color"
 msgstr "文字色彩"
 

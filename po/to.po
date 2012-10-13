@@ -7,31 +7,32 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-04-24 00:34-0400\n"
-"PO-Revision-Date: 2011-03-27 14:29+0200\n"
+"PO-Revision-Date: 2012-02-26 20:59+0200\n"
 "Last-Translator: Chris <cjl@laptop.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"Language: to\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Pootle 2.0.1\n"
+"X-Generator: Pootle 2.0.5\n"
 
 #: activity/activity.info:2
 msgid "FotoToon"
 msgstr ""
 
 #: historietaactivity.py:33 historietaactivity.py:83
+#, fuzzy
 msgid "Save as Image"
-msgstr ""
+msgstr "Seivi koe 'Imisi"
 
 #: historietaactivity.py:33
+#, fuzzy
 msgid "PNG"
-msgstr ""
+msgstr "PNG"
 
 #: historietaactivity.py:61
 msgid "Text"
-msgstr ""
+msgstr "Text"
 
 #: historietaactivity.py:218
 msgid "Success"
@@ -102,20 +103,21 @@ msgid "Turn"
 msgstr ""
 
 #: toolbar.py:154
+#, fuzzy
 msgid "Delete"
-msgstr ""
+msgstr "Tiliti"
 
 #: toolbar.py:231 toolbar.py:235
 msgid "Choose image"
-msgstr "Veldu mynd"
+msgstr ""
 
 #: toolbar.py:268
 msgid "Bold"
-msgstr "Feitletrað"
+msgstr ""
 
 #: toolbar.py:273
 msgid "Italic"
-msgstr "Skáletrað"
+msgstr ""
 
 #: toolbar.py:288
 msgid "Text Color"

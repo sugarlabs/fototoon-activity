@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-14 00:30-0400\n"
+"POT-Creation-Date: 2012-04-24 00:34-0400\n"
 "PO-Revision-Date: 2011-10-22 20:21+0200\n"
 "Last-Translator: Chris <cjl@laptop.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,86 +21,102 @@ msgstr ""
 msgid "FotoToon"
 msgstr ""
 
-#: historietaactivity.py:35 historietaactivity.py:85
+#: historietaactivity.py:33 historietaactivity.py:83
 msgid "Save as Image"
 msgstr ""
 
-#: historietaactivity.py:35
+#: historietaactivity.py:33
 msgid "PNG"
 msgstr ""
 
-#: historietaactivity.py:63
+#: historietaactivity.py:61
 msgid "Text"
 msgstr ""
 
-#: historietaactivity.py:426
+#: historietaactivity.py:218
+msgid "Success"
+msgstr ""
+
+#: historietaactivity.py:219
+msgid "A image was created in the Journal"
+msgstr ""
+
+#: historietaactivity.py:226
+msgid "Show in Journal"
+msgstr ""
+
+#: historietaactivity.py:227
+msgid "Ok"
+msgstr ""
+
+#: historietaactivity.py:455
 msgid "Title:"
 msgstr ""
 
-#: toolbar.py:85
+#: toolbar.py:84
 msgid "Add Photo"
 msgstr ""
 
-#: toolbar.py:96
+#: toolbar.py:95
 msgid "Add Globe"
 msgstr ""
 
-#: toolbar.py:103
+#: toolbar.py:102
 msgid "Add Think"
 msgstr ""
 
-#: toolbar.py:110
+#: toolbar.py:109
 msgid "Add Whisper"
 msgstr ""
 
-#: toolbar.py:117
+#: toolbar.py:116
 msgid "Add Exclamation"
 msgstr ""
 
-#: toolbar.py:124
+#: toolbar.py:123
 msgid "Add Box"
 msgstr ""
 
-#: toolbar.py:129
+#: toolbar.py:128
 msgid "Curves"
 msgstr ""
 
-#: toolbar.py:129
+#: toolbar.py:128
 msgid "Straight"
 msgstr ""
 
-#: toolbar.py:130
+#: toolbar.py:129
 msgid "Highlight"
 msgstr ""
 
-#: toolbar.py:130
+#: toolbar.py:129
 msgid "Idea"
 msgstr ""
 
-#: toolbar.py:133
+#: toolbar.py:132
 msgid "Choose a movement line"
 msgstr ""
 
-#: toolbar.py:149
+#: toolbar.py:148
 msgid "Turn"
 msgstr ""
 
-#: toolbar.py:155
+#: toolbar.py:154
 msgid "Delete"
 msgstr "ⵎⵃⵓ"
 
-#: toolbar.py:226 toolbar.py:230
+#: toolbar.py:231 toolbar.py:235
 msgid "Choose image"
 msgstr ""
 
-#: toolbar.py:263
+#: toolbar.py:268
 msgid "Bold"
 msgstr ""
 
-#: toolbar.py:268
+#: toolbar.py:273
 msgid "Italic"
 msgstr ""
 
-#: toolbar.py:283
+#: toolbar.py:288
 msgid "Text Color"
 msgstr ""
