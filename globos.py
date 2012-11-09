@@ -2,12 +2,12 @@
 
 import os
 import math
-import gtk
+from gi.repository import Gtk, Gdk
 import cairo
 
-from sugar.activity import activity
-from sugar.graphics.icon import _IconBuffer
-from sugar.graphics import style
+from sugar3.activity import activity
+from sugar3.graphics.icon import _IconBuffer
+from sugar3.graphics import style
 
 ANCHO_LINEAS_CONTROLES = 2
 SIZE_RESIZE_AREA = style.GRID_CELL_SIZE / 2
@@ -930,29 +930,24 @@ class CuadroTexto:
                 self.double_key = None
 
         if self.texto:
-
-            if keyval == gtk.gdk.keyval_from_name('BackSpace'):
+            if keyval == Gdk.keyval_from_name('BackSpace'):
                 if self.cursor >= 1:
                     self.texto = self.texto[0:self.cursor - 1] + \
                         self.texto[self.cursor:len(self.texto)]
                     self.cursor -= 1
                 self.redimensionar(context)
-
-            elif keyval == gtk.gdk.keyval_from_name('Return'):
+            elif keyval == Gdk.keyval_from_name('Return'):
                 self.texto = self.texto[0:self.cursor] + "\n" + \
                     self.texto[self.cursor:len(self.texto)]
                 self.cursor += 1
                 self.redimensionar(context)
-
-            elif keyval == gtk.gdk.keyval_from_name('Right'):
+            elif keyval == Gdk.keyval_from_name('Right'):
                 if self.cursor < len(self.texto):
                     self.cursor += 1
-
-            elif keyval == gtk.gdk.keyval_from_name('Left'):
+            elif keyval == Gdk.keyval_from_name('Left'):
                 if self.cursor > 0:
                     self.cursor -= 1
-
-            elif keyval == gtk.gdk.keyval_from_name('Up'):
+            elif keyval == Gdk.keyval_from_name('Up'):
                 sum_ren = 0
                 #se averigua en que renglon esta el cursor
                 for i in range(len(self.renglones)):
@@ -968,8 +963,7 @@ class CuadroTexto:
                         break
                     else:
                         sum_ren += (len(self.renglones[i]) + self.esp_reg[i])
-
-            elif keyval == gtk.gdk.keyval_from_name('Down'):
+            elif keyval == Gdk.keyval_from_name('Down'):
                 sum_ren = 0
                 #se averigua en que renglon esta el cursor
                 for i in range(len(self.renglones)):

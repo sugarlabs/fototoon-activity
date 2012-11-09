@@ -1,29 +1,31 @@
 # -*- coding: UTF-8 -*-
 
 import os
-import gtk
+from gi.repository import Gtk
+from gi.repository import Gdk
+from gi.repository import GdkPixbuf
 import cairo
 
 import globos
 import persistencia
 
-from sugar.activity import activity
+from sugar3.activity import activity
 from gettext import gettext as _
 
-from sugar.graphics.toolbarbox import ToolbarBox, ToolbarButton
-from sugar.activity.widgets import StopButton
-from sugar.activity.widgets import ActivityToolbarButton
+from sugar3.graphics.toolbarbox import ToolbarBox, ToolbarButton
+from sugar3.activity.widgets import StopButton
+from sugar3.activity.widgets import ActivityToolbarButton
 
-from sugar.graphics.toolbutton import ToolButton
+from sugar3.graphics.toolbutton import ToolButton
 from toolbar import TextToolbar
 from toolbar import GlobesManager
 
 import time
-from sugar.datastore import datastore
-from sugar import profile
-from sugar.graphics import style
-from sugar.graphics.alert import Alert
-from sugar.graphics.icon import Icon
+from sugar3.datastore import datastore
+from sugar3 import profile
+from sugar3.graphics import style
+from sugar3.graphics.alert import Alert
+from sugar3.graphics.icon import Icon
 import dbus
 import logging
 
@@ -61,7 +63,7 @@ class HistorietaActivity(activity.Activity):
         text_button.props.label = _('Text')
         toolbar_box.toolbar.insert(text_button, -1)
 
-        separator = gtk.SeparatorToolItem()
+        separator = Gtk.SeparatorToolItem()
         separator.props.draw = False
         separator.set_expand(True)
         toolbar_box.toolbar.insert(separator, -1)
@@ -73,7 +75,7 @@ class HistorietaActivity(activity.Activity):
 
         # add export button
 
-        separator_2 = gtk.SeparatorToolItem()
+        separator_2 = Gtk.SeparatorToolItem()
         separator_2.show()
         activity_toolbar.insert(separator_2, -1)
 
@@ -87,8 +89,8 @@ class HistorietaActivity(activity.Activity):
         activity_button.page.title.connect("focus-in-event",
             self.on_title)
 
-        scrolled = gtk.ScrolledWindow()
-        scrolled.set_policy(gtk.POLICY_NEVER, gtk.POLICY_ALWAYS)
+        scrolled = Gtk.ScrolledWindow()
+        scrolled.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.ALWAYS)
         scrolled.add_with_viewport(self.page)
         scrolled.show_all()
         self.set_canvas(scrolled)
@@ -222,9 +224,9 @@ class HistorietaActivity(activity.Activity):
         _stop_alert = Alert()
         _stop_alert.props.title = title
         _stop_alert.props.msg = msg
-        _stop_alert.add_button(gtk.RESPONSE_APPLY,
+        _stop_alert.add_button(Gtk.ResponseType.APPLY,
                 _('Show in Journal'), Icon(icon_name='zoom-activity'))
-        _stop_alert.add_button(gtk.RESPONSE_OK, _('Ok'),
+        _stop_alert.add_button(Gtk.ResponseType.OK, _('Ok'),
                 Icon(icon_name='dialog-ok'))
         # Remove other alerts
         for alert in self._alerts:
@@ -235,14 +237,14 @@ class HistorietaActivity(activity.Activity):
         _stop_alert.show_all()
 
     def __stop_response_cb(self, alert, response_id):
-        if response_id is gtk.RESPONSE_APPLY:
+        if response_id is Gtk.ResponseType.APPLY:
             activity.show_object_in_journal(self._object_id)
         self.remove_alert(alert)
 
     def _get_preview_image(self, file_name):
         preview_width, preview_height = style.zoom(300), style.zoom(225)
 
-        pixbuf = gtk.gdk.pixbuf_new_from_file(file_name)
+        pixbuf = GdkPixbuf.Pixbuf.new_from_file(file_name)
         width, height = pixbuf.get_width(), pixbuf.get_height()
 
         scale = 1
@@ -251,7 +253,7 @@ class HistorietaActivity(activity.Activity):
             scale_y = preview_height / float(height)
             scale = min(scale_x, scale_y)
 
-        pixbuf2 = gtk.gdk.Pixbuf(gtk.gdk.COLORSPACE_RGB, \
+        pixbuf2 = GdkPixbuf.Pixbuf(GdkPixbuf.Colorspace.RGB, \
                             pixbuf.get_has_alpha(), \
                             pixbuf.get_bits_per_sample(), \
                             preview_width, preview_height)
@@ -264,7 +266,7 @@ class HistorietaActivity(activity.Activity):
                             preview_width - (margin_x * 2), \
                             preview_height - (margin_y * 2), \
                             margin_x, margin_y, scale, scale, \
-                            gtk.gdk.INTERP_BILINEAR)
+                            GdkPixbuf.InterpType.BILINEAR)
 
         preview_data = []
 
@@ -278,15 +280,15 @@ class HistorietaActivity(activity.Activity):
 DEF_SPACING = 6
 DEF_WIDTH = 4
 
-SCREEN_HEIGHT = gtk.gdk.screen_height()
-SCREEN_WIDTH = gtk.gdk.screen_width()
+SCREEN_HEIGHT = Gdk.Screen.height()
+SCREEN_WIDTH = Gdk.Screen.width()
 BOX_HEIGHT = 450
 
 
-class Page(gtk.VBox):
+class Page(Gtk.VBox):
 
     def __init__(self):
-        gtk.VBox.__init__(self, False, 0)
+        Gtk.VBox.__init__(self, False, 0)
         self.set_homogeneous(False)
 
         self.boxs = []
@@ -301,17 +303,17 @@ class Page(gtk.VBox):
         self.title_box.show()
         self.title_box.set_size_request(SCREEN_WIDTH, 100)
         self.title_box.width, self.title_box.height = SCREEN_WIDTH, 100
-        self.pack_start(self.title_box, False)
+        self.pack_start(self.title_box, False, False, 0)
         self.set_active_box(self.title_box)
         self.boxs.append(self.title_box)
         self.title_box.page = self
 
         # Agrego tabla para las fotos
-        self.table = gtk.Table(10, 2, True)
+        self.table = Gtk.Table(10, 2, True)
         self.table.set_homogeneous(True)
         self.table.set_row_spacings(DEF_SPACING)
         self.table.set_col_spacings(DEF_SPACING)
-        self.pack_start(self.table)
+        self.pack_start(self.table, False, False, 0)
 
     def add_box_from_journal_image(self, image_file_name):
         posi = len(self.boxs) - 1
@@ -348,16 +350,16 @@ class Page(gtk.VBox):
         return None
 
 
-class ComicBox(gtk.DrawingArea):
+class ComicBox(Gtk.DrawingArea):
 
     def __init__(self, image_file_name, posi):
         print ('Cuadro INIT')
-        gtk.DrawingArea.__init__(self)
+        Gtk.DrawingArea.__init__(self)
         #se agregan los eventos de pulsacion y movimiento del raton
-        self.add_events(gtk.gdk.POINTER_MOTION_MASK | \
-                        gtk.gdk.BUTTON_PRESS_MASK | \
-                        gtk.gdk.BUTTON_RELEASE_MASK | \
-                        gtk.gdk.BUTTON1_MOTION_MASK)
+        self.add_events(Gdk.EventMask.POINTER_MOTION_MASK |
+                        Gdk.EventMask.BUTTON_PRESS_MASK |
+                        Gdk.EventMask.BUTTON_RELEASE_MASK |
+                        Gdk.EventMask.BUTTON_MOTION_MASK)
 
         #self.globos es una lista que contiene los globos de ese cuadro
         self.globos = []
@@ -383,7 +385,7 @@ class ComicBox(gtk.DrawingArea):
 
         self.set_size_request(-1, BOX_HEIGHT)
 
-        self.connect("expose_event", self.expose)
+        self.connect("draw", self.draw)
         self.connect("button_press_event", self.pressing)
         self.connect("motion_notify_event", self.mouse_move)
         self.connect("motion_notify_event", self.moving)
@@ -439,8 +441,7 @@ class ComicBox(gtk.DrawingArea):
         self._globo_activo = globo
         self.queue_draw()
 
-    def expose(self, widget, event):
-        self.context = widget.window.cairo_create()
+    def draw(self, widget, context):
 
         # check if is the title box and is a new page
         if self.page.title_box == self and self.page.empty_page:
@@ -454,19 +455,8 @@ class ComicBox(gtk.DrawingArea):
             self.title_globe = self.globos[0]
             self.title_globe.texto.set_text(_('Title:'))
 
-        self.draw(self.context, event.area, widget.window)
+        self.draw_in_context(context)
         return False
-
-    """
-    que hace esto? nadie lo llama...
-    def set_sink(self, sink):
-        assert self.window.xid
-        self.imagesink = sink
-        self.imagesink.set_xwindow_id(self.window.xid)
-    """
-
-    def draw(self, ctx, area, window):
-        self.draw_in_context(ctx)
 
     def draw_in_context(self, ctx):
         # Dibujamos la foto
@@ -482,10 +472,10 @@ class ComicBox(gtk.DrawingArea):
             # de historieta ya grabado,
             # si viene con path, es una imagen que se tomo del journal
             if (not self.image_name.startswith(instance_path)):
-                pixbuf = gtk.gdk.pixbuf_new_from_file(
+                pixbuf = GdkPixbuf.Pixbuf.new_from_file(
                     os.path.join(instance_path, self.image_name))
             else:
-                pixbuf = gtk.gdk.pixbuf_new_from_file(self.image_name)
+                pixbuf = GdkPixbuf.Pixbuf.new_from_file(self.image_name)
             width_pxb = pixbuf.get_width()
             height_pxb = pixbuf.get_height()
             scale = (self.width) / (1.0 * width_pxb)
@@ -497,24 +487,22 @@ class ComicBox(gtk.DrawingArea):
                 # que venga del journal y tenga el tamanio justo,
                 # es decir con scale = 1
                 pixb_scaled = pixbuf.scale_simple(int(self.width),
-                    int(self.image_height), gtk.gdk.INTERP_BILINEAR)
+                    int(self.image_height), GdkPixbuf.InterpType.BILINEAR)
                 ct = cairo.Context(self.image)
-                gtk_ct = gtk.gdk.CairoContext(ct)
-                gtk_ct.set_source_pixbuf(pixb_scaled, 0, 0)
-                gtk_ct.paint()
+                Gdk.cairo_set_source_pixbuf(ct, pixb_scaled, 0, 0)
+                ct.paint()
                 if (not self.image_saved):
                     self.image_saved = True
                     # print instance_path
-                    image_file_name = 'image' + str(self.posi) + '.jpg'
-                    pixb_scaled.save(os.path.join(instance_path,
-                        image_file_name), 'jpeg')
+                    image_file_name = 'image' + str(self.posi) + '.png'
+                    self.image.write_to_png(os.path.join(instance_path,
+                            image_file_name))
                     # grabamos el nombre de la imagen sin el path
                     self.image_name = image_file_name
             else:
                 ct = cairo.Context(self.image)
-                gtk_ct = gtk.gdk.CairoContext(ct)
-                gtk_ct.set_source_pixbuf(pixbuf, 0, 0)
-                gtk_ct.paint()
+                Gdk.cairo_set_source_pixbuf(ct, pixbuf, 0, 0)
+                ct.paint()
 
         if (self.image != None):
             ctx.set_source_surface(self.image, 0, 0)
@@ -591,9 +579,10 @@ class ComicBox(gtk.DrawingArea):
         if self._globo_activo != None:
             over_state = self._globo_activo.get_over_state(event.x, event.y)
             cursor = None
-            if over_state != None:
-                cursor = gtk.gdk.Cursor(gtk.gdk.__dict__[over_state])
-            self.window.set_cursor(cursor)
+            # TODO: Gtk3
+            #if over_state != None:
+            #    cursor = Gdk.Cursor(gtk.gdk.__dict__[over_state])
+            #self.window.set_cursor(cursor)
 
     def moving(self, widget, event):
         if self.is_dimension:

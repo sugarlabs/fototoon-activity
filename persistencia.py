@@ -1,7 +1,7 @@
 import os
 import simplejson
 import globos
-from sugar.activity import activity
+from sugar3.activity import activity
 import zipfile
 
 

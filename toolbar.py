@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # copiado de la actividad write
 # Copyright (C) 2006, Martin Sevior
 # Copyright (C) 2006-2007, Marc Maurer <uwog@uwog.net>
@@ -20,22 +21,23 @@ from gettext import gettext as _
 import logging
 import os
 import time
-import gtk
-from sugar.graphics.icon import Icon
-from sugar.graphics.toolbutton import ToolButton
-from sugar.graphics.toggletoolbutton import ToggleToolButton
-from sugar.graphics.combobox import ComboBox
-from sugar.graphics.toolcombobox import ToolComboBox
-from sugar.graphics.objectchooser import ObjectChooser
-from sugar.activity.widgets import RadioMenuButton
-from sugar.graphics.menuitem import MenuItem
+# Gtk3
+from gi.repository import Gtk, Gdk, GdkPixbuf
+from sugar3.graphics.icon import Icon
+from sugar3.graphics.toolbutton import ToolButton
+from sugar3.graphics.toggletoolbutton import ToggleToolButton
+from sugar3.graphics.combobox import ComboBox
+from sugar3.graphics.toolcombobox import ToolComboBox
+from sugar3.graphics.objectchooser import ObjectChooser
+from sugar3.activity.widgets import RadioMenuButton
+from sugar3.graphics.menuitem import MenuItem
 
 from fontcombobox import FontComboBox
 import globos
 
 WITH_COLOR_BUTTON = True
 try:
-    from sugar.graphics.colorbutton import ColorToolButton
+    from sugar3.graphics.colorbutton import ColorToolButton
 
     ##Class to manage the Text Color
     class TextButtonColor(ColorToolButton):
@@ -84,7 +86,7 @@ class GlobesManager():
         self.add_photo.set_tooltip(_('Add Photo'))
         toolbar.insert(self.add_photo, -1)
 
-        separator = gtk.SeparatorToolItem()
+        separator = Gtk.SeparatorToolItem()
         separator.set_draw(True)
         toolbar.insert(separator, -1)
 
@@ -138,7 +140,7 @@ class GlobesManager():
             menu_item.show()
         toolbar.insert(self._lines_menu, -1)
 
-        separator = gtk.SeparatorToolItem()
+        separator = Gtk.SeparatorToolItem()
         separator.set_draw(True)
         toolbar.insert(separator, -1)
 
@@ -227,18 +229,10 @@ class GlobesManager():
             self._page.boxs.pop()
 
     def add_image(self):
-        try:
-            chooser = ObjectChooser(_('Choose image'),
-                self._activity, gtk.DIALOG_MODAL |
-                gtk.DIALOG_DESTROY_WITH_PARENT, what_filter='Image')
-        except:
-            chooser = ObjectChooser(_('Choose image'),
-                self._activity, gtk.DIALOG_MODAL |
-                gtk.DIALOG_DESTROY_WITH_PARENT)
+        chooser = ObjectChooser(self._activity, what_filter='Image')
         try:
             result = chooser.run()
-            print result, gtk.RESPONSE_ACCEPT
-            if result == gtk.RESPONSE_ACCEPT:
+            if result == Gtk.ResponseType.ACCEPT:
                 logging.debug('ObjectChooser: %r' %
                         chooser.get_selected_object())
                 jobject = chooser.get_selected_object()
@@ -254,12 +248,12 @@ class GlobesManager():
             del chooser
 
 
-class TextToolbar(gtk.Toolbar):
+class TextToolbar(Gtk.Toolbar):
 
     def __init__(self, page):
         self._colorseldlg = None
 
-        gtk.Toolbar.__init__(self)
+        Gtk.Toolbar.__init__(self)
 
         self._page = page
         page._text_toolbar = self
@@ -286,26 +280,26 @@ class TextToolbar(gtk.Toolbar):
         if WITH_COLOR_BUTTON:
             self._text_color = TextButtonColor(page)
             self._text_color.set_title(_('Text Color'))
-            item = gtk.ToolItem()
+            item = Gtk.ToolItem()
             item.add(self._text_color)
             self.insert(item, -1)
         else:
-            self._text_color = gtk.ColorButton()
+            self._text_color = Gtk.ColorButton()
             self._text_color_id = self._text_color.connect('color-set',
                     self._text_color_cb)
-            tool_item = gtk.ToolItem()
+            tool_item = Gtk.ToolItem()
             tool_item.add(self._text_color)
             self.insert(tool_item, -1)
             tool_item.show_all()
 
-        separator = gtk.SeparatorToolItem()
+        separator = Gtk.SeparatorToolItem()
         separator.set_draw(True)
         self.insert(separator, -1)
 
         # tamanio
         self._font_size_icon = Icon(icon_name="format-text-size",
-                icon_size=gtk.ICON_SIZE_LARGE_TOOLBAR)
-        tool_item = gtk.ToolItem()
+                icon_size=Gtk.IconSize.LARGE_TOOLBAR)
+        tool_item = Gtk.ToolItem()
         tool_item.add(self._font_size_icon)
         self.insert(tool_item, -1)
 
@@ -335,7 +329,7 @@ class TextToolbar(gtk.Toolbar):
         return self._text_selected_handler
 
     def _add_widget(self, widget, expand=False):
-        tool_item = gtk.ToolItem()
+        tool_item = Gtk.ToolItem()
         tool_item.set_expand(expand)
         tool_item.add(widget)
         widget.show()
@@ -402,7 +396,7 @@ class TextToolbar(gtk.Toolbar):
         self.setToggleButtonState(self._italic, globeText.italic,
                 self._italic_id)
         # color
-        self._text_color.set_color(gtk.gdk.Color(
+        self._text_color.set_color(Gdk.Color(
                 int(globeText.color_r * 65535),
                 int(globeText.color_g * 65535),
                 int(globeText.color_b * 65535)))
