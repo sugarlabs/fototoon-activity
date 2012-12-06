@@ -156,6 +156,18 @@ class GlobesManager():
         self.b_borrar.set_tooltip(_('Delete'))
         toolbar.insert(self.b_borrar, -1)
 
+    def set_buttons_sensitive(self, sensitive):
+        self.add_box.set_sensitive(sensitive)
+        self.add_cloud.set_sensitive(sensitive)
+        self.add_globe.set_sensitive(sensitive)
+        self.add_photo.set_sensitive(sensitive)
+        self.add_scream.set_sensitive(sensitive)
+        self.add_whisp.set_sensitive(sensitive)
+        self.add_photo.set_sensitive(sensitive)
+        self.b_borrar.set_sensitive(sensitive)
+        self.b_girar.set_sensitive(sensitive)
+        self._lines_menu.set_sensitive(sensitive)
+
     def __activate_add_line_cb(self, widget, image_name):
         active_box = self._page.get_active_box()
         active_box.add_imagen("icons/" + image_name + ".svg", 60, 60)

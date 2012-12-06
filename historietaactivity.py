@@ -15,10 +15,12 @@ from gettext import gettext as _
 from sugar3.graphics.toolbarbox import ToolbarBox, ToolbarButton
 from sugar3.activity.widgets import StopButton
 from sugar3.activity.widgets import ActivityToolbarButton
-
+from sugar3.graphics.toggletoolbutton import ToggleToolButton
 from sugar3.graphics.toolbutton import ToolButton
 from toolbar import TextToolbar
 from toolbar import GlobesManager
+
+from slideview import SlideView
 
 import time
 from sugar3.datastore import datastore
@@ -47,6 +49,29 @@ class HistorietaActivity(activity.Activity):
         activity_toolbar = activity_button.page
         toolbar_box.toolbar.insert(activity_button, 0)
 
+        separator = Gtk.SeparatorToolItem()
+        toolbar_box.toolbar.insert(separator, -1)
+
+        view_subtoolbar = ToolbarButton()
+        view_toolbar = Gtk.Toolbar()
+        view_subtoolbar.props.page = view_toolbar
+        view_subtoolbar.props.icon_name = 'toolbar-view'
+        view_subtoolbar.label = _('View')
+        toolbar_box.toolbar.insert(view_subtoolbar, -1)
+
+        slideview_btn = ToggleToolButton('slideshow')
+        slideview_btn.set_tooltip(_('Slideshow'))
+        slideview_btn.set_active(False)
+        view_toolbar.insert(slideview_btn, -1)
+        slideview_btn.show()
+
+        fullscreen_btn = ToolButton('view-fullscreen')
+        fullscreen_btn.set_tooltip(_('Fullscreen'))
+        fullscreen_btn.props.accelerator = '<Alt>Return'
+        fullscreen_btn.connect('clicked', lambda w: self.fullscreen())
+        view_toolbar.insert(fullscreen_btn, -1)
+        fullscreen_btn.show()
+
         #self._add_toolbar_buttons(toolbar_box)
         self.set_toolbar_box(toolbar_box)
 
@@ -61,11 +86,13 @@ class HistorietaActivity(activity.Activity):
         text_button.props.page = TextToolbar(self.page)
         text_button.props.icon_name = 'format-text-size'
         text_button.props.label = _('Text')
+        slideview_btn.connect('clicked', self._switch_view_mode, text_button)
         toolbar_box.toolbar.insert(text_button, -1)
 
         separator = Gtk.SeparatorToolItem()
         separator.props.draw = False
         separator.set_expand(True)
+
         toolbar_box.toolbar.insert(separator, -1)
 
         stop = StopButton(self)
@@ -93,7 +120,17 @@ class HistorietaActivity(activity.Activity):
         scrolled.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.ALWAYS)
         scrolled.add_with_viewport(self.page)
         scrolled.show_all()
-        self.set_canvas(scrolled)
+
+        self._slideview = SlideView(self)
+        self._slideview.show_all()
+
+        self._notebook = Gtk.Notebook()
+        self._notebook.set_show_tabs(False)
+        self._notebook.append_page(scrolled, Gtk.Label('Fototoon'))
+        self._notebook.append_page(self._slideview, Gtk.Label('SlideView'))
+        self._notebook.show_all()
+
+        self.set_canvas(self._notebook)
         self.show()
         self.metadata['mime_type'] = 'application/x-fototoon-activity'
 
@@ -276,6 +313,17 @@ class HistorietaActivity(activity.Activity):
         pixbuf2.save_to_callback(save_func, 'png', user_data=preview_data)
         preview_data = ''.join(preview_data)
         return dbus.ByteArray(preview_data)
+
+    def _switch_view_mode(self, widget, textbutton):
+        if widget.get_active():
+            self._notebook.set_current_page(1)
+            self._slideview.set_boxes(self.page.boxs)
+            self._slideview.set_current_box(0)
+        else:
+            self._notebook.set_current_page(0)
+        self.globes_manager.set_buttons_sensitive(not widget.get_active())
+        textbutton.set_sensitive(not widget.get_active())
+
 
 DEF_SPACING = 6
 DEF_WIDTH = 4
@@ -505,8 +553,9 @@ class ComicBox(Gtk.DrawingArea):
                 ct.paint()
 
         if (self.image != None):
-            ctx.set_source_surface(self.image, 0, 0)
             ctx.rectangle(0, 0, self.width, self.height)
+            ctx.clip()
+            ctx.set_source_surface(self.image, 0, 0)
             ctx.paint()
 
         # Dibujamos el recuadro
