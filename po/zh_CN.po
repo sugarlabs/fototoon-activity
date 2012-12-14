@@ -6,9 +6,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-24 00:34-0400\n"
-"PO-Revision-Date: 2012-05-05 09:42+0200\n"
-"Last-Translator: Xin <dram.wang@gmail.com>\n"
+"POT-Creation-Date: 2012-12-06 00:32-0500\n"
+"PO-Revision-Date: 2012-12-12 14:58+0200\n"
+"Last-Translator: lite <litekok@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
@@ -17,106 +17,119 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Pootle 2.0.5\n"
 
-#: activity/activity.info:2
+#. TRANS: "name" option from activity.info file
+#. TRANS: "summary" option from activity.info file
+#. TRANS: "description" option from activity.info file
 msgid "FotoToon"
 msgstr "照片卡通"
 
-#: historietaactivity.py:33 historietaactivity.py:83
+#: historietaactivity.py:37 historietaactivity.py:112
 msgid "Save as Image"
 msgstr "储存为图片"
 
-#: historietaactivity.py:33
+#: historietaactivity.py:37
 msgid "PNG"
 msgstr "PNG"
 
-#: historietaactivity.py:61
+#: historietaactivity.py:59
+msgid "View"
+msgstr "查看"
+
+#: historietaactivity.py:63
+msgid "Slideshow"
+msgstr "幻灯片"
+
+#: historietaactivity.py:69
+msgid "Fullscreen"
+msgstr "全屏显示"
+
+#: historietaactivity.py:88
 msgid "Text"
 msgstr "文字"
 
-#: historietaactivity.py:218
+#: historietaactivity.py:257
 msgid "Success"
 msgstr "成功"
 
-#: historietaactivity.py:219
+#: historietaactivity.py:258
 msgid "A image was created in the Journal"
 msgstr "已经在日志中创建了一张图片"
 
-#: historietaactivity.py:226
+#: historietaactivity.py:265
 msgid "Show in Journal"
 msgstr "在日志中显示"
 
-#: historietaactivity.py:227
+#: historietaactivity.py:266
 msgid "Ok"
 msgstr "确定"
 
-#: historietaactivity.py:455
+#: historietaactivity.py:504
 msgid "Title:"
 msgstr "标题"
 
-#: toolbar.py:84
+#: toolbar.py:86
 msgid "Add Photo"
 msgstr "添加照片"
 
-#: toolbar.py:95
+#: toolbar.py:97
 msgid "Add Globe"
 msgstr "添加球形"
 
-#: toolbar.py:102
+#: toolbar.py:104
 msgid "Add Think"
 msgstr "添加想象"
 
-#: toolbar.py:109
+#: toolbar.py:111
 msgid "Add Whisper"
 msgstr "添加悄悄话"
 
-#: toolbar.py:116
+#: toolbar.py:118
 msgid "Add Exclamation"
 msgstr "添加感叹"
 
-#: toolbar.py:123
+#: toolbar.py:125
 msgid "Add Box"
 msgstr "添加盒子"
 
-#: toolbar.py:128
+#: toolbar.py:130
 msgid "Curves"
 msgstr "曲线"
 
-#: toolbar.py:128
+#: toolbar.py:130
 msgid "Straight"
 msgstr "直线"
 
-#: toolbar.py:129
+#: toolbar.py:131
 msgid "Highlight"
 msgstr "高亮"
 
-#: toolbar.py:129
+#: toolbar.py:131
 msgid "Idea"
 msgstr "构想"
 
-#: toolbar.py:132
+#: toolbar.py:134
 msgid "Choose a movement line"
 msgstr "选择一个移动线路"
 
-#: toolbar.py:148
+#: toolbar.py:150
 msgid "Turn"
 msgstr "转动"
 
-#: toolbar.py:154
+#: toolbar.py:156
 msgid "Delete"
 msgstr "删除"
 
-#: toolbar.py:231 toolbar.py:235
-msgid "Choose image"
-msgstr "选择图片"
-
-#: toolbar.py:268
+#: toolbar.py:274
 msgid "Bold"
 msgstr "粗体"
 
-#: toolbar.py:273
+#: toolbar.py:279
 msgid "Italic"
 msgstr "斜体"
 
-#: toolbar.py:288
+#: toolbar.py:294
 msgid "Text Color"
 msgstr "文字颜色"
+
+#~ msgid "Choose image"
+#~ msgstr "选择图片"
