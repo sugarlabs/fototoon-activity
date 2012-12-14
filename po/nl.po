@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-24 00:34-0400\n"
-"PO-Revision-Date: 2012-05-02 10:13+0200\n"
+"POT-Creation-Date: 2012-12-06 00:32-0500\n"
+"PO-Revision-Date: 2012-12-12 21:01+0200\n"
 "Last-Translator: whe <heppew@yahoo.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
@@ -17,109 +17,122 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Pootle 2.0.5\n"
 
-#: activity/activity.info:2
+#. TRANS: "name" option from activity.info file
+#. TRANS: "summary" option from activity.info file
+#. TRANS: "description" option from activity.info file
 msgid "FotoToon"
 msgstr "FotoToon"
 
-#: historietaactivity.py:33 historietaactivity.py:83
+#: historietaactivity.py:37 historietaactivity.py:112
 msgid "Save as Image"
 msgstr "Bewaar als Afbeelding"
 
-#: historietaactivity.py:33
+#: historietaactivity.py:37
 msgid "PNG"
 msgstr "PNG"
 
-#: historietaactivity.py:61
+#: historietaactivity.py:59
+msgid "View"
+msgstr "Beeld"
+
+#: historietaactivity.py:63
+msgid "Slideshow"
+msgstr "Diapresentatie"
+
+#: historietaactivity.py:69
+msgid "Fullscreen"
+msgstr "Volledig scherm"
+
+#: historietaactivity.py:88
 msgid "Text"
 msgstr "Tekst"
 
-#: historietaactivity.py:218
+#: historietaactivity.py:257
 msgid "Success"
 msgstr "Succes"
 
-#: historietaactivity.py:219
+#: historietaactivity.py:258
 msgid "A image was created in the Journal"
 msgstr "Een afbeelding is gemaakt in het Logboek"
 
-#: historietaactivity.py:226
+#: historietaactivity.py:265
 msgid "Show in Journal"
 msgstr "Toon in Logboek"
 
-#: historietaactivity.py:227
+#: historietaactivity.py:266
 msgid "Ok"
 msgstr "Ok"
 
-#: historietaactivity.py:455
+#: historietaactivity.py:504
 msgid "Title:"
 msgstr "Titel:"
 
-#: toolbar.py:84
+#: toolbar.py:86
 msgid "Add Photo"
 msgstr "Foto toevoegen"
 
-#: toolbar.py:95
+#: toolbar.py:97
 msgid "Add Globe"
 msgstr "Tekstballon toevoegen"
 
-#: toolbar.py:102
+#: toolbar.py:104
 msgid "Add Think"
 msgstr "Denkballon toevoegen"
 
-#: toolbar.py:109
+#: toolbar.py:111
 msgid "Add Whisper"
 msgstr "Fluisterballon toevoegen"
 
-#: toolbar.py:116
+#: toolbar.py:118
 msgid "Add Exclamation"
 msgstr "Uitroepteken toevoegen"
 
-#: toolbar.py:123
+#: toolbar.py:125
 msgid "Add Box"
 msgstr "Box toevoegen"
 
-#: toolbar.py:128
+#: toolbar.py:130
 msgid "Curves"
 msgstr "Bochten"
 
-#: toolbar.py:128
+#: toolbar.py:130
 msgid "Straight"
 msgstr "Recht"
 
-#: toolbar.py:129
+#: toolbar.py:131
 msgid "Highlight"
 msgstr "Accentueer"
 
-#: toolbar.py:129
+#: toolbar.py:131
 msgid "Idea"
 msgstr "Idee"
 
-#: toolbar.py:132
+#: toolbar.py:134
 msgid "Choose a movement line"
 msgstr "Kies een beweging lijn"
 
-#: toolbar.py:148
+#: toolbar.py:150
 msgid "Turn"
 msgstr "Omkeren"
 
-#: toolbar.py:154
+#: toolbar.py:156
 msgid "Delete"
 msgstr "Verwijderen"
 
-#: toolbar.py:231 toolbar.py:235
-msgid "Choose image"
-msgstr "Kies afbeelding"
-
-#: toolbar.py:268
+#: toolbar.py:274
 msgid "Bold"
 msgstr "Vet"
 
-#: toolbar.py:273
+#: toolbar.py:279
 msgid "Italic"
 msgstr "Cursief"
 
-#: toolbar.py:288
+#: toolbar.py:294
 msgid "Text Color"
 msgstr "Tekst Kleur"
+
+#~ msgid "Choose image"
+#~ msgstr "Kies afbeelding"
 
 #~ msgid "Globes"
 #~ msgstr "Tekstballon"
