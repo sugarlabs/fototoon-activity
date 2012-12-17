@@ -52,19 +52,16 @@ try:
             color = self.get_color()
             self.set_text_color(color)
 
-        def alloc_color(self, color):
-            colormap = self._page.get_colormap()
-            return colormap.alloc_color(color.red, color.green, color.blue)
+        #def alloc_color(self, color):
+        #    colormap = self._page.get_colormap()
+        #    return colormap.alloc_color(color.red, color.green, color.blue)
 
         def set_text_color(self, color):
             globo_activo = self._page.get_globo_activo()
             if (globo_activo != None):
-                newcolor = self.alloc_color(color)
                 texto = globo_activo.texto
-                texto.color_r = newcolor.red / 65535.0
-                texto.color_g = newcolor.green / 65535.0
-                texto.color_b = newcolor.blue / 65535.0
-                self._page.get_active_box().queue_draw()
+                texto.color = (color.red, color.green, color.blue)
+                self._page.get_active_box().redraw()
 
 except:
     WITH_COLOR_BUTTON = False
@@ -206,7 +203,7 @@ class GlobesManager():
             print "globo activo",
             globe = box.get_globo_activo()
             if globe.girar():
-                box.queue_draw()
+                box.redraw()
 
     def borrar(self, boton):
         print "borrando"
@@ -219,7 +216,7 @@ class GlobesManager():
 
             box.globos.remove(box.get_globo_activo())
             box.set_globo_activo(None)
-            box.queue_draw()
+            box.redraw()
         else:
             # Borrar un box es mas complicado
             print "borrando box"
@@ -232,12 +229,12 @@ class GlobesManager():
                     box1.image_name = box2.image_name
                     box1.globos = []
                     box1.globos.extend(box2.globos)
-                    box1.queue_draw()
+                    box1.redraw()
             last_box = self._page.boxs[-1]
             last_box.image = None
             last_box.image_name = ""
             last_box.globos = []
-            last_box.queue_draw()
+            last_box.redraw()
             self._page.boxs.pop()
 
     def add_image(self):
@@ -245,15 +242,16 @@ class GlobesManager():
         try:
             result = chooser.run()
             if result == Gtk.ResponseType.ACCEPT:
-                logging.debug('ObjectChooser: %r' %
+                logging.error('ObjectChooser: %r' %
                         chooser.get_selected_object())
                 jobject = chooser.get_selected_object()
                 if jobject and jobject.file_path:
-                    print "imagen seleccionada:", jobject.file_path
+                    logging.error("imagen seleccionada: %s", jobject.file_path)
                     tempfile_name = \
                         os.path.join(self._activity.get_activity_root(),
                         'instance', 'tmp%i' % time.time())
                     os.link(jobject.file_path, tempfile_name)
+                    logging.error("tempfile_name: %s", tempfile_name)
                     self._page.add_box_from_journal_image(tempfile_name)
         finally:
             chooser.destroy()
@@ -352,24 +350,22 @@ class TextToolbar(Gtk.Toolbar):
         globo_activo = self._page.get_globo_activo()
         if (globo_activo != None):
             globo_activo.texto.bold = not globo_activo.texto.bold
-            self._page.get_active_box().queue_draw()
+            self._page.get_active_box().redraw()
 
     def _italic_cb(self, button):
         globo_activo = self._page.get_globo_activo()
         if (globo_activo != None):
             globo_activo.texto.italic = not globo_activo.texto.italic
-            self._page.get_active_box().queue_draw()
+            self._page.get_active_box().redraw()
 
     # para la version 0.82
     def _text_color_cb(self, button):
         globo_activo = self._page.get_globo_activo()
         if (globo_activo != None):
-            newcolor = self._text_color.get_color()
+            color = self._text_color.get_color()
             texto = globo_activo.texto
-            texto.color_r = newcolor.red / 65535.0
-            texto.color_g = newcolor.green / 65535.0
-            texto.color_b = newcolor.blue / 65535.0
-            self._page.get_active_box().queue_draw()
+            texto.color = (color.red, color.green, color.blue)
+            self._page.get_active_box().redraw()
 
     def _font_size_changed_cb(self, combobox):
         if self._font_size_combo.get_active() != -1:
@@ -379,7 +375,7 @@ class TextToolbar(Gtk.Toolbar):
             if (globo_activo != None):
                 globo_activo.texto.font_size = size
                 globo_activo.texto.alto_renglon = size
-                self._page.get_active_box().queue_draw()
+                self._page.get_active_box().redraw()
 
     def _font_changed_cb(self, combobox):
         if self._font_combo.get_active() != -1:
@@ -389,7 +385,7 @@ class TextToolbar(Gtk.Toolbar):
             if (globo_activo != None):
                 globo_activo.texto.font_type = font_name
                 self._page.selected_font_name = font_name
-                self._page.get_active_box().queue_draw()
+                self._page.get_active_box().redraw()
 
     """
     Estos son los metodos para setear los contrles de la barra en base a el
@@ -408,10 +404,7 @@ class TextToolbar(Gtk.Toolbar):
         self.setToggleButtonState(self._italic, globeText.italic,
                 self._italic_id)
         # color
-        self._text_color.set_color(Gdk.Color(
-                int(globeText.color_r * 65535),
-                int(globeText.color_g * 65535),
-                int(globeText.color_b * 65535)))
+        self._text_color.set_color(Gdk.Color(*globeText.color))
         # font size
         for i, s in enumerate(self._font_sizes):
             if int(s) == int(globeText.font_size):

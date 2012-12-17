@@ -3,7 +3,10 @@
 import os
 import math
 from gi.repository import Gtk, Gdk
-import cairo
+from gi.repository import Pango
+from gi.repository import PangoCairo
+
+import logging
 
 from sugar3.activity import activity
 from sugar3.graphics.icon import _IconBuffer
@@ -22,10 +25,11 @@ DEFAULT_FONT = 'Sans'
 
 class Globo:
 
-    def __init__(self, x, y, ancho=50, alto=30, modo="normal",
+    def __init__(self, box, x, y, ancho=50, alto=30, modo="normal",
             direccion=DIR_ABAJO, font_name=DEFAULT_FONT):
 
         self.globe_type = "GLOBE"
+        self.box = box
         #determina tamanio minimo
         self.radio = 30
         #dimensiones de la elipse
@@ -33,6 +37,7 @@ class Globo:
         self.alto = alto
         self.punto = [5, 10]
         #determina si esta seleccionado
+        # TODO: make private
         self.selec = False
         self.direccion = direccion
         #2 tipos de globos: "normal" o "despacio"
@@ -41,10 +46,15 @@ class Globo:
         self.x = x * self.ancho / (self.radio * 1.0)
         self.y = y * self.alto / (self.radio * 1.0)
 
-        ancho_text, alto_text = self.calc_area_texto()
+        ancho_text, alto_text = self.calc_area_texto(self.ancho, self.alto)
         #es el contenedor del texto
-        self.texto = CuadroTexto(self.x, self.y, ancho_text, alto_text,
+        self.texto = CuadroTexto(self, ancho_text, alto_text,
                 font_name)
+
+    def set_selected(self, selected):
+        logging.error('Set selected %s', selected)
+        self.selec = selected
+        self.texto.set_edition_mode(selected)
 
     def imprimir(self, context):
         #dibujo al globo de dialogo
@@ -159,18 +169,6 @@ class Globo:
         else:
             return self.x + self.punto[0], self.y - self.alto - self.punto[1]
 
-    # TODO: add a function to obtain to position (x, y)
-    # where is the control circle
-
-    def set_texto(self, key, keyval, context, rect):
-        self.texto.insertar_texto(key, keyval, context)
-        self.calc_area(self.texto.ancho, self.texto.alto)
-        if self.y - self.alto <= 0  or self.y + self.alto >= rect.height:
-            #si se redimensiono significa que crecio en un renglon
-            #y verifica si entra en cuadro si no es asi deshace la accion
-            self.texto.deshacer(context)
-            self.calc_area(self.texto.ancho, self.texto.alto)
-
     def mover_a(self, x, y, rect):
         if self.dx + x > (self.ancho):
             if self.dx + x < (rect.width - self.ancho):
@@ -190,31 +188,26 @@ class Globo:
 
         self.texto.mover_a(self.x, self.y)
 
-    def get_over_state(self, x, y):
-        """
-        if (self.x - self.ancho) < x < (self.x + self.ancho) and \
-                (self.y - self.alto) < y < (self.y + self.alto):
-            return None
-        """
-        state = None
+    def get_cursor_type(self, x, y):
+        cursor = None
         sensibility = 2
         if abs((self.x - self.ancho) - x) < sensibility:
-            state = 'LEFT_SIDE'
+            cursor = Gdk.CursorType.LEFT_SIDE
             if abs((self.y - self.alto) - y) < sensibility:
-                state = 'TOP_LEFT_CORNER'
+                cursor = Gdk.CursorType.TOP_LEFT_CORNER
             if abs((self.y + self.alto) - y) < sensibility:
-                state = 'BOTTOM_LEFT_CORNER'
+                cursor = Gdk.CursorType.BOTTOM_LEFT_CORNER
         elif abs((self.x + self.ancho) - x) < sensibility:
-            state = 'RIGHT_SIDE'
+            cursor = Gdk.CursorType.RIGHT_SIDE
             if abs((self.y - self.alto) - y) < sensibility:
-                state = 'TOP_RIGHT_CORNER'
+                cursor = Gdk.CursorType.TOP_RIGHT_CORNER
             if abs((self.y + self.alto) - y) < sensibility:
-                state = 'BOTTOM_RIGHT_CORNER'
+                cursor = Gdk.CursorType.BOTTOM_RIGHT_CORNER
         elif abs((self.y - self.alto) - y) < sensibility:
-            state = 'TOP_SIDE'
+            cursor = Gdk.CursorType.TOP_SIDE
         elif abs((self.y + self.alto) - y) < sensibility:
-            state = 'BOTTOM_SIDE'
-        return state
+            state = Gdk.CursorType.BOTTOM_SIDE
+        return cursor
 
     def is_selec(self, x, y):
         #devuelve True si es seleccionado
@@ -231,10 +224,6 @@ class Globo:
         else:
             #self.selec=False
             return False
-
-    def no_selec(self):
-        self.selec = False
-        self.texto.mostrar_cursor = False
 
     def is_selec_tam(self, x, y):
         width = SIZE_RESIZE_AREA / 2
@@ -311,9 +300,10 @@ class Globo:
             else:
                 self.punto[1] = (self.y - self.alto)
 
-    def set_dimension(self, x, y, rect, context):
-        alto_ant = self.alto
-        ancho_ant = self.ancho
+    def set_dimension(self, x, y, rect):
+        # set the text in edition mode to use the textview
+        # to meassure the minimal size needed
+        self.texto.set_edition_mode(True)
 
         # if I am changing the size from the right or from the bottom
         # change x / y to calculate like if changing from
@@ -325,47 +315,41 @@ class Globo:
 
         if (2 * self.x - x) < rect.width:
             if 0 < x < (self.x - self.radio):
-                self.ancho = self.x - x
+                new_width = self.x - x
             elif x <= 0:
-                self.ancho = self.x
+                new_width = self.x
             else:
-                self.ancho = self.radio
+                new_width = self.radio
 
         elif self.x - self.ancho != 0:
-            self.ancho = rect.width - self.x
+            new_width = rect.width - self.x
 
         if (2 * self.y - y) < rect.height:
             if 0 < y < (self.y - self.radio):
-                self.alto = self.y - y
+                new_height = self.y - y
             elif y <= 0:
-                self.alto = self.y
+                new_height = self.y
             else:
-                self.alto = self.radio
+                new_height = self.radio
         elif self.y - self.alto != 0:
-            self.alto = rect.height - self.y
+            new_height = rect.height - self.y
 
-        ancho_text, alto_text = self.calc_area_texto()
-
+        # try resize the text object
+        ancho_text, alto_text = self.calc_area_texto(new_width, new_height)
         self.texto.set_dimension(ancho_text, alto_text)
-        self.texto.redimensionar(context)
-        self.calc_area(self.texto.ancho, self.texto.alto)
 
-        # aca se tiene que ver si entra el texto en la pantalla
-        # si no es asi deshace la accion
-
-        if self.alto + self.y > rect.height or self.y - self.alto < 0:
-            self.alto = alto_ant
-            self.ancho = ancho_ant
-            ancho_text, alto_text = self.calc_area_texto()
-            self.texto.set_dimension(ancho_text, alto_text)
-            self.texto.redimensionar(context)
-
-    def calc_area_texto(self):
-        ancho_text = self.ancho - 12 * self.ancho / (self.radio * 1.0)
-        alto_text = self.alto - 12 * self.alto / (self.radio * 1.0)
+    def calc_area_texto(self, width, height):
+        """
+        Calculate the size available to the text, based in the globe size
+        """
+        ancho_text = width - 12 * width / (self.radio * 1.0)
+        alto_text = height - 12 * height / (self.radio * 1.0)
         return (ancho_text, alto_text)
 
     def calc_area(self, ancho_text, alto_text):
+        """
+        Calculate the min globe size, based in the text size
+        """
         self.ancho = self.texto.ancho / (1 - 12 / (self.radio * 1.0))
         self.alto = self.texto.alto / (1 - 12 / (self.radio * 1.0))
 
@@ -395,9 +379,11 @@ class Globo:
 
 class Rectangulo(Globo):
 
-    def __init__(self, x, y, ancho=50, alto=15, font_name=DEFAULT_FONT):
+    def __init__(self, box, x, y, ancho=50, alto=15,
+                 font_name=DEFAULT_FONT):
 
         self.globe_type = "RECTANGLE"
+        self.box = box
         #determina tamanio minimo
         self.radio = 15
         #dimensiones del rectangulo
@@ -411,8 +397,8 @@ class Rectangulo(Globo):
         self.x = x
         self.y = y
 
-        ancho_text, alto_text = self.calc_area_texto()
-        self.texto = CuadroTexto(self.x, self.y, ancho_text, alto_text,
+        ancho_text, alto_text = self.calc_area_texto(self.ancho, self.alto)
+        self.texto = CuadroTexto(self, ancho_text, alto_text,
                 font_name)
 
     def imprimir(self, context):
@@ -459,9 +445,9 @@ class Rectangulo(Globo):
     def is_selec_punto(self, x, y):
         return False
 
-    def calc_area_texto(self):
-        ancho_text = self.ancho - 5
-        alto_text = self.alto - 5
+    def calc_area_texto(self, width, height):
+        ancho_text = width - 5
+        alto_text = height - 5
         return (ancho_text, alto_text)
 
     def calc_area(self, ancho_text, alto_text):
@@ -471,11 +457,12 @@ class Rectangulo(Globo):
 
 class Nube(Globo):
 
-    def __init__(self, x, y, ancho=50, alto=30, direccion=DIR_ABAJO,
+    def __init__(self, box, x, y, ancho=50, alto=30, direccion=DIR_ABAJO,
             font_name=DEFAULT_FONT):
 
         self.globe_type = "CLOUD"
         self.radio = 30
+        self.box = box
 
         #dimensiones de la elipse
         self.ancho = ancho
@@ -492,8 +479,8 @@ class Nube(Globo):
 
         appdir = os.path.join(activity.get_bundle_path())
 
-        ancho_text, alto_text = self.calc_area_texto()
-        self.texto = CuadroTexto(self.x, self.y, ancho_text, alto_text,
+        ancho_text, alto_text = self.calc_area_texto(self.ancho, self.alto)
+        self.texto = CuadroTexto(self, ancho_text, alto_text,
                 font_name)
 
     def imprimir(self, context):
@@ -539,7 +526,6 @@ class Nube(Globo):
 
         for i in range(steps):
             alpha = 2.0 * i * (math.pi / steps)
-            #print "i", i, "alpha", alpha, "state", state
             sinalpha = math.sin(alpha)
             cosalpha = math.cos(alpha)
 
@@ -603,11 +589,12 @@ class Nube(Globo):
 
 class Grito(Globo):
 
-    def __init__(self, x, y, ancho=50, alto=30, direccion=DIR_ABAJO,
+    def __init__(self, box, x, y, ancho=50, alto=30, direccion=DIR_ABAJO,
             font_name=DEFAULT_FONT):
 
         self.globe_type = "EXCLAMATION"
         self.radio = 30
+        self.box = box
 
         self.ancho = ancho
         self.alto = alto
@@ -620,8 +607,8 @@ class Grito(Globo):
         self.x = x
         self.y = y
 
-        ancho_text, alto_text = self.calc_area_texto()
-        self.texto = CuadroTexto(self.x, self.y, ancho_text, alto_text,
+        ancho_text, alto_text = self.calc_area_texto(self.ancho, self.alto)
+        self.texto = CuadroTexto(self, ancho_text, alto_text,
                 font_name)
 
     def imprimir(self, context):
@@ -635,8 +622,6 @@ class Grito(Globo):
     def draw_exclamation(self, cr, x_cen, y_cen,
         width, height, direction, punto):
 
-        print "x_cen", x_cen, "y_cen", y_cen, "width", width, "height", height
-
         points = []
         steps = 24
 
@@ -649,7 +634,6 @@ class Grito(Globo):
 
         for i in range(steps):
             alpha = 2.0 * i * (math.pi / steps)
-            #print "i", i, "alpha", alpha
             sinalpha = math.sin(alpha)
             cosalpha = math.cos(alpha)
 
@@ -686,18 +670,19 @@ class Grito(Globo):
         cr.set_line_width(4)
         cr.stroke()
 
-    def calc_area_texto(self):
-        ancho_text = self.ancho - 12 * self.ancho / (self.radio * 1.0)
-        alto_text = self.alto - 20 * self.alto / (self.radio * 1.0)
+    def calc_area_texto(self, width, height):
+        ancho_text = width - 12 * width / (self.radio * 1.0)
+        alto_text = height - 20 * height / (self.radio * 1.0)
         return (ancho_text, alto_text)
 
 
 class Imagen(Globo):
 
-    def __init__(self, imagen, x, y, ancho=50, alto=30, direccion=DIR_ABAJO,
-            font_name=DEFAULT_FONT):
+    def __init__(self, box, imagen, x, y, ancho=50, alto=30,
+                 direccion=DIR_ABAJO, font_name=DEFAULT_FONT):
 
         self.globe_type = "IMAGE"
+        self.box = box
         self.radio = 30
         self.ancho = ancho
         self.alto = alto
@@ -714,7 +699,10 @@ class Imagen(Globo):
         self.icon_buffer = _IconBuffer()
         self.icon_buffer.file_name = os.path.join(appdir, imagen)
         self.icon_buffer.stroke_color = '#000000'
-        self.texto = CuadroTexto(self.x, self.y, 20, 20, font_name)
+        self.texto = CuadroTexto(self, 20, 20, font_name)
+
+    def set_selected(self, selected):
+        self.selec = selected
 
     def imprimir(self, context):
 
@@ -767,7 +755,7 @@ class Imagen(Globo):
             context.set_dash([2])
             context.stroke()
 
-    def calc_area_texto(self):
+    def calc_area_texto(self, width, height):
         return (20, 20)
 
     def calc_area(self, ancho_text, alto_text):
@@ -779,310 +767,115 @@ class Imagen(Globo):
     def is_selec_punto(self, x, y):
         return False
 
-    def set_texto(self, key, keyval, context, rect):
-        pass
-
 
 class CuadroTexto:
 
     "Es un cuadro de texto con alineacion centralizada"
 
-    def __init__(self, x, y, ancho=50, alto=30, font_name=DEFAULT_FONT):
+    def __init__(self, globe, ancho=50, alto=30, font_name=DEFAULT_FONT):
 
         #Ancho del cuadro = 2*self.ancho
+        self._globe = globe
+        self._box = globe.box
         self.ancho = ancho
-        #Alto del cuadro = 2*self.alto
         self.alto = alto
 
         #Centro del cuadro
-        self.x = x
-        self.y = y
+        self.x = globe.x
+        self.y = globe.y
 
-        self.texto = None
-        #Posicion del cursor(en nro de caracteres)
-        self.cursor = 0
+        self.text = ''
 
         #Caracteristicas de la tipografia
-        self.font_size = 12
-        self.font_type = font_name
-        self.color_r, self.color_g, self.color_b = 0, 0, 0
-        self.italic = False
+        self.font_description = '%s 12' % font_name
         self.bold = False
+        self.italic = False
+        self.color = (0, 0, 0)
+        self.font_size = '12'
+        self.font_type = font_name
+        self._in_edition = False
+        self._size_alloc_id = 0
 
-        #Tamanio del renglon
-        self.alto_renglon = 12
+    def _set_screen_dpi(self):
+        dpi = _get_screen_dpi()
+        font_map_default = PangoCairo.font_map_get_default()
+        font_map_default.set_resolution(dpi)
 
-        #Permite dibujar o no recuadro
-        self.mostrar_borde = False
+    def set_font_description(self, fd, parse=True):
+        self.font_description = fd
+        if self._in_edition:
+            self._box.textview.modify_font(Pango.FontDescription(fd))
+        if parse:
+            self._parse_font_description()
 
-        #Dibujar o no el cursor
-        self.mostrar_cursor = False
+    def set_edition_mode(self, in_edition):
+        if self._in_edition == in_edition:
+            return
+        self._in_edition = in_edition
+        tbuffer = self._box.textview.get_buffer()
+        if self._in_edition:
 
-        #texto en cada renglon
-        self.renglones = []
-        # 1 =el renglon i termino con un espacio
-        # 0= el renglon i no termino con espacio
-        self.esp_reg = []
+            tbuffer.set_text(unicode(self.text))
 
-        # Lo uso para acentuar letras con comilla simple
-        self.double_key = None
+            self._box.textview.modify_font(Pango.FontDescription(
+                                                        self.font_description))
+            self.set_dimension(self.ancho, self.alto)
 
-    def set_text(self, text):
-        self.texto = text
-        self.renglones = self.texto.split('\r')
-        for i in range(len(self.renglones)):
-            self.esp_reg.append(0)
-        self.cursor = len(text)
-
-    def imprimir(self, context):
-        context.set_source_rgb(self.color_r, self.color_g, self.color_b)
-        if self.mostrar_borde:
-            #dibuja recuadro
-            context.set_line_width(1)
-            context.rectangle(self.x - self.ancho, self.y - self.alto,
-                2 * self.ancho, 2 * self.alto)
-            context.stroke()
-
-        # Insertando el texto
-        slant = cairo.FONT_SLANT_NORMAL
-        if self.italic:
-            slant = cairo.FONT_SLANT_ITALIC
-        weight = cairo.FONT_WEIGHT_NORMAL
-        if self.bold:
-            weight = cairo.FONT_WEIGHT_BOLD
-
-        context.select_font_face(self.font_type, slant, weight)
-        context.set_font_size(self.font_size)
-
-        if self.texto:
-            cursor_dib = self.cursor    # dibujar cursor
-
-            for i in range(len(self.renglones)):
-                #text_reng = unicode(self.renglones[i],'UTF8')
-                text_reng = self.renglones[i]
-                xbearing, ybearing, width, height, xadvance, yadvance = \
-                context.text_extents(self.renglones[i].replace(" ", "-"))
-
-                context.move_to(self.x - width / 2 - 1,
-                    self.y - self.alto + (i + 1) * self.alto_renglon)
-                context.set_source_rgb(self.color_r, self.color_g,
-                    self.color_b)
-                context.show_text(self.renglones[i])
-
-                if self.mostrar_cursor:
-                    if cursor_dib >= len(text_reng) + self.esp_reg[i]:
-                        cursor_dib -= (len(text_reng) + self.esp_reg[i])
-
-                    elif cursor_dib != -99:
-                        try:
-                            xbearing1, ybearing1, width1, \
-                            height1, xadvance1, yadvance1 = \
-                                context.text_extents( \
-                                text_reng[0:cursor_dib].replace(" ", "-"))
-                            context.move_to(self.x - width / 2 - 1 + width1,
-                                self.y - self.alto + \
-                                (i + 1) * self.alto_renglon)
-                            context.show_text("_")
-                            # para que no lo vuelva a dibujar en otro renglon
-                            cursor_dib = - 99
-                        except:
-                            print "ERROR", \
-                                text_reng[0:cursor_dib].replace(" ", "-")
-
-        elif self.mostrar_cursor:
-            context.move_to(self.x, self.y - self.alto + self.alto_renglon)
-            context.set_source_rgb(0, 0, 0)
-            context.show_text("_")
-
-        context.stroke()
-
-    def insertar_texto(self, key, keyval, context):
-
-        # correcion para teclado de uruguay -->
-        if (keyval == 65105):
-            # comilla simple
-            if self.double_key == None:
-                self.double_key = "'"
-            else:
-                key = "'"
-                self.double_key = None
-
-        if self.double_key == "'":
-            vocals = {"a": "á", "e": "é", "i": "í", "o": "ó", "u": "ú", \
-                      "A": "Á", "E": "É", "I": "Í", "O": "Ó", "U": "Ú"}
-            if key in vocals:
-                key = vocals[key]
-                self.double_key = None
-
-        if (keyval == 65111):
-            # comilla doble
-            if self.double_key == None:
-                self.double_key = '"'
-            else:
-                key = '"'
-                self.double_key = None
-
-        if self.double_key == '"':
-            vocals = {"a": "ä", "e": "ë", "i": "ï", "o": "ö", "u": "ü", \
-                      "A": "Ä", "E": "Ë", "I": "Ï", "O": "Ö", "U": "Ü"}
-            if key in vocals:
-                key = vocals[key]
-                self.double_key = None
-
-        if self.texto:
-            if keyval == Gdk.keyval_from_name('BackSpace'):
-                if self.cursor >= 1:
-                    self.texto = self.texto[0:self.cursor - 1] + \
-                        self.texto[self.cursor:len(self.texto)]
-                    self.cursor -= 1
-                self.redimensionar(context)
-            elif keyval == Gdk.keyval_from_name('Return'):
-                self.texto = self.texto[0:self.cursor] + "\n" + \
-                    self.texto[self.cursor:len(self.texto)]
-                self.cursor += 1
-                self.redimensionar(context)
-            elif keyval == Gdk.keyval_from_name('Right'):
-                if self.cursor < len(self.texto):
-                    self.cursor += 1
-            elif keyval == Gdk.keyval_from_name('Left'):
-                if self.cursor > 0:
-                    self.cursor -= 1
-            elif keyval == Gdk.keyval_from_name('Up'):
-                sum_ren = 0
-                #se averigua en que renglon esta el cursor
-                for i in range(len(self.renglones)):
-                    if sum_ren <= self.cursor < \
-                        (sum_ren + len(self.renglones[i]) + self.esp_reg[i]):
-                        if i != 0:
-                            #calculo desplazamiento dentro de un renglon
-                            cur_ren = self.cursor - sum_ren
-                            self.cursor = \
-                                min(sum_ren - len(self.renglones[i - 1])
-                                - self.esp_reg[i - 1] + \
-                                cur_ren, sum_ren - 1)
-                        break
-                    else:
-                        sum_ren += (len(self.renglones[i]) + self.esp_reg[i])
-            elif keyval == Gdk.keyval_from_name('Down'):
-                sum_ren = 0
-                #se averigua en que renglon esta el cursor
-                for i in range(len(self.renglones)):
-                    if sum_ren <= self.cursor < (sum_ren +
-                        len(self.renglones[i]) + self.esp_reg[i]):
-                        if i != len(self.renglones) - 1:
-                            #calculo desplazamiento dentro de un renglon
-                            cur_ren = self.cursor - sum_ren
-                            self.cursor = min(sum_ren + \
-                                len(self.renglones[i]) + \
-                                self.esp_reg[i] + cur_ren, \
-                                sum_ren + len(self.renglones[i]) + \
-                                self.esp_reg[i] + \
-                                len(self.renglones[i + 1]) + \
-                                self.esp_reg[i + 1] - 1)
-                        break
-                    else:
-                        sum_ren += (len(self.renglones[i]) + self.esp_reg[i])
-
-            else:
-                agregar = unicode(key, 'UTF8')
-                self.texto = self.texto[0:self.cursor] + agregar + \
-                    self.texto[self.cursor:len(self.texto)]
-                if key != "":
-                    self.cursor += len(agregar)
-                    self.redimensionar(context)
-
+            self._size_alloc_id = self._box.textview.connect('size_allocate',
+                                       self._textview_size_allocate)
+            self.mover_a(self.x, self.y)
+            self._box.textviewbox.show_all()
+            self._box.textview.grab_focus()
         else:
-            self.texto = unicode(key, 'UTF8')
-            self.cursor = len(self.texto)
-            self.redimensionar(context)
+            start, end = tbuffer.get_start_iter(), tbuffer.get_end_iter()
+            self.text = tbuffer.get_text(start, end, True)
+            self._box.textviewbox.hide()
+            tbuffer.set_text('')
+            if self._size_alloc_id != 0:
+                self._box.textview.disconnect(self._size_alloc_id)
+                self._size_alloc_id = 0
 
-    """
-    ATENCION: redimensionar no funciona bien con utf8
-    """
+    def imprimir(self, ctx):
+        self._update_font()
 
-    def redimensionar(self, context):
-        pass
-        """
-        Establece el texto en cada renglon dependiendo de las dimensiones
-        del cuadro, manteniendo fijo el ancho,
-        y redimensionando el alto si es necesario
-        """
+        if not self._in_edition:
+            ctx.save()
+            ctx.new_path()
 
-        if self.texto is not None:
+            color = [c / 65535.0 for c in self.color]
+            color.append(1.0)
+            ctx.set_source_rgba(*color)
 
-            texto_oracion = self.texto.split("\n")
+            pango_layout = PangoCairo.create_layout(ctx)
+            pango_layout.set_wrap(Pango.WrapMode.WORD_CHAR)
+            pango_layout.set_alignment(Pango.Alignment.CENTER)
 
-            self.renglones = []  # texto en cada renglon
-            self.esp_reg = []  # 1=indica si el renglon termino con un espacio.
+            pango_layout.set_font_description(Pango.FontDescription(
+                                                        self.font_description))
 
-            for j in range(len(texto_oracion)):
+            pango_layout.set_text(unicode(self.text), len(unicode(self.text)))
 
-                texto_renglon = texto_oracion[j]
+            pango_layout.set_width(self.ancho * 2 * Pango.SCALE)
 
-                while texto_renglon is not None:
+            x = self._globe.x - self.ancho
+            y = self._globe.y - self.alto
 
-                    for i in range(len(texto_renglon.split(" "))):
-
-                        xbearing, ybearing, width, height, \
-                            xadvance, yadvance = \
-                            context.text_extents( \
-                            texto_renglon.rsplit(" ", i)[0].replace(" ", "-"))
-                        # es remplazado " " por "-" para que pueda calcular
-                        # el ancho considerando los
-                        # espacios (el caracter - tiene el mismo ancho
-                        # que el espacio)
-
-                        if width <= self.ancho * 2:
-
-                            self.renglones.append(texto_renglon.rsplit(" ", \
-                                i)[0])
-                            self.esp_reg.append(1)
-
-                            if i != 0:
-                                posi_space = len(texto_renglon.split(" "))
-                                texto_renglon = \
-                                    texto_renglon.split(" ",
-                                    posi_space - i)[posi_space - i]
-                            else:
-                                texto_renglon = None
-                            break
-
-                        elif i == (len(texto_renglon.split(" ")) - 1):
-                            #este es el caso que no entra ni una palabra
-
-                            #tiene problemas de performance:se podria mejorar
-                            #empezando desde la izq
-
-                            palabra = (texto_renglon.rsplit(" ", i)[0])
-                            if i != 0:
-                                posi_space = len(texto_renglon.split(" "))
-                                texto_renglon = " " + \
-                                    texto_renglon.split(" ",
-                                    posi_space - i)[posi_space - i]
-                            else:
-                                texto_renglon = ""
-
-                            for k in range(1, len(palabra)):
-                                xbearing, ybearing, width, height, \
-                                    xadvance, yadvance = \
-                                    context.text_extents( \
-                                    palabra[:len(palabra) - k])
-                                if width <= self.ancho * 2:
-                                    self.renglones.append( \
-                                        palabra[:len(palabra) - k])
-                                    self.esp_reg.append(0)
-                                    texto_renglon = \
-                                    palabra[len(palabra) - k:len(palabra)] + \
-                                    texto_renglon
-                                    break
-
-                if len(self.renglones) * self.alto_renglon > self.alto * 2:
-                    self.alto = len(self.renglones) * self.alto_renglon / 2
+            ctx.move_to(x, y)
+            PangoCairo.show_layout(ctx, pango_layout)
+            ctx.stroke()
+            ctx.restore()
 
     def mover_a(self, x, y):
         "Mueve el centro del cuadro a la posicion (x,y)"
         self.y = y
         self.x = x
+        x = self._globe.x - self.ancho
+        y = self._globe.y - self.alto
+        self._box.move_textview(x, y)
+
+    def set_text(self, text):
+        self.text = text
+        self._box.redraw()
 
     def set_dimension(self, ancho, alto):
         """
@@ -1092,11 +885,44 @@ class CuadroTexto:
         """
         self.ancho = ancho
         self.alto = alto
+        if self._in_edition:
+            self._box.textviewbox.set_size_request(self.ancho * 2,
+                    self.alto * 2)
 
-    def deshacer(self, context):
-        "Se utiliza para deshacer la creacion de un nuevo renglon de texto"
-        self.texto = self.texto[0:self.cursor - 1] + \
-                self.texto[self.cursor:len(self.texto)]
-        self.cursor -= 1
-        self.alto -= self.alto_renglon
-        self.redimensionar(context)
+    def _textview_size_allocate(self, widget, alloc):
+        if self._in_edition:
+
+            # recalculate size and position with the real size allocated
+            self.ancho = alloc.width / 2
+            self.alto = alloc.height / 2
+
+            self._globe.calc_area(self.ancho, self.alto)
+            x = self._globe.x - self.ancho
+            y = self._globe.y - self.alto
+            self._box.move_textview(x, y)
+
+    def _update_font(self):
+        fd = self.font_type
+
+        if self.italic:
+            fd += ' italic'
+
+        if self.bold:
+            fd += ' bold'
+
+        fd += ' %s' % self.font_size
+
+        if fd != self.font_description:
+            self.set_font_description(fd, False)
+
+        if self._in_edition:
+            self._box.textview.modify_fg(Gtk.StateType.NORMAL,
+                                         Gdk.Color(*self.color))
+
+    def _parse_font_description(self):
+        fd = self.font_description.split()
+
+        self.font_type = fd[0]
+        self.font_size = fd[-1]
+        self.bold = 'bold' in fd
+        self.italic = 'italic' in fd
