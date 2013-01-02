@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-24 00:34-0400\n"
-"PO-Revision-Date: 2012-07-11 00:23+0200\n"
+"POT-Creation-Date: 2012-12-06 00:32-0500\n"
+"PO-Revision-Date: 2013-01-02 05:38+0200\n"
 "Last-Translator: Jasmine <udea_jasmine@yahoo.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hy\n"
@@ -17,111 +17,124 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Pootle 2.0.5\n"
 
-#: activity/activity.info:2
+#. TRANS: "name" option from activity.info file
+#. TRANS: "summary" option from activity.info file
+#. TRANS: "description" option from activity.info file
 msgid "FotoToon"
 msgstr "ՖոտոՏուն"
 
-#: historietaactivity.py:33 historietaactivity.py:83
+#: historietaactivity.py:37 historietaactivity.py:112
 msgid "Save as Image"
 msgstr "Պահել որպես պատկեր"
 
 # PNG ֆորմատ, Շարժական Ցանցային գրաֆիկներ
-#: historietaactivity.py:33
+#: historietaactivity.py:37
 msgid "PNG"
 msgstr "PNG"
 
-#: historietaactivity.py:61
+#: historietaactivity.py:59
+msgid "View"
+msgstr "Տեսք"
+
+#: historietaactivity.py:63
+msgid "Slideshow"
+msgstr "Ներկայացում"
+
+#: historietaactivity.py:69
+msgid "Fullscreen"
+msgstr "Ամբողջ էկրանով"
+
+#: historietaactivity.py:88
 msgid "Text"
 msgstr "Տեքստ"
 
-#: historietaactivity.py:218
+#: historietaactivity.py:257
 msgid "Success"
 msgstr "Հաջողություն"
 
-#: historietaactivity.py:219
+#: historietaactivity.py:258
 msgid "A image was created in the Journal"
-msgstr "Մատյանում ստեղծվում է մի պատկեր:"
+msgstr "Մատյանում ստեղծված է մի պատկեր:"
 
-#: historietaactivity.py:226
+#: historietaactivity.py:265
 msgid "Show in Journal"
 msgstr "Ցուցադրել Մատյանում"
 
-#: historietaactivity.py:227
+#: historietaactivity.py:266
 msgid "Ok"
 msgstr "Շատ լավ"
 
-#: historietaactivity.py:455
+#: historietaactivity.py:504
 msgid "Title:"
 msgstr "Վերնագիր."
 
-#: toolbar.py:84
+#: toolbar.py:86
 msgid "Add Photo"
 msgstr "Ավելացնել լուսանկար"
 
-#: toolbar.py:95
+#: toolbar.py:97
 msgid "Add Globe"
 msgstr "Ավելացնել Փուչիկ"
 
 # միտք
-#: toolbar.py:102
+#: toolbar.py:104
 msgid "Add Think"
 msgstr "Ավելացնել «Խոհ»"
 
-#: toolbar.py:109
+#: toolbar.py:111
 msgid "Add Whisper"
 msgstr "Ավելացնել «Շշունջ»"
 
-#: toolbar.py:116
+#: toolbar.py:118
 msgid "Add Exclamation"
 msgstr "Ավելացնել «Բացականչություն»"
 
-#: toolbar.py:123
+#: toolbar.py:125
 msgid "Add Box"
 msgstr "Ավելացնել վանդակ"
 
-#: toolbar.py:128
+#: toolbar.py:130
 msgid "Curves"
 msgstr "Կորագծեր"
 
-#: toolbar.py:128
+#: toolbar.py:130
 msgid "Straight"
 msgstr "Ուղիղ"
 
-#: toolbar.py:129
+#: toolbar.py:131
 msgid "Highlight"
 msgstr "Ընդգծել"
 
-#: toolbar.py:129
+#: toolbar.py:131
 msgid "Idea"
 msgstr "Գաղափար"
 
-#: toolbar.py:132
+#: toolbar.py:134
 msgid "Choose a movement line"
 msgstr "Ընտրել շարժման գիծը"
 
-#: toolbar.py:148
+#: toolbar.py:150
 msgid "Turn"
 msgstr "Պտտել"
 
-#: toolbar.py:154
+#: toolbar.py:156
 msgid "Delete"
 msgstr "Ջնջել"
 
-#: toolbar.py:231 toolbar.py:235
-msgid "Choose image"
-msgstr "Ընտրել պատկերը"
-
-#: toolbar.py:268
+#: toolbar.py:274
 msgid "Bold"
 msgstr "Թավ"
 
-#: toolbar.py:273
+#: toolbar.py:279
 msgid "Italic"
 msgstr "Շեղագիր"
 
-#: toolbar.py:288
+#: toolbar.py:294
 msgid "Text Color"
 msgstr "Տեքստի գույնը"
+
+#~ msgid "Choose image"
+#~ msgstr "Ընտրել պատկերը"
 
 #~ msgid "Globes"
 #~ msgstr "Գունդ"
