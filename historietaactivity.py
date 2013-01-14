@@ -113,6 +113,13 @@ class HistorietaActivity(activity.Activity):
         activity_toolbar.insert(self.bt_save_as_image, -1)
         self.bt_save_as_image.show()
 
+        save_as_pdf = ToolButton()
+        save_as_pdf.props.icon_name = 'save-as-pdf'
+        save_as_pdf.connect('clicked', self._save_as_pdf)
+        save_as_pdf.set_tooltip(_('Save as a Book (PDF)'))
+        activity_toolbar.insert(save_as_pdf, -1)
+        save_as_pdf.show()
+
         activity_button.page.title.connect("focus-in-event",
             self.on_title)
 
@@ -162,8 +169,7 @@ class HistorietaActivity(activity.Activity):
         persistence = persistencia.Persistence()
         persistence.read(file_path, self.page)
 
-    def write_image(self, button):
-        # calculate image size
+    def _get_image_size(self):
         image_height, image_width = 0, 0
         posi = 0
         for box in self.page.boxs:
@@ -181,9 +187,15 @@ class HistorietaActivity(activity.Activity):
                 image_height = image_height + box.height
             # hide the cursor
             for globe in box.globos:
-                globo.set_selected(False)
+                globe.set_selected(False)
 
             posi = posi + 1
+
+        return image_width, image_height
+
+    def write_image(self, button):
+        # calculate image size
+        image_width, image_height = self._get_image_size()
 
         #logging.error("image_width %d image_height %d" %
         #    (image_width, image_height))
@@ -251,6 +263,43 @@ class HistorietaActivity(activity.Activity):
         self._show_journal_alert(_('Success'),
                 _('A image was created in the Journal'))
 
+    def _save_as_pdf(self, widget):
+        if not len(self.page.boxs) > 1:
+            return
+
+        file_name = os.path.join(self.get_activity_root(), 'instance',
+                                 'tmp-%i.pdf' % time.time())
+        file_obj = open(file_name, 'w')
+
+        surface = cairo.PDFSurface(file_obj, self.page.boxs[1].width,
+                                             self.page.boxs[1].height)
+        context = cairo.Context(surface)
+
+        for box in self.page.boxs[1:]:
+            box.draw_in_context(context)
+            context.show_page()
+
+        surface.finish()
+        file_obj.close()
+
+        jobject = datastore.create()
+        jobject.metadata['icon-color'] = \
+                profile.get_color().to_string()
+        jobject.metadata['mime_type'] = 'application/pdf'
+
+        jobject.metadata['title'] = \
+            self.metadata['title'] + " as book"
+        jobject.file_path = file_name
+
+        #jobject.metadata['preview'] = \
+        #    self._get_preview_image(file_name)
+
+        datastore.write(jobject, transfer_ownership=True)
+        self._object_id = jobject.object_id
+
+        self._show_journal_alert(_('Success'),
+                _('A PDF was created in the Journal'))
+
     def _show_journal_alert(self, title, msg):
         _stop_alert = Alert()
         _stop_alert.props.title = title
@@ -284,28 +333,22 @@ class HistorietaActivity(activity.Activity):
             scale_y = preview_height / float(height)
             scale = min(scale_x, scale_y)
 
-        pixbuf2 = GdkPixbuf.Pixbuf(GdkPixbuf.Colorspace.RGB, \
-                            pixbuf.get_has_alpha(), \
-                            pixbuf.get_bits_per_sample(), \
+        pixbuf2 = GdkPixbuf.Pixbuf.new(GdkPixbuf.Colorspace.RGB,
+                            pixbuf.get_has_alpha(),
+                            pixbuf.get_bits_per_sample(),
                             preview_width, preview_height)
         pixbuf2.fill(style.COLOR_WHITE.get_int())
 
         margin_x = int((preview_width - (width * scale)) / 2)
         margin_y = int((preview_height - (height * scale)) / 2)
 
-        pixbuf.scale(pixbuf2, margin_x, margin_y, \
-                            preview_width - (margin_x * 2), \
-                            preview_height - (margin_y * 2), \
-                            margin_x, margin_y, scale, scale, \
+        pixbuf.scale(pixbuf2, margin_x, margin_y,
+                            preview_width - (margin_x * 2),
+                            preview_height - (margin_y * 2),
+                            margin_x, margin_y, scale, scale,
                             GdkPixbuf.InterpType.BILINEAR)
 
-        preview_data = []
-
-        def save_func(buf, data):
-            data.append(buf)
-
-        pixbuf2.save_to_callback(save_func, 'png', user_data=preview_data)
-        preview_data = ''.join(preview_data)
+        succes, preview_data = pixbuf2.save_to_bufferv('png', [], [])
         return dbus.ByteArray(preview_data)
 
     def _switch_view_mode(self, widget, textbutton):
