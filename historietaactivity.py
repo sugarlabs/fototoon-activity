@@ -135,6 +135,7 @@ class HistorietaActivity(activity.Activity):
         self.metadata['mime_type'] = 'application/x-fototoon-activity'
 
         self.page.empty_page = handle.object_id is None
+        self._key_press_signal_id = None
 
         #print "screen witdh " , SCREEN_WIDTH
         #print "page witdh " , self.page.size_request()
@@ -312,8 +313,16 @@ class HistorietaActivity(activity.Activity):
             self._notebook.set_current_page(1)
             self._slideview.set_boxes(self.page.boxs)
             self._slideview.set_current_box(0)
+            #disable edition mode in the globes
+            for box in self.page.boxs:
+                box.set_globo_activo(None)
+
+            self._key_press_signal_id = self.connect('key_press_event',
+                    self._slideview.key_press_cb)
         else:
             self._notebook.set_current_page(0)
+            if self._key_press_signal_id is not None:
+                self.disconnect(self._key_press_signal_id)
         self.globes_manager.set_buttons_sensitive(not widget.get_active())
         textbutton.set_sensitive(not widget.get_active())
 

@@ -28,8 +28,6 @@ class SlideView(Gtk.EventBox):
     def __init__(self, activity):
         Gtk.EventBox.__init__(self)
 
-        activity.connect('key_press_event', self._key_press_cb)
-
         self._area = Gtk.DrawingArea()
         self._area.connect('draw', self._area_draw_cb)
 
@@ -103,7 +101,7 @@ class SlideView(Gtk.EventBox):
             self._current_box += 1
         self._area.queue_draw()
 
-    def _key_press_cb(self, widget, event):
+    def key_press_cb(self, widget, event):
         if event.keyval == 65361:
             self._prev_slide(None, None)
 
