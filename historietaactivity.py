@@ -467,7 +467,7 @@ class ComicBox(Gtk.EventBox):
         self.textview.set_wrap_mode(Gtk.WrapMode.WORD_CHAR)
         self.textview.set_justification(Gtk.Justification.CENTER)
         self.textview.modify_bg(Gtk.StateType.NORMAL,
-                style.COLOR_TEXT_FIELD_GREY.get_gdk_color())
+                style.COLOR_WHITE.get_gdk_color())
 
         self._textview_x = 0
         self._textview_y = 0

@@ -780,10 +780,6 @@ class CuadroTexto:
         self.ancho = ancho
         self.alto = alto
 
-        #Centro del cuadro
-        self.x = globe.x
-        self.y = globe.y
-
         self.text = ''
 
         #Caracteristicas de la tipografia
@@ -821,9 +817,9 @@ class CuadroTexto:
                                                         self.font_description))
             self.set_dimension(self.ancho, self.alto)
 
-            self._size_alloc_id = self._box.textview.connect('size_allocate',
-                                       self._textview_size_allocate)
-            self.mover_a(self.x, self.y)
+            self._size_alloc_id = self._box.textviewbox.connect(
+                    'size_allocate', self._textview_size_allocate)
+            self.mover_a(self._globe.x, self._globe.y)
             self._box.textviewbox.show_all()
             self._box.textview.grab_focus()
         else:
@@ -832,7 +828,7 @@ class CuadroTexto:
             self._box.textviewbox.hide()
             tbuffer.set_text('')
             if self._size_alloc_id != 0:
-                self._box.textview.disconnect(self._size_alloc_id)
+                self._box.textviewbox.disconnect(self._size_alloc_id)
                 self._size_alloc_id = 0
 
     def imprimir(self, ctx):
@@ -867,8 +863,6 @@ class CuadroTexto:
 
     def mover_a(self, x, y):
         "Mueve el centro del cuadro a la posicion (x,y)"
-        self.y = y
-        self.x = x
         x = self._globe.x - self.ancho
         y = self._globe.y - self.alto
         self._box.move_textview(x, y)
@@ -891,7 +885,6 @@ class CuadroTexto:
 
     def _textview_size_allocate(self, widget, alloc):
         if self._in_edition:
-
             # recalculate size and position with the real size allocated
             self.ancho = alloc.width / 2
             self.alto = alloc.height / 2

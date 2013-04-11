@@ -62,8 +62,6 @@ class Persistence:
 
                 globoData['text_width'] = globo.texto.ancho
                 globoData['text_height'] = globo.texto.alto
-                globoData['text_x'], globoData['text_y'] = \
-                    globo.texto.x, globo.texto.y
                 globoData['text_text'] = globo.texto.text
                 globoData['text_color'] = globo.texto.color
 
@@ -172,8 +170,6 @@ class Persistence:
 
                     globo.texto.ancho = globoData['text_width']
                     globo.texto.alto = globoData['text_height']
-                    globo.texto.x, globo.texto.y = globoData['text_x'], \
-                        globoData['text_y']
                     globo.texto.text = globoData['text_text']
                     globo.texto.color = globoData['text_color']
 
