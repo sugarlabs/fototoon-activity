@@ -21,6 +21,8 @@ DIR_IZQ = "izq"
 DIR_DER = "der"
 
 DEFAULT_FONT = 'Sans'
+DEFAULT_GLOBE_WIDTH = style.GRID_CELL_SIZE * 2.5
+DEFAULT_GLOBE_HEIGHT = style.GRID_CELL_SIZE * 1.5
 
 
 def _get_screen_dpi():
@@ -39,8 +41,9 @@ _set_screen_dpi()
 
 class Globo:
 
-    def __init__(self, box, x, y, ancho=50, alto=30, modo="normal",
-            direccion=DIR_ABAJO, font_name=DEFAULT_FONT):
+    def __init__(self, box, x, y, ancho=DEFAULT_GLOBE_WIDTH,
+                 alto=DEFAULT_GLOBE_HEIGHT, modo="normal",
+                 direccion=DIR_ABAJO, font_name=DEFAULT_FONT):
 
         self.globe_type = "GLOBE"
         self.box = box
@@ -393,7 +396,8 @@ class Globo:
 
 class Rectangulo(Globo):
 
-    def __init__(self, box, x, y, ancho=50, alto=15,
+    def __init__(self, box, x, y, ancho=DEFAULT_GLOBE_WIDTH,
+                 alto=DEFAULT_GLOBE_HEIGHT / 2,
                  font_name=DEFAULT_FONT):
 
         self.globe_type = "RECTANGLE"
@@ -471,8 +475,9 @@ class Rectangulo(Globo):
 
 class Nube(Globo):
 
-    def __init__(self, box, x, y, ancho=50, alto=30, direccion=DIR_ABAJO,
-            font_name=DEFAULT_FONT):
+    def __init__(self, box, x, y, ancho=DEFAULT_GLOBE_WIDTH,
+                 alto=DEFAULT_GLOBE_HEIGHT, direccion=DIR_ABAJO,
+                 font_name=DEFAULT_FONT):
 
         self.globe_type = "CLOUD"
         self.radio = 30
@@ -603,8 +608,9 @@ class Nube(Globo):
 
 class Grito(Globo):
 
-    def __init__(self, box, x, y, ancho=50, alto=30, direccion=DIR_ABAJO,
-            font_name=DEFAULT_FONT):
+    def __init__(self, box, x, y, ancho=DEFAULT_GLOBE_WIDTH,
+                 alto=DEFAULT_GLOBE_HEIGHT, direccion=DIR_ABAJO,
+                 font_name=DEFAULT_FONT):
 
         self.globe_type = "EXCLAMATION"
         self.radio = 30
@@ -797,11 +803,11 @@ class CuadroTexto:
         self.text = ''
 
         #Caracteristicas de la tipografia
-        self.font_description = '%s 12' % font_name
+        self.font_description = '%s 10' % font_name
         self.bold = False
         self.italic = False
         self.color = (0, 0, 0)
-        self.font_size = '12'
+        self.font_size = '10'
         self.font_type = font_name
         self._in_edition = False
         self._size_alloc_id = 0

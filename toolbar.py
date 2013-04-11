@@ -275,7 +275,7 @@ class TextToolbar(Gtk.Toolbar):
                 self._font_size_changed_cb)
         for i, s in enumerate(self._font_sizes):
             self._font_size_combo.append_item(i, s, None)
-            if s == '12':
+            if s == '10':
                 self._font_size_combo.set_active(i)
         tool_item = ToolComboBox(self._font_size_combo)
         self.insert(tool_item, -1)
