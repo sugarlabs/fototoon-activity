@@ -23,6 +23,20 @@ DIR_DER = "der"
 DEFAULT_FONT = 'Sans'
 
 
+def _get_screen_dpi():
+    xft_dpi = Gtk.Settings.get_default().get_property('gtk-xft-dpi')
+    dpi = float(xft_dpi / 1024)
+    logging.error('Setting dpi to: %f', dpi)
+    return dpi
+
+
+def _set_screen_dpi():
+    dpi = _get_screen_dpi()
+    font_map_default = PangoCairo.font_map_get_default()
+    font_map_default.set_resolution(dpi)
+
+_set_screen_dpi()
+
 class Globo:
 
     def __init__(self, box, x, y, ancho=50, alto=30, modo="normal",
@@ -791,11 +805,6 @@ class CuadroTexto:
         self.font_type = font_name
         self._in_edition = False
         self._size_alloc_id = 0
-
-    def _set_screen_dpi(self):
-        dpi = _get_screen_dpi()
-        font_map_default = PangoCairo.font_map_get_default()
-        font_map_default.set_resolution(dpi)
 
     def set_font_description(self, fd, parse=True):
         self.font_description = fd
