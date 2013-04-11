@@ -35,36 +35,29 @@ from sugar3.graphics.menuitem import MenuItem
 from fontcombobox import FontComboBox
 import globos
 
-WITH_COLOR_BUTTON = True
-try:
-    from sugar3.graphics.colorbutton import ColorToolButton
+from sugar3.graphics.colorbutton import ColorToolButton
 
-    ##Class to manage the Text Color
-    class TextButtonColor(ColorToolButton):
-        ##The Constructor
-        def __init__(self, page):
-            ColorToolButton.__init__(self)
-            self._page = page
 
-            self.connect('color-set', self._color_button_cb)
+##Class to manage the Text Color
+class TextButtonColor(ColorToolButton):
+    ##The Constructor
+    def __init__(self, page):
+        ColorToolButton.__init__(self)
+        self._page = page
 
-        def _color_button_cb(self, widget):
-            color = self.get_color()
-            self.set_text_color(color)
+        self.connect('color-set', self._color_button_cb)
 
-        #def alloc_color(self, color):
-        #    colormap = self._page.get_colormap()
-        #    return colormap.alloc_color(color.red, color.green, color.blue)
+    def _color_button_cb(self, widget):
+        color = self.get_color()
+        self.set_text_color(color)
 
-        def set_text_color(self, color):
-            globo_activo = self._page.get_globo_activo()
-            if (globo_activo != None):
-                texto = globo_activo.texto
-                texto.color = (color.red, color.green, color.blue)
-                self._page.get_active_box().redraw()
+    def set_text_color(self, color):
+        globo_activo = self._page.get_globo_activo()
+        if (globo_activo != None):
+            texto = globo_activo.texto
+            texto.color = (color.red, color.green, color.blue)
+            self._page.get_active_box().redraw()
 
-except:
-    WITH_COLOR_BUTTON = False
 
 logger = logging.getLogger('fototoon-activity')
 
@@ -258,20 +251,11 @@ class TextToolbar(Gtk.Toolbar):
         self._underline.show()
         """
 
-        if WITH_COLOR_BUTTON:
-            self._text_color = TextButtonColor(page)
-            self._text_color.set_title(_('Text Color'))
-            item = Gtk.ToolItem()
-            item.add(self._text_color)
-            self.insert(item, -1)
-        else:
-            self._text_color = Gtk.ColorButton()
-            self._text_color_id = self._text_color.connect('color-set',
-                    self._text_color_cb)
-            tool_item = Gtk.ToolItem()
-            tool_item.add(self._text_color)
-            self.insert(tool_item, -1)
-            tool_item.show_all()
+        self._text_color = TextButtonColor(page)
+        self._text_color.set_title(_('Text Color'))
+        item = Gtk.ToolItem()
+        item.add(self._text_color)
+        self.insert(item, -1)
 
         separator = Gtk.SeparatorToolItem()
         separator.set_draw(True)
