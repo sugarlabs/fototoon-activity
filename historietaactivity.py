@@ -469,6 +469,8 @@ class ComicBox(Gtk.EventBox):
         self.textview.modify_bg(Gtk.StateType.NORMAL,
                 style.COLOR_TEXT_FIELD_GREY.get_gdk_color())
 
+        self._textview_x = 0
+        self._textview_y = 0
         self.fixed.put(self.textviewbox, 0, 0)
         self.textviewbox.pack_start(self.textview, True, False, 0)
 
@@ -718,5 +720,8 @@ class ComicBox(Gtk.EventBox):
             self.redraw()
 
     def move_textview(self, x, y):
-        self.fixed.move(self.textviewbox, x, y)
-        self.textviewbox.show_all()
+        if self._textview_x != x or self._textview_y != y:
+            self._textview_x = x
+            self._textview_y = y
+            self.fixed.move(self.textviewbox, x, y)
+            self.textviewbox.show_all()
