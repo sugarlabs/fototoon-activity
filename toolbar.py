@@ -79,48 +79,24 @@ class GlobesManager():
         # agregar cuadro
         self.add_photo = ToolButton()
         self.add_photo.props.icon_name = 'insert-picture'
-        self.add_photo.connect('clicked', self.__btn_clicked)
+        self.add_photo.connect('clicked', self.__add_photo_clicked_cb)
         self.add_photo.set_tooltip(_('Add Photo'))
         toolbar.insert(self.add_photo, -1)
 
-        separator = Gtk.SeparatorToolItem()
-        separator.set_draw(True)
-        toolbar.insert(separator, -1)
+        self._globes = {'globe': _('Globe'), 'think': _('Think'),
+                'whisper': _('Whisper'),
+                'exclamation': _('Exclamation'), 'box': _('Box')}
 
-        # agrega globo
-        self.add_globe = ToolButton()
-        self.add_globe.props.icon_name = 'add-globe'
-        self.add_globe.connect('clicked', self.__btn_clicked)
-        self.add_globe.set_tooltip(_('Add Globe'))
-        toolbar.insert(self.add_globe, -1)
+        self._globes_menu = RadioMenuButton(icon_name='globe')
+        self._globes_menu.props.tooltip = _('Add a globe')
 
-        #agrega nube
-        self.add_cloud = ToolButton()
-        self.add_cloud.props.icon_name = 'add-think'
-        self.add_cloud.connect('clicked', self.__btn_clicked)
-        self.add_cloud.set_tooltip(_('Add Think'))
-        toolbar.insert(self.add_cloud, -1)
-
-        # agrega susurro
-        self.add_whisp = ToolButton()
-        self.add_whisp.props.icon_name = 'add-whisper'
-        self.add_whisp.connect('clicked', self.__btn_clicked)
-        self.add_whisp.set_tooltip(_('Add Whisper'))
-        toolbar.insert(self.add_whisp, -1)
-
-        # agrega grito
-        self.add_scream = ToolButton()
-        self.add_scream.props.icon_name = 'add-scream'
-        self.add_scream.connect('clicked', self.__btn_clicked)
-        self.add_scream.set_tooltip(_('Add Exclamation'))
-        toolbar.insert(self.add_scream, -1)
-
-        # agrega caja
-        self.add_box = ToolButton()
-        self.add_box.props.icon_name = 'add-box'
-        self.add_box.connect('clicked', self.__btn_clicked)
-        self.add_box.set_tooltip(_('Add Box'))
-        toolbar.insert(self.add_box, -1)
+        for globe in self._globes.keys():
+            menu_item = MenuItem(icon_name=globe,
+                                 text_label=self._globes[globe])
+            menu_item.connect('activate', self.__activate_add_globe_cb, globe)
+            self._globes_menu.props.palette.menu.append(menu_item)
+            menu_item.show()
+        toolbar.insert(self._globes_menu, -1)
 
         # lineas de movimiento
         # Agregar aqui el nombre de archivo de una linea de moviemiento
@@ -154,12 +130,7 @@ class GlobesManager():
         toolbar.insert(self.b_borrar, -1)
 
     def set_buttons_sensitive(self, sensitive):
-        self.add_box.set_sensitive(sensitive)
-        self.add_cloud.set_sensitive(sensitive)
-        self.add_globe.set_sensitive(sensitive)
-        self.add_photo.set_sensitive(sensitive)
-        self.add_scream.set_sensitive(sensitive)
-        self.add_whisp.set_sensitive(sensitive)
+        self._globes_menu.set_sensitive(sensitive)
         self.add_photo.set_sensitive(sensitive)
         self.b_borrar.set_sensitive(sensitive)
         self.b_girar.set_sensitive(sensitive)
@@ -169,30 +140,30 @@ class GlobesManager():
         active_box = self._page.get_active_box()
         active_box.add_imagen("icons/" + image_name + ".svg", 60, 60)
 
-    def __btn_clicked(self, boton):
-        logging.error('boton clicked %s', boton.props.icon_name)
+    def __activate_add_globe_cb(self, widget, globe):
         selected_font_name = self._activity.page.selected_font_name
-        if boton == self.add_globe:
+
+        if globe == 'globe':
             self._page.get_active_box().add_globo(60, 60,
                     font_name=selected_font_name)
 
-        if boton == self.add_cloud:
+        if globe == 'think':
             self._page.get_active_box().add_nube(60, 60,
                     font_name=selected_font_name)
 
-        if boton == self.add_whisp:
+        if globe == 'whisper':
             self._page.get_active_box().add_globo(60, 60, gmodo="despacio",
                     font_name=selected_font_name)
 
-        if boton == self.add_scream:
+        if globe == 'exclamation':
             self._page.get_active_box().add_grito(60, 60,
                     font_name=selected_font_name)
 
-        if boton == self.add_box:
+        if globe == 'box':
             self._page.get_active_box().add_rectangulo(60, 60,
                     font_name=selected_font_name)
 
-        if boton == self.add_photo:
+    def __add_photo_clicked_cb(self, button):
             self.add_image()
 
     def girar(self, boton):

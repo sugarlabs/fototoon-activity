@@ -49,9 +49,6 @@ class HistorietaActivity(activity.Activity):
         activity_toolbar = activity_button.page
         toolbar_box.toolbar.insert(activity_button, 0)
 
-        separator = Gtk.SeparatorToolItem()
-        toolbar_box.toolbar.insert(separator, -1)
-
         view_subtoolbar = ToolbarButton()
         view_toolbar = Gtk.Toolbar()
         view_subtoolbar.props.page = view_toolbar
