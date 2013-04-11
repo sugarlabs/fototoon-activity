@@ -123,6 +123,7 @@ class HistorietaActivity(activity.Activity):
         scrolled = Gtk.ScrolledWindow()
         scrolled.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.ALWAYS)
         scrolled.add_with_viewport(self.page)
+        scrolled.set_kinetic_scrolling(False)
         scrolled.show_all()
 
         self._slideview = SlideView(self)
