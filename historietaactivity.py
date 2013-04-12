@@ -119,7 +119,7 @@ class HistorietaActivity(activity.Activity):
         activity_button.page.title.connect("focus-in-event", self.on_title)
 
         scrolled = Gtk.ScrolledWindow()
-        scrolled.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.ALWAYS)
+        #scrolled.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.ALWAYS)
         scrolled.add_with_viewport(self.page)
         scrolled.set_kinetic_scrolling(False)
         scrolled.show_all()
@@ -129,8 +129,8 @@ class HistorietaActivity(activity.Activity):
 
         self._notebook = Gtk.Notebook()
         self._notebook.set_show_tabs(False)
-        self._notebook.append_page(scrolled, Gtk.Label('Fototoon'))
-        self._notebook.append_page(self._slideview, Gtk.Label('SlideView'))
+        self._notebook.append_page(scrolled, None)
+        self._notebook.append_page(self._slideview, None)
         self._notebook.show_all()
 
         self.set_canvas(self._notebook)
@@ -371,7 +371,14 @@ DEF_SPACING = 6
 DEF_WIDTH = 4
 
 SCREEN_HEIGHT = Gdk.Screen.height()
-SCREEN_WIDTH = Gdk.Screen.width()
+# HACK: This is to calculate the scrollbar width
+# defined in sugar-artwork gtk-widgets.css.em
+if style.zoom(1):
+    scrollbar_width = 15
+else:
+    scrollbar_width = 11
+
+SCREEN_WIDTH = Gdk.Screen.width() - scrollbar_width - 5
 BOX_HEIGHT = 450
 
 
