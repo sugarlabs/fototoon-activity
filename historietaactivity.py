@@ -30,7 +30,6 @@ from sugar3.graphics.alert import Alert
 from sugar3.graphics.icon import Icon
 import dbus
 import logging
-import inspect
 
 
 class HistorietaActivity(activity.Activity):
@@ -117,8 +116,7 @@ class HistorietaActivity(activity.Activity):
         activity_toolbar.insert(save_as_pdf, -1)
         save_as_pdf.show()
 
-        activity_button.page.title.connect("focus-in-event",
-            self.on_title)
+        activity_button.page.title.connect("focus-in-event", self.on_title)
 
         scrolled = Gtk.ScrolledWindow()
         scrolled.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.ALWAYS)
@@ -148,7 +146,7 @@ class HistorietaActivity(activity.Activity):
     # quiero que al ingresar al titulo se des seleccione el globo seleccionado
     def on_title(self, widget, event):
         print "Ingresando al titulo"
-        if (self.page.get_active_box() != None):
+        if self.page.get_active_box() is not None:
             box = self.page.get_active_box()
             self.page.set_active_box(None)
             box.glob_press = False
@@ -198,7 +196,7 @@ class HistorietaActivity(activity.Activity):
         #logging.error("image_width %d image_height %d" %
         #    (image_width, image_height))
         surface = cairo.ImageSurface(cairo.FORMAT_ARGB32,
-            image_width + 1, image_height + 1)
+                                     image_width + 1, image_height + 1)
         ctx = cairo.Context(surface)
 
         ctx.set_source_rgb(1, 1, 1)
@@ -216,7 +214,8 @@ class HistorietaActivity(activity.Activity):
                     column = (posi + 1) - (reng * 2)
                     #logging.error("reng %d column %d" % (reng, column))
                     ctx.rectangle(column * box.width, y_posi,
-                        (column + 1) * box.width, y_posi + box.height)
+                                  (column + 1) * box.width,
+                                  y_posi + box.height)
                     ctx.set_source_rgb(0, 0, 0)
                     ctx.stroke()
                     ctx.translate(column * box.width, y_posi)
@@ -233,7 +232,7 @@ class HistorietaActivity(activity.Activity):
             posi = posi + 1
 
         temp_file_name = os.path.join(self.get_activity_root(), 'instance',
-                                 'tmp-%i.png' % time.time())
+                                      'tmp-%i.png' % time.time())
 
         surface.write_to_png(temp_file_name)
         #logging.error("temp file name  %s" % (temp_file_name))
@@ -244,7 +243,7 @@ class HistorietaActivity(activity.Activity):
         self.dl_jobject.metadata['keep'] = '0'
         self.dl_jobject.metadata['buddies'] = ''
         self.dl_jobject.metadata['icon-color'] = \
-                profile.get_color().to_string()
+            profile.get_color().to_string()
         self.dl_jobject.metadata['mime_type'] = 'image/png'
 
         self.dl_jobject.metadata['title'] = \
@@ -259,7 +258,7 @@ class HistorietaActivity(activity.Activity):
         datastore.write(self.dl_jobject, transfer_ownership=True)
         self._object_id = self.dl_jobject.object_id
         self._show_journal_alert(_('Success'),
-                _('A image was created in the Journal'))
+                                 _('A image was created in the Journal'))
 
     def _save_as_pdf(self, widget):
         if not len(self.page.boxs) > 1:
@@ -270,7 +269,7 @@ class HistorietaActivity(activity.Activity):
         file_obj = open(file_name, 'w')
 
         surface = cairo.PDFSurface(file_obj, self.page.boxs[1].width,
-                                             self.page.boxs[1].height)
+                                   self.page.boxs[1].height)
         context = cairo.Context(surface)
 
         for box in self.page.boxs[1:]:
@@ -282,7 +281,7 @@ class HistorietaActivity(activity.Activity):
 
         jobject = datastore.create()
         jobject.metadata['icon-color'] = \
-                profile.get_color().to_string()
+            profile.get_color().to_string()
         jobject.metadata['mime_type'] = 'application/pdf'
 
         jobject.metadata['title'] = \
@@ -296,16 +295,17 @@ class HistorietaActivity(activity.Activity):
         self._object_id = jobject.object_id
 
         self._show_journal_alert(_('Success'),
-                _('A PDF was created in the Journal'))
+                                 _('A PDF was created in the Journal'))
 
     def _show_journal_alert(self, title, msg):
         _stop_alert = Alert()
         _stop_alert.props.title = title
         _stop_alert.props.msg = msg
         _stop_alert.add_button(Gtk.ResponseType.APPLY,
-                _('Show in Journal'), Icon(icon_name='zoom-activity'))
+                               _('Show in Journal'),
+                               Icon(icon_name='zoom-activity'))
         _stop_alert.add_button(Gtk.ResponseType.OK, _('Ok'),
-                Icon(icon_name='dialog-ok'))
+                               Icon(icon_name='dialog-ok'))
         # Remove other alerts
         for alert in self._alerts:
             self.remove_alert(alert)
@@ -331,20 +331,19 @@ class HistorietaActivity(activity.Activity):
             scale_y = preview_height / float(height)
             scale = min(scale_x, scale_y)
 
-        pixbuf2 = GdkPixbuf.Pixbuf.new(GdkPixbuf.Colorspace.RGB,
-                            pixbuf.get_has_alpha(),
-                            pixbuf.get_bits_per_sample(),
-                            preview_width, preview_height)
+        pixbuf2 = GdkPixbuf.Pixbuf.new(
+            GdkPixbuf.Colorspace.RGB, pixbuf.get_has_alpha(),
+            pixbuf.get_bits_per_sample(), preview_width, preview_height)
         pixbuf2.fill(style.COLOR_WHITE.get_int())
 
         margin_x = int((preview_width - (width * scale)) / 2)
         margin_y = int((preview_height - (height * scale)) / 2)
 
         pixbuf.scale(pixbuf2, margin_x, margin_y,
-                            preview_width - (margin_x * 2),
-                            preview_height - (margin_y * 2),
-                            margin_x, margin_y, scale, scale,
-                            GdkPixbuf.InterpType.BILINEAR)
+                     preview_width - (margin_x * 2),
+                     preview_height - (margin_y * 2),
+                     margin_x, margin_y, scale, scale,
+                     GdkPixbuf.InterpType.BILINEAR)
 
         succes, preview_data = pixbuf2.save_to_bufferv('png', [], [])
         return dbus.ByteArray(preview_data)
@@ -358,8 +357,8 @@ class HistorietaActivity(activity.Activity):
             for box in self.page.boxs:
                 box.set_globo_activo(None)
 
-            self._key_press_signal_id = self.connect('key_press_event',
-                    self._slideview.key_press_cb)
+            self._key_press_signal_id = self.connect(
+                'key_press_event', self._slideview.key_press_cb)
         else:
             self._notebook.set_current_page(0)
             if self._key_press_signal_id is not None:
@@ -390,7 +389,7 @@ class Page(Gtk.VBox):
         self.selected_font_name = globos.DEFAULT_FONT
 
         logging.error('SCREEN WIDTH %d DEF_SPACING %d', SCREEN_WIDTH,
-                DEF_SPACING)
+                      DEF_SPACING)
 
         # Agrego cuadro titulo
         self.title_box = ComicBox(self, None, 0)
@@ -424,12 +423,12 @@ class Page(Gtk.VBox):
         if self._active_box == box:
             return
         box_anterior = None
-        if (self._active_box != None):
+        if self._active_box is not None:
             box_anterior = self._active_box
         self._active_box = box
-        if (box != None):
+        if box is not None:
             box.redraw()
-        if (box_anterior != None):
+        if box_anterior is not None:
             for g in box_anterior.globos:
                 g.set_selected(False)
             box_anterior.redraw()
@@ -439,8 +438,8 @@ class Page(Gtk.VBox):
 
     def get_globo_activo(self):
         box = self.get_active_box()
-        if box != None:
-            if (box.get_globo_activo() != None):
+        if box is not None:
+            if box.get_globo_activo() is not None:
                 return box.get_globo_activo()
         return None
 
@@ -453,7 +452,7 @@ class ComicBox(Gtk.EventBox):
 
         self._page = page
         self.modify_bg(Gtk.StateType.NORMAL,
-                style.COLOR_WHITE.get_gdk_color())
+                       style.COLOR_WHITE.get_gdk_color())
 
         self.fixed = Gtk.Fixed()
         self.add(self.fixed)
@@ -465,7 +464,7 @@ class ComicBox(Gtk.EventBox):
         self.textview.set_wrap_mode(Gtk.WrapMode.WORD_CHAR)
         self.textview.set_justification(Gtk.Justification.CENTER)
         self.textview.modify_bg(Gtk.StateType.NORMAL,
-                style.COLOR_WHITE.get_gdk_color())
+                                style.COLOR_WHITE.get_gdk_color())
 
         self._textview_x = 0
         self._textview_y = 0
@@ -473,10 +472,11 @@ class ComicBox(Gtk.EventBox):
         self.textviewbox.pack_start(self.textview, True, False, 0)
 
         #se agregan los eventos de pulsacion y movimiento del raton
-        self._drawingarea.add_events(Gdk.EventMask.POINTER_MOTION_MASK |
-                        Gdk.EventMask.BUTTON_PRESS_MASK |
-                        Gdk.EventMask.BUTTON_RELEASE_MASK |
-                        Gdk.EventMask.BUTTON_MOTION_MASK)
+        self._drawingarea.add_events(
+            Gdk.EventMask.POINTER_MOTION_MASK |
+            Gdk.EventMask.BUTTON_PRESS_MASK |
+            Gdk.EventMask.BUTTON_RELEASE_MASK |
+            Gdk.EventMask.BUTTON_MOTION_MASK)
 
         #self.globos es una lista que contiene los globos de ese cuadro
         self.globos = []
@@ -533,8 +533,9 @@ class ComicBox(Gtk.EventBox):
     def get_globo_activo(self):
         return self._globo_activo
 
-    def add_globo(self, xpos, ypos, gmodo="normal", \
-                gdireccion=globos.DIR_ABAJO, font_name=globos.DEFAULT_FONT):
+    def add_globo(self, xpos, ypos, gmodo="normal",
+                  gdireccion=globos.DIR_ABAJO,
+                  font_name=globos.DEFAULT_FONT):
         #agrega un globo al cuadro
         globo = globos.Globo(self, x=xpos, y=ypos, modo=gmodo,
                              direccion=gdireccion, font_name=font_name)
@@ -545,7 +546,7 @@ class ComicBox(Gtk.EventBox):
     def add_rectangulo(self, xpos, ypos, font_name=globos.DEFAULT_FONT):
         #agrega un cuadro de texto al cuadro
         self.globos.append(globos.Rectangulo(self, x=xpos, y=ypos,
-                font_name=font_name))
+                                             font_name=font_name))
         self.redraw()
 
     def add_nube(self, xpos, ypos, font_name=globos.DEFAULT_FONT):
@@ -589,9 +590,9 @@ class ComicBox(Gtk.EventBox):
 
         self.image_height = 0
 
-        instance_path = os.path.join(activity.get_activity_root(), \
-            'instance')
-        if (self.image == None) and (self.image_name != ''):
+        instance_path = os.path.join(activity.get_activity_root(),
+                                     'instance')
+        if self.image is None and (self.image_name != ''):
             # si la imagen no tiene el path viene del archivo
             # de historieta ya grabado,
             # si viene con path, es una imagen que se tomo del journal
@@ -605,13 +606,14 @@ class ComicBox(Gtk.EventBox):
             scale = (self.width) / (1.0 * width_pxb)
             self.image_height = int(scale * height_pxb)
             self.image = ctx.get_target().create_similar(
-                    cairo.CONTENT_COLOR_ALPHA, self.width, self.image_height)
+                cairo.CONTENT_COLOR_ALPHA, self.width, self.image_height)
 
             if (scale != 1):
                 # falta tener en cuenta el caso de una imagen
                 # que venga del journal y tenga el tamanio justo,
                 # es decir con scale = 1
-                pixb_scaled = pixbuf.scale_simple(int(self.width),
+                pixb_scaled = pixbuf.scale_simple(
+                    int(self.width),
                     int(self.image_height), GdkPixbuf.InterpType.BILINEAR)
                 ct = cairo.Context(self.image)
                 Gdk.cairo_set_source_pixbuf(ct, pixb_scaled, 0, 0)
@@ -621,7 +623,7 @@ class ComicBox(Gtk.EventBox):
                     # print instance_path
                     image_file_name = 'image' + str(self.posi) + '.png'
                     self.image.write_to_png(os.path.join(instance_path,
-                            image_file_name))
+                                            image_file_name))
                     # grabamos el nombre de la imagen sin el path
                     self.image_name = image_file_name
             else:
@@ -665,15 +667,16 @@ class ComicBox(Gtk.EventBox):
             self._page.set_active_box(self)
 
         #Verifica si al pulsar el mouse se hizo sobre algun globo
-        if self._globo_activo != None:
+        if self._globo_activo is not None:
             if self._globo_activo.is_selec_tam(event.x, event.y) or \
-                (self._globo_activo.get_cursor_type(event.x, event.y) != None):
+                    self._globo_activo.get_cursor_type(event.x, event.y) \
+                    is not None:
                 self.is_dimension = True
             elif self._globo_activo.is_selec_punto(event.x, event.y):
                 self.is_punto = True
 
         if (not self.is_dimension) and not (self.is_punto):
-            if self._globo_activo != None:
+            if self._globo_activo is not None:
                 #self.glob_press.is_selec(event.x,event.y)
                 self._globo_activo.set_selected(False)
                 self.glob_press = False
@@ -696,7 +699,7 @@ class ComicBox(Gtk.EventBox):
         self.is_punto = False
 
     def mouse_move(self, widget, event):
-        if self._globo_activo != None:
+        if self._globo_activo is not None:
             cursor_type = self._globo_activo.get_cursor_type(event.x, event.y)
             cursor = None
             if cursor_type is not None:
@@ -706,15 +709,15 @@ class ComicBox(Gtk.EventBox):
     def moving(self, widget, event):
         if self.is_dimension:
             self._globo_activo.set_dimension(event.x, event.y,
-                self.get_allocation())
+                                             self.get_allocation())
             self.redraw()
         elif self.is_punto:
             self._globo_activo.mover_punto(event.x, event.y,
-                self.get_allocation())
+                                           self.get_allocation())
             self.redraw()
         elif self.glob_press:
             self._globo_activo.mover_a(event.x, event.y,
-                self.get_allocation())
+                                       self.get_allocation())
             self.redraw()
 
     def move_textview(self, x, y):

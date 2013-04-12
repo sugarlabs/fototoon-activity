@@ -19,7 +19,7 @@ from gi.repository import Gtk
 from gi.repository import GObject
 
 FONT_BLACKLIST = ['cmex10', 'cmmi10', 'cmr10', 'cmsy10', 'esint10', 'eufm10',
-            'msam10', 'msbm10', 'rsfs10', 'wasy10']
+                  'msam10', 'msbm10', 'rsfs10', 'wasy10']
 
 
 class FontComboBox(Gtk.ComboBox):

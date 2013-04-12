@@ -22,7 +22,7 @@ import logging
 import os
 import time
 # Gtk3
-from gi.repository import Gtk, Gdk, GdkPixbuf
+from gi.repository import Gtk, Gdk
 from sugar3.graphics.icon import Icon
 from sugar3.graphics.toolbutton import ToolButton
 from sugar3.graphics.toggletoolbutton import ToggleToolButton
@@ -53,7 +53,7 @@ class TextButtonColor(ColorToolButton):
 
     def set_text_color(self, color):
         globo_activo = self._page.get_globo_activo()
-        if (globo_activo != None):
+        if globo_activo is not None:
             texto = globo_activo.texto
             texto.color = (color.red, color.green, color.blue)
             self._page.get_active_box().redraw()
@@ -76,9 +76,10 @@ class GlobesManager():
         self.add_photo.set_tooltip(_('Add Photo'))
         toolbar.insert(self.add_photo, -1)
 
-        self._globes = {'globe': _('Globe'), 'think': _('Think'),
-                'whisper': _('Whisper'),
-                'exclamation': _('Exclamation'), 'box': _('Box')}
+        self._globes = {
+            'globe': _('Globe'), 'think': _('Think'),
+            'whisper': _('Whisper'), 'exclamation': _('Exclamation'),
+            'box': _('Box')}
 
         self._globes_menu = RadioMenuButton(icon_name='globe')
         self._globes_menu.props.tooltip = _('Add a globe')
@@ -93,8 +94,9 @@ class GlobesManager():
 
         # lineas de movimiento
         # Agregar aqui el nombre de archivo de una linea de moviemiento
-        self._lines = {'curves': _('Curves'), 'straight': _('Straight'),
-                'highlight': _('Highlight'), 'idea': _('Idea')}
+        self._lines = {
+            'curves': _('Curves'), 'straight': _('Straight'),
+            'highlight': _('Highlight'), 'idea': _('Idea')}
 
         self._lines_menu = RadioMenuButton(icon_name='curves')
         self._lines_menu.props.tooltip = _('Choose a movement line')
@@ -137,24 +139,24 @@ class GlobesManager():
         selected_font_name = self._activity.page.selected_font_name
 
         if globe == 'globe':
-            self._page.get_active_box().add_globo(60, 60,
-                    font_name=selected_font_name)
+            self._page.get_active_box().add_globo(
+                60, 60, font_name=selected_font_name)
 
         if globe == 'think':
-            self._page.get_active_box().add_nube(60, 60,
-                    font_name=selected_font_name)
+            self._page.get_active_box().add_nube(
+                60, 60, font_name=selected_font_name)
 
         if globe == 'whisper':
-            self._page.get_active_box().add_globo(60, 60, gmodo="despacio",
-                    font_name=selected_font_name)
+            self._page.get_active_box().add_globo(
+                60, 60, gmodo="despacio", font_name=selected_font_name)
 
         if globe == 'exclamation':
-            self._page.get_active_box().add_grito(60, 60,
-                    font_name=selected_font_name)
+            self._page.get_active_box().add_grito(
+                60, 60, font_name=selected_font_name)
 
         if globe == 'box':
-            self._page.get_active_box().add_rectangulo(60, 60,
-                    font_name=selected_font_name)
+            self._page.get_active_box().add_rectangulo(
+                60, 60, font_name=selected_font_name)
 
     def __add_photo_clicked_cb(self, button):
             self.add_image()
@@ -163,7 +165,7 @@ class GlobesManager():
         print "girando"
         #veo cual es el globo seleccionado y o giro
         box = self._page.get_active_box()
-        if (box.get_globo_activo() != None):
+        if box.get_globo_activo() is not None:
             print "globo activo",
             globe = box.get_globo_activo()
             if globe.girar():
@@ -172,7 +174,7 @@ class GlobesManager():
     def borrar(self, boton):
         print "borrando"
         box = self._page.get_active_box()
-        if (box.get_globo_activo() != None):
+        if box.get_globo_activo() is not None:
             print "borrando globo"
             # Do no remove the title globe
             if box.get_globo_activo() == box.title_globe:
@@ -207,13 +209,14 @@ class GlobesManager():
             result = chooser.run()
             if result == Gtk.ResponseType.ACCEPT:
                 logging.error('ObjectChooser: %r' %
-                        chooser.get_selected_object())
+                              chooser.get_selected_object())
                 jobject = chooser.get_selected_object()
                 if jobject and jobject.file_path:
-                    logging.error("imagen seleccionada: %s", jobject.file_path)
+                    logging.error("imagen seleccionada: %s",
+                                  jobject.file_path)
                     tempfile_name = \
                         os.path.join(self._activity.get_activity_root(),
-                        'instance', 'tmp%i' % time.time())
+                                     'instance', 'tmp%i' % time.time())
                     os.link(jobject.file_path, tempfile_name)
                     logging.error("tempfile_name: %s", tempfile_name)
                     self._page.add_box_from_journal_image(tempfile_name)
@@ -263,16 +266,16 @@ class TextToolbar(Gtk.Toolbar):
 
         # tamanio
         self._font_size_icon = Icon(icon_name="format-text-size",
-                icon_size=Gtk.IconSize.LARGE_TOOLBAR)
+                                    icon_size=Gtk.IconSize.LARGE_TOOLBAR)
         tool_item = Gtk.ToolItem()
         tool_item.add(self._font_size_icon)
         self.insert(tool_item, -1)
 
         self._font_size_combo = ComboBox()
-        self._font_sizes = ['8', '10', '12', '14', '16', '20', '22', '24', \
-                '26', '28', '36', '48', '72']
-        self._font_size_changed_id = self._font_size_combo.connect('changed',
-                self._font_size_changed_cb)
+        self._font_sizes = ['8', '10', '12', '14', '16', '20', '22', '24',
+                            '26', '28', '36', '48', '72']
+        self._font_size_changed_id = self._font_size_combo.connect(
+            'changed', self._font_size_changed_cb)
         for i, s in enumerate(self._font_sizes):
             self._font_size_combo.append_item(i, s, None)
             if s == '10':
@@ -283,8 +286,8 @@ class TextToolbar(Gtk.Toolbar):
         # font
         self._font_combo = FontComboBox()
         self._font_combo.set_font_name(globos.DEFAULT_FONT)
-        self._fonts_changed_id = self._font_combo.connect('changed',
-                self._font_changed_cb)
+        self._fonts_changed_id = self._font_combo.connect(
+            'changed', self._font_changed_cb)
         tool_item = ToolComboBox(self._font_combo)
         self.insert(tool_item, -1)
 
@@ -357,7 +360,7 @@ class TextToolbar(Gtk.Toolbar):
         self.setToggleButtonState(self._bold, globeText.bold, self._bold_id)
         # seteo italic
         self.setToggleButtonState(self._italic, globeText.italic,
-                self._italic_id)
+                                  self._italic_id)
         # color
         self._text_color.set_color(Gdk.Color(*globeText.color))
         # font size
@@ -366,7 +369,7 @@ class TextToolbar(Gtk.Toolbar):
                 self._font_size_combo.handler_block(self._font_size_changed_id)
                 self._font_size_combo.set_active(i)
                 self._font_size_combo.handler_unblock(
-                        self._font_size_changed_id)
+                    self._font_size_changed_id)
                 break
 
         # font seleccionada

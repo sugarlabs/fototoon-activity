@@ -39,6 +39,7 @@ def _set_screen_dpi():
 
 _set_screen_dpi()
 
+
 class Globo:
 
     def __init__(self, box, x, y, ancho=DEFAULT_GLOBE_WIDTH,
@@ -66,7 +67,7 @@ class Globo:
         ancho_text, alto_text = self.calc_area_texto(self.ancho, self.alto)
         #es el contenedor del texto
         self.texto = CuadroTexto(self, ancho_text, alto_text,
-                font_name)
+                                 font_name)
 
     def set_selected(self, selected):
         logging.error('Set selected %s', selected)
@@ -81,7 +82,7 @@ class Globo:
 
         context.set_line_width(2)
         context.scale(self.ancho / (self.radio * 1.0),
-                self.alto / (self.radio * 1.0))
+                      self.alto / (self.radio * 1.0))
 
         x = self.x * self.radio / (self.ancho * 1.0)
         y = self.y * self.radio / (self.alto * 1.0)
@@ -90,32 +91,32 @@ class Globo:
 
             context.arc(x, y, self.radio, 100 / (180.0) * math.pi,
                         80 / (180.0) * math.pi)
-            context.line_to( \
-                        x + self.punto[0] * self.radio / (self.ancho * 1.0),
-                        y + self.radio + \
-                        self.punto[1] * self.radio / (self.alto * 1.0))
+            context.line_to(
+                x + self.punto[0] * self.radio / (self.ancho * 1.0),
+                y + self.radio +
+                self.punto[1] * self.radio / (self.alto * 1.0))
 
         elif self.direccion == DIR_DER:
             context.arc(x, y, self.radio,
                         10 / 180.0 * math.pi, 350 / 180.0 * math.pi)
             context.line_to(x + self.radio +
-                            self.punto[0] * self.radio / (self.ancho * 1.0), \
+                            self.punto[0] * self.radio / (self.ancho * 1.0),
                             y + self.punto[1] * self.radio / (self.alto * 1.0))
 
         elif self.direccion == DIR_IZQ:
             context.arc(x, y, self.radio, 190 / 180.0 * math.pi,
                         530 / 180.0 * math.pi)
             context.line_to(x - self.radio -
-                            self.punto[0] * self.radio / (self.ancho * 1.0), \
+                            self.punto[0] * self.radio / (self.ancho * 1.0),
                             y + self.punto[1] * self.radio / (self.alto * 1.0))
 
         else:
             context.arc(x, y, self.radio,
                         280 / 180.0 * math.pi, 620 / 180.0 * math.pi)
-            context.line_to( \
-                        x + self.punto[0] * self.radio / (self.ancho * 1.0),\
-                        y - self.radio -
-                        self.punto[1] * self.radio / (self.alto * 1.0))
+            context.line_to(
+                x + self.punto[0] * self.radio / (self.ancho * 1.0),
+                y - self.radio -
+                self.punto[1] * self.radio / (self.alto * 1.0))
 
         context.close_path()
         context.set_source_rgb(1, 1, 1)
@@ -144,7 +145,7 @@ class Globo:
             # rectangulo alrededor del globo
             context.set_source_rgb(1, 1, 1)
             context.rectangle(self.x - self.ancho, self.y - self.alto,
-                    2 * self.ancho, 2 * self.alto)
+                              2 * self.ancho, 2 * self.alto)
             context.stroke_preserve()
             context.set_source_rgb(0, 0, 0)
             context.set_dash([2])
@@ -156,8 +157,8 @@ class Globo:
             context.set_line_width(ANCHO_LINEAS_CONTROLES)
             context.set_source_rgb(1, 1, 1)
             context.rectangle(self.x - self.ancho - (SIZE_RESIZE_AREA / 2),
-                    self.y - self.alto - (SIZE_RESIZE_AREA / 2),
-                    SIZE_RESIZE_AREA, SIZE_RESIZE_AREA)
+                              self.y - self.alto - (SIZE_RESIZE_AREA / 2),
+                              SIZE_RESIZE_AREA, SIZE_RESIZE_AREA)
             context.stroke_preserve()
             context.set_source_rgb(0, 0, 0)
             context.set_dash([2])
@@ -249,7 +250,7 @@ class Globo:
     def is_selec_tam(self, x, y):
         width = SIZE_RESIZE_AREA / 2
         if self.x - self.ancho - width < x < self.x - self.ancho + width and \
-            self.y - self.alto - width < y < self.y - self.alto + width:
+                self.y - self.alto - width < y < self.y - self.alto + width:
             return True
         else:
             return False
@@ -258,7 +259,7 @@ class Globo:
         width = SIZE_RESIZE_AREA / 2
         x_circle, y_circle = self.get_circle_position()
         return x_circle - width < x < x_circle + width and \
-                y_circle - width < y < y_circle + width
+            y_circle - width < y < y_circle + width
 
     def mover_punto(self, x, y, rect):
         if self.direccion == DIR_ABAJO:
@@ -428,13 +429,13 @@ class Rectangulo(Globo):
 
         ancho_text, alto_text = self.calc_area_texto(self.ancho, self.alto)
         self.texto = CuadroTexto(self, ancho_text, alto_text,
-                font_name)
+                                 font_name)
 
     def imprimir(self, context):
         #imprimimos el rectangulo
         context.set_line_width(3)
         context.rectangle(self.x - self.ancho, self.y - self.alto,
-                2 * self.ancho, 2 * self.alto)
+                          2 * self.ancho, 2 * self.alto)
         context.set_source_rgb(1, 1, 1)
         context.fill_preserve()
         context.set_source_rgb(0, 0, 0)
@@ -452,16 +453,17 @@ class Rectangulo(Globo):
             context.set_line_width(ANCHO_LINEAS_CONTROLES)
             context.set_source_rgb(1, 1, 1)
             context.rectangle(self.x - self.ancho - 2, self.y - self.alto - 2,
-                    2 * self.ancho + 4, 2 * self.alto + 4)
+                              2 * self.ancho + 4, 2 * self.alto + 4)
             context.stroke_preserve()
             context.set_source_rgb(0, 0, 0)
             context.set_dash([2])
             context.stroke()
 
             context.set_source_rgb(1, 1, 1)
-            context.rectangle(self.x - self.ancho - (SIZE_RESIZE_AREA / 2),
-                    self.y - self.alto - (SIZE_RESIZE_AREA / 2),
-                    SIZE_RESIZE_AREA, SIZE_RESIZE_AREA)
+            context.rectangle(
+                self.x - self.ancho - (SIZE_RESIZE_AREA / 2),
+                self.y - self.alto - (SIZE_RESIZE_AREA / 2),
+                SIZE_RESIZE_AREA, SIZE_RESIZE_AREA)
             context.stroke_preserve()
             context.set_source_rgb(0, 0, 0)
             context.set_dash([2])
@@ -511,7 +513,7 @@ class Nube(Globo):
 
         ancho_text, alto_text = self.calc_area_texto(self.ancho, self.alto)
         self.texto = CuadroTexto(self, ancho_text, alto_text,
-                font_name)
+                                 font_name)
 
     def imprimir(self, context):
 
@@ -605,16 +607,16 @@ class Nube(Globo):
     def get_second_circle_position(self):
         if self.direccion == DIR_ABAJO:
             return self.x + self.punto[0] / 2, \
-                    self.y + self.alto + self.punto[1] / 2
+                self.y + self.alto + self.punto[1] / 2
         elif self.direccion == DIR_DER:
             return self.x + self.ancho + self.punto[0] / 2, \
-                    self.y + self.punto[1] / 2
+                self.y + self.punto[1] / 2
         elif self.direccion == DIR_IZQ:
             return self.x - self.ancho - self.punto[0] / 2, \
-                    self.y + self.punto[1] / 2
+                self.y + self.punto[1] / 2
         else:
             return self.x + self.punto[0] / 2, \
-                    self.y - self.alto - self.punto[1] / 2
+                self.y - self.alto - self.punto[1] / 2
 
 
 class Grito(Globo):
@@ -640,18 +642,18 @@ class Grito(Globo):
 
         ancho_text, alto_text = self.calc_area_texto(self.ancho, self.alto)
         self.texto = CuadroTexto(self, ancho_text, alto_text,
-                font_name)
+                                 font_name)
 
     def imprimir(self, context):
         context.save()
-        self.draw_exclamation(context, self.x, self.y,
-                self.ancho, self.alto, self.direccion, self.punto)
+        self.draw_exclamation(context, self.x, self.y, self.ancho, self.alto,
+                              self.direccion, self.punto)
         # se dibuja el correspondiente texto
         self.texto.imprimir(context)
         self.dibujar_controles(context)
 
-    def draw_exclamation(self, cr, x_cen, y_cen,
-        width, height, direction, punto):
+    def draw_exclamation(self, cr, x_cen, y_cen, width, height, direction,
+                         punto):
 
         points = []
         steps = 24
@@ -756,7 +758,7 @@ class Imagen(Globo):
             if self.direccion == DIR_ARRIBA:
                 context.rotate(3.14)  # 180 degrees
                 context.translate(-self.icon_buffer.width,
-                        -self.icon_buffer.height)
+                                  -self.icon_buffer.height)
 
             elif self.direccion == DIR_IZQ:
                 context.rotate(3.14 / 2.0)  # 90 degrees
@@ -780,7 +782,7 @@ class Imagen(Globo):
             context.set_line_width(ANCHO_LINEAS_CONTROLES)
             context.set_source_rgb(1, 1, 1)
             context.rectangle(self.x - self.ancho, self.y - self.alto,
-                    2 * self.ancho, 2 * self.alto)
+                              2 * self.ancho, 2 * self.alto)
             context.stroke_preserve()
             context.set_source_rgb(0, 0, 0)
             context.set_dash([2])
@@ -840,11 +842,11 @@ class CuadroTexto:
             tbuffer.set_text(unicode(self.text))
 
             self._box.textview.modify_font(Pango.FontDescription(
-                                                        self.font_description))
+                self.font_description))
             self.set_dimension(self.ancho, self.alto)
 
             self._size_alloc_id = self._box.textviewbox.connect(
-                    'size_allocate', self._textview_size_allocate)
+                'size_allocate', self._textview_size_allocate)
             self.mover_a(self._globe.x, self._globe.y)
             self._box.textviewbox.show_all()
             self._box.textview.grab_focus()
@@ -873,7 +875,7 @@ class CuadroTexto:
             pango_layout.set_alignment(Pango.Alignment.CENTER)
 
             pango_layout.set_font_description(Pango.FontDescription(
-                                                        self.font_description))
+                self.font_description))
 
             pango_layout.set_text(unicode(self.text), len(unicode(self.text)))
 
@@ -907,7 +909,7 @@ class CuadroTexto:
         self.alto = alto
         if self._in_edition:
             self._box.textviewbox.set_size_request(self.ancho * 2,
-                    self.alto * 2)
+                                                   self.alto * 2)
 
     def _textview_size_allocate(self, widget, alloc):
         if self._in_edition:
