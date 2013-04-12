@@ -57,19 +57,15 @@ class Persistence:
                 if (globo.__class__ == globos.Imagen):
                     globoData['image_name'] = globo.image_name
                 globoData['x'], globoData['y'] = globo.x, globo.y
-                #globoData.ancho_text, globoData.alto_text =
-                #globo.ancho_text, globo.alto_text
 
-                globoData['text_width'] = globo.texto.ancho
-                globoData['text_height'] = globo.texto.alto
-                globoData['text_text'] = globo.texto.text
-                globoData['text_color'] = globo.texto.color
+                if globo.texto is not None:
+                    globoData['text_width'] = globo.texto.ancho
+                    globoData['text_height'] = globo.texto.alto
+                    globoData['text_text'] = globo.texto.text
+                    globoData['text_color'] = globo.texto.color
 
-                globoData['text_font_description'] =\
-                                                   globo.texto.font_description
-
-                #globoData['text_show_border'] = globo.texto.mostrar_borde
-                #globoData['text_show_cursor'] = globo.texto.mostrar_cursor
+                    globoData['text_font_description'] = \
+                            globo.texto.font_description
 
                 boxData['globes'].append(globoData)
             pageData['boxs'].append(boxData)
@@ -157,7 +153,7 @@ class Persistence:
                                           x=globo_x, y=globo_y)
                     globo.direccion = globo_direccion
 
-                if globo != None:
+                if globo is not None:
                     globo.radio = globoData['radio']
                     globo.ancho, globo.alto = globoData['width'], \
                         globoData['height']
@@ -168,13 +164,14 @@ class Persistence:
 
                     globo.x, globo.y = globoData['x'], globoData['y']
 
-                    globo.texto.ancho = globoData['text_width']
-                    globo.texto.alto = globoData['text_height']
-                    globo.texto.text = globoData['text_text']
-                    globo.texto.color = globoData['text_color']
+                    if (tipo_globo != 'IMAGE'):
+                        globo.texto.ancho = globoData['text_width']
+                        globo.texto.alto = globoData['text_height']
+                        globo.texto.text = globoData['text_text']
+                        globo.texto.color = globoData['text_color']
 
-                    globo.texto.set_font_description(
-                            globoData['text_font_description'])
+                        globo.texto.set_font_description(
+                                globoData['text_font_description'])
 
                     box.globos.append(globo)
 

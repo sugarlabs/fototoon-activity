@@ -518,13 +518,13 @@ class ComicBox(Gtk.EventBox):
         self.show_all()
 
     def set_globo_activo(self, globo):
-        if globo == None:
-            if self._globo_activo != None:
+        if globo is None:
+            if self._globo_activo is not None:
                 self._globo_activo.set_selected(False)
         else:
             globo.set_selected(True)
         self._globo_activo = globo
-        if (globo != None):
+        if globo is not None and globo.texto is not None:
             self._page._text_toolbar.setToolbarState(globo.texto)
 
     def redraw(self):

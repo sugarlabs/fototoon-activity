@@ -71,7 +71,8 @@ class Globo:
     def set_selected(self, selected):
         logging.error('Set selected %s', selected)
         self.selec = selected
-        self.texto.set_edition_mode(selected)
+        if self.texto is not None:
+            self.texto.set_edition_mode(selected)
 
     def imprimir(self, context):
         #dibujo al globo de dialogo
@@ -126,7 +127,8 @@ class Globo:
         context.restore()
 
         # se dibuja el correspondiente texto
-        self.texto.imprimir(context)
+        if self.texto is not None:
+            self.texto.imprimir(context)
         self.dibujar_controles(context)
 
     def dibujar_controles(self, context):
@@ -203,7 +205,8 @@ class Globo:
         else:
             self.y = self.alto
 
-        self.texto.mover_a(self.x, self.y)
+        if self.texto is not None:
+            self.texto.mover_a(self.x, self.y)
 
     def get_cursor_type(self, x, y):
         cursor = None
@@ -232,7 +235,8 @@ class Globo:
                 (self.y - self.alto) < y < (self.y + self.alto):
 
             self.selec = True
-            self.texto.mostrar_cursor = True
+            if self.texto is not None:
+                self.texto.mostrar_cursor = True
 
             #Obtiene la posicion donde se selecciono con el mouse
             self.dx = self.x - x
@@ -320,7 +324,8 @@ class Globo:
     def set_dimension(self, x, y, rect):
         # set the text in edition mode to use the textview
         # to meassure the minimal size needed
-        self.texto.set_edition_mode(True)
+        if self.texto is not None:
+            self.texto.set_edition_mode(True)
 
         # if I am changing the size from the right or from the bottom
         # change x / y to calculate like if changing from
@@ -352,8 +357,13 @@ class Globo:
             new_height = rect.height - self.y
 
         # try resize the text object
-        ancho_text, alto_text = self.calc_area_texto(new_width, new_height)
-        self.texto.set_dimension(ancho_text, alto_text)
+        if self.texto is not None:
+            ancho_text, alto_text = self.calc_area_texto(new_width, new_height)
+            self.texto.set_dimension(ancho_text, alto_text)
+        else:
+            # if there are not text object, the size can be changed
+            self.ancho = new_width
+            self.alto = new_height
 
     def calc_area_texto(self, width, height):
         """
@@ -367,8 +377,9 @@ class Globo:
         """
         Calculate the min globe size, based in the text size
         """
-        self.ancho = self.texto.ancho / (1 - 12 / (self.radio * 1.0))
-        self.alto = self.texto.alto / (1 - 12 / (self.radio * 1.0))
+        if self.texto is not None:
+            self.ancho = self.texto.ancho / (1 - 12 / (self.radio * 1.0))
+            self.alto = self.texto.alto / (1 - 12 / (self.radio * 1.0))
 
     def girar(self):
         if (self.__class__ == Rectangulo):
@@ -719,7 +730,7 @@ class Imagen(Globo):
         self.icon_buffer = _IconBuffer()
         self.icon_buffer.file_name = os.path.join(appdir, imagen)
         self.icon_buffer.stroke_color = '#000000'
-        self.texto = CuadroTexto(self, 20, 20, font_name)
+        self.texto = None
 
     def set_selected(self, selected):
         self.selec = selected

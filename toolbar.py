@@ -303,20 +303,20 @@ class TextToolbar(Gtk.Toolbar):
 
     def _bold_cb(self, button):
         globo_activo = self._page.get_globo_activo()
-        if (globo_activo != None):
+        if globo_activo is not None and globo_activo.texto is not None:
             globo_activo.texto.bold = not globo_activo.texto.bold
             self._page.get_active_box().redraw()
 
     def _italic_cb(self, button):
         globo_activo = self._page.get_globo_activo()
-        if (globo_activo != None):
+        if globo_activo is not None and globo_activo.texto is not None:
             globo_activo.texto.italic = not globo_activo.texto.italic
             self._page.get_active_box().redraw()
 
     # para la version 0.82
     def _text_color_cb(self, button):
         globo_activo = self._page.get_globo_activo()
-        if (globo_activo != None):
+        if globo_activo is not None and globo_activo.texto is not None:
             color = self._text_color.get_color()
             texto = globo_activo.texto
             texto.color = (color.red, color.green, color.blue)
@@ -327,7 +327,7 @@ class TextToolbar(Gtk.Toolbar):
             size = int(self._font_sizes[self._font_size_combo.get_active()])
             logger.debug('Setting font size: %d', size)
             globo_activo = self._page.get_globo_activo()
-            if (globo_activo != None):
+            if globo_activo is not None and globo_activo.texto is not None:
                 globo_activo.texto.font_size = size
                 globo_activo.texto.alto_renglon = size
                 self._page.get_active_box().redraw()
@@ -337,7 +337,7 @@ class TextToolbar(Gtk.Toolbar):
             font_name = self._font_combo.get_font_name()
             logger.debug('Setting font name: %s', font_name)
             globo_activo = self._page.get_globo_activo()
-            if (globo_activo != None):
+            if globo_activo is not None and globo_activo.texto is not None:
                 globo_activo.texto.font_type = font_name
                 self._page.selected_font_name = font_name
                 self._page.get_active_box().redraw()
