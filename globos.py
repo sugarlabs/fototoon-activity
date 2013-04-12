@@ -21,8 +21,8 @@ DIR_IZQ = "izq"
 DIR_DER = "der"
 
 DEFAULT_FONT = 'Sans'
-DEFAULT_GLOBE_WIDTH = style.GRID_CELL_SIZE * 2.5
-DEFAULT_GLOBE_HEIGHT = style.GRID_CELL_SIZE * 1.5
+DEFAULT_GLOBE_WIDTH = style.GRID_CELL_SIZE * 1.5
+DEFAULT_GLOBE_HEIGHT = style.GRID_CELL_SIZE / 2
 
 
 def _get_screen_dpi():
@@ -53,7 +53,7 @@ class Globo:
         #dimensiones de la elipse
         self.ancho = ancho
         self.alto = alto
-        self.punto = [5, 10]
+        self.punto = [ancho / 2, alto * 2]
         #determina si esta seleccionado
         # TODO: make private
         self.selec = False
@@ -500,7 +500,7 @@ class Nube(Globo):
         self.ancho = ancho
         self.alto = alto
 
-        self.punto = [5, 10]
+        self.punto = [ancho / 2, alto * 2]
         #determina si esta seleccionado
         self.selec = False
 
@@ -632,7 +632,7 @@ class Grito(Globo):
         self.ancho = ancho
         self.alto = alto
 
-        self.punto = [5, 50]
+        self.punto = [ancho / 2, alto * 2]
         self.selec = False
 
         self.direccion = direccion
