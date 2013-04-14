@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-06 00:32-0500\n"
-"PO-Revision-Date: 2012-12-12 14:58+0200\n"
+"POT-Creation-Date: 2013-04-13 00:34-0400\n"
+"PO-Revision-Date: 2013-04-14 18:24+0200\n"
 "Last-Translator: lite <litekok@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: zh_CN\n"
@@ -18,12 +18,17 @@ msgstr ""
 "X-Generator: Pootle 2.0.5\n"
 
 #. TRANS: "name" option from activity.info file
-#. TRANS: "summary" option from activity.info file
-#. TRANS: "description" option from activity.info file
 msgid "FotoToon"
 msgstr "照片卡通"
 
-#: historietaactivity.py:37 historietaactivity.py:112
+#. TRANS: "summary" option from activity.info file
+#. TRANS: "description" option from activity.info file
+msgid ""
+"Interested in telling a story? Easy! Use your pictures and your imagination "
+"to create your own comics!"
+msgstr "想讲一个故事吗？简单！用你的照片和你的想象力创造你自己的漫画！"
+
+#: historietaactivity.py:37 historietaactivity.py:108
 msgid "Save as Image"
 msgstr "储存为图片"
 
@@ -31,105 +36,132 @@ msgstr "储存为图片"
 msgid "PNG"
 msgstr "PNG"
 
-#: historietaactivity.py:59
+#: historietaactivity.py:55
 msgid "View"
 msgstr "查看"
 
-#: historietaactivity.py:63
+#: historietaactivity.py:59
 msgid "Slideshow"
 msgstr "幻灯片"
 
-#: historietaactivity.py:69
+#: historietaactivity.py:65
 msgid "Fullscreen"
 msgstr "全屏显示"
 
-#: historietaactivity.py:88
+#: historietaactivity.py:84
 msgid "Text"
 msgstr "文字"
 
-#: historietaactivity.py:257
+#: historietaactivity.py:115
+msgid "Save as a Book (PDF)"
+msgstr "另存为一本书(PDF)"
+
+#: historietaactivity.py:260 historietaactivity.py:297
 msgid "Success"
 msgstr "成功"
 
-#: historietaactivity.py:258
+#: historietaactivity.py:261
 msgid "A image was created in the Journal"
 msgstr "已经在日志中创建了一张图片"
 
-#: historietaactivity.py:265
+#: historietaactivity.py:298
+msgid "A PDF was created in the Journal"
+msgstr "已经在日志中创建了一个PDF文件"
+
+#: historietaactivity.py:305
 msgid "Show in Journal"
 msgstr "在日志中显示"
 
-#: historietaactivity.py:266
+#: historietaactivity.py:307
 msgid "Ok"
 msgstr "确定"
 
-#: historietaactivity.py:504
+#: historietaactivity.py:590
 msgid "Title:"
 msgstr "标题"
 
-#: toolbar.py:86
+#: toolbar.py:76
 msgid "Add Photo"
 msgstr "添加照片"
 
-#: toolbar.py:97
-msgid "Add Globe"
-msgstr "添加球形"
+#: toolbar.py:80
+msgid "Globe"
+msgstr "球"
 
-#: toolbar.py:104
-msgid "Add Think"
-msgstr "添加想象"
+#: toolbar.py:80
+msgid "Think"
+msgstr "思考"
 
-#: toolbar.py:111
-msgid "Add Whisper"
-msgstr "添加悄悄话"
+#: toolbar.py:81
+msgid "Whisper"
+msgstr "悄悄话"
 
-#: toolbar.py:118
-msgid "Add Exclamation"
-msgstr "添加感叹"
+#: toolbar.py:81
+msgid "Exclamation"
+msgstr "感叹"
 
-#: toolbar.py:125
-msgid "Add Box"
-msgstr "添加盒子"
+#: toolbar.py:82
+msgid "Box"
+msgstr "盒子"
 
-#: toolbar.py:130
+#: toolbar.py:85
+msgid "Add a globe"
+msgstr "添加一个球"
+
+#: toolbar.py:98
 msgid "Curves"
 msgstr "曲线"
 
-#: toolbar.py:130
+#: toolbar.py:98
 msgid "Straight"
 msgstr "直线"
 
-#: toolbar.py:131
+#: toolbar.py:99
 msgid "Highlight"
 msgstr "高亮"
 
-#: toolbar.py:131
+#: toolbar.py:99
 msgid "Idea"
 msgstr "构想"
 
-#: toolbar.py:134
+#: toolbar.py:102
 msgid "Choose a movement line"
 msgstr "选择一个移动线路"
 
-#: toolbar.py:150
+#: toolbar.py:118
 msgid "Turn"
 msgstr "转动"
 
-#: toolbar.py:156
+#: toolbar.py:124
 msgid "Delete"
 msgstr "删除"
 
-#: toolbar.py:274
+#: toolbar.py:239
 msgid "Bold"
 msgstr "粗体"
 
-#: toolbar.py:279
+#: toolbar.py:244
 msgid "Italic"
 msgstr "斜体"
 
-#: toolbar.py:294
+#: toolbar.py:258
 msgid "Text Color"
 msgstr "文字颜色"
+
+#~ msgid "Add Globe"
+#~ msgstr "添加球形"
+
+#~ msgid "Add Think"
+#~ msgstr "添加想象"
+
+#~ msgid "Add Whisper"
+#~ msgstr "添加悄悄话"
+
+#~ msgid "Add Exclamation"
+#~ msgstr "添加感叹"
+
+#~ msgid "Add Box"
+#~ msgstr "添加盒子"
 
 #~ msgid "Choose image"
 #~ msgstr "选择图片"
