@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-15 00:34-0500\n"
-"PO-Revision-Date: 2013-02-01 17:41+0200\n"
+"POT-Creation-Date: 2013-04-13 00:34-0400\n"
+"PO-Revision-Date: 2013-04-17 02:01+0200\n"
 "Last-Translator: Aputsiaq Niels <aj@isit.gl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: da\n"
@@ -30,124 +30,140 @@ msgstr ""
 "Har du lyst til at fortælle en historie? Det er nemt! Brug dine billeder og "
 "din fantasi til at skabe din egen tegneserie!"
 
-#: historietaactivity.py:38 historietaactivity.py:112
+#: historietaactivity.py:37 historietaactivity.py:108
 msgid "Save as Image"
 msgstr "Gem som billede"
 
-#: historietaactivity.py:38
+#: historietaactivity.py:37
 msgid "PNG"
 msgstr "PNG"
 
-#: historietaactivity.py:59
+#: historietaactivity.py:55
 msgid "View"
 msgstr "Vis"
 
-#: historietaactivity.py:63
+#: historietaactivity.py:59
 msgid "Slideshow"
 msgstr "Diasshow"
 
-#: historietaactivity.py:69
+#: historietaactivity.py:65
 msgid "Fullscreen"
 msgstr "Fuldskærm"
 
-#: historietaactivity.py:88
+#: historietaactivity.py:84
 msgid "Text"
 msgstr "Tekst"
 
-#: historietaactivity.py:119
+#: historietaactivity.py:115
 msgid "Save as a Book (PDF)"
 msgstr "Gem som en Bog (PDF)"
 
-#: historietaactivity.py:263 historietaactivity.py:300
+#: historietaactivity.py:260 historietaactivity.py:297
 msgid "Success"
 msgstr "Succes"
 
-#: historietaactivity.py:264
+#: historietaactivity.py:261
 msgid "A image was created in the Journal"
 msgstr "Et billede blev oprettet i journalen"
 
-#: historietaactivity.py:301
+#: historietaactivity.py:298
 msgid "A PDF was created in the Journal"
 msgstr "En PDF blev oprettet i journalen"
 
-#: historietaactivity.py:308
+#: historietaactivity.py:305
 msgid "Show in Journal"
 msgstr "Vis i journal"
 
-#: historietaactivity.py:309
+#: historietaactivity.py:307
 msgid "Ok"
 msgstr "O.k."
 
-#: historietaactivity.py:582
+#: historietaactivity.py:590
 msgid "Title:"
 msgstr "Titel:"
 
-#: toolbar.py:83
+#: toolbar.py:76
 msgid "Add Photo"
 msgstr "Tilføj foto"
 
-#: toolbar.py:94
-msgid "Add Globe"
-msgstr "Tilføj globe"
+#: toolbar.py:80
+msgid "Globe"
+msgstr "Globus"
 
-#: toolbar.py:101
-msgid "Add Think"
-msgstr "Tilføj tanke"
+#: toolbar.py:80
+msgid "Think"
+msgstr "Tænk"
 
-#: toolbar.py:108
-msgid "Add Whisper"
-msgstr "Tilføj hvisken"
+#: toolbar.py:81
+msgid "Whisper"
+msgstr "Hvisk"
 
-#: toolbar.py:115
-msgid "Add Exclamation"
-msgstr "Tilføj udråb"
+#: toolbar.py:81
+msgid "Exclamation"
+msgstr "Udråb"
 
-#: toolbar.py:122
-msgid "Add Box"
-msgstr "Tilføj boks"
+#: toolbar.py:82
+msgid "Box"
+msgstr "Kasse"
 
-#: toolbar.py:127
+#: toolbar.py:85
+msgid "Add a globe"
+msgstr "Tilføj en globus"
+
+#: toolbar.py:98
 msgid "Curves"
 msgstr "Kurver"
 
-#: toolbar.py:127
+#: toolbar.py:98
 msgid "Straight"
 msgstr "Ret"
 
-#: toolbar.py:128
+#: toolbar.py:99
 msgid "Highlight"
 msgstr "Fremhæv"
 
-#: toolbar.py:128
+#: toolbar.py:99
 msgid "Idea"
 msgstr "Idé"
 
-#: toolbar.py:131
+#: toolbar.py:102
 msgid "Choose a movement line"
 msgstr "Vælg en bevægelseslinje"
 
-#: toolbar.py:147
+#: toolbar.py:118
 msgid "Turn"
 msgstr "Vend"
 
-#: toolbar.py:153
+#: toolbar.py:124
 msgid "Delete"
 msgstr "Slet"
 
-#: toolbar.py:272
+#: toolbar.py:239
 msgid "Bold"
 msgstr "Fed"
 
-#: toolbar.py:277
+#: toolbar.py:244
 msgid "Italic"
 msgstr "Kursiv"
 
-#: toolbar.py:292
+#: toolbar.py:258
 msgid "Text Color"
 msgstr "Tekstfarve"
 
+#~ msgid "Add Globe"
+#~ msgstr "Tilføj globe"
+
+#~ msgid "Add Think"
+#~ msgstr "Tilføj tanke"
+
+#~ msgid "Add Whisper"
+#~ msgstr "Tilføj hvisken"
+
+#~ msgid "Add Exclamation"
+#~ msgstr "Tilføj udråb"
+
+#~ msgid "Add Box"
+#~ msgstr "Tilføj boks"
+
 #~ msgid "Choose image"
 #~ msgstr "Vælg billede"
-
-#~ msgid "Globes"
-#~ msgstr "Glober"
