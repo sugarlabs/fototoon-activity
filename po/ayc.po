@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-15 00:34-0500\n"
-"PO-Revision-Date: 2013-02-09 18:57+0200\n"
+"POT-Creation-Date: 2013-04-13 00:34-0400\n"
+"PO-Revision-Date: 2013-04-16 13:40+0200\n"
 "Last-Translator: EdgarQuispeChambi <quispedgar@yahoo.es>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ayc\n"
@@ -30,126 +30,145 @@ msgstr ""
 "¿Foto wakichatampi yatiña wakichaña? ¡Phisnawa! ¡Foto katuqatama ukata "
 "amuyumampi juma pachpa foto wakichatama wakichasma!"
 
-#: historietaactivity.py:38 historietaactivity.py:112
+#: historietaactivity.py:37 historietaactivity.py:108
 msgid "Save as Image"
 msgstr "Rixitjama imaña"
 
 #  "PNG"
-#: historietaactivity.py:38
+#: historietaactivity.py:37
 msgid "PNG"
 msgstr "PNG"
 
-#: historietaactivity.py:59
+#: historietaactivity.py:55
 msgid "View"
 msgstr "Uñjäwi"
 
-#: historietaactivity.py:63
+#: historietaactivity.py:59
 msgid "Slideshow"
 msgstr "Nayranchaña"
 
-#: historietaactivity.py:69
+#: historietaactivity.py:65
 msgid "Fullscreen"
 msgstr "Maypacha uñjäwi"
 
 #  "Texto"
-#: historietaactivity.py:88
+#: historietaactivity.py:84
 msgid "Text"
 msgstr "Qillqawi"
 
-#: historietaactivity.py:119
+#: historietaactivity.py:115
 msgid "Save as a Book (PDF)"
 msgstr "(PDF) panka qillqatjama imaña"
 
-#: historietaactivity.py:263 historietaactivity.py:300
+#: historietaactivity.py:260 historietaactivity.py:297
 msgid "Success"
 msgstr "Nayrankaña"
 
-#: historietaactivity.py:264
+#: historietaactivity.py:261
 msgid "A image was created in the Journal"
 msgstr "Sapüru luräwiru maya rixitawa uñstayasi"
 
-#: historietaactivity.py:301
+#: historietaactivity.py:298
 msgid "A PDF was created in the Journal"
 msgstr "Sapüru luräwiru maya PDF wakichatawa uñstayasi"
 
-#: historietaactivity.py:308
+#: historietaactivity.py:305
 msgid "Show in Journal"
 msgstr "Sapüru luräwiru uñachayaña"
 
-#: historietaactivity.py:309
+#: historietaactivity.py:307
 msgid "Ok"
 msgstr "Walikiwa"
 
-#: historietaactivity.py:582
+#: historietaactivity.py:590
 msgid "Title:"
 msgstr "P'iqinchäwi:"
 
-#: toolbar.py:83
+#: toolbar.py:76
 msgid "Add Photo"
 msgstr "Foto yapxataña"
 
-#: toolbar.py:94
-msgid "Add Globe"
-msgstr "Arunchaña yapxataña"
+#: toolbar.py:80
+msgid "Globe"
+msgstr "Globo phusata"
 
-#: toolbar.py:101
-msgid "Add Think"
-msgstr "Amuyt'äwi yapxataña"
+#: toolbar.py:80
+msgid "Think"
+msgstr "lup'iña"
 
-#: toolbar.py:108
-msgid "Add Whisper"
-msgstr "Chhipisiña yapxataña"
+#: toolbar.py:81
+msgid "Whisper"
+msgstr "Ñusuqiña"
 
-#: toolbar.py:115
-msgid "Add Exclamation"
-msgstr "Jallalläwi yapxataña"
+#: toolbar.py:81
+msgid "Exclamation"
+msgstr "Q'asaña"
 
-#: toolbar.py:122
-msgid "Add Box"
-msgstr "Imaña yapxataña"
+#: toolbar.py:82
+msgid "Box"
+msgstr "Kajuna"
 
-#: toolbar.py:127
+#: toolbar.py:85
+msgid "Add a globe"
+msgstr "Globo phusantata yapxataña"
+
+#: toolbar.py:98
 msgid "Curves"
 msgstr "Q'iwinaka"
 
-#: toolbar.py:127
+#: toolbar.py:98
 msgid "Straight"
 msgstr "Chiqa"
 
-#: toolbar.py:128
+#: toolbar.py:99
 msgid "Highlight"
 msgstr "Qhananchata"
 
-#: toolbar.py:128
+#: toolbar.py:99
 msgid "Idea"
 msgstr "Amuyu"
 
-#: toolbar.py:131
+#: toolbar.py:102
 msgid "Choose a movement line"
 msgstr "Muyuyiri chiqa ajllma"
 
-#: toolbar.py:147
+#: toolbar.py:118
 msgid "Turn"
 msgstr "Muyuyaña"
 
 #  "Borrar"
-#: toolbar.py:153
+#: toolbar.py:124
 msgid "Delete"
 msgstr "Chhaqtayaña"
 
 #  "Negrita"
-#: toolbar.py:272
+#: toolbar.py:239
 msgid "Bold"
 msgstr "Qhananchata"
 
 #  "Italica"
-#: toolbar.py:277
+#: toolbar.py:244
 msgid "Italic"
 msgstr "Alt'ata qillqanaka"
 
-#: toolbar.py:292
+#: toolbar.py:258
 msgid "Text Color"
 msgstr "Qillqata samipa"
+
+#~ msgid "Add Globe"
+#~ msgstr "Arunchaña yapxataña"
+
+#~ msgid "Add Think"
+#~ msgstr "Amuyt'äwi yapxataña"
+
+#~ msgid "Add Whisper"
+#~ msgstr "Chhipisiña yapxataña"
+
+#~ msgid "Add Exclamation"
+#~ msgstr "Jallalläwi yapxataña"
+
+#~ msgid "Add Box"
+#~ msgstr "Imaña yapxataña"
 
 #  "Elegir Imagen"
 #~ msgid "Choose image"
