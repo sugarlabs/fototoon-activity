@@ -6,9 +6,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-15 00:34-0500\n"
-"PO-Revision-Date: 2013-01-02 05:38+0200\n"
-"Last-Translator: Jasmine <udea_jasmine@yahoo.com>\n"
+"POT-Creation-Date: 2013-04-13 00:34-0400\n"
+"PO-Revision-Date: 2013-04-19 21:06+0200\n"
+"Last-Translator: anushnur <anush.mkrtchyan@ca1492.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hy\n"
 "MIME-Version: 1.0\n"
@@ -27,128 +27,145 @@ msgid ""
 "Interested in telling a story? Easy! Use your pictures and your imagination "
 "to create your own comics!"
 msgstr ""
+"Քեզ հետաքրքրու՞մ է պատմել պատմություններ: Հեշտ է. Օգտագործիր քո նկարներն ու "
+"երևակայությունը քո սեփական կատականկարները ստեղծելու համար."
 
-#: historietaactivity.py:38 historietaactivity.py:112
+#: historietaactivity.py:37 historietaactivity.py:108
 msgid "Save as Image"
 msgstr "Պահել որպես պատկեր"
 
 # PNG ֆորմատ, Շարժական Ցանցային գրաֆիկներ
-#: historietaactivity.py:38
+#: historietaactivity.py:37
 msgid "PNG"
 msgstr "PNG"
 
-#: historietaactivity.py:59
+#: historietaactivity.py:55
 msgid "View"
 msgstr "Տեսք"
 
-#: historietaactivity.py:63
+#: historietaactivity.py:59
 msgid "Slideshow"
 msgstr "Ներկայացում"
 
-#: historietaactivity.py:69
+#: historietaactivity.py:65
 msgid "Fullscreen"
 msgstr "Ամբողջ էկրանով"
 
-#: historietaactivity.py:88
+#: historietaactivity.py:84
 msgid "Text"
 msgstr "Տեքստ"
 
-#: historietaactivity.py:119
+#: historietaactivity.py:115
 msgid "Save as a Book (PDF)"
-msgstr ""
+msgstr "Պահպանել որպես Գիրք (PDF)"
 
-#: historietaactivity.py:263 historietaactivity.py:300
+#: historietaactivity.py:260 historietaactivity.py:297
 msgid "Success"
 msgstr "Հաջողություն"
 
-#: historietaactivity.py:264
+#: historietaactivity.py:261
 msgid "A image was created in the Journal"
 msgstr "Մատյանում ստեղծված է մի պատկեր:"
 
-#: historietaactivity.py:301
-#, fuzzy
+#: historietaactivity.py:298
 msgid "A PDF was created in the Journal"
-msgstr "Մատյանում ստեղծված է մի պատկեր:"
+msgstr "PDF ձևաչափը ստեղծված է մատյանում:"
 
-#: historietaactivity.py:308
+#: historietaactivity.py:305
 msgid "Show in Journal"
 msgstr "Ցուցադրել Մատյանում"
 
-#: historietaactivity.py:309
+#: historietaactivity.py:307
 msgid "Ok"
 msgstr "Շատ լավ"
 
-#: historietaactivity.py:582
+#: historietaactivity.py:590
 msgid "Title:"
 msgstr "Վերնագիր."
 
-#: toolbar.py:83
+#: toolbar.py:76
 msgid "Add Photo"
 msgstr "Ավելացնել լուսանկար"
 
-#: toolbar.py:94
-msgid "Add Globe"
-msgstr "Ավելացնել Փուչիկ"
+#: toolbar.py:80
+msgid "Globe"
+msgstr "Գունդ"
 
-# միտք
-#: toolbar.py:101
-msgid "Add Think"
-msgstr "Ավելացնել «Խոհ»"
+#: toolbar.py:80
+msgid "Think"
+msgstr "Մտածել"
 
-#: toolbar.py:108
-msgid "Add Whisper"
-msgstr "Ավելացնել «Շշունջ»"
+#: toolbar.py:81
+msgid "Whisper"
+msgstr "Շշնջալ"
 
-#: toolbar.py:115
-msgid "Add Exclamation"
-msgstr "Ավելացնել «Բացականչություն»"
+#: toolbar.py:81
+msgid "Exclamation"
+msgstr "Բացականչություն"
 
-#: toolbar.py:122
-msgid "Add Box"
-msgstr "Ավելացնել վանդակ"
+#: toolbar.py:82
+msgid "Box"
+msgstr "Տուփ"
 
-#: toolbar.py:127
+#: toolbar.py:85
+msgid "Add a globe"
+msgstr "Ավելացնել գունդ"
+
+#: toolbar.py:98
 msgid "Curves"
 msgstr "Կորագծեր"
 
-#: toolbar.py:127
+#: toolbar.py:98
 msgid "Straight"
 msgstr "Ուղիղ"
 
-#: toolbar.py:128
+#: toolbar.py:99
 msgid "Highlight"
 msgstr "Ընդգծել"
 
-#: toolbar.py:128
+#: toolbar.py:99
 msgid "Idea"
 msgstr "Գաղափար"
 
-#: toolbar.py:131
+#: toolbar.py:102
 msgid "Choose a movement line"
 msgstr "Ընտրել շարժման գիծը"
 
-#: toolbar.py:147
+#: toolbar.py:118
 msgid "Turn"
 msgstr "Պտտել"
 
-#: toolbar.py:153
+#: toolbar.py:124
 msgid "Delete"
 msgstr "Ջնջել"
 
-#: toolbar.py:272
+#: toolbar.py:239
 msgid "Bold"
 msgstr "Թավ"
 
-#: toolbar.py:277
+#: toolbar.py:244
 msgid "Italic"
 msgstr "Շեղագիր"
 
-#: toolbar.py:292
+#: toolbar.py:258
 msgid "Text Color"
 msgstr "Տեքստի գույնը"
 
+#~ msgid "Add Globe"
+#~ msgstr "Ավելացնել Փուչիկ"
+
+# միտք
+#~ msgid "Add Think"
+#~ msgstr "Ավելացնել «Խոհ»"
+
+#~ msgid "Add Whisper"
+#~ msgstr "Ավելացնել «Շշունջ»"
+
+#~ msgid "Add Exclamation"
+#~ msgstr "Ավելացնել «Բացականչություն»"
+
+#~ msgid "Add Box"
+#~ msgstr "Ավելացնել վանդակ"
+
 #~ msgid "Choose image"
 #~ msgstr "Ընտրել պատկերը"
-
-#~ msgid "Globes"
-#~ msgstr "Գունդ"
