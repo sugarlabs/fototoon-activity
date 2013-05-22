@@ -29,8 +29,8 @@ from sugar3.graphics.toggletoolbutton import ToggleToolButton
 from sugar3.graphics.combobox import ComboBox
 from sugar3.graphics.toolcombobox import ToolComboBox
 from sugar3.graphics.objectchooser import ObjectChooser
-from sugar3.activity.widgets import RadioMenuButton
-from sugar3.graphics.menuitem import MenuItem
+from sugar3.graphics.palettemenu import PaletteMenuItem
+from sugar3.graphics.palettemenu import PaletteMenuBox
 
 from fontcombobox import FontComboBox
 import globos
@@ -81,14 +81,20 @@ class GlobesManager():
             'whisper': _('Whisper'), 'exclamation': _('Exclamation'),
             'box': _('Box')}
 
-        self._globes_menu = RadioMenuButton(icon_name='globe')
+        self._globes_menu = ToolButton(icon_name='globe')
         self._globes_menu.props.tooltip = _('Add a globe')
+        self._globes_menu.props.hide_tooltip_on_click = False
+        self._globes_menu.palette_invoker.props.toggle_palette = True
+
+        menu_box = PaletteMenuBox()
+        self._globes_menu.props.palette.set_content(menu_box)
+        menu_box.show()
 
         for globe in self._globes.keys():
-            menu_item = MenuItem(icon_name=globe,
-                                 text_label=self._globes[globe])
+            menu_item = PaletteMenuItem(icon_name=globe,
+                                        text_label=self._globes[globe])
             menu_item.connect('activate', self.__activate_add_globe_cb, globe)
-            self._globes_menu.props.palette.menu.append(menu_item)
+            menu_box.append_item(menu_item)
             menu_item.show()
         toolbar.insert(self._globes_menu, -1)
 
@@ -98,13 +104,20 @@ class GlobesManager():
             'curves': _('Curves'), 'straight': _('Straight'),
             'highlight': _('Highlight'), 'idea': _('Idea')}
 
-        self._lines_menu = RadioMenuButton(icon_name='curves')
+        self._lines_menu = ToolButton(icon_name='curves')
         self._lines_menu.props.tooltip = _('Choose a movement line')
+        self._lines_menu.props.hide_tooltip_on_click = False
+        self._lines_menu.palette_invoker.props.toggle_palette = True
+
+        menu_box = PaletteMenuBox()
+        self._lines_menu.props.palette.set_content(menu_box)
+        menu_box.show()
 
         for line in self._lines.keys():
-            menu_item = MenuItem(icon_name=line, text_label=self._lines[line])
+            menu_item = PaletteMenuItem(icon_name=line,
+                                        text_label=self._lines[line])
             menu_item.connect('activate', self.__activate_add_line_cb, line)
-            self._lines_menu.props.palette.menu.append(menu_item)
+            menu_box.append_item(menu_item)
             menu_item.show()
         toolbar.insert(self._lines_menu, -1)
 
