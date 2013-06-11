@@ -33,6 +33,7 @@ from sugar3.graphics.palettemenu import PaletteMenuItem
 from sugar3.graphics.palettemenu import PaletteMenuBox
 
 from fontcombobox import FontComboBox
+from fontcombobox import FontSize
 import globos
 
 from sugar3.graphics.colorbutton import ColorToolButton
@@ -277,32 +278,17 @@ class TextToolbar(Gtk.Toolbar):
         separator.set_draw(True)
         self.insert(separator, -1)
 
-        # tamanio
-        self._font_size_icon = Icon(icon_name="format-text-size",
-                                    icon_size=Gtk.IconSize.LARGE_TOOLBAR)
-        tool_item = Gtk.ToolItem()
-        tool_item.add(self._font_size_icon)
-        self.insert(tool_item, -1)
-
-        self._font_size_combo = ComboBox()
-        self._font_sizes = ['8', '10', '12', '14', '16', '20', '22', '24',
-                            '26', '28', '36', '48', '72']
+        self._font_size_combo = FontSize()
         self._font_size_changed_id = self._font_size_combo.connect(
             'changed', self._font_size_changed_cb)
-        for i, s in enumerate(self._font_sizes):
-            self._font_size_combo.append_item(i, s, None)
-            if s == '10':
-                self._font_size_combo.set_active(i)
-        tool_item = ToolComboBox(self._font_size_combo)
-        self.insert(tool_item, -1)
+        self.insert(self._font_size_combo, -1)
 
         # font
         self._font_combo = FontComboBox()
         self._font_combo.set_font_name(globos.DEFAULT_FONT)
         self._fonts_changed_id = self._font_combo.connect(
             'changed', self._font_changed_cb)
-        tool_item = ToolComboBox(self._font_combo)
-        self.insert(tool_item, -1)
+        self.insert(ToolComboBox(self._font_combo), -1)
 
         self.show_all()
 
@@ -338,25 +324,22 @@ class TextToolbar(Gtk.Toolbar):
             texto.color = (color.red, color.green, color.blue)
             self._page.get_active_box().redraw()
 
-    def _font_size_changed_cb(self, combobox):
-        if self._font_size_combo.get_active() != -1:
-            size = int(self._font_sizes[self._font_size_combo.get_active()])
-            logger.debug('Setting font size: %d', size)
-            globo_activo = self._page.get_globo_activo()
-            if globo_activo is not None and globo_activo.texto is not None:
-                globo_activo.texto.font_size = size
-                globo_activo.texto.alto_renglon = size
-                self._page.get_active_box().redraw()
+    def _font_size_changed_cb(self, widget):
+        size = widget.get_font_size()
+        logger.debug('Setting font size: %d', size)
+        globo_activo = self._page.get_globo_activo()
+        if globo_activo is not None and globo_activo.texto is not None:
+            globo_activo.texto.font_size = size
+            self._page.get_active_box().redraw()
 
-    def _font_changed_cb(self, combobox):
-        if self._font_combo.get_active() != -1:
-            font_name = self._font_combo.get_font_name()
-            logger.debug('Setting font name: %s', font_name)
-            globo_activo = self._page.get_globo_activo()
-            if globo_activo is not None and globo_activo.texto is not None:
-                globo_activo.texto.font_type = font_name
-                self._page.selected_font_name = font_name
-                self._page.get_active_box().redraw()
+    def _font_changed_cb(self, widget):
+        font_name = widget.get_font_name()
+        logger.debug('Setting font name: %s', font_name)
+        globo_activo = self._page.get_globo_activo()
+        if globo_activo is not None and globo_activo.texto is not None:
+            globo_activo.texto.font_type = font_name
+            self._page.selected_font_name = font_name
+            self._page.get_active_box().redraw()
 
     """
     Estos son los metodos para setear los contrles de la barra en base a el
@@ -377,13 +360,10 @@ class TextToolbar(Gtk.Toolbar):
         # color
         self._text_color.set_color(Gdk.Color(*globeText.color))
         # font size
-        for i, s in enumerate(self._font_sizes):
-            if int(s) == int(globeText.font_size):
-                self._font_size_combo.handler_block(self._font_size_changed_id)
-                self._font_size_combo.set_active(i)
-                self._font_size_combo.handler_unblock(
-                    self._font_size_changed_id)
-                break
+        logging.error('Setting font size from globe %s %s', globeText.font_size, globeText.font_size.__class__)
+        self._font_size_combo.handler_block(self._font_size_changed_id)
+        self._font_size_combo.set_font_size(int(globeText.font_size))
+        self._font_size_combo.handler_unblock(self._font_size_changed_id)
 
         # font seleccionada
         self._font_combo.handler_block(self._fonts_changed_id)
