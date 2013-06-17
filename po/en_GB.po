@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-13 00:34-0400\n"
-"PO-Revision-Date: 2013-04-14 06:49+0200\n"
+"POT-Creation-Date: 2013-06-12 00:33-0400\n"
+"PO-Revision-Date: 2013-06-17 06:15+0200\n"
 "Last-Translator: Chris <cjl@laptop.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: en_GB\n"
@@ -29,6 +29,10 @@ msgid ""
 msgstr ""
 "Interested in telling a story? Easy! Use your pictures and your imagination "
 "to create your own comics!"
+
+#: fontcombobox.py:90
+msgid "Select font"
+msgstr "Select font"
 
 #: historietaactivity.py:37 historietaactivity.py:108
 msgid "Save as Image"
@@ -82,71 +86,71 @@ msgstr "Ok"
 msgid "Title:"
 msgstr "Title:"
 
-#: toolbar.py:76
+#: toolbar.py:77
 msgid "Add Photo"
 msgstr "Add Photo"
 
-#: toolbar.py:80
+#: toolbar.py:81
 msgid "Globe"
 msgstr "Globe"
 
-#: toolbar.py:80
+#: toolbar.py:81
 msgid "Think"
 msgstr "Think"
 
-#: toolbar.py:81
+#: toolbar.py:82
 msgid "Whisper"
 msgstr "Whisper"
 
-#: toolbar.py:81
+#: toolbar.py:82
 msgid "Exclamation"
 msgstr "Exclamation"
 
-#: toolbar.py:82
+#: toolbar.py:83
 msgid "Box"
 msgstr "Box"
 
-#: toolbar.py:85
+#: toolbar.py:86
 msgid "Add a globe"
 msgstr "Add a globe"
 
-#: toolbar.py:98
+#: toolbar.py:105
 msgid "Curves"
 msgstr "Curves"
 
-#: toolbar.py:98
+#: toolbar.py:105
 msgid "Straight"
 msgstr "Straight"
 
-#: toolbar.py:99
+#: toolbar.py:106
 msgid "Highlight"
 msgstr "Highlight"
 
-#: toolbar.py:99
+#: toolbar.py:106
 msgid "Idea"
 msgstr "Idea"
 
-#: toolbar.py:102
+#: toolbar.py:109
 msgid "Choose a movement line"
 msgstr "Choose a movement line"
 
-#: toolbar.py:118
+#: toolbar.py:132
 msgid "Turn"
 msgstr "Turn"
 
-#: toolbar.py:124
+#: toolbar.py:138
 msgid "Delete"
 msgstr "Delete"
 
-#: toolbar.py:239
+#: toolbar.py:253
 msgid "Bold"
 msgstr "Bold"
 
-#: toolbar.py:244
+#: toolbar.py:258
 msgid "Italic"
 msgstr "Italic"
 
-#: toolbar.py:258
+#: toolbar.py:272
 msgid "Text Color"
 msgstr "Text Colour"
 
