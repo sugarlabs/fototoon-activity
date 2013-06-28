@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-24 00:34-0400\n"
+"POT-Creation-Date: 2013-06-12 00:33-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,106 +16,156 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Translate Toolkit 1.7.0\n"
 
-#: activity/activity.info:2
+#. TRANS: "name" option from activity.info file
 msgid "FotoToon"
 msgstr "PikitiaPakiwaituhi"
 
-#: historietaactivity.py:33 historietaactivity.py:83
+#. TRANS: "summary" option from activity.info file
+#. TRANS: "description" option from activity.info file
+msgid ""
+"Interested in telling a story? Easy! Use your pictures and your imagination "
+"to create your own comics!"
+msgstr ""
+
+#: fontcombobox.py:90
+msgid "Select font"
+msgstr ""
+
+#: historietaactivity.py:37 historietaactivity.py:108
 msgid "Save as Image"
 msgstr "Tiaki hei Atahanga"
 
-#: historietaactivity.py:33
+#: historietaactivity.py:37
 msgid "PNG"
 msgstr "PNG"
 
-#: historietaactivity.py:61
+#: historietaactivity.py:55
+msgid "View"
+msgstr ""
+
+#: historietaactivity.py:59
+msgid "Slideshow"
+msgstr ""
+
+#: historietaactivity.py:65
+msgid "Fullscreen"
+msgstr ""
+
+#: historietaactivity.py:84
 msgid "Text"
 msgstr "Kupu"
 
-#: historietaactivity.py:218
+#: historietaactivity.py:115
+msgid "Save as a Book (PDF)"
+msgstr ""
+
+#: historietaactivity.py:260 historietaactivity.py:297
 msgid "Success"
 msgstr "Angitu"
 
-#: historietaactivity.py:219
+#: historietaactivity.py:261
 msgid "A image was created in the Journal"
 msgstr "I waihangatia tētahi atahanga ki roto i te Tuhitaka"
 
-#: historietaactivity.py:226
+#: historietaactivity.py:298
+#, fuzzy
+msgid "A PDF was created in the Journal"
+msgstr "I waihangatia tētahi atahanga ki roto i te Tuhitaka"
+
+#: historietaactivity.py:305
 msgid "Show in Journal"
 msgstr "Whakaatu ki Tuhitaka"
 
-#: historietaactivity.py:227
+#: historietaactivity.py:307
 msgid "Ok"
 msgstr "Āe"
 
-#: historietaactivity.py:455
+#: historietaactivity.py:590
 msgid "Title:"
 msgstr "Taitara:"
 
-#: toolbar.py:84
+#: toolbar.py:77
 msgid "Add Photo"
 msgstr "Tāpiri Whakaahua"
 
-#: toolbar.py:95
-msgid "Add Globe"
-msgstr "Tāpiri Ao"
+#: toolbar.py:81
+msgid "Globe"
+msgstr ""
 
-#: toolbar.py:102
-msgid "Add Think"
-msgstr "Tāpiri Whakaaro"
+#: toolbar.py:81
+msgid "Think"
+msgstr ""
 
-#: toolbar.py:109
-msgid "Add Whisper"
-msgstr "Tāpiri Kōhimuhimu"
+#: toolbar.py:82
+msgid "Whisper"
+msgstr ""
 
-#: toolbar.py:116
-msgid "Add Exclamation"
-msgstr "Tāpiri Karanga"
+#: toolbar.py:82
+msgid "Exclamation"
+msgstr ""
 
-#: toolbar.py:123
-msgid "Add Box"
-msgstr "Tāpiri Pouaka"
+#: toolbar.py:83
+msgid "Box"
+msgstr ""
 
-#: toolbar.py:128
+#: toolbar.py:86
+msgid "Add a globe"
+msgstr ""
+
+#: toolbar.py:105
 msgid "Curves"
 msgstr "Ngā Ānau"
 
-#: toolbar.py:128
+#: toolbar.py:105
 msgid "Straight"
 msgstr "Tōtika"
 
-#: toolbar.py:129
+#: toolbar.py:106
 msgid "Highlight"
 msgstr "Miramira"
 
-#: toolbar.py:129
+#: toolbar.py:106
 msgid "Idea"
 msgstr "Whakaaro"
 
-#: toolbar.py:132
+#: toolbar.py:109
 msgid "Choose a movement line"
 msgstr "Kōwhiri i tētahi rārangi nekeneke"
 
-#: toolbar.py:148
+#: toolbar.py:132
 msgid "Turn"
 msgstr "Huri"
 
-#: toolbar.py:154
+#: toolbar.py:138
 msgid "Delete"
 msgstr "Muku"
 
-#: toolbar.py:231 toolbar.py:235
-msgid "Choose image"
-msgstr "Kōwhiri atahanga"
-
-#: toolbar.py:268
+#: toolbar.py:253
 msgid "Bold"
 msgstr "Taekaha"
 
-#: toolbar.py:273
+#: toolbar.py:258
 msgid "Italic"
 msgstr "Tītaha"
 
-#: toolbar.py:288
+#: toolbar.py:272
 msgid "Text Color"
 msgstr "Tae Kupu"
+
+#~ msgid "Add Globe"
+#~ msgstr "Tāpiri Ao"
+
+#~ msgid "Add Think"
+#~ msgstr "Tāpiri Whakaaro"
+
+#~ msgid "Add Whisper"
+#~ msgstr "Tāpiri Kōhimuhimu"
+
+#~ msgid "Add Exclamation"
+#~ msgstr "Tāpiri Karanga"
+
+#~ msgid "Add Box"
+#~ msgstr "Tāpiri Pouaka"
+
+#~ msgid "Choose image"
+#~ msgstr "Kōwhiri atahanga"

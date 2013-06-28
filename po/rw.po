@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-24 00:34-0400\n"
+"POT-Creation-Date: 2013-06-12 00:33-0400\n"
 "PO-Revision-Date: 2012-04-05 06:32+0200\n"
 "Last-Translator: Chris <cjl@laptop.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,117 +17,151 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1) ;\n"
 "X-Generator: Pootle 2.0.5\n"
 
-#: activity/activity.info:2
+#. TRANS: "name" option from activity.info file
 msgid "FotoToon"
 msgstr ""
 
-#: historietaactivity.py:33 historietaactivity.py:83
+#. TRANS: "summary" option from activity.info file
+#. TRANS: "description" option from activity.info file
+msgid ""
+"Interested in telling a story? Easy! Use your pictures and your imagination "
+"to create your own comics!"
+msgstr ""
+
+#: fontcombobox.py:90
+msgid "Select font"
+msgstr ""
+
+#: historietaactivity.py:37 historietaactivity.py:108
 #, fuzzy
 msgid "Save as Image"
 msgstr "Bika ishusho"
 
-#: historietaactivity.py:33
+#: historietaactivity.py:37
 msgid "PNG"
 msgstr "PNG"
 
-#: historietaactivity.py:61
+#: historietaactivity.py:55
+msgid "View"
+msgstr ""
+
+#: historietaactivity.py:59
+msgid "Slideshow"
+msgstr ""
+
+#: historietaactivity.py:65
+msgid "Fullscreen"
+msgstr ""
+
+#: historietaactivity.py:84
 msgid "Text"
 msgstr "Inyandiko"
 
-#: historietaactivity.py:218
+#: historietaactivity.py:115
+msgid "Save as a Book (PDF)"
+msgstr ""
+
+#: historietaactivity.py:260 historietaactivity.py:297
 msgid "Success"
 msgstr ""
 
-#: historietaactivity.py:219
+#: historietaactivity.py:261
 msgid "A image was created in the Journal"
 msgstr ""
 
-#: historietaactivity.py:226
+#: historietaactivity.py:298
+msgid "A PDF was created in the Journal"
+msgstr ""
+
+#: historietaactivity.py:305
 msgid "Show in Journal"
 msgstr ""
 
-#: historietaactivity.py:227
+#: historietaactivity.py:307
 msgid "Ok"
 msgstr ""
 
-#: historietaactivity.py:455
+#: historietaactivity.py:590
 msgid "Title:"
 msgstr ""
 
-#: toolbar.py:84
+#: toolbar.py:77
 msgid "Add Photo"
 msgstr ""
 
-#: toolbar.py:95
-msgid "Add Globe"
+#: toolbar.py:81
+msgid "Globe"
 msgstr ""
 
-#: toolbar.py:102
-msgid "Add Think"
+#: toolbar.py:81
+msgid "Think"
 msgstr ""
 
-#: toolbar.py:109
-msgid "Add Whisper"
+#: toolbar.py:82
+msgid "Whisper"
 msgstr ""
 
-#: toolbar.py:116
-msgid "Add Exclamation"
+#: toolbar.py:82
+msgid "Exclamation"
 msgstr ""
 
-#: toolbar.py:123
-msgid "Add Box"
+#: toolbar.py:83
+msgid "Box"
 msgstr ""
 
-#: toolbar.py:128
+#: toolbar.py:86
+msgid "Add a globe"
+msgstr ""
+
+#: toolbar.py:105
 #, fuzzy
 msgid "Curves"
 msgstr "Agaheto"
 
-#: toolbar.py:128
+#: toolbar.py:105
 #, fuzzy
 msgid "Straight"
 msgstr "Kigororotse"
 
-#: toolbar.py:129
+#: toolbar.py:106
 #, fuzzy
 msgid "Highlight"
 msgstr "Urumuri rwaka cyane"
 
-#: toolbar.py:129
+#: toolbar.py:106
 #, fuzzy
 msgid "Idea"
 msgstr "Igitekerezo"
 
-#: toolbar.py:132
+#: toolbar.py:109
 #, fuzzy
 msgid "Choose a movement line"
 msgstr "Hitamo umurongo ugenda"
 
-#: toolbar.py:148
+#: toolbar.py:132
 #, fuzzy
 msgid "Turn"
 msgstr "Hindura"
 
-#: toolbar.py:154
+#: toolbar.py:138
 #, fuzzy
 msgid "Delete"
 msgstr "Siba"
 
-#: toolbar.py:231 toolbar.py:235
-#, fuzzy
-msgid "Choose image"
-msgstr "Hitamo ishusho"
-
-#: toolbar.py:268
+#: toolbar.py:253
 #, fuzzy
 msgid "Bold"
 msgstr "Bitsindagiye"
 
-#: toolbar.py:273
+#: toolbar.py:258
 msgid "Italic"
 msgstr ""
 
-#: toolbar.py:288
+#: toolbar.py:272
 #, fuzzy
 msgid "Text Color"
 msgstr "Inyandiko ifite ibara"
+
+#, fuzzy
+#~ msgid "Choose image"
+#~ msgstr "Hitamo ishusho"

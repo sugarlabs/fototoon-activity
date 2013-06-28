@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-24 00:34-0400\n"
+"POT-Creation-Date: 2013-06-12 00:33-0400\n"
 "PO-Revision-Date: 2012-04-20 03:23+0200\n"
 "Last-Translator: Eduardo H. <hoboprimate@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,106 +17,155 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Pootle 2.0.5\n"
 
-#: activity/activity.info:2
+#. TRANS: "name" option from activity.info file
 msgid "FotoToon"
 msgstr "Foto Desenhada"
 
-#: historietaactivity.py:33 historietaactivity.py:83
+#. TRANS: "summary" option from activity.info file
+#. TRANS: "description" option from activity.info file
+msgid ""
+"Interested in telling a story? Easy! Use your pictures and your imagination "
+"to create your own comics!"
+msgstr ""
+
+#: fontcombobox.py:90
+msgid "Select font"
+msgstr ""
+
+#: historietaactivity.py:37 historietaactivity.py:108
 msgid "Save as Image"
 msgstr "Guardar como imagem"
 
-#: historietaactivity.py:33
+#: historietaactivity.py:37
 msgid "PNG"
 msgstr "PNG"
 
-#: historietaactivity.py:61
+#: historietaactivity.py:55
+msgid "View"
+msgstr ""
+
+#: historietaactivity.py:59
+msgid "Slideshow"
+msgstr ""
+
+#: historietaactivity.py:65
+msgid "Fullscreen"
+msgstr ""
+
+#: historietaactivity.py:84
 msgid "Text"
 msgstr "Texto"
 
-#: historietaactivity.py:218
+#: historietaactivity.py:115
+msgid "Save as a Book (PDF)"
+msgstr ""
+
+#: historietaactivity.py:260 historietaactivity.py:297
 msgid "Success"
 msgstr ""
 
-#: historietaactivity.py:219
+#: historietaactivity.py:261
 msgid "A image was created in the Journal"
 msgstr ""
 
-#: historietaactivity.py:226
+#: historietaactivity.py:298
+msgid "A PDF was created in the Journal"
+msgstr ""
+
+#: historietaactivity.py:305
 msgid "Show in Journal"
 msgstr ""
 
-#: historietaactivity.py:227
+#: historietaactivity.py:307
 msgid "Ok"
 msgstr ""
 
-#: historietaactivity.py:455
+#: historietaactivity.py:590
 msgid "Title:"
 msgstr "Título:"
 
-#: toolbar.py:84
+#: toolbar.py:77
 msgid "Add Photo"
 msgstr "Adicionar Foto"
 
-#: toolbar.py:95
-msgid "Add Globe"
-msgstr "Adicionar Balão"
+#: toolbar.py:81
+msgid "Globe"
+msgstr ""
 
-#: toolbar.py:102
-msgid "Add Think"
-msgstr "Adicionar Pensamento"
+#: toolbar.py:81
+msgid "Think"
+msgstr ""
 
-#: toolbar.py:109
-msgid "Add Whisper"
-msgstr "Adicionar Sussurro"
+#: toolbar.py:82
+msgid "Whisper"
+msgstr ""
 
-#: toolbar.py:116
-msgid "Add Exclamation"
-msgstr "Adicionar Exclamação"
+#: toolbar.py:82
+msgid "Exclamation"
+msgstr ""
 
-#: toolbar.py:123
-msgid "Add Box"
-msgstr "Adicionar Caixa"
+#: toolbar.py:83
+msgid "Box"
+msgstr ""
 
-#: toolbar.py:128
+#: toolbar.py:86
+msgid "Add a globe"
+msgstr ""
+
+#: toolbar.py:105
 msgid "Curves"
 msgstr "Curvas"
 
-#: toolbar.py:128
+#: toolbar.py:105
 msgid "Straight"
 msgstr "Direitas"
 
-#: toolbar.py:129
+#: toolbar.py:106
 msgid "Highlight"
 msgstr "Destaque"
 
-#: toolbar.py:129
+#: toolbar.py:106
 msgid "Idea"
 msgstr "Ideia"
 
-#: toolbar.py:132
+#: toolbar.py:109
 msgid "Choose a movement line"
 msgstr "Escolhe umas linhas de movimento"
 
-#: toolbar.py:148
+#: toolbar.py:132
 msgid "Turn"
 msgstr "Rodar"
 
-#: toolbar.py:154
+#: toolbar.py:138
 msgid "Delete"
 msgstr "Apagar"
 
-#: toolbar.py:231 toolbar.py:235
-msgid "Choose image"
-msgstr "Escolhe uma imagem"
-
-#: toolbar.py:268
+#: toolbar.py:253
 msgid "Bold"
 msgstr "Negrito"
 
-#: toolbar.py:273
+#: toolbar.py:258
 msgid "Italic"
 msgstr "Itálico"
 
-#: toolbar.py:288
+#: toolbar.py:272
 msgid "Text Color"
 msgstr "Cor do Texto"
+
+#~ msgid "Add Globe"
+#~ msgstr "Adicionar Balão"
+
+#~ msgid "Add Think"
+#~ msgstr "Adicionar Pensamento"
+
+#~ msgid "Add Whisper"
+#~ msgstr "Adicionar Sussurro"
+
+#~ msgid "Add Exclamation"
+#~ msgstr "Adicionar Exclamação"
+
+#~ msgid "Add Box"
+#~ msgstr "Adicionar Caixa"
+
+#~ msgid "Choose image"
+#~ msgstr "Escolhe uma imagem"

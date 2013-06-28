@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-24 00:34-0400\n"
+"POT-Creation-Date: 2013-06-12 00:33-0400\n"
 "PO-Revision-Date: 2012-03-01 13:55+0200\n"
 "Last-Translator: Chris <cjl@laptop.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,113 +17,162 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Pootle 2.0.5\n"
 
-#: activity/activity.info:2
+#. TRANS: "name" option from activity.info file
 msgid "FotoToon"
 msgstr "Foto Toon"
 
-#: historietaactivity.py:33 historietaactivity.py:83
+#. TRANS: "summary" option from activity.info file
+#. TRANS: "description" option from activity.info file
+msgid ""
+"Interested in telling a story? Easy! Use your pictures and your imagination "
+"to create your own comics!"
+msgstr ""
+
+#: fontcombobox.py:90
+msgid "Select font"
+msgstr ""
+
+#: historietaactivity.py:37 historietaactivity.py:108
 msgid "Save as Image"
 msgstr "Ka dhaya' jant'ini' i k'ot'bixtaláb"
 
-#: historietaactivity.py:33
+#: historietaactivity.py:37
 msgid "PNG"
 msgstr "PNG"
 
-#: historietaactivity.py:61
+#: historietaactivity.py:55
+msgid "View"
+msgstr ""
+
+#: historietaactivity.py:59
+msgid "Slideshow"
+msgstr ""
+
+#: historietaactivity.py:65
+msgid "Fullscreen"
+msgstr ""
+
+#: historietaactivity.py:84
 msgid "Text"
 msgstr "Dhuchlab"
 
-#: historietaactivity.py:218
+#: historietaactivity.py:115
+msgid "Save as a Book (PDF)"
+msgstr ""
+
+#: historietaactivity.py:260 historietaactivity.py:297
 msgid "Success"
 msgstr ""
 
-#: historietaactivity.py:219
+#: historietaactivity.py:261
 msgid "A image was created in the Journal"
 msgstr ""
 
-#: historietaactivity.py:226
+#: historietaactivity.py:298
+msgid "A PDF was created in the Journal"
+msgstr ""
+
+#: historietaactivity.py:305
 msgid "Show in Journal"
 msgstr ""
 
-#: historietaactivity.py:227
+#: historietaactivity.py:307
 msgid "Ok"
 msgstr ""
 
-#: historietaactivity.py:455
+#: historietaactivity.py:590
 msgid "Title:"
 msgstr ""
 
-#: toolbar.py:84
+#: toolbar.py:77
 msgid "Add Photo"
 msgstr "Ka punk'uy an walek"
+
+#: toolbar.py:81
+msgid "Globe"
+msgstr ""
+
+#: toolbar.py:81
+msgid "Think"
+msgstr ""
+
+#: toolbar.py:82
+msgid "Whisper"
+msgstr ""
+
+#: toolbar.py:82
+msgid "Exclamation"
+msgstr ""
+
+#: toolbar.py:83
+msgid "Box"
+msgstr ""
+
+#: toolbar.py:86
+msgid "Add a globe"
+msgstr ""
+
+#: toolbar.py:105
+#, fuzzy
+msgid "Curves"
+msgstr "Yunk'i'"
+
+#: toolbar.py:105
+msgid "Straight"
+msgstr ""
+
+#: toolbar.py:106
+#, fuzzy
+msgid "Highlight"
+msgstr "Tajaxbédha'"
+
+#: toolbar.py:106
+msgid "Idea"
+msgstr ""
+
+#: toolbar.py:109
+msgid "Choose a movement line"
+msgstr ""
+
+#: toolbar.py:132
+msgid "Turn"
+msgstr "Wilk'iy"
+
+#: toolbar.py:138
+msgid "Delete"
+msgstr "Pakuw"
+
+#: toolbar.py:253
+msgid "Bold"
+msgstr "T'unk'ux"
+
+#: toolbar.py:258
+msgid "Italic"
+msgstr "Itálica"
+
+#: toolbar.py:272
+msgid "Text Color"
+msgstr "Mukuxtal an dhuchlab"
 
 # An kaw globo yab in kwa'al in bijil ti láb jaxtám nana´ u inkiy juni ít kaw.
 # tokow= nube
 # t'íl= ibnal ti al an kaw" t'ilomtaláb"
 # GLOBO= TOKOWT'ÏL
 #
-#: toolbar.py:95
-msgid "Add Globe"
-msgstr "Ka punk'uy an t'iplab Tokowt'íl"
+#~ msgid "Add Globe"
+#~ msgstr "Ka punk'uy an t'iplab Tokowt'íl"
 
-#: toolbar.py:102
-msgid "Add Think"
-msgstr "Ka punk'uy an dhuchlab"
+#~ msgid "Add Think"
+#~ msgstr "Ka punk'uy an dhuchlab"
 
-#: toolbar.py:109
-msgid "Add Whisper"
-msgstr "Ka punk'uy an t'iplab tokowt'íl-kwé'-kaw"
+#~ msgid "Add Whisper"
+#~ msgstr "Ka punk'uy an t'iplab tokowt'íl-kwé'-kaw"
 
-#: toolbar.py:116
-msgid "Add Exclamation"
-msgstr "Ka punk'uy an t'iplab tokowt'íl-jik'paxtaláab"
+#~ msgid "Add Exclamation"
+#~ msgstr "Ka punk'uy an t'iplab tokowt'íl-jik'paxtaláab"
 
-#: toolbar.py:123
-msgid "Add Box"
-msgstr "Ka punk'uy an pek'madh balixtaláb"
+#~ msgid "Add Box"
+#~ msgstr "Ka punk'uy an pek'madh balixtaláb"
 
-#: toolbar.py:128
-#, fuzzy
-msgid "Curves"
-msgstr "Yunk'i'"
-
-#: toolbar.py:128
-msgid "Straight"
-msgstr ""
-
-#: toolbar.py:129
-#, fuzzy
-msgid "Highlight"
-msgstr "Tajaxbédha'"
-
-#: toolbar.py:129
-msgid "Idea"
-msgstr ""
-
-#: toolbar.py:132
-msgid "Choose a movement line"
-msgstr ""
-
-#: toolbar.py:148
-msgid "Turn"
-msgstr "Wilk'iy"
-
-#: toolbar.py:154
-msgid "Delete"
-msgstr "Pakuw"
-
-#: toolbar.py:231 toolbar.py:235
-msgid "Choose image"
-msgstr "Taluy an kot'bixtaláb"
-
-#: toolbar.py:268
-msgid "Bold"
-msgstr "T'unk'ux"
-
-#: toolbar.py:273
-msgid "Italic"
-msgstr "Itálica"
-
-#: toolbar.py:288
-msgid "Text Color"
-msgstr "Mukuxtal an dhuchlab"
+#~ msgid "Choose image"
+#~ msgstr "Taluy an kot'bixtaláb"

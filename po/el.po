@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-24 00:34-0400\n"
+"POT-Creation-Date: 2013-06-12 00:33-0400\n"
 "PO-Revision-Date: 2012-04-08 08:37+0200\n"
 "Last-Translator: Yannis <kiolalis@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,109 +17,156 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Pootle 2.0.5\n"
 
-#: activity/activity.info:2
+#. TRANS: "name" option from activity.info file
 msgid "FotoToon"
 msgstr "ΦωτοΚόμικ"
 
-#: historietaactivity.py:33 historietaactivity.py:83
+#. TRANS: "summary" option from activity.info file
+#. TRANS: "description" option from activity.info file
+msgid ""
+"Interested in telling a story? Easy! Use your pictures and your imagination "
+"to create your own comics!"
+msgstr ""
+
+#: fontcombobox.py:90
+msgid "Select font"
+msgstr ""
+
+#: historietaactivity.py:37 historietaactivity.py:108
 msgid "Save as Image"
 msgstr "Αποθήκευση ως εικόνα"
 
-#: historietaactivity.py:33
+#: historietaactivity.py:37
 msgid "PNG"
 msgstr "PNG"
 
-#: historietaactivity.py:61
+#: historietaactivity.py:55
+msgid "View"
+msgstr ""
+
+#: historietaactivity.py:59
+msgid "Slideshow"
+msgstr ""
+
+#: historietaactivity.py:65
+msgid "Fullscreen"
+msgstr ""
+
+#: historietaactivity.py:84
 msgid "Text"
 msgstr "Κείμενο"
 
-#: historietaactivity.py:218
+#: historietaactivity.py:115
+msgid "Save as a Book (PDF)"
+msgstr ""
+
+#: historietaactivity.py:260 historietaactivity.py:297
 msgid "Success"
 msgstr ""
 
-#: historietaactivity.py:219
+#: historietaactivity.py:261
 msgid "A image was created in the Journal"
 msgstr ""
 
-#: historietaactivity.py:226
+#: historietaactivity.py:298
+msgid "A PDF was created in the Journal"
+msgstr ""
+
+#: historietaactivity.py:305
 msgid "Show in Journal"
 msgstr ""
 
-#: historietaactivity.py:227
+#: historietaactivity.py:307
 msgid "Ok"
 msgstr ""
 
-#: historietaactivity.py:455
+#: historietaactivity.py:590
 msgid "Title:"
 msgstr "Τίτλος:"
 
-#: toolbar.py:84
+#: toolbar.py:77
 msgid "Add Photo"
 msgstr "Προσθήκη Φωτογραφίας"
 
-#: toolbar.py:95
-msgid "Add Globe"
-msgstr "Προσθήκη Σφαίρας"
+#: toolbar.py:81
+#, fuzzy
+msgid "Globe"
+msgstr "Σφαίρα"
 
-#: toolbar.py:102
-msgid "Add Think"
-msgstr "Προσθήκη Σκέψης"
+#: toolbar.py:81
+msgid "Think"
+msgstr ""
 
-#: toolbar.py:109
-msgid "Add Whisper"
-msgstr "Προσθήκη Ψιθυρίσματος"
+#: toolbar.py:82
+msgid "Whisper"
+msgstr ""
 
-#: toolbar.py:116
-msgid "Add Exclamation"
-msgstr "Προσθήκη Θαυμαστικού"
+#: toolbar.py:82
+msgid "Exclamation"
+msgstr ""
 
-#: toolbar.py:123
-msgid "Add Box"
-msgstr "Προσθήκη Κουτιού"
+#: toolbar.py:83
+msgid "Box"
+msgstr ""
 
-#: toolbar.py:128
+#: toolbar.py:86
+msgid "Add a globe"
+msgstr ""
+
+#: toolbar.py:105
 msgid "Curves"
 msgstr "Καμπύλες"
 
-#: toolbar.py:128
+#: toolbar.py:105
 msgid "Straight"
 msgstr ""
 
-#: toolbar.py:129
+#: toolbar.py:106
 msgid "Highlight"
 msgstr ""
 
-#: toolbar.py:129
+#: toolbar.py:106
 msgid "Idea"
 msgstr ""
 
-#: toolbar.py:132
+#: toolbar.py:109
 msgid "Choose a movement line"
 msgstr ""
 
-#: toolbar.py:148
+#: toolbar.py:132
 msgid "Turn"
 msgstr "Στροφή"
 
-#: toolbar.py:154
+#: toolbar.py:138
 msgid "Delete"
 msgstr "Διαγραφή"
 
-#: toolbar.py:231 toolbar.py:235
-msgid "Choose image"
-msgstr "Επιλογή εικόνας"
-
-#: toolbar.py:268
+#: toolbar.py:253
 msgid "Bold"
 msgstr "Έντονα"
 
-#: toolbar.py:273
+#: toolbar.py:258
 msgid "Italic"
 msgstr "Πλάγια"
 
-#: toolbar.py:288
+#: toolbar.py:272
 msgid "Text Color"
 msgstr "Χρώμα κειμένου"
 
-#~ msgid "Globes"
-#~ msgstr "Σφαίρα"
+#~ msgid "Add Globe"
+#~ msgstr "Προσθήκη Σφαίρας"
+
+#~ msgid "Add Think"
+#~ msgstr "Προσθήκη Σκέψης"
+
+#~ msgid "Add Whisper"
+#~ msgstr "Προσθήκη Ψιθυρίσματος"
+
+#~ msgid "Add Exclamation"
+#~ msgstr "Προσθήκη Θαυμαστικού"
+
+#~ msgid "Add Box"
+#~ msgstr "Προσθήκη Κουτιού"
+
+#~ msgid "Choose image"
+#~ msgstr "Επιλογή εικόνας"

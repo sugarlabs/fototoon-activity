@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-13 00:34-0400\n"
+"POT-Creation-Date: 2013-06-12 00:33-0400\n"
 "PO-Revision-Date: 2013-04-17 02:01+0200\n"
 "Last-Translator: Aputsiaq Niels <aj@isit.gl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,6 +29,10 @@ msgid ""
 msgstr ""
 "Har du lyst til at fortælle en historie? Det er nemt! Brug dine billeder og "
 "din fantasi til at skabe din egen tegneserie!"
+
+#: fontcombobox.py:90
+msgid "Select font"
+msgstr ""
 
 #: historietaactivity.py:37 historietaactivity.py:108
 msgid "Save as Image"
@@ -82,71 +86,71 @@ msgstr "O.k."
 msgid "Title:"
 msgstr "Titel:"
 
-#: toolbar.py:76
+#: toolbar.py:77
 msgid "Add Photo"
 msgstr "Tilføj foto"
 
-#: toolbar.py:80
+#: toolbar.py:81
 msgid "Globe"
 msgstr "Globus"
 
-#: toolbar.py:80
+#: toolbar.py:81
 msgid "Think"
 msgstr "Tænk"
 
-#: toolbar.py:81
+#: toolbar.py:82
 msgid "Whisper"
 msgstr "Hvisk"
 
-#: toolbar.py:81
+#: toolbar.py:82
 msgid "Exclamation"
 msgstr "Udråb"
 
-#: toolbar.py:82
+#: toolbar.py:83
 msgid "Box"
 msgstr "Kasse"
 
-#: toolbar.py:85
+#: toolbar.py:86
 msgid "Add a globe"
 msgstr "Tilføj en globus"
 
-#: toolbar.py:98
+#: toolbar.py:105
 msgid "Curves"
 msgstr "Kurver"
 
-#: toolbar.py:98
+#: toolbar.py:105
 msgid "Straight"
 msgstr "Ret"
 
-#: toolbar.py:99
+#: toolbar.py:106
 msgid "Highlight"
 msgstr "Fremhæv"
 
-#: toolbar.py:99
+#: toolbar.py:106
 msgid "Idea"
 msgstr "Idé"
 
-#: toolbar.py:102
+#: toolbar.py:109
 msgid "Choose a movement line"
 msgstr "Vælg en bevægelseslinje"
 
-#: toolbar.py:118
+#: toolbar.py:132
 msgid "Turn"
 msgstr "Vend"
 
-#: toolbar.py:124
+#: toolbar.py:138
 msgid "Delete"
 msgstr "Slet"
 
-#: toolbar.py:239
+#: toolbar.py:253
 msgid "Bold"
 msgstr "Fed"
 
-#: toolbar.py:244
+#: toolbar.py:258
 msgid "Italic"
 msgstr "Kursiv"
 
-#: toolbar.py:258
+#: toolbar.py:272
 msgid "Text Color"
 msgstr "Tekstfarve"
 
