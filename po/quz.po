@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-24 00:34-0400\n"
+"POT-Creation-Date: 2013-06-12 00:33-0400\n"
 "PO-Revision-Date: 2012-07-23 07:16+0200\n"
 "Last-Translator: Chris <cjl@laptop.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,122 +18,171 @@ msgstr ""
 "X-Generator: Pootle 2.0.5\n"
 
 #  "FotoToon"
-#: activity/activity.info:2
+#. TRANS: "name" option from activity.info file
 msgid "FotoToon"
 msgstr "WankiToon"
 
+#. TRANS: "summary" option from activity.info file
+#. TRANS: "description" option from activity.info file
+msgid ""
+"Interested in telling a story? Easy! Use your pictures and your imagination "
+"to create your own comics!"
+msgstr ""
+
+#: fontcombobox.py:90
+msgid "Select font"
+msgstr ""
+
 #  "Guardar como imagen"
-#: historietaactivity.py:33 historietaactivity.py:83
+#: historietaactivity.py:37 historietaactivity.py:108
 msgid "Save as Image"
 msgstr "Wanki hinata waqaychay"
 
 #  "PNG"
-#: historietaactivity.py:33
+#: historietaactivity.py:37
 msgid "PNG"
 msgstr "PNG"
 
+#: historietaactivity.py:55
+msgid "View"
+msgstr ""
+
+#: historietaactivity.py:59
+msgid "Slideshow"
+msgstr ""
+
+#: historietaactivity.py:65
+msgid "Fullscreen"
+msgstr ""
+
 #  "Texto"
-#: historietaactivity.py:61
+#: historietaactivity.py:84
 msgid "Text"
 msgstr "Qillqa"
 
-#: historietaactivity.py:218
+#: historietaactivity.py:115
+msgid "Save as a Book (PDF)"
+msgstr ""
+
+#: historietaactivity.py:260 historietaactivity.py:297
 msgid "Success"
 msgstr ""
 
-#: historietaactivity.py:219
+#: historietaactivity.py:261
 msgid "A image was created in the Journal"
 msgstr ""
 
-#: historietaactivity.py:226
+#: historietaactivity.py:298
+msgid "A PDF was created in the Journal"
+msgstr ""
+
+#: historietaactivity.py:305
 #, fuzzy
 msgid "Show in Journal"
 msgstr "P'anqapi Rikuchiy"
 
-#: historietaactivity.py:227
+#: historietaactivity.py:307
 msgid "Ok"
 msgstr ""
 
-#: historietaactivity.py:455
+#: historietaactivity.py:590
 msgid "Title:"
 msgstr ""
 
 #  "Agregar Foto"
-#: toolbar.py:84
+#: toolbar.py:77
 msgid "Add Photo"
 msgstr "Wankita Yapay"
 
-#  "Agregar Globo"
-#: toolbar.py:95
-msgid "Add Globe"
-msgstr "P'uruta Yapay"
+#: toolbar.py:81
+msgid "Globe"
+msgstr ""
 
-#  "Agregar Pensamiento"
-#: toolbar.py:102
-msgid "Add Think"
-msgstr "Yuyayta Yapay"
+#: toolbar.py:81
+msgid "Think"
+msgstr ""
 
-#  "Agregar Susurro"
-#: toolbar.py:109
-msgid "Add Whisper"
-msgstr "Upaylla rimayta Yapay"
+#: toolbar.py:82
+msgid "Whisper"
+msgstr ""
 
-#  "Agregar Exclamación"
-#: toolbar.py:116
-msgid "Add Exclamation"
-msgstr "Qhaparisqa hinata Yapay"
+#: toolbar.py:82
+msgid "Exclamation"
+msgstr ""
 
-#  "Agregar Caja"
-#: toolbar.py:123
-msgid "Add Box"
-msgstr "Tawa k'uchuta Yapay"
+#: toolbar.py:83
+msgid "Box"
+msgstr ""
 
-#: toolbar.py:128
+#: toolbar.py:86
+msgid "Add a globe"
+msgstr ""
+
+#: toolbar.py:105
 msgid "Curves"
 msgstr ""
 
-#: toolbar.py:128
+#: toolbar.py:105
 msgid "Straight"
 msgstr ""
 
-#: toolbar.py:129
+#: toolbar.py:106
 msgid "Highlight"
 msgstr "Yanachaq"
 
-#: toolbar.py:129
+#: toolbar.py:106
 msgid "Idea"
 msgstr ""
 
-#: toolbar.py:132
+#: toolbar.py:109
 msgid "Choose a movement line"
 msgstr ""
 
 #  "Girar"
-#: toolbar.py:148
+#: toolbar.py:132
 msgid "Turn"
 msgstr "Muyuy"
 
 #  "Borrar"
-#: toolbar.py:154
+#: toolbar.py:138
 msgid "Delete"
 msgstr "Pichay"
 
-#  "Elegir Imagen"
-#: toolbar.py:231 toolbar.py:235
-msgid "Choose image"
-msgstr "Wankita akllay"
-
 #  "Negrita"
-#: toolbar.py:268
+#: toolbar.py:253
 msgid "Bold"
 msgstr "Yanachasqa"
 
 #  "Italica"
-#: toolbar.py:273
+#: toolbar.py:258
 msgid "Italic"
 msgstr "Kinrachasqa"
 
 #  "Color del texto"
-#: toolbar.py:288
+#: toolbar.py:272
 msgid "Text Color"
 msgstr "Qillqap llimp'in"
+
+#  "Agregar Globo"
+#~ msgid "Add Globe"
+#~ msgstr "P'uruta Yapay"
+
+#  "Agregar Pensamiento"
+#~ msgid "Add Think"
+#~ msgstr "Yuyayta Yapay"
+
+#  "Agregar Susurro"
+#~ msgid "Add Whisper"
+#~ msgstr "Upaylla rimayta Yapay"
+
+#  "Agregar Exclamación"
+#~ msgid "Add Exclamation"
+#~ msgstr "Qhaparisqa hinata Yapay"
+
+#  "Agregar Caja"
+#~ msgid "Add Box"
+#~ msgstr "Tawa k'uchuta Yapay"
+
+#  "Elegir Imagen"
+#~ msgid "Choose image"
+#~ msgstr "Wankita akllay"
