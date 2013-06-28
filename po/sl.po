@@ -2,121 +2,156 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-24 00:34-0400\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2013-06-12 00:33-0400\n"
+"PO-Revision-Date: 2013-01-11 05:32+0200\n"
+"Last-Translator: Chris <cjl@laptop.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 1.6.0\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
+"n%100==4 ? 2 : 3);\n"
+"X-Generator: Pootle 2.0.5\n"
 
-#: activity/activity.info:2
+#. TRANS: "name" option from activity.info file
 msgid "FotoToon"
 msgstr ""
 
-#: historietaactivity.py:33 historietaactivity.py:83
+#. TRANS: "summary" option from activity.info file
+#. TRANS: "description" option from activity.info file
+msgid ""
+"Interested in telling a story? Easy! Use your pictures and your imagination "
+"to create your own comics!"
+msgstr ""
+
+#: fontcombobox.py:90
+msgid "Select font"
+msgstr ""
+
+#: historietaactivity.py:37 historietaactivity.py:108
 msgid "Save as Image"
 msgstr ""
 
-#: historietaactivity.py:33
+#: historietaactivity.py:37
 msgid "PNG"
 msgstr ""
 
-#: historietaactivity.py:61
-msgid "Text"
+#: historietaactivity.py:55
+#, fuzzy
+msgid "View"
+msgstr "Pogled"
+
+#: historietaactivity.py:59
+msgid "Slideshow"
 msgstr ""
 
-#: historietaactivity.py:218
+#: historietaactivity.py:65
+msgid "Fullscreen"
+msgstr ""
+
+#: historietaactivity.py:84
+#, fuzzy
+msgid "Text"
+msgstr "Besedilo"
+
+#: historietaactivity.py:115
+msgid "Save as a Book (PDF)"
+msgstr ""
+
+#: historietaactivity.py:260 historietaactivity.py:297
 msgid "Success"
 msgstr ""
 
-#: historietaactivity.py:219
+#: historietaactivity.py:261
 msgid "A image was created in the Journal"
 msgstr ""
 
-#: historietaactivity.py:226
+#: historietaactivity.py:298
+msgid "A PDF was created in the Journal"
+msgstr ""
+
+#: historietaactivity.py:305
 msgid "Show in Journal"
 msgstr ""
 
-#: historietaactivity.py:227
+#: historietaactivity.py:307
 msgid "Ok"
 msgstr ""
 
-#: historietaactivity.py:455
+#: historietaactivity.py:590
 msgid "Title:"
 msgstr ""
 
-#: toolbar.py:84
+#: toolbar.py:77
 msgid "Add Photo"
 msgstr ""
 
-#: toolbar.py:95
-msgid "Add Globe"
+#: toolbar.py:81
+msgid "Globe"
 msgstr ""
 
-#: toolbar.py:102
-msgid "Add Think"
+#: toolbar.py:81
+msgid "Think"
 msgstr ""
 
-#: toolbar.py:109
-msgid "Add Whisper"
+#: toolbar.py:82
+msgid "Whisper"
 msgstr ""
 
-#: toolbar.py:116
-msgid "Add Exclamation"
+#: toolbar.py:82
+msgid "Exclamation"
 msgstr ""
 
-#: toolbar.py:123
-msgid "Add Box"
+#: toolbar.py:83
+msgid "Box"
 msgstr ""
 
-#: toolbar.py:128
+#: toolbar.py:86
+msgid "Add a globe"
+msgstr ""
+
+#: toolbar.py:105
 msgid "Curves"
 msgstr ""
 
-#: toolbar.py:128
+#: toolbar.py:105
 msgid "Straight"
 msgstr ""
 
-#: toolbar.py:129
+#: toolbar.py:106
 msgid "Highlight"
 msgstr ""
 
-#: toolbar.py:129
+#: toolbar.py:106
 msgid "Idea"
 msgstr ""
 
-#: toolbar.py:132
+#: toolbar.py:109
 msgid "Choose a movement line"
 msgstr ""
 
-#: toolbar.py:148
+#: toolbar.py:132
 msgid "Turn"
 msgstr ""
 
-#: toolbar.py:154
+#: toolbar.py:138
+#, fuzzy
 msgid "Delete"
-msgstr ""
+msgstr "Izbriši"
 
-#: toolbar.py:231 toolbar.py:235
-msgid "Choose image"
-msgstr ""
-
-#: toolbar.py:268
+#: toolbar.py:253
 msgid "Bold"
 msgstr ""
 
-#: toolbar.py:273
+#: toolbar.py:258
 msgid "Italic"
 msgstr ""
 
-#: toolbar.py:288
+#: toolbar.py:272
 msgid "Text Color"
 msgstr ""
