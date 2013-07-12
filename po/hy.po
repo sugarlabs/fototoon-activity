@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-06-12 00:33-0400\n"
-"PO-Revision-Date: 2013-04-19 21:06+0200\n"
+"PO-Revision-Date: 2013-07-08 20:40+0200\n"
 "Last-Translator: anushnur <anush.mkrtchyan@ca1492.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hy\n"
@@ -32,7 +32,7 @@ msgstr ""
 
 #: fontcombobox.py:90
 msgid "Select font"
-msgstr ""
+msgstr "Ընտրել տառատեսակը"
 
 #: historietaactivity.py:37 historietaactivity.py:108
 msgid "Save as Image"
