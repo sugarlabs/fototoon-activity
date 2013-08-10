@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-06-12 00:33-0400\n"
-"PO-Revision-Date: 2013-06-20 09:25+0200\n"
+"PO-Revision-Date: 2013-08-10 19:50+0200\n"
 "Last-Translator: samy boutayeb <s.boutayeb@free.fr>\n"
 "Language-Team: French\n"
 "Language: fr\n"
@@ -100,23 +100,23 @@ msgstr "Bulle"
 
 #: toolbar.py:81
 msgid "Think"
-msgstr ""
+msgstr "Pensée"
 
 #: toolbar.py:82
 msgid "Whisper"
-msgstr ""
+msgstr "Chuchotement"
 
 #: toolbar.py:82
 msgid "Exclamation"
-msgstr ""
+msgstr "Exclamation"
 
 #: toolbar.py:83
 msgid "Box"
-msgstr ""
+msgstr "Case"
 
 #: toolbar.py:86
 msgid "Add a globe"
-msgstr ""
+msgstr "Ajouter une bulle"
 
 #: toolbar.py:105
 msgid "Curves"
