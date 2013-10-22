@@ -2,10 +2,10 @@
 
 import os
 import math
-from gi.repository import Gtk, Gdk
+from gi.repository import Gtk, Gdk, GObject
 from gi.repository import Pango
 from gi.repository import PangoCairo
-
+import cairo
 import logging
 
 from sugar3.activity import activity
@@ -70,7 +70,7 @@ class Globo:
                                  font_name)
 
     def set_selected(self, selected):
-        logging.error('Set selected %s', selected)
+        logging.debug('Set selected %s', selected)
         self.selec = selected
         if self.texto is not None:
             self.texto.set_edition_mode(selected)
@@ -823,12 +823,36 @@ class CuadroTexto:
         self.font_size = '10'
         self.font_type = font_name
         self._in_edition = False
-        self._size_alloc_id = 0
+
+        # image surface used to draw the text
+        self._text_surface = None
+
+        # textview
+        self.textviewbox = Gtk.VBox()
+        self.textview = Gtk.TextView()
+        self.textview.set_wrap_mode(Gtk.WrapMode.WORD_CHAR)
+        self.textview.set_justification(Gtk.Justification.CENTER)
+        self.textview.modify_bg(Gtk.StateType.NORMAL,
+                                style.COLOR_WHITE.get_gdk_color())
+
+        self._textview_x = 0
+        self._textview_y = 0
+        self._box.fixed.put(self.textviewbox, 0, 0)
+        self.textviewbox.pack_start(self.textview, True, False, 0)
+        self.textviewbox.connect(
+            'size_allocate', self._textview_size_allocate)
+
+    def move_textview(self, x, y):
+        if self._textview_x != x or self._textview_y != y:
+            self._textview_x = x
+            self._textview_y = y
+            self._box.fixed.move(self.textviewbox, x, y)
+            self.textviewbox.show_all()
 
     def set_font_description(self, fd, parse=True):
         self.font_description = fd
         if self._in_edition:
-            self._box.textview.modify_font(Pango.FontDescription(fd))
+            self.textview.modify_font(Pango.FontDescription(fd))
         if parse:
             self._parse_font_description()
 
@@ -836,64 +860,70 @@ class CuadroTexto:
         if self._in_edition == in_edition:
             return
         self._in_edition = in_edition
-        tbuffer = self._box.textview.get_buffer()
+        tbuffer = self.textview.get_buffer()
         if self._in_edition:
+            self.textview.set_cursor_visible(True)
 
-            tbuffer.set_text(unicode(self.text))
-
-            self._box.textview.modify_font(Pango.FontDescription(
+            self.textview.modify_font(Pango.FontDescription(
                 self.font_description))
             self.set_dimension(self.ancho, self.alto)
 
-            self._size_alloc_id = self._box.textviewbox.connect(
-                'size_allocate', self._textview_size_allocate)
             self.mover_a(self._globe.x, self._globe.y)
-            self._box.textviewbox.show_all()
-            self._box.textview.grab_focus()
+            self.textviewbox.show_all()
+            self.textview.grab_focus()
         else:
             start, end = tbuffer.get_start_iter(), tbuffer.get_end_iter()
             self.text = tbuffer.get_text(start, end, True)
-            self._box.textviewbox.hide()
-            tbuffer.set_text('')
-            if self._size_alloc_id != 0:
-                self._box.textviewbox.disconnect(self._size_alloc_id)
-                self._size_alloc_id = 0
+            self.textview.set_cursor_visible(False)
+            # need wait until the cursor is hidden
+            GObject.idle_add(self._finalize_text)
+
+    def _finalize_text(self):
+        textview = self.textview
+        window = textview.get_window(Gtk.TextWindowType.TEXT)
+
+        # create a temporary surface with a print of the text in the textview
+        tv_alloc = textview.get_allocation()
+        self._text_surface = cairo.ImageSurface(cairo.FORMAT_ARGB32,
+                                                tv_alloc.width,
+                                                tv_alloc.height)
+        ctx = cairo.Context(self._text_surface)
+        Gdk.cairo_set_source_window(ctx, window, 0, 0)
+        ctx.paint()
+
+        self.textviewbox.hide()
+        self._box.redraw()
+
+    def initialize_textview(self, ctx):
+        tbuffer = self.textview.get_buffer()
+        tbuffer.set_text(unicode(self.text))
+        self.textview.set_cursor_visible(False)
+        self.textview.modify_font(Pango.FontDescription(
+            self.font_description))
+        self.set_dimension(self.ancho, self.alto)
+        self.mover_a(self._globe.x, self._globe.y)
+        self.textviewbox.show_all()
+        GObject.idle_add(self._finalize_text)
 
     def imprimir(self, ctx):
         self._update_font()
 
         if not self._in_edition:
-            ctx.save()
-            ctx.new_path()
-
-            color = [c / 65535.0 for c in self.color]
-            color.append(1.0)
-            ctx.set_source_rgba(*color)
-
-            pango_layout = PangoCairo.create_layout(ctx)
-            pango_layout.set_wrap(Pango.WrapMode.WORD_CHAR)
-            pango_layout.set_alignment(Pango.Alignment.CENTER)
-
-            pango_layout.set_font_description(Pango.FontDescription(
-                self.font_description))
-
-            pango_layout.set_text(unicode(self.text), len(unicode(self.text)))
-
-            pango_layout.set_width(self.ancho * 2 * Pango.SCALE)
-
-            x = self._globe.x - self.ancho
-            y = self._globe.y - self.alto
-
-            ctx.move_to(x, y)
-            PangoCairo.show_layout(ctx, pango_layout)
-            ctx.stroke()
-            ctx.restore()
+            if self._text_surface is None:
+                self.initialize_textview(ctx)
+            else:
+                ctx.save()
+                x = self._globe.x - self._text_surface.get_width() / 2
+                y = self._globe.y - self._text_surface.get_height() / 2
+                ctx.set_source_surface(self._text_surface, x, y)
+                ctx.paint()
+                ctx.restore()
 
     def mover_a(self, x, y):
         "Mueve el centro del cuadro a la posicion (x,y)"
         x = self._globe.x - self.ancho
         y = self._globe.y - self.alto
-        self._box.move_textview(x, y)
+        self.move_textview(x, y)
 
     def set_text(self, text):
         self.text = text
@@ -907,20 +937,18 @@ class CuadroTexto:
         """
         self.ancho = ancho
         self.alto = alto
-        if self._in_edition:
-            self._box.textviewbox.set_size_request(self.ancho * 2,
-                                                   self.alto * 2)
+        self.textviewbox.set_size_request(self.ancho * 2,
+                                          self.alto * 2)
 
     def _textview_size_allocate(self, widget, alloc):
-        if self._in_edition:
-            # recalculate size and position with the real size allocated
-            self.ancho = alloc.width / 2
-            self.alto = alloc.height / 2
+        # recalculate size and position with the real size allocated
+        self.ancho = alloc.width / 2
+        self.alto = alloc.height / 2
 
-            self._globe.calc_area(self.ancho, self.alto)
-            x = self._globe.x - self.ancho
-            y = self._globe.y - self.alto
-            self._box.move_textview(x, y)
+        self._globe.calc_area(self.ancho, self.alto)
+        x = self._globe.x - self.ancho
+        y = self._globe.y - self.alto
+        self.move_textview(x, y)
 
     def _update_font(self):
         fd = self.font_type
@@ -937,8 +965,8 @@ class CuadroTexto:
             self.set_font_description(fd, False)
 
         if self._in_edition:
-            self._box.textview.modify_fg(Gtk.StateType.NORMAL,
-                                         Gdk.Color(*self.color))
+            self.textview.modify_fg(Gtk.StateType.NORMAL,
+                                    Gdk.Color(*self.color))
 
     def _parse_font_description(self):
         fd = self.font_description.split()
