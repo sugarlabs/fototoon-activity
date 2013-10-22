@@ -466,18 +466,6 @@ class ComicBox(Gtk.EventBox):
         self._drawingarea = Gtk.DrawingArea()
         self.fixed.put(self._drawingarea, 0, 0)
 
-        self.textviewbox = Gtk.VBox()
-        self.textview = Gtk.TextView()
-        self.textview.set_wrap_mode(Gtk.WrapMode.WORD_CHAR)
-        self.textview.set_justification(Gtk.Justification.CENTER)
-        self.textview.modify_bg(Gtk.StateType.NORMAL,
-                                style.COLOR_WHITE.get_gdk_color())
-
-        self._textview_x = 0
-        self._textview_y = 0
-        self.fixed.put(self.textviewbox, 0, 0)
-        self.textviewbox.pack_start(self.textview, True, False, 0)
-
         #se agregan los eventos de pulsacion y movimiento del raton
         self._drawingarea.add_events(
             Gdk.EventMask.POINTER_MOTION_MASK |
@@ -726,10 +714,3 @@ class ComicBox(Gtk.EventBox):
             self._globo_activo.mover_a(event.x, event.y,
                                        self.get_allocation())
             self.redraw()
-
-    def move_textview(self, x, y):
-        if self._textview_x != x or self._textview_y != y:
-            self._textview_x = x
-            self._textview_y = y
-            self.fixed.move(self.textviewbox, x, y)
-            self.textviewbox.show_all()

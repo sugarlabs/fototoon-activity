@@ -1,5 +1,8 @@
 import os
 import simplejson
+
+from gi.repository import GObject
+
 import globos
 from sugar3.activity import activity
 import zipfile
@@ -167,12 +170,10 @@ class Persistence:
                     if (tipo_globo != 'IMAGE'):
                         globo.texto.ancho = globoData['text_width']
                         globo.texto.alto = globoData['text_height']
-                        globo.texto.text = globoData['text_text']
                         globo.texto.color = globoData['text_color']
-
                         globo.texto.set_font_description(
                                 globoData['text_font_description'])
-
+                        globo.texto.set_text(globoData['text_text'])
                     box.globos.append(globo)
 
                     if globoData['title_globe']:
