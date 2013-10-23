@@ -963,9 +963,8 @@ class CuadroTexto:
         if fd != self.font_description:
             self.set_font_description(fd, False)
 
-        if self._in_edition:
-            self.textview.modify_fg(Gtk.StateType.NORMAL,
-                                    Gdk.Color(*self.color))
+        self.textview.modify_fg(Gtk.StateType.NORMAL,
+                                Gdk.Color(*self.color))
 
     def _parse_font_description(self):
         fd = self.font_description.split()
