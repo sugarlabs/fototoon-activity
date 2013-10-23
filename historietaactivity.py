@@ -417,7 +417,6 @@ class Page(Gtk.VBox):
 
     def add_box_from_journal_image(self, image_file_name):
         posi = len(self.boxs) - 1
-        num_foto = posi - (posi / 4) * 4
         box = ComicBox(self, image_file_name, posi + 1)
         reng = int(posi / 2)
         column = posi - (reng * 2)

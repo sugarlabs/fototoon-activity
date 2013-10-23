@@ -143,7 +143,6 @@ class Globo:
             context.set_line_width(ANCHO_LINEAS_CONTROLES)
 
             x = self.x * self.radio / (self.ancho * 1.0)
-            y = self.y * self.radio / (self.alto * 1.0)
 
             # rectangulo alrededor del globo
             context.set_source_rgb(1, 1, 1)
@@ -230,7 +229,7 @@ class Globo:
         elif abs((self.y - self.alto) - y) < sensibility:
             cursor = Gdk.CursorType.TOP_SIDE
         elif abs((self.y + self.alto) - y) < sensibility:
-            state = Gdk.CursorType.BOTTOM_SIDE
+            cursor = Gdk.CursorType.BOTTOM_SIDE
         return cursor
 
     def is_selec(self, x, y):
@@ -512,8 +511,6 @@ class Nube(Globo):
         self.x = x
         self.y = y
 
-        appdir = os.path.join(activity.get_bundle_path())
-
         ancho_text, alto_text = self.calc_area_texto(self.ancho, self.alto)
         self.texto = CuadroTexto(self, ancho_text, alto_text,
                                  font_name)
@@ -547,7 +544,6 @@ class Nube(Globo):
         x_cen = self.x
         y_cen = self.y
 
-        points = []
         steps = 36
 
         ancho_int = self.ancho * 0.8
@@ -573,8 +569,6 @@ class Nube(Globo):
             elif state == 2:
                 x3 = x_cen + (1.0 * ancho_int * cosalpha)
                 y3 = y_cen + (1.0 * alto_int * sinalpha)
-
-            draw_line = False
 
             if state == 2:
                 cr.curve_to(x1, y1, x2, y2, x3, y3)
@@ -658,7 +652,6 @@ class Grito(Globo):
     def draw_exclamation(self, cr, x_cen, y_cen, width, height, direction,
                          punto):
 
-        points = []
         steps = 24
 
         width_int = width * 0.8

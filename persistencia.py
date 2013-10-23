@@ -1,8 +1,6 @@
 import os
 import simplejson
 
-from gi.repository import GObject
-
 import globos
 from sugar3.activity import activity
 import zipfile
@@ -68,7 +66,7 @@ class Persistence:
                     globoData['text_color'] = globo.texto.color
 
                     globoData['text_font_description'] = \
-                            globo.texto.font_description
+                        globo.texto.font_description
 
                 boxData['globes'].append(globoData)
             pageData['boxs'].append(boxData)
@@ -86,11 +84,12 @@ class Persistence:
         print 'file_name', file_name
 
         z = zipfile.ZipFile(file_name, 'w')
-        z.write(os.path.join(instance_path, data_file_name).encode('ascii',
-            'ignore'), data_file_name.encode('ascii', 'ignore'))
+        z.write(os.path.join(instance_path, data_file_name).encode(
+            'ascii', 'ignore'), data_file_name.encode('ascii', 'ignore'))
         for box in page.boxs:
             if (box.image_name != ''):
-                z.write(os.path.join(instance_path,
+                z.write(os.path.join(
+                    instance_path,
                     box.image_name).encode('ascii', 'ignore'),
                     box.image_name.encode('ascii', 'ignore'))
         z.close()
@@ -141,13 +140,14 @@ class Persistence:
                 globo = None
                 if (tipo_globo == 'GLOBE'):
                     globo = globos.Globo(box, x=globo_x, y=globo_y,
-                        modo=globo_modo, direccion=globo_direccion)
+                                         modo=globo_modo,
+                                         direccion=globo_direccion)
                 elif (tipo_globo == 'CLOUD'):
                     globo = globos.Nube(box, x=globo_x, y=globo_y,
-                        direccion=globo_direccion)
+                                        direccion=globo_direccion)
                 elif (tipo_globo == 'EXCLAMATION'):
                     globo = globos.Grito(box, x=globo_x, y=globo_y,
-                        direccion=globo_direccion)
+                                         direccion=globo_direccion)
                 elif (tipo_globo == 'RECTANGLE'):
                     globo = globos.Rectangulo(box, x=globo_x, y=globo_y)
                 elif (tipo_globo == 'IMAGE'):
@@ -163,7 +163,7 @@ class Persistence:
 
                     if (tipo_globo != 'RECTANGLE'):
                         globo.punto = [globoData['point_0'],
-                            globoData['point_1']]
+                                       globoData['point_1']]
 
                     globo.x, globo.y = globoData['x'], globoData['y']
 
@@ -172,7 +172,7 @@ class Persistence:
                         globo.texto.alto = globoData['text_height']
                         globo.texto.color = globoData['text_color']
                         globo.texto.set_font_description(
-                                globoData['text_font_description'])
+                            globoData['text_font_description'])
                         globo.texto.set_text(globoData['text_text'])
                     box.globos.append(globo)
 

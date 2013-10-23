@@ -23,10 +23,8 @@ import os
 import time
 # Gtk3
 from gi.repository import Gtk, Gdk
-from sugar3.graphics.icon import Icon
 from sugar3.graphics.toolbutton import ToolButton
 from sugar3.graphics.toggletoolbutton import ToggleToolButton
-from sugar3.graphics.combobox import ComboBox
 from sugar3.graphics.toolcombobox import ToolComboBox
 from sugar3.graphics.objectchooser import ObjectChooser
 from sugar3.graphics.palettemenu import PaletteMenuItem
@@ -360,7 +358,8 @@ class TextToolbar(Gtk.Toolbar):
         # color
         self._text_color.set_color(Gdk.Color(*globeText.color))
         # font size
-        logging.error('Setting font size from globe %s %s', globeText.font_size, globeText.font_size.__class__)
+        logging.error('Setting font size from globe %s %s',
+                      globeText.font_size, globeText.font_size.__class__)
         self._font_size_combo.handler_block(self._font_size_changed_id)
         self._font_size_combo.set_font_size(int(globeText.font_size))
         self._font_size_combo.handler_unblock(self._font_size_changed_id)
