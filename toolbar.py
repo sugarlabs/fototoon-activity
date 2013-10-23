@@ -27,6 +27,11 @@ from sugar3.graphics.toolbutton import ToolButton
 from sugar3.graphics.toggletoolbutton import ToggleToolButton
 from sugar3.graphics.toolcombobox import ToolComboBox
 from sugar3.graphics.objectchooser import ObjectChooser
+try:
+    from sugar3.graphics.objectchooser import FILTER_TYPE_GENERIC_MIME
+except:
+    FILTER_TYPE_GENERIC_MIME = 'generic_mime'
+
 from sugar3.graphics.palettemenu import PaletteMenuItem
 from sugar3.graphics.palettemenu import PaletteMenuBox
 
@@ -216,7 +221,14 @@ class GlobesManager():
             self._page.boxs.pop()
 
     def add_image(self):
-        chooser = ObjectChooser(self._activity, what_filter='Image')
+        try:
+            chooser = ObjectChooser(self._activity, what_filter='Image',
+                                    filter_type=FILTER_TYPE_GENERIC_MIME,
+                                    show_preview=True)
+        except:
+            # for compatibility with older versions
+            chooser = ObjectChooser(self._activity, what_filter='Image')
+
         try:
             result = chooser.run()
             if result == Gtk.ResponseType.ACCEPT:
