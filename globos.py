@@ -70,9 +70,12 @@ class Globo:
                                  font_name)
 
     def set_selected(self, selected):
-        logging.debug('Set selected %s', selected)
+        logging.debug('Set selected %s (%s)', selected, self.texto.text)
         self.selec = selected
         if self.texto is not None:
+            if selected and self.texto.get_edition_mode():
+                # if already is in edit mode, do nothing
+                return
             self.texto.set_edition_mode(selected)
 
     def imprimir(self, context):
@@ -855,6 +858,9 @@ class CuadroTexto:
             self.textview.modify_font(Pango.FontDescription(fd))
         if parse:
             self._parse_font_description()
+
+    def get_edition_mode(self):
+        return self._in_edition
 
     def set_edition_mode(self, in_edition):
         if self._in_edition == in_edition:

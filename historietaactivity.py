@@ -513,10 +513,10 @@ class ComicBox(Gtk.EventBox):
         self.show_all()
 
     def set_globo_activo(self, globo):
-        if globo is None:
-            if self._globo_activo is not None:
-                self._globo_activo.set_selected(False)
-        else:
+        if self._globo_activo is not None and \
+            self._globo_activo != globo:
+            self._globo_activo.set_selected(False)
+        if globo is not None:
             globo.set_selected(True)
         self._globo_activo = globo
         if globo is not None and globo.texto is not None:
@@ -671,17 +671,11 @@ class ComicBox(Gtk.EventBox):
                 self.is_punto = True
 
         if (not self.is_dimension) and not (self.is_punto):
-            if self._globo_activo is not None:
-                #self.glob_press.is_selec(event.x,event.y)
-                self._globo_activo.set_selected(False)
-                self.glob_press = False
-
             if self.globos:
                 list_aux = self.globos[:]
                 list_aux.reverse()
                 for i in list_aux:
                     if i.is_selec(event.x, event.y):
-                        # i.mover_a(event.x,event.y,self.get_allocation())
                         self.glob_press = True
                         self.set_globo_activo(i)
                         self.redraw()
