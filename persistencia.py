@@ -1,5 +1,5 @@
 import os
-import simplejson
+import json
 
 import globos
 from sugar3.activity import activity
@@ -77,7 +77,7 @@ class Persistence:
         data_file_name = 'data.json'
         f = open(os.path.join(instance_path, data_file_name), 'w')
         try:
-            simplejson.dump(pageData, f)
+            json.dump(pageData, f)
         finally:
             f.close()
 
@@ -117,7 +117,7 @@ class Persistence:
         pageData = PageData()
         f = open(os.path.join(instance_path, data_file_name), 'r')
         try:
-            pageData = simplejson.load(f)
+            pageData = json.load(f)
         finally:
             f.close()
 
