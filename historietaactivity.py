@@ -156,6 +156,11 @@ class HistorietaActivity(activity.Activity):
             print "Fin de Ingresando al titulo"
 
     def write_file(self, file_path):
+        # be sure all the changes are commited
+        active_globe = self.page.get_globo_activo()
+        if active_globe is not None:
+            active_globe.set_selected(False)
+
         print "write file path", file_path
         persistence = persistencia.Persistence()
         persistence.write(file_path, self.page)
