@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-06-12 00:33-0400\n"
-"PO-Revision-Date: 2012-04-20 03:23+0200\n"
+"PO-Revision-Date: 2013-11-26 21:18+0200\n"
 "Last-Translator: Eduardo H. <hoboprimate@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt\n"
@@ -27,10 +27,12 @@ msgid ""
 "Interested in telling a story? Easy! Use your pictures and your imagination "
 "to create your own comics!"
 msgstr ""
+"Interessado em contar uma estória? Fácil! Utiliza as tuas imagens e a tua "
+"imaginação para criar as tuas próprias bandas desenhadas!"
 
 #: fontcombobox.py:90
 msgid "Select font"
-msgstr ""
+msgstr "Escolher tipo de letra"
 
 #: historietaactivity.py:37 historietaactivity.py:108
 msgid "Save as Image"
@@ -42,15 +44,15 @@ msgstr "PNG"
 
 #: historietaactivity.py:55
 msgid "View"
-msgstr ""
+msgstr "Ver"
 
 #: historietaactivity.py:59
 msgid "Slideshow"
-msgstr ""
+msgstr "Apresentação"
 
 #: historietaactivity.py:65
 msgid "Fullscreen"
-msgstr ""
+msgstr "Ecrã inteiro"
 
 #: historietaactivity.py:84
 msgid "Text"
@@ -58,27 +60,27 @@ msgstr "Texto"
 
 #: historietaactivity.py:115
 msgid "Save as a Book (PDF)"
-msgstr ""
+msgstr "Guardar como Livro (PDF)"
 
 #: historietaactivity.py:260 historietaactivity.py:297
 msgid "Success"
-msgstr ""
+msgstr "Sucesso"
 
 #: historietaactivity.py:261
 msgid "A image was created in the Journal"
-msgstr ""
+msgstr "Foi criada uma imagem no Diário"
 
 #: historietaactivity.py:298
 msgid "A PDF was created in the Journal"
-msgstr ""
+msgstr "Foi criado um PDF no Diário"
 
 #: historietaactivity.py:305
 msgid "Show in Journal"
-msgstr ""
+msgstr "Mostrar no Diário"
 
 #: historietaactivity.py:307
 msgid "Ok"
-msgstr ""
+msgstr "Ok"
 
 #: historietaactivity.py:590
 msgid "Title:"
@@ -90,27 +92,27 @@ msgstr "Adicionar Foto"
 
 #: toolbar.py:81
 msgid "Globe"
-msgstr ""
+msgstr "Globo"
 
 #: toolbar.py:81
 msgid "Think"
-msgstr ""
+msgstr "Pensamento"
 
 #: toolbar.py:82
 msgid "Whisper"
-msgstr ""
+msgstr "Sussurro"
 
 #: toolbar.py:82
 msgid "Exclamation"
-msgstr ""
+msgstr "Exclamação"
 
 #: toolbar.py:83
 msgid "Box"
-msgstr ""
+msgstr "Caixa"
 
 #: toolbar.py:86
 msgid "Add a globe"
-msgstr ""
+msgstr "Adicionar um globo"
 
 #: toolbar.py:105
 msgid "Curves"
