@@ -266,20 +266,30 @@ class HistorietaActivity(activity.Activity):
                                  _('A image was created in the Journal'))
 
     def _save_as_pdf(self, widget):
-        if not len(self.page.boxs) > 1:
-            return
 
         file_name = os.path.join(self.get_activity_root(), 'instance',
                                  'tmp-%i.pdf' % time.time())
         file_obj = open(file_name, 'w')
 
-        surface = cairo.PDFSurface(file_obj, self.page.boxs[1].width,
-                                   self.page.boxs[1].height)
+        page_width = self.page.boxs[1].width
+        page_height = self.page.boxs[1].height
+
+        surface = cairo.PDFSurface(file_obj, page_width, page_height)
+
         context = cairo.Context(surface)
 
-        for box in self.page.boxs[1:]:
+        for box in self.page.boxs[0:]:
+            context.save()
+            if box.width != page_width:
+                # for the first box, scale and center
+                scale = float(page_width) / float(box.width)
+                top_margin = (page_height - box.height) / 2
+                context.translate(0, top_margin)
+                context.scale(scale, scale)
+
             box.draw_in_context(context)
             context.show_page()
+            context.restore()
 
         surface.finish()
         file_obj.close()
