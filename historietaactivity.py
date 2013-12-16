@@ -21,6 +21,7 @@ from toolbar import TextToolbar
 from toolbar import GlobesManager
 
 from slideview import SlideView
+from reorderwindow import ReorderView
 
 import time
 from sugar3.datastore import datastore
@@ -84,6 +85,13 @@ class HistorietaActivity(activity.Activity):
         text_button.props.label = _('Text')
         slideview_btn.connect('clicked', self._switch_view_mode, text_button)
         toolbar_box.toolbar.insert(text_button, -1)
+
+        reorder_img_btn = ToolButton('thumbs-view')
+        reorder_img_btn.set_icon_name('thumbs-view')
+        reorder_img_btn.set_tooltip(_('Change image order'))
+        reorder_img_btn.connect('clicked', self.__image_order_cb)
+        toolbar_box.toolbar.insert(reorder_img_btn, -1)
+        reorder_img_btn.show()
 
         separator = Gtk.SeparatorToolItem()
         separator.props.draw = False
@@ -265,6 +273,10 @@ class HistorietaActivity(activity.Activity):
         self._show_journal_alert(_('Success'),
                                  _('A image was created in the Journal'))
 
+    def __image_order_cb(self, button):
+        reorderwin = ReorderView(self)
+        reorderwin.show_all()
+
     def _save_as_pdf(self, widget):
 
         file_name = os.path.join(self.get_activity_root(), 'instance',
@@ -396,6 +408,8 @@ else:
 SCREEN_WIDTH = Gdk.Screen.width() - scrollbar_width - 5
 BOX_HEIGHT = 450
 
+THUMB_SIZE = activity.PREVIEW_SIZE
+
 
 class Page(Gtk.VBox):
 
@@ -499,6 +513,7 @@ class ComicBox(Gtk.EventBox):
         self.image = None
         self.image_saved = False
         self.title_globe = None
+        self.thumbnail = None
 
         self.width = (int)(SCREEN_WIDTH - DEF_SPACING) / 2
         self.height = BOX_HEIGHT
@@ -663,6 +678,19 @@ class ComicBox(Gtk.EventBox):
 
         # Por ultimo dibujamos los globos
         self.draw_globos(ctx)
+
+    def get_thumbnail(self):
+        if self.thumbnail is None:
+            instance_path = os.path.join(activity.get_activity_root(),
+                                         'instance')
+            if (not self.image_name.startswith(instance_path)):
+                self.thumbnail = GdkPixbuf.Pixbuf.new_from_file_at_size(
+                    os.path.join(instance_path, self.image_name),
+                    THUMB_SIZE[0], THUMB_SIZE[1])
+            else:
+                self.thumbnail = GdkPixbuf.Pixbuf.new_from_file_at_size(
+                    self.image_name, THUMB_SIZE[0], THUMB_SIZE[1])
+        return self.thumbnail
 
     def draw_globos(self, context):
         if len(self.globos) > 0:
