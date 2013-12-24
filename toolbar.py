@@ -21,25 +21,24 @@ from gettext import gettext as _
 import logging
 import os
 import time
-# Gtk3
+
 from gi.repository import Gtk, Gdk
+
 from sugar3.graphics.toolbutton import ToolButton
 from sugar3.graphics.toggletoolbutton import ToggleToolButton
 from sugar3.graphics.toolcombobox import ToolComboBox
+from sugar3.graphics.palettemenu import PaletteMenuItem
+from sugar3.graphics.palettemenu import PaletteMenuBox
+from sugar3.graphics.colorbutton import ColorToolButton
 from sugar3.graphics.objectchooser import ObjectChooser
 try:
     from sugar3.graphics.objectchooser import FILTER_TYPE_GENERIC_MIME
 except:
     FILTER_TYPE_GENERIC_MIME = 'generic_mime'
 
-from sugar3.graphics.palettemenu import PaletteMenuItem
-from sugar3.graphics.palettemenu import PaletteMenuBox
-
 from fontcombobox import FontComboBox
 from fontcombobox import FontSize
 import globos
-
-from sugar3.graphics.colorbutton import ColorToolButton
 
 
 ##Class to manage the Text Color
