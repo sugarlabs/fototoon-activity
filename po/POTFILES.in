@@ -4,3 +4,5 @@ historietaactivity.py
 persistencia.py
 setup.py
 toolbar.py
+reorderwindow.py
+fontcombobox.py

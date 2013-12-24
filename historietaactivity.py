@@ -22,6 +22,7 @@ from toolbar import GlobesManager
 
 from slideview import SlideView
 from reorderwindow import ReorderView
+from reorderwindow import ImageEditorView
 
 import time
 from sugar3.datastore import datastore
@@ -92,6 +93,12 @@ class HistorietaActivity(activity.Activity):
         reorder_img_btn.connect('clicked', self.__image_order_cb)
         toolbar_box.toolbar.insert(reorder_img_btn, -1)
         reorder_img_btn.show()
+
+        bgchange = ToolButton(icon_name='contract-coordinates')
+        bgchange.set_tooltip(_('Edit background image'))
+        bgchange.connect('clicked', self.__bgchange_clicked_cb)
+        toolbar_box.toolbar.insert(bgchange, -1)
+        bgchange.show()
 
         separator = Gtk.SeparatorToolItem()
         separator.props.draw = False
@@ -277,6 +284,10 @@ class HistorietaActivity(activity.Activity):
         reorderwin = ReorderView(self)
         reorderwin.show_all()
 
+    def __bgchange_clicked_cb(self, button):
+        editorwin = ImageEditorView(self.page.get_active_box())
+        editorwin.show_all()
+
     def _save_as_pdf(self, widget):
 
         file_name = os.path.join(self.get_activity_root(), 'instance',
@@ -444,9 +455,10 @@ class Page(Gtk.VBox):
         self.pack_start(self._internal_box, True, True, 0)
         self.show_all()
 
-    def add_box_from_journal_image(self, image_file_name):
+    def add_box_from_journal_image(self, image_file_name, x=0, y=0,
+                                   w=-1, h=-1):
         posi = len(self.boxs) - 1
-        box = ComicBox(self, image_file_name, posi + 1)
+        box = ComicBox(self, image_file_name, posi + 1, x, y, w, h)
         reng = int(posi / 2)
         column = posi - (reng * 2)
 
@@ -481,9 +493,15 @@ class Page(Gtk.VBox):
 
 class ComicBox(Gtk.EventBox):
 
-    def __init__(self, page, image_file_name, posi):
+    def __init__(self, page, image_file_name, posi,
+                 x=0, y=0, width=0, height=0):
         print ('Cuadro INIT')
         Gtk.EventBox.__init__(self)
+
+        self.img_x = x
+        self.img_y = y
+        self.img_w = width
+        self.img_h = height
 
         self._page = page
         self.modify_bg(Gtk.StateType.NORMAL,
@@ -542,8 +560,7 @@ class ComicBox(Gtk.EventBox):
         self.show_all()
 
     def set_globo_activo(self, globo):
-        if self._globo_activo is not None and \
-            self._globo_activo != globo:
+        if self._globo_activo is not None and self._globo_activo != globo:
             self._globo_activo.set_selected(False)
         if globo is not None:
             globo.set_selected(True)
@@ -625,6 +642,8 @@ class ComicBox(Gtk.EventBox):
                     os.path.join(instance_path, self.image_name))
             else:
                 pixbuf = GdkPixbuf.Pixbuf.new_from_file(self.image_name)
+
+            """
             width_pxb = pixbuf.get_width()
             height_pxb = pixbuf.get_height()
             scale = (self.width) / (1.0 * width_pxb)
@@ -655,6 +674,62 @@ class ComicBox(Gtk.EventBox):
                 Gdk.cairo_set_source_pixbuf(ct, pixbuf, 0, 0)
                 ct.paint()
                 self.image.flush()
+            """
+
+            img_scaled = False
+            if self.img_w == -1 and pixbuf.get_width() > self.width:
+                self.img_w = self.width
+
+                width_pxb = pixbuf.get_width()
+                height_pxb = pixbuf.get_height()
+                scale = (self.width) / (1.0 * width_pxb)
+                self.img_h = int(scale * height_pxb)
+                img_scaled = True
+            elif self.img_w == -1 and pixbuf.get_width() == self.width:
+                self.img_w = self.width
+                self.img_h = pixbuf.get_height()
+
+            self.pixbuf = pixbuf
+
+            self.image = ctx.get_target().create_similar(
+                cairo.CONTENT_COLOR_ALPHA, self.width, BOX_HEIGHT)
+
+            pixb_scaled = pixbuf.scale_simple(
+                int(self.img_w),
+                int(self.img_h), GdkPixbuf.InterpType.BILINEAR)
+            ct = cairo.Context(self.image)
+            Gdk.cairo_set_source_pixbuf(ct, pixb_scaled,
+                                        self.img_x, self.img_y)
+            ct.paint()
+
+            if (not self.image_saved) and img_scaled:
+                self.image_saved = True
+                # print instance_path
+                image_file_name = 'image' + str(self.posi) + '.png'
+                print "Grabamos: " + image_file_name
+                sav_img = ctx.get_target().create_similar(
+                    cairo.CONTENT_COLOR_ALPHA, self.img_w, self.img_h)
+                ct2 = cairo.Context(sav_img)
+                Gdk.cairo_set_source_pixbuf(ct2, pixb_scaled, 0, 0)
+                ct2.paint()
+                sav_img.write_to_png(os.path.join(instance_path,
+                                                  image_file_name))
+                img_scaled = False
+
+                # grabamos el nombre de la imagen sin el path
+                self.image_name = image_file_name
+
+        elif self._page.title_box != self:
+            self.image = ctx.get_target().create_similar(
+                cairo.CONTENT_COLOR_ALPHA, self.width, BOX_HEIGHT)
+
+            pixb_scaled = self.pixbuf.scale_simple(
+                int(self.img_w),
+                int(self.img_h), GdkPixbuf.InterpType.BILINEAR)
+            ct = cairo.Context(self.image)
+            Gdk.cairo_set_source_pixbuf(ct, pixb_scaled,
+                                        self.img_x, self.img_y)
+            ct.paint()
 
         if self.image is not None:
             ctx.save()
