@@ -70,7 +70,6 @@ class HistorietaActivity(activity.Activity):
         view_toolbar.insert(fullscreen_btn, -1)
         fullscreen_btn.show()
 
-        #self._add_toolbar_buttons(toolbar_box)
         self.set_toolbar_box(toolbar_box)
 
         toolbar = toolbar_box.toolbar
@@ -155,9 +154,6 @@ class HistorietaActivity(activity.Activity):
         self.page.empty_page = handle.object_id is None
         self._key_press_signal_id = None
 
-        #print "screen witdh " , SCREEN_WIDTH
-        #print "page witdh " , self.page.size_request()
-
     # quiero que al ingresar al titulo se des seleccione el globo seleccionado
     def on_title(self, widget, event):
         print "Ingresando al titulo"
@@ -213,8 +209,6 @@ class HistorietaActivity(activity.Activity):
         # calculate image size
         image_width, image_height = self._get_image_size()
 
-        #logging.error("image_width %d image_height %d" %
-        #    (image_width, image_height))
         surface = cairo.ImageSurface(cairo.FORMAT_ARGB32,
                                      image_width + 1, image_height + 1)
         ctx = cairo.Context(surface)
@@ -226,13 +220,11 @@ class HistorietaActivity(activity.Activity):
         posi = 0
         y_posi = 0
         for box in self.page.boxs:
-            #logging.error("posi %d" % (posi))
 
             if posi > 0:
                 try:
                     reng = int((posi + 1) / 2)
                     column = (posi + 1) - (reng * 2)
-                    #logging.error("reng %d column %d" % (reng, column))
                     ctx.rectangle(column * box.width, y_posi,
                                   (column + 1) * box.width,
                                   y_posi + box.height)
@@ -255,7 +247,6 @@ class HistorietaActivity(activity.Activity):
                                       'tmp-%i.png' % time.time())
 
         surface.write_to_png(temp_file_name)
-        #logging.error("temp file name  %s" % (temp_file_name))
 
         self.dl_jobject = datastore.create()
 
@@ -523,7 +514,6 @@ class ComicBox(Gtk.EventBox):
         self.globos = []
         self.posi = posi
 
-        #self.pixbuf = pixbuf
         self.glob_press = False
         self.is_dimension = False
         self.is_punto = False
@@ -642,39 +632,6 @@ class ComicBox(Gtk.EventBox):
                     os.path.join(instance_path, self.image_name))
             else:
                 pixbuf = GdkPixbuf.Pixbuf.new_from_file(self.image_name)
-
-            """
-            width_pxb = pixbuf.get_width()
-            height_pxb = pixbuf.get_height()
-            scale = (self.width) / (1.0 * width_pxb)
-            self.image_height = int(scale * height_pxb)
-            self.image = ctx.get_target().create_similar(
-                cairo.CONTENT_COLOR_ALPHA, self.width, self.image_height)
-
-            if (scale != 1):
-                # falta tener en cuenta el caso de una imagen
-                # que venga del journal y tenga el tamanio justo,
-                # es decir con scale = 1
-                pixb_scaled = pixbuf.scale_simple(
-                    int(self.width),
-                    int(self.image_height), GdkPixbuf.InterpType.BILINEAR)
-                ct = cairo.Context(self.image)
-                Gdk.cairo_set_source_pixbuf(ct, pixb_scaled, 0, 0)
-                ct.paint()
-                if (not self.image_saved):
-                    self.image_saved = True
-                    # print instance_path
-                    image_file_name = 'image' + str(self.posi) + '.png'
-                    self.image.write_to_png(os.path.join(instance_path,
-                                            image_file_name))
-                    # grabamos el nombre de la imagen sin el path
-                    self.image_name = image_file_name
-            else:
-                ct = cairo.Context(self.image)
-                Gdk.cairo_set_source_pixbuf(ct, pixbuf, 0, 0)
-                ct.paint()
-                self.image.flush()
-            """
 
             img_scaled = False
             if self.img_w == -1 and pixbuf.get_width() > self.width:
