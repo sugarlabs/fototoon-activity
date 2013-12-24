@@ -1,10 +1,11 @@
 import os
 import json
 import logging
+import zipfile
+
+from sugar3.activity import activity
 
 import globos
-from sugar3.activity import activity
-import zipfile
 
 
 class PageData:

@@ -2,11 +2,12 @@
 
 import os
 import math
+import cairo
+import logging
+
 from gi.repository import Gtk, Gdk, GObject
 from gi.repository import Pango
 from gi.repository import PangoCairo
-import cairo
-import logging
 
 from sugar3.activity import activity
 from sugar3.graphics.icon import _IconBuffer

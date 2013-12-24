@@ -1,37 +1,35 @@
 # -*- coding: UTF-8 -*-
 
 import os
+import cairo
+import dbus
+import logging
+from gettext import gettext as _
+import time
+
 from gi.repository import Gtk
 from gi.repository import Gdk
 from gi.repository import GdkPixbuf
-import cairo
-
-import globos
-import persistencia
 
 from sugar3.activity import activity
-from gettext import gettext as _
-
 from sugar3.graphics.toolbarbox import ToolbarBox, ToolbarButton
 from sugar3.activity.widgets import StopButton
 from sugar3.activity.widgets import ActivityToolbarButton
 from sugar3.graphics.toggletoolbutton import ToggleToolButton
 from sugar3.graphics.toolbutton import ToolButton
-from toolbar import TextToolbar
-from toolbar import GlobesManager
-
-from slideview import SlideView
-from reorderwindow import ReorderView
-from reorderwindow import ImageEditorView
-
-import time
 from sugar3.datastore import datastore
 from sugar3 import profile
 from sugar3.graphics import style
 from sugar3.graphics.alert import Alert
 from sugar3.graphics.icon import Icon
-import dbus
-import logging
+
+import globos
+import persistencia
+from toolbar import TextToolbar
+from toolbar import GlobesManager
+from slideview import SlideView
+from reorderwindow import ReorderView
+from reorderwindow import ImageEditorView
 
 
 class HistorietaActivity(activity.Activity):
