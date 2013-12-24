@@ -151,8 +151,8 @@ class HistorietaActivity(activity.Activity):
         self.page.empty_page = handle.object_id is None
         self._key_press_signal_id = None
 
-    # quiero que al ingresar al titulo se des seleccione el globo seleccionado
     def on_title(self, widget, event):
+        # unselect the active globe when editting the title
         logging.debug('Editing the title')
         if self.page.get_active_box() is not None:
             box = self.page.get_active_box()
@@ -424,7 +424,7 @@ class Page(Gtk.VBox):
         logging.error('SCREEN WIDTH %d DEF_SPACING %d', SCREEN_WIDTH,
                       DEF_SPACING)
 
-        # Agrego cuadro titulo
+        # Add title box
         self.title_box = ComicBox(self, None, 0)
         self.title_box.set_size_request(SCREEN_WIDTH, 100)
         self.title_box.width, self.title_box.height = SCREEN_WIDTH, 100
@@ -432,7 +432,7 @@ class Page(Gtk.VBox):
         self.set_active_box(self.title_box)
         self.boxs.append(self.title_box)
 
-        # Agrego tabla para las fotos
+        # Add a table for the other boxes
         self.table = Gtk.Table(10, 2, True)
         self.table.set_homogeneous(True)
         self.table.set_row_spacings(DEF_SPACING)
@@ -497,14 +497,13 @@ class ComicBox(Gtk.EventBox):
         self._drawingarea = Gtk.DrawingArea()
         self.fixed.put(self._drawingarea, 0, 0)
 
-        #se agregan los eventos de pulsacion y movimiento del raton
         self._drawingarea.add_events(
             Gdk.EventMask.POINTER_MOTION_MASK |
             Gdk.EventMask.BUTTON_PRESS_MASK |
             Gdk.EventMask.BUTTON_RELEASE_MASK |
             Gdk.EventMask.BUTTON_MOTION_MASK)
 
-        #self.globos es una lista que contiene los globos de ese cuadro
+        #self.globos is a list with the globes in the box
         self.globos = []
         self.posi = posi
 
@@ -561,7 +560,6 @@ class ComicBox(Gtk.EventBox):
     def add_globo(self, xpos, ypos, gmodo="normal",
                   gdireccion=globos.DIR_ABAJO,
                   font_name=globos.DEFAULT_FONT):
-        #agrega un globo al cuadro
         globo = globos.Globo(self, x=xpos, y=ypos, modo=gmodo,
                              direccion=gdireccion, font_name=font_name)
         self.globos.append(globo)
@@ -569,27 +567,23 @@ class ComicBox(Gtk.EventBox):
         self.redraw()
 
     def add_rectangulo(self, xpos, ypos, font_name=globos.DEFAULT_FONT):
-        #agrega un cuadro de texto al cuadro
         self.globos.append(globos.Rectangulo(self, x=xpos, y=ypos,
                                              font_name=font_name))
         self.redraw()
 
     def add_nube(self, xpos, ypos, font_name=globos.DEFAULT_FONT):
-        #agrega un globo de pensamiento al cuadro
         globo = globos.Nube(self, x=xpos, y=ypos, font_name=font_name)
         self.globos.append(globo)
         self._globo_activo = globo
         self.redraw()
 
     def add_imagen(self, imagen, xpos, ypos):
-        #agrega una imagen al cuadro
         globo = globos.Imagen(self, imagen, x=xpos, y=ypos)
         self.globos.append(globo)
         self._globo_activo = globo
         self.redraw()
 
     def add_grito(self, xpos, ypos, font_name=globos.DEFAULT_FONT):
-        #agrega un globo de grito al cuadro
         globo = globos.Grito(self, x=xpos, y=ypos, font_name=font_name)
         self.globos.append(globo)
         self._globo_activo = globo
@@ -611,16 +605,15 @@ class ComicBox(Gtk.EventBox):
         return False
 
     def draw_in_context(self, ctx):
-        # Dibujamos la foto
+        # Draw the background image
 
         self.image_height = 0
 
         instance_path = os.path.join(activity.get_activity_root(),
                                      'instance')
         if self.image is None and (self.image_name != ''):
-            # si la imagen no tiene el path viene del archivo
-            # de historieta ya grabado,
-            # si viene con path, es una imagen que se tomo del journal
+            # if the image path is inside the instance path,
+            # was previously saved if not is from the journal
             if (not self.image_name.startswith(instance_path)):
                 pixbuf = GdkPixbuf.Pixbuf.new_from_file(
                     os.path.join(instance_path, self.image_name))
@@ -688,7 +681,7 @@ class ComicBox(Gtk.EventBox):
             ctx.paint()
             ctx.restore()
 
-        # Dibujamos el recuadro
+        # Draw the border
         ctx.save()
         ctx.set_line_width(DEF_WIDTH)
         ctx.rectangle(0, 0, self.width, self.height)
@@ -700,7 +693,6 @@ class ComicBox(Gtk.EventBox):
         ctx.set_source_rgb(0, 0, 0)
         ctx.restore()
 
-        # Por ultimo dibujamos los globos
         self.draw_globos(ctx)
 
     def get_thumbnail(self):
@@ -722,12 +714,12 @@ class ComicBox(Gtk.EventBox):
                 g.imprimir(context)
 
     def pressing(self, widget, event):
-        # si no es el cuadro seleccionado actualmente redibujo este
-        # y el anterior seleccionado
+        # if is not the last box selected redraw this and the last
+        # (possible optimization, draw only the border
         if (self._page.get_active_box() != self):
             self._page.set_active_box(self)
 
-        #Verifica si al pulsar el mouse se hizo sobre algun globo
+        #Check if clicked over a globe
         if self._globo_activo is not None:
             if self._globo_activo.is_selec_tam(event.x, event.y) or \
                     self._globo_activo.get_cursor_type(event.x, event.y) \
@@ -748,7 +740,6 @@ class ComicBox(Gtk.EventBox):
                         break
 
     def releassing(self, widget, event):
-        #Cuando se deja de pulsar el mouse
         self.glob_press = False
         self.is_dimension = False
         self.is_punto = False
