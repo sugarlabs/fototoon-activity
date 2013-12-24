@@ -39,6 +39,10 @@ class Persistence:
         pageData['boxs'] = []
         for box in page.boxs:
             boxData = {}
+            boxData['img_x'] = box.img_x
+            boxData['img_y'] = box.img_y
+            boxData['img_w'] = box.img_w
+            boxData['img_h'] = box.img_h
             boxData['image_name'] = box.image_name
             boxData['globes'] = []
             for globo in box.globos:
@@ -125,7 +129,15 @@ class Persistence:
         for boxData in pageData['boxs']:
             if not primero:
                 # el primero ya esta creado
-                page.add_box_from_journal_image(boxData['image_name'])
+                # para compatibilidad de versiones anteriores,
+                # verificamos si existe o no las nuevas propiedades
+                # en el archivo de persistencia
+                if 'img_x' in boxData:
+                    page.add_box_from_journal_image(
+                        boxData['image_name'], boxData['img_x'],
+                        boxData['img_y'], boxData['img_w'], boxData['img_h'])
+                else:
+                    page.add_box_from_journal_image(boxData['image_name'])
             primero = False
             box = page.get_active_box()
             for globoData in boxData['globes']:
