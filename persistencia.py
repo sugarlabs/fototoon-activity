@@ -1,5 +1,6 @@
 import os
 import json
+import logging
 
 import globos
 from sugar3.activity import activity
@@ -48,7 +49,7 @@ class Persistence:
             for globo in box.globos:
                 globoData = {}
                 globoData['title_globe'] = (globo == box.title_globe)
-                print 'Grabando', globo.globe_type
+                logging.debug('Saving %s', globo.globe_type)
                 globoData['globe_type'] = globo.globe_type
                 globoData['radio'] = globo.radio
                 globoData['width'], globoData['height'] = \
@@ -75,8 +76,7 @@ class Persistence:
                 boxData['globes'].append(globoData)
             pageData['boxs'].append(boxData)
 
-        # hago picle de pageData
-        print pageData
+        logging.debug('pageData %s', pageData)
 
         data_file_name = 'data.json'
         f = open(os.path.join(instance_path, data_file_name), 'w')
@@ -85,7 +85,7 @@ class Persistence:
         finally:
             f.close()
 
-        print 'file_name', file_name
+        logging.debug('file_name %s', file_name)
 
         z = zipfile.ZipFile(file_name, 'w')
         z.write(os.path.join(instance_path, data_file_name).encode(
@@ -105,7 +105,7 @@ class Persistence:
         for file_name in z.namelist():
             if (file_name != './'):
                 try:
-                    print 'extrayendo', file_name
+                    logging.debug('extracting %s', file_name)
                     # la version de python en las xo no permite hacer
                     # extract :(
                     # z.extract(file_name,instance_path)
@@ -114,7 +114,7 @@ class Persistence:
                     fout.write(data)
                     fout.close()
                 except:
-                    print 'Error extrayendo', file_name
+                    logging.error('Error extracting %s', file_name)
         z.close()
         data_file_name = 'data.json'
 
@@ -148,7 +148,6 @@ class Persistence:
                 globo_direccion = globoData['direction']
 
                 tipo_globo = globoData['globe_type']
-                print 'tipo_globo', tipo_globo
                 globo = None
                 if (tipo_globo == 'GLOBE'):
                     globo = globos.Globo(box, x=globo_x, y=globo_y,

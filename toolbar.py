@@ -179,20 +179,16 @@ class GlobesManager():
             self.add_image()
 
     def girar(self, boton):
-        print "girando"
         #veo cual es el globo seleccionado y o giro
         box = self._page.get_active_box()
         if box.get_globo_activo() is not None:
-            print "globo activo",
             globe = box.get_globo_activo()
             if globe.girar():
                 box.redraw()
 
     def borrar(self, boton):
-        print "borrando"
         box = self._page.get_active_box()
         if box.get_globo_activo() is not None:
-            print "borrando globo"
             # Do no remove the title globe
             if box.get_globo_activo() == box.title_globe:
                 return
@@ -202,7 +198,6 @@ class GlobesManager():
             box.redraw()
         else:
             # Borrar un box es mas complicado
-            print "borrando box"
             pos_box = self._page.boxs.index(box)
             if (len(self._page.boxs) > pos_box):
                 for i in range(pos_box, len(self._page.boxs) - 1):

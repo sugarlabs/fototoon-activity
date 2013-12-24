@@ -39,7 +39,6 @@ class HistorietaActivity(activity.Activity):
     _EXPORT_FORMATS = [['image/png', _('Save as Image'), _('PNG'), ""]]
 
     def __init__(self, handle):
-        print "INICIALIZANDO FOTOTOON"
         activity.Activity.__init__(self, handle)
         self.set_title('FotoToon')
 
@@ -156,7 +155,7 @@ class HistorietaActivity(activity.Activity):
 
     # quiero que al ingresar al titulo se des seleccione el globo seleccionado
     def on_title(self, widget, event):
-        print "Ingresando al titulo"
+        logging.debug('Editing the title')
         if self.page.get_active_box() is not None:
             box = self.page.get_active_box()
             self.page.set_active_box(None)
@@ -164,7 +163,7 @@ class HistorietaActivity(activity.Activity):
             box.set_globo_activo(None)
             box.redraw()
 
-            print "Fin de Ingresando al titulo"
+            logging.debug('After edit the title')
 
     def write_file(self, file_path):
         # be sure all the changes are commited
@@ -172,12 +171,10 @@ class HistorietaActivity(activity.Activity):
         if active_globe is not None:
             active_globe.set_selected(False)
 
-        print "write file path", file_path
         persistence = persistencia.Persistence()
         persistence.write(file_path, self.page)
 
     def read_file(self, file_path):
-        print "read file path", file_path
         persistence = persistencia.Persistence()
         persistence.read(file_path, self.page)
 
@@ -486,7 +483,6 @@ class ComicBox(Gtk.EventBox):
 
     def __init__(self, page, image_file_name, posi,
                  x=0, y=0, width=0, height=0):
-        print ('Cuadro INIT')
         Gtk.EventBox.__init__(self)
 
         self.img_x = x
@@ -661,9 +657,7 @@ class ComicBox(Gtk.EventBox):
 
             if (not self.image_saved) and img_scaled:
                 self.image_saved = True
-                # print instance_path
                 image_file_name = 'image' + str(self.posi) + '.png'
-                print "Grabamos: " + image_file_name
                 sav_img = ctx.get_target().create_similar(
                     cairo.CONTENT_COLOR_ALPHA, self.img_w, self.img_h)
                 ct2 = cairo.Context(sav_img)
