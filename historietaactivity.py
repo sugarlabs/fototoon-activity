@@ -47,12 +47,19 @@ class HistorietaActivity(activity.Activity):
         activity_toolbar = activity_button.page
         toolbar_box.toolbar.insert(activity_button, 0)
 
-        view_subtoolbar = ToolbarButton()
+        edit_toolbar_btn = ToolbarButton()
+        edit_toolbar = Gtk.Toolbar()
+        edit_toolbar_btn.props.page = edit_toolbar
+        edit_toolbar_btn.props.icon_name = 'toolbar-edit'
+        edit_toolbar_btn.label = _('Edit')
+        toolbar_box.toolbar.insert(edit_toolbar_btn, -1)
+
+        view_toolbar_btn = ToolbarButton()
         view_toolbar = Gtk.Toolbar()
-        view_subtoolbar.props.page = view_toolbar
-        view_subtoolbar.props.icon_name = 'toolbar-view'
-        view_subtoolbar.label = _('View')
-        toolbar_box.toolbar.insert(view_subtoolbar, -1)
+        view_toolbar_btn.props.page = view_toolbar
+        view_toolbar_btn.props.icon_name = 'toolbar-view'
+        view_toolbar_btn.label = _('View')
+        toolbar_box.toolbar.insert(view_toolbar_btn, -1)
 
         slideview_btn = ToggleToolButton('slideshow')
         slideview_btn.set_tooltip(_('Slideshow'))
@@ -73,7 +80,7 @@ class HistorietaActivity(activity.Activity):
 
         self.page = Page()
 
-        self.globes_manager = GlobesManager(toolbar, self.page, self)
+        self.globes_manager = GlobesManager(toolbar, edit_toolbar, self)
 
         # fonts
         text_button = ToolbarButton()
@@ -87,13 +94,13 @@ class HistorietaActivity(activity.Activity):
         reorder_img_btn.set_icon_name('thumbs-view')
         reorder_img_btn.set_tooltip(_('Change image order'))
         reorder_img_btn.connect('clicked', self.__image_order_cb)
-        toolbar_box.toolbar.insert(reorder_img_btn, -1)
+        edit_toolbar.insert(reorder_img_btn, -1)
         reorder_img_btn.show()
 
         bgchange = ToolButton(icon_name='contract-coordinates')
         bgchange.set_tooltip(_('Edit background image'))
         bgchange.connect('clicked', self.__bgchange_clicked_cb)
-        toolbar_box.toolbar.insert(bgchange, -1)
+        edit_toolbar.insert(bgchange, -1)
         bgchange.show()
 
         separator = Gtk.SeparatorToolItem()
