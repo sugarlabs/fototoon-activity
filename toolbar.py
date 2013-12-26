@@ -67,9 +67,9 @@ logger = logging.getLogger('fototoon-activity')
 
 class GlobesManager():
 
-    def __init__(self, toolbar, page, activity):
+    def __init__(self, toolbar, edit_toolbar, activity):
 
-        self._page = page
+        self._page = activity.page
         self._activity = activity
 
         # agregar cuadro
@@ -132,13 +132,15 @@ class GlobesManager():
         self.b_girar = ToolButton('object-rotate-right')
         self.b_girar.connect('clicked', self.girar)
         self.b_girar.set_tooltip(_('Turn'))
-        toolbar.insert(self.b_girar, -1)
+        self.b_girar.show()
+        edit_toolbar.insert(self.b_girar, -1)
 
         # borrar
         self.b_borrar = ToolButton('gtk-delete')
         self.b_borrar.connect('clicked', self.borrar)
         self.b_borrar.set_tooltip(_('Delete'))
-        toolbar.insert(self.b_borrar, -1)
+        self.b_borrar.show()
+        edit_toolbar.insert(self.b_borrar, -1)
 
     def set_buttons_sensitive(self, sensitive):
         self._globes_menu.set_sensitive(sensitive)
