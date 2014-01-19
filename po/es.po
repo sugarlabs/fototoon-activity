@@ -30,8 +30,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-12 00:33-0400\n"
-"PO-Revision-Date: 2013-06-17 07:49+0200\n"
+"POT-Creation-Date: 2013-12-30 03:05-0500\n"
+"PO-Revision-Date: 2014-01-20 00:39+0200\n"
 "Last-Translator: AlanJAS <alanjas@hotmail.com>\n"
 "Language-Team: Spanish\n"
 "Language: es\n"
@@ -58,7 +58,7 @@ msgstr ""
 msgid "Select font"
 msgstr "Seleccionar fuente"
 
-#: historietaactivity.py:37 historietaactivity.py:108
+#: historietaactivity.py:37 historietaactivity.py:126
 msgid "Save as Image"
 msgstr "Guardar como imagen"
 
@@ -66,116 +66,144 @@ msgstr "Guardar como imagen"
 msgid "PNG"
 msgstr "PNG"
 
-#: historietaactivity.py:55
+#: historietaactivity.py:54
+msgid "Edit"
+msgstr "Editar"
+
+#: historietaactivity.py:61
 msgid "View"
 msgstr "Vista"
 
-#: historietaactivity.py:59
+#: historietaactivity.py:65
 msgid "Slideshow"
 msgstr "Presentación"
 
-#: historietaactivity.py:65
+#: historietaactivity.py:71
 msgid "Fullscreen"
 msgstr "Pantalla completa"
 
-#: historietaactivity.py:84
+#: historietaactivity.py:89
 msgid "Text"
 msgstr "Texto"
 
-#: historietaactivity.py:115
+#: historietaactivity.py:95
+msgid "Change image order"
+msgstr "Cambiar el orden de las imágenes"
+
+#: historietaactivity.py:101
+msgid "Edit background image"
+msgstr "Editar imagen de fondo"
+
+#: historietaactivity.py:133
 msgid "Save as a Book (PDF)"
 msgstr "Guardar como Libro (PDF)"
 
-#: historietaactivity.py:260 historietaactivity.py:297
+#: historietaactivity.py:273 historietaactivity.py:328
 msgid "Success"
 msgstr "Éxito"
 
-#: historietaactivity.py:261
+#: historietaactivity.py:274
 msgid "A image was created in the Journal"
 msgstr "Se ha creado una imagen en el Diario"
 
-#: historietaactivity.py:298
+#: historietaactivity.py:329
 msgid "A PDF was created in the Journal"
 msgstr "Se ha creado un PDF en el Diario"
 
-#: historietaactivity.py:305
+#: historietaactivity.py:336
 msgid "Show in Journal"
 msgstr "Mostrar en el Diario"
 
-#: historietaactivity.py:307
+#: historietaactivity.py:338
 msgid "Ok"
 msgstr "Ok"
 
-#: historietaactivity.py:590
+#: historietaactivity.py:609
 msgid "Title:"
 msgstr "Título:"
 
-#: toolbar.py:77
+#: reorderwindow.py:54
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: reorderwindow.py:59
+msgid "Done"
+msgstr "Hecho"
+
+#: reorderwindow.py:69
+msgid "Drag the images to reorder"
+msgstr "Arrastra las imágenes para ordenarlas"
+
+#: reorderwindow.py:399
+msgid "Drag to move or resize using the marked corners"
+msgstr "Arrastra para mover o redimensionar usando las esquinas marcadas"
+
+#: toolbar.py:79
 msgid "Add Photo"
 msgstr "Agregar Foto"
 
-#: toolbar.py:81
+#: toolbar.py:83
 msgid "Globe"
 msgstr "Globo"
 
-#: toolbar.py:81
+#: toolbar.py:83
 msgid "Think"
 msgstr "Pensamiento"
 
-#: toolbar.py:82
+#: toolbar.py:84
 msgid "Whisper"
 msgstr "Susurro"
 
-#: toolbar.py:82
+#: toolbar.py:84
 msgid "Exclamation"
 msgstr "Exclamación"
 
-#: toolbar.py:83
+#: toolbar.py:85
 msgid "Box"
 msgstr "Caja"
 
-#: toolbar.py:86
+#: toolbar.py:88
 msgid "Add a globe"
 msgstr "Agregar un globo"
 
-#: toolbar.py:105
+#: toolbar.py:107
 msgid "Curves"
 msgstr "Curvas"
 
-#: toolbar.py:105
+#: toolbar.py:107
 msgid "Straight"
 msgstr "Recto"
 
 # puede ser Subrayado
-#: toolbar.py:106
+#: toolbar.py:108
 msgid "Highlight"
 msgstr "Resaltado"
 
-#: toolbar.py:106
+#: toolbar.py:108
 msgid "Idea"
 msgstr "Idea"
 
-#: toolbar.py:109
+#: toolbar.py:111
 msgid "Choose a movement line"
 msgstr "Elige una linea de movimiento"
 
-#: toolbar.py:132
+#: toolbar.py:134
 msgid "Turn"
 msgstr "Girar"
 
-#: toolbar.py:138
+#: toolbar.py:141
 msgid "Delete"
 msgstr "Borrar"
 
-#: toolbar.py:253
+#: toolbar.py:259
 msgid "Bold"
 msgstr "Negrita"
 
-#: toolbar.py:258
+#: toolbar.py:264
 msgid "Italic"
 msgstr "Italica"
 
-#: toolbar.py:272
+#: toolbar.py:278
 msgid "Text Color"
 msgstr "Color del texto"
 
