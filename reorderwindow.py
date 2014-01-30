@@ -148,6 +148,10 @@ class ImageElement:
         self.height = h
         self.calculate_boundaries()
         self.calculate_points()
+        self.margin_x = 0
+        self.margin_y = 0
+        self.box_width = 0
+        self.box_height = 0
 
     def calculate_boundaries(self):
         self.boundaries = {}
@@ -167,6 +171,10 @@ class ImageElement:
                                       self.y + self.height - HANDLE_SIZE]
 
     def is_selected(self, x, y):
+        # substract the margin values
+        x = x - self.margin_x
+        y = y - self.margin_y
+
         if (x >= self.boundaries['min_x'] and
             x <= self.boundaries['max_x']) and \
            (y >= self.boundaries['min_y'] and
@@ -183,6 +191,10 @@ class ImageElement:
 
     def is_in_point(self, x, y, point=None):
         if point is not None:
+            # substract the margin values
+            x = x - self.margin_x
+            y = y - self.margin_y
+
             if (x >= point[0] and x <= (point[0] + HANDLE_SIZE)) \
                     and (y >= point[1] and y <= (point[1] + HANDLE_SIZE)):
                 return True
@@ -207,11 +219,21 @@ class ImageElement:
         Gdk.cairo_set_source_pixbuf(ct, pixb_scaled, self.x, self.y)
         ct.paint()
         self.pixbuf = pixb_scaled
+
         ctx.save()
+        ctx.translate(self.margin_x, self.margin_y)
         ctx.rectangle(0, 0, self.box.width, self.box.height)
         ctx.clip()
         ctx.set_source_surface(self.image, 0, 0)
         ctx.paint()
+        ctx.restore()
+
+        # draw the box border
+        ctx.save()
+        ctx.rectangle(self.margin_x, self.margin_y, self.box_width,
+                      self.box_height)
+        ctx.set_source_rgb(0, 0, 0)
+        ctx.stroke()
         ctx.restore()
 
         # draw hadles
@@ -221,6 +243,7 @@ class ImageElement:
 
     def _draw_handle(self, ctx, x, y):
         ctx.save()
+        ctx.translate(self.margin_x, self.margin_y)
         ctx.set_line_width(2)
         ctx.set_source_rgb(1, 1, 1)
         ctx.rectangle(x, y, HANDLE_SIZE, HANDLE_SIZE)
@@ -233,12 +256,6 @@ class ImageElement:
     def move(self, x_movement, y_movement, allocation):
         self.x = self.x + x_movement
         self.y = self.y + y_movement
-
-        if self.x < 0:
-            self.x = 0
-        if self.y < 0:
-            self.y = 0
-
         if self.x + self.width > allocation.width:
             self.x -= (self.x + self.width) - (allocation.width)
 
@@ -267,10 +284,6 @@ class ImageElement:
         elif self.is_in_point(start_x, start_y, self.points["upper_left"]):
             x_final_pos = self.x + x_movement
             y_final_pos = self.y + y_movement
-            if x_final_pos < 0:
-                x_movement -= x_final_pos
-            if y_final_pos < 0:
-                y_movement -= y_final_pos
             self.y += y_movement
             self.x += x_movement
             self.width -= x_movement
@@ -306,10 +319,8 @@ class CanvasEditor(Gtk.EventBox):
 
         self.modify_bg(Gtk.StateType.NORMAL,
                        style.COLOR_WHITE.get_gdk_color())
-        self.fixed = Gtk.Fixed()
-        self.add(self.fixed)
         self._drawingarea = Gtk.DrawingArea()
-        self.fixed.put(self._drawingarea, 0, 0)
+        self.add(self._drawingarea)
 
         self._drawingarea.add_events(
             Gdk.EventMask.POINTER_MOTION_MASK |
@@ -330,12 +341,15 @@ class CanvasEditor(Gtk.EventBox):
         self.redraw()
 
         def size_allocate(widget, allocation):
-            self.fixed.set_size_request(self.width, self.height)
-            self._drawingarea.set_size_request(self.width, self.height)
+            self._drawingarea.set_size_request(allocation.width,
+                                               allocation.height)
+            self.image.margin_x = (allocation.width - self.width) / 2
+            self.image.margin_y = (allocation.height - self.height) / 2
+            self.image.box_width = self.width
+            self.image.box_height = self.height
 
         self.connect('size_allocate', size_allocate)
         self.set_size_request(self.width, self.height)
-        self.fixed.set_size_request(self.width, self.height)
         self._drawingarea.set_size_request(self.width, self.height)
         self.show_all()
 
@@ -391,8 +405,7 @@ class CanvasEditor(Gtk.EventBox):
 class ImageEditorView(BaseWindow):
 
     def __init__(self, comicbox):
-        BaseWindow.__init__(self, comicbox.width,
-                            comicbox.height + style.GRID_CELL_SIZE)
+        BaseWindow.__init__(self)
 
         self.toolbar = BasicToolbar(
             'contract-coordinates',
