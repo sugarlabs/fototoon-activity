@@ -628,7 +628,7 @@ class ComicBox(Gtk.EventBox):
                 pixbuf = GdkPixbuf.Pixbuf.new_from_file(self.image_name)
 
             img_scaled = False
-            if self.img_w == -1 and pixbuf.get_width() > self.width:
+            if self.img_w == -1:
                 self.img_w = self.width
 
                 width_pxb = pixbuf.get_width()
@@ -636,9 +636,6 @@ class ComicBox(Gtk.EventBox):
                 scale = (self.width) / (1.0 * width_pxb)
                 self.img_h = int(scale * height_pxb)
                 img_scaled = True
-            elif self.img_w == -1 and pixbuf.get_width() == self.width:
-                self.img_w = self.width
-                self.img_h = pixbuf.get_height()
 
             self.pixbuf = pixbuf
 
