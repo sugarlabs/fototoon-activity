@@ -236,8 +236,22 @@ class ImageElement:
         ctx.stroke()
         ctx.restore()
 
+        # draw the image border
+        ctx.save()
+        ctx.translate(self.margin_x, self.margin_y)
+        ctx.set_line_width(2)
+        ctx.set_source_rgb(1, 1, 1)
+        ctx.rectangle(self.x, self.y, self.width, self.height)
+        ctx.stroke_preserve()
+        ctx.set_source_rgb(0, 0, 0)
+        ctx.set_dash([2])
+        ctx.stroke()
+        ctx.restore()
+
         # draw hadles
         self._draw_handle(ctx, self.x, self.y)
+        self._draw_handle(ctx, self.x + self.width - HANDLE_SIZE, self.y)
+        self._draw_handle(ctx, self.x, self.y + self.height - HANDLE_SIZE)
         self._draw_handle(ctx, self.x + self.width - HANDLE_SIZE,
                           self.y + self.height - HANDLE_SIZE)
 
@@ -269,15 +283,11 @@ class ImageElement:
 
         if self.is_in_point(start_x, start_y, self.points["lower_left"]):
             x_final_pos = self.x + x_movement
-            if x_final_pos < 0:
-                x_movement -= x_final_pos
             self.x += x_movement
             self.width -= x_movement
             self.height += y_movement
         elif self.is_in_point(start_x, start_y, self.points["upper_right"]):
             y_final_pos = self.y + y_movement
-            if y_final_pos < 0:
-                y_movement -= y_final_pos
             self.y += y_movement
             self.height -= y_movement
             self.width += x_movement
