@@ -171,13 +171,15 @@ class HistorietaActivity(activity.Activity):
             logging.debug('After edit the title')
 
     def write_file(self, file_path):
+        self._commit_all_changes()
+        persistence = persistencia.Persistence()
+        persistence.write(file_path, self.page)
+
+    def _commit_all_changes(self):
         # be sure all the changes are commited
         active_globe = self.page.get_globo_activo()
         if active_globe is not None:
             active_globe.set_selected(False)
-
-        persistence = persistencia.Persistence()
-        persistence.write(file_path, self.page)
 
     def read_file(self, file_path):
         persistence = persistencia.Persistence()
@@ -208,6 +210,7 @@ class HistorietaActivity(activity.Activity):
         return image_width, image_height
 
     def write_image(self, button):
+        self._commit_all_changes()
         # calculate image size
         image_width, image_height = self._get_image_size()
 
@@ -282,6 +285,7 @@ class HistorietaActivity(activity.Activity):
         editorwin.show_all()
 
     def _save_as_pdf(self, widget):
+        self._commit_all_changes()
 
         file_name = os.path.join(self.get_activity_root(), 'instance',
                                  'tmp-%i.pdf' % time.time())
