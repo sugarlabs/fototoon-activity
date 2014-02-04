@@ -290,18 +290,14 @@ class ImageElement:
     def resize(self, x_movement, y_movement, allocation, start_x, start_y):
 
         if self.is_in_point(start_x, start_y, self.points["lower_left"]):
-            x_final_pos = self.x + x_movement
             self.x += x_movement
             self.width -= x_movement
             self.height += y_movement
         elif self.is_in_point(start_x, start_y, self.points["upper_right"]):
-            y_final_pos = self.y + y_movement
             self.y += y_movement
             self.height -= y_movement
             self.width += x_movement
         elif self.is_in_point(start_x, start_y, self.points["upper_left"]):
-            x_final_pos = self.x + x_movement
-            y_final_pos = self.y + y_movement
             self.y += y_movement
             self.x += x_movement
             self.width -= x_movement
