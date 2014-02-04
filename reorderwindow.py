@@ -382,10 +382,18 @@ class CanvasEditor(Gtk.EventBox):
 
     def mouse_move(self, widget, event):
         cursor = None
-        if self.image.is_in_point(event.x, event.y):
-            cursor = Gdk.Cursor(Gdk.CursorType.SIZING)
+        if self.image.is_in_point(event.x, event.y,
+                                  self.image.points["upper_left"]) or \
+            self.image.is_in_point(event.x, event.y,
+                                   self.image.points["lower_right"]):
+            cursor = Gdk.Cursor(Gdk.CursorType.BOTTOM_RIGHT_CORNER)
+        elif self.image.is_in_point(event.x, event.y,
+                                    self.image.points["upper_right"]) or \
+            self.image.is_in_point(event.x, event.y,
+                                   self.image.points["lower_left"]):
+            cursor = Gdk.Cursor(Gdk.CursorType.BOTTOM_LEFT_CORNER)
         elif self.image.is_selected(event.x, event.y):
-            cursor = Gdk.Cursor(Gdk.CursorType.HAND2)
+            cursor = Gdk.Cursor(Gdk.CursorType.FLEUR)
         self.get_window().set_cursor(cursor)
 
     def moving(self, widget, event):
