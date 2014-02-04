@@ -153,6 +153,14 @@ class ImageElement:
         self.box_width = 0
         self.box_height = 0
 
+    def reset(self):
+        self.x = 0
+        self.y = 0
+        self.width = self.box_width
+        self.height = self.box_height
+        self.calculate_boundaries()
+        self.calculate_points()
+
     def calculate_boundaries(self):
         self.boundaries = {}
         self.boundaries['min_x'] = self.x
@@ -419,6 +427,10 @@ class CanvasEditor(Gtk.EventBox):
         self.start_x = -1
         self.start_y = -1
 
+    def reset(self):
+        self.image.reset()
+        self.redraw()
+
 
 class ImageEditorView(BaseWindow):
 
@@ -431,6 +443,12 @@ class ImageEditorView(BaseWindow):
         self.toolbar.stop.connect('clicked', self.__stop_clicked_cb)
         self.toolbar.confirm.connect('clicked', self.__ok_clicked_cb)
 
+        reset_size = ToolButton(icon_name='box-size')
+        reset_size.set_tooltip(_('Reset to box size'))
+        self.toolbar.insert(reset_size, 3)
+        reset_size.show()
+        reset_size.connect('clicked', self.__reset_size_cb)
+
         self.comicbox = comicbox
         self.canvas = CanvasEditor(
             self.comicbox, self.comicbox.width,
@@ -440,6 +458,9 @@ class ImageEditorView(BaseWindow):
         self.vbox.pack_start(self.toolbar, False, False, 0)
         self.vbox.pack_start(self.canvas, True, True, 0)
         self.add(self.vbox)
+
+    def __reset_size_cb(self, button):
+        self.canvas.reset()
 
     def __stop_clicked_cb(self, button):
         self.destroy()
