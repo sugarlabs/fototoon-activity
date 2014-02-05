@@ -30,7 +30,7 @@ class BaseWindow(Gtk.Window):
 
 class BasicToolbar(Gtk.Toolbar):
 
-    def __init__(self, icon_name, title):
+    def __init__(self, icon_name, title=''):
         GObject.GObject.__init__(self)
 
         icon = ToolButton(icon_name)
@@ -65,18 +65,23 @@ class ReorderView(BaseWindow):
 
     def __init__(self, activity):
         BaseWindow.__init__(self)
-        self.toolbar = BasicToolbar('thumbs-view',
-                                    _('Drag the images to reorder'))
+        self.toolbar = BasicToolbar('thumbs-view')
 
         self.toolbar.stop.connect('clicked', self.__stop_clicked_cb)
         self.toolbar.confirm.connect('clicked', self.__ok_clicked_cb)
 
         self.scrollwin = ReorderObjects(activity)
+        title = _('Drag the images to reorder')
+        label = Gtk.Label('')
+        label.set_markup('<span size="x-large">%s</span>' % title)
         self.vbox = Gtk.VBox()
         self.vbox.pack_start(self.toolbar, False, False, 0)
+        self.vbox.pack_start(label, False, False, style.DEFAULT_SPACING)
         self.vbox.pack_start(self.scrollwin, True, True, 0)
         self.add(self.vbox)
         self.scrollwin.show()
+        self.modify_bg(Gtk.StateType.NORMAL,
+                       style.COLOR_WHITE.get_gdk_color())
 
     def __stop_clicked_cb(self, button):
         self.destroy()
@@ -263,6 +268,17 @@ class ImageElement:
         self._draw_handle(ctx, self.x + self.width - HANDLE_SIZE,
                           self.y + self.height - HANDLE_SIZE)
 
+        # draw explanation
+        text = _('Drag to move or resize using the marked corners')
+        ctx.select_font_face("Sans", cairo.FONT_SLANT_NORMAL,
+                             cairo.FONT_WEIGHT_BOLD)
+        ctx.set_font_size(14)
+        (x, y, text_width, text_height, dx, dy) = ctx.text_extents(text)
+        horizontal_center = self.margin_x + self.box_width / 2
+        ctx.move_to(horizontal_center - text_width / 2, text_height * 2)
+        ctx.set_source_rgb(0, 0, 0)
+        ctx.show_text(text)
+
     def _draw_handle(self, ctx, x, y):
         ctx.save()
         ctx.translate(self.margin_x, self.margin_y)
@@ -433,9 +449,7 @@ class ImageEditorView(BaseWindow):
     def __init__(self, comicbox):
         BaseWindow.__init__(self)
 
-        self.toolbar = BasicToolbar(
-            'contract-coordinates',
-            _('Drag to move or resize using the marked corners'))
+        self.toolbar = BasicToolbar('contract-coordinates')
         self.toolbar.stop.connect('clicked', self.__stop_clicked_cb)
         self.toolbar.confirm.connect('clicked', self.__ok_clicked_cb)
 
