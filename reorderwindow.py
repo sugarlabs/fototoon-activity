@@ -268,17 +268,6 @@ class ImageElement:
         self._draw_handle(ctx, self.x + self.width - HANDLE_SIZE,
                           self.y + self.height - HANDLE_SIZE)
 
-        # draw explanation
-        text = _('Drag to move or resize using the marked corners')
-        ctx.select_font_face("Sans", cairo.FONT_SLANT_NORMAL,
-                             cairo.FONT_WEIGHT_BOLD)
-        ctx.set_font_size(14)
-        (x, y, text_width, text_height, dx, dy) = ctx.text_extents(text)
-        horizontal_center = self.margin_x + self.box_width / 2
-        ctx.move_to(horizontal_center - text_width / 2, text_height * 2)
-        ctx.set_source_rgb(0, 0, 0)
-        ctx.show_text(text)
-
     def _draw_handle(self, ctx, x, y):
         ctx.save()
         ctx.translate(self.margin_x, self.margin_y)
@@ -464,10 +453,17 @@ class ImageEditorView(BaseWindow):
             self.comicbox, self.comicbox.width,
             self.comicbox.height, self)
 
+        label = Gtk.Label('')
+        title = _('Drag to move or resize using the marked corners')
+        label.set_markup('<span size="x-large">%s</span>' % title)
+
         self.vbox = Gtk.VBox()
         self.vbox.pack_start(self.toolbar, False, False, 0)
+        self.vbox.pack_start(label, False, False, style.DEFAULT_SPACING)
         self.vbox.pack_start(self.canvas, True, True, 0)
         self.add(self.vbox)
+        self.modify_bg(Gtk.StateType.NORMAL,
+                       style.COLOR_WHITE.get_gdk_color())
 
     def __reset_size_cb(self, button):
         self.canvas.reset()
