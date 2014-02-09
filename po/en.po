@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-30 03:05-0500\n"
-"PO-Revision-Date: 2014-01-08 03:36+0200\n"
+"POT-Creation-Date: 2014-02-05 00:33-0500\n"
+"PO-Revision-Date: 2014-02-09 04:26+0200\n"
 "Last-Translator: Chris <cjl@laptop.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: en\n"
@@ -74,27 +74,27 @@ msgstr "Edit background image"
 msgid "Save as a Book (PDF)"
 msgstr "Save as a Book (PDF)"
 
-#: historietaactivity.py:273 historietaactivity.py:328
+#: historietaactivity.py:276 historietaactivity.py:332
 msgid "Success"
 msgstr "Success"
 
-#: historietaactivity.py:274
+#: historietaactivity.py:277
 msgid "A image was created in the Journal"
 msgstr "A image was created in the Journal"
 
-#: historietaactivity.py:329
+#: historietaactivity.py:333
 msgid "A PDF was created in the Journal"
 msgstr "A PDF was created in the Journal"
 
-#: historietaactivity.py:336
+#: historietaactivity.py:340
 msgid "Show in Journal"
 msgstr "Show in Journal"
 
-#: historietaactivity.py:338
+#: historietaactivity.py:342
 msgid "Ok"
 msgstr "Ok"
 
-#: historietaactivity.py:609
+#: historietaactivity.py:613
 msgid "Title:"
 msgstr "Title:"
 
@@ -110,9 +110,13 @@ msgstr "Done"
 msgid "Drag the images to reorder"
 msgstr "Drag the images to reorder"
 
-#: reorderwindow.py:399
+#: reorderwindow.py:438
 msgid "Drag to move or resize using the marked corners"
 msgstr "Drag to move or resize using the marked corners"
+
+#: reorderwindow.py:443
+msgid "Reset to box size"
+msgstr "Reset to box size"
 
 #: toolbar.py:79
 msgid "Add Photo"
