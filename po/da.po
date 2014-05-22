@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-12 00:33-0400\n"
-"PO-Revision-Date: 2013-08-13 15:41+0200\n"
+"POT-Creation-Date: 2014-02-05 00:33-0500\n"
+"PO-Revision-Date: 2014-05-22 23:30+0200\n"
 "Last-Translator: Aputsiaq Niels <aj@isit.gl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: da\n"
@@ -34,7 +34,7 @@ msgstr ""
 msgid "Select font"
 msgstr "Vælg skrifttype"
 
-#: historietaactivity.py:37 historietaactivity.py:108
+#: historietaactivity.py:37 historietaactivity.py:126
 msgid "Save as Image"
 msgstr "Gem som billede"
 
@@ -42,115 +42,149 @@ msgstr "Gem som billede"
 msgid "PNG"
 msgstr "PNG"
 
-#: historietaactivity.py:55
+#: historietaactivity.py:54
+msgid "Edit"
+msgstr "Redigér"
+
+#: historietaactivity.py:61
 msgid "View"
 msgstr "Vis"
 
-#: historietaactivity.py:59
+#: historietaactivity.py:65
 msgid "Slideshow"
 msgstr "Diasshow"
 
-#: historietaactivity.py:65
+#: historietaactivity.py:71
 msgid "Fullscreen"
 msgstr "Fuldskærm"
 
-#: historietaactivity.py:84
+#: historietaactivity.py:89
 msgid "Text"
 msgstr "Tekst"
 
-#: historietaactivity.py:115
+#: historietaactivity.py:95
+msgid "Change image order"
+msgstr "Skift billedrækkefølgen"
+
+#: historietaactivity.py:101
+msgid "Edit background image"
+msgstr "Redigér baggrundsbillede"
+
+#: historietaactivity.py:133
 msgid "Save as a Book (PDF)"
 msgstr "Gem som en Bog (PDF)"
 
-#: historietaactivity.py:260 historietaactivity.py:297
+#: historietaactivity.py:276 historietaactivity.py:332
 msgid "Success"
 msgstr "Succes"
 
-#: historietaactivity.py:261
+#: historietaactivity.py:277
 msgid "A image was created in the Journal"
 msgstr "Et billede blev oprettet i journalen"
 
-#: historietaactivity.py:298
+#: historietaactivity.py:333
 msgid "A PDF was created in the Journal"
 msgstr "En PDF blev oprettet i journalen"
 
-#: historietaactivity.py:305
+#: historietaactivity.py:340
 msgid "Show in Journal"
 msgstr "Vis i journal"
 
-#: historietaactivity.py:307
+#: historietaactivity.py:342
 msgid "Ok"
 msgstr "O.k."
 
-#: historietaactivity.py:590
+#: historietaactivity.py:613
 msgid "Title:"
 msgstr "Titel:"
 
-#: toolbar.py:77
+#: reorderwindow.py:54
+msgid "Cancel"
+msgstr "Annullér"
+
+#: reorderwindow.py:59
+msgid "Done"
+msgstr "Fuldført"
+
+#: reorderwindow.py:69
+msgid "Drag the images to reorder"
+msgstr "Træk billederne for at ændre rækkefølge"
+
+#: reorderwindow.py:438
+msgid "Drag to move or resize using the marked corners"
+msgstr ""
+"Træk for at flytte eller ændre størrelsen, ved at benytte de markerede "
+"hjørner"
+
+#: reorderwindow.py:443
+msgid "Reset to box size"
+msgstr "Nulstil til boksstørrelse"
+
+#: toolbar.py:79
 msgid "Add Photo"
 msgstr "Tilføj foto"
 
-#: toolbar.py:81
+#: toolbar.py:83
 msgid "Globe"
 msgstr "Globus"
 
-#: toolbar.py:81
+#: toolbar.py:83
 msgid "Think"
 msgstr "Tænk"
 
-#: toolbar.py:82
+#: toolbar.py:84
 msgid "Whisper"
 msgstr "Hvisk"
 
-#: toolbar.py:82
+#: toolbar.py:84
 msgid "Exclamation"
 msgstr "Udråb"
 
-#: toolbar.py:83
+#: toolbar.py:85
 msgid "Box"
 msgstr "Kasse"
 
-#: toolbar.py:86
+#: toolbar.py:88
 msgid "Add a globe"
 msgstr "Tilføj en globus"
 
-#: toolbar.py:105
+#: toolbar.py:107
 msgid "Curves"
 msgstr "Kurver"
 
-#: toolbar.py:105
+#: toolbar.py:107
 msgid "Straight"
 msgstr "Ret"
 
-#: toolbar.py:106
+#: toolbar.py:108
 msgid "Highlight"
 msgstr "Fremhæv"
 
-#: toolbar.py:106
+#: toolbar.py:108
 msgid "Idea"
 msgstr "Idé"
 
-#: toolbar.py:109
+#: toolbar.py:111
 msgid "Choose a movement line"
 msgstr "Vælg en bevægelseslinje"
 
-#: toolbar.py:132
+#: toolbar.py:134
 msgid "Turn"
 msgstr "Vend"
 
-#: toolbar.py:138
+#: toolbar.py:141
 msgid "Delete"
 msgstr "Slet"
 
-#: toolbar.py:253
+#: toolbar.py:259
 msgid "Bold"
 msgstr "Fed"
 
-#: toolbar.py:258
+#: toolbar.py:264
 msgid "Italic"
 msgstr "Kursiv"
 
-#: toolbar.py:272
+#: toolbar.py:278
 msgid "Text Color"
 msgstr "Tekstfarve"
 
