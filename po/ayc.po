@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-12 00:33-0400\n"
-"PO-Revision-Date: 2013-08-20 14:31+0200\n"
+"POT-Creation-Date: 2014-02-05 00:33-0500\n"
+"PO-Revision-Date: 2014-02-21 21:28+0200\n"
 "Last-Translator: EdgarQuispeChambi <quispedgar@yahoo.es>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ayc\n"
@@ -34,7 +34,7 @@ msgstr ""
 msgid "Select font"
 msgstr "Qillqa thaqaña"
 
-#: historietaactivity.py:37 historietaactivity.py:108
+#: historietaactivity.py:37 historietaactivity.py:126
 msgid "Save as Image"
 msgstr "Rixitjama imaña"
 
@@ -43,119 +43,152 @@ msgstr "Rixitjama imaña"
 msgid "PNG"
 msgstr "PNG"
 
-#: historietaactivity.py:55
+#: historietaactivity.py:54
+msgid "Edit"
+msgstr "Chiqachaña"
+
+#: historietaactivity.py:61
 msgid "View"
 msgstr "Uñjäwi"
 
-#: historietaactivity.py:59
+#: historietaactivity.py:65
 msgid "Slideshow"
 msgstr "Nayranchaña"
 
-#: historietaactivity.py:65
+#: historietaactivity.py:71
 msgid "Fullscreen"
 msgstr "Maypacha uñjäwi"
 
 #  "Texto"
-#: historietaactivity.py:84
+#: historietaactivity.py:89
 msgid "Text"
 msgstr "Qillqawi"
 
-#: historietaactivity.py:115
+#: historietaactivity.py:95
+msgid "Change image order"
+msgstr "rixitanaka siqita mayjt'ayaña"
+
+#: historietaactivity.py:101
+msgid "Edit background image"
+msgstr "qhipäxa rixita chiqachaña"
+
+#: historietaactivity.py:133
 msgid "Save as a Book (PDF)"
 msgstr "(PDF) panka qillqatjama imaña"
 
-#: historietaactivity.py:260 historietaactivity.py:297
+#: historietaactivity.py:276 historietaactivity.py:332
 msgid "Success"
 msgstr "Nayrankaña"
 
-#: historietaactivity.py:261
+#: historietaactivity.py:277
 msgid "A image was created in the Journal"
 msgstr "Sapüru luräwiru maya rixitawa uñstayasi"
 
-#: historietaactivity.py:298
+#: historietaactivity.py:333
 msgid "A PDF was created in the Journal"
 msgstr "Sapüru luräwiru maya PDF wakichatawa uñstayasi"
 
-#: historietaactivity.py:305
+#: historietaactivity.py:340
 msgid "Show in Journal"
 msgstr "Sapüru luräwiru uñachayaña"
 
-#: historietaactivity.py:307
+#: historietaactivity.py:342
 msgid "Ok"
 msgstr "Walikiwa"
 
-#: historietaactivity.py:590
+#: historietaactivity.py:613
 msgid "Title:"
 msgstr "P'iqinchäwi:"
 
-#: toolbar.py:77
+#: reorderwindow.py:54
+msgid "Cancel"
+msgstr "Tukuyaña"
+
+#: reorderwindow.py:59
+msgid "Done"
+msgstr "Wakichata"
+
+#: reorderwindow.py:69
+msgid "Drag the images to reorder"
+msgstr "Rixitanaka apthapiñataki waythapma"
+
+#: reorderwindow.py:438
+msgid "Drag to move or resize using the marked corners"
+msgstr ""
+"ch'ikunchata wit'unaka unxtayañataki jani ukaxa machaqachañataki wayt'ma"
+
+#: reorderwindow.py:443
+msgid "Reset to box size"
+msgstr "imaña wakichata mayampi jaktayma"
+
+#: toolbar.py:79
 msgid "Add Photo"
 msgstr "Foto yapxataña"
 
-#: toolbar.py:81
+#: toolbar.py:83
 msgid "Globe"
 msgstr "Globo phusata"
 
-#: toolbar.py:81
+#: toolbar.py:83
 msgid "Think"
 msgstr "lup'iña"
 
-#: toolbar.py:82
+#: toolbar.py:84
 msgid "Whisper"
 msgstr "Ñusuqiña"
 
-#: toolbar.py:82
+#: toolbar.py:84
 msgid "Exclamation"
 msgstr "Q'asaña"
 
-#: toolbar.py:83
+#: toolbar.py:85
 msgid "Box"
 msgstr "Kajuna"
 
-#: toolbar.py:86
+#: toolbar.py:88
 msgid "Add a globe"
 msgstr "Globo phusantata yapxataña"
 
-#: toolbar.py:105
+#: toolbar.py:107
 msgid "Curves"
 msgstr "Q'iwinaka"
 
-#: toolbar.py:105
+#: toolbar.py:107
 msgid "Straight"
 msgstr "Chiqa"
 
-#: toolbar.py:106
+#: toolbar.py:108
 msgid "Highlight"
 msgstr "Qhananchata"
 
-#: toolbar.py:106
+#: toolbar.py:108
 msgid "Idea"
 msgstr "Amuyu"
 
-#: toolbar.py:109
+#: toolbar.py:111
 msgid "Choose a movement line"
 msgstr "Muyuyiri chiqa ajllma"
 
-#: toolbar.py:132
+#: toolbar.py:134
 msgid "Turn"
 msgstr "Muyuyaña"
 
 #  "Borrar"
-#: toolbar.py:138
+#: toolbar.py:141
 msgid "Delete"
 msgstr "Chhaqtayaña"
 
 #  "Negrita"
-#: toolbar.py:253
+#: toolbar.py:259
 msgid "Bold"
 msgstr "Qhananchata"
 
 #  "Italica"
-#: toolbar.py:258
+#: toolbar.py:264
 msgid "Italic"
 msgstr "Alt'ata qillqanaka"
 
-#: toolbar.py:272
+#: toolbar.py:278
 msgid "Text Color"
 msgstr "Qillqata samipa"
 
