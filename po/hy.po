@@ -6,9 +6,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-12 00:33-0400\n"
-"PO-Revision-Date: 2013-07-08 20:40+0200\n"
-"Last-Translator: anushnur <anush.mkrtchyan@ca1492.com>\n"
+"POT-Creation-Date: 2014-02-05 00:33-0500\n"
+"PO-Revision-Date: 2014-02-22 10:44+0200\n"
+"Last-Translator: Aram <ararat.info@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hy\n"
 "MIME-Version: 1.0\n"
@@ -34,7 +34,7 @@ msgstr ""
 msgid "Select font"
 msgstr "Ընտրել տառատեսակը"
 
-#: historietaactivity.py:37 historietaactivity.py:108
+#: historietaactivity.py:37 historietaactivity.py:126
 msgid "Save as Image"
 msgstr "Պահել որպես պատկեր"
 
@@ -43,115 +43,147 @@ msgstr "Պահել որպես պատկեր"
 msgid "PNG"
 msgstr "PNG"
 
-#: historietaactivity.py:55
+#: historietaactivity.py:54
+msgid "Edit"
+msgstr "Խմբագրել"
+
+#: historietaactivity.py:61
 msgid "View"
 msgstr "Տեսք"
 
-#: historietaactivity.py:59
+#: historietaactivity.py:65
 msgid "Slideshow"
 msgstr "Ներկայացում"
 
-#: historietaactivity.py:65
+#: historietaactivity.py:71
 msgid "Fullscreen"
 msgstr "Ամբողջ էկրանով"
 
-#: historietaactivity.py:84
+#: historietaactivity.py:89
 msgid "Text"
 msgstr "Տեքստ"
 
-#: historietaactivity.py:115
+#: historietaactivity.py:95
+msgid "Change image order"
+msgstr "Փոխել նկարների դասավորությունը"
+
+#: historietaactivity.py:101
+msgid "Edit background image"
+msgstr "Փոխել ֆոնի նկարը"
+
+#: historietaactivity.py:133
 msgid "Save as a Book (PDF)"
 msgstr "Պահպանել որպես Գիրք (PDF)"
 
-#: historietaactivity.py:260 historietaactivity.py:297
+#: historietaactivity.py:276 historietaactivity.py:332
 msgid "Success"
 msgstr "Հաջողություն"
 
-#: historietaactivity.py:261
+#: historietaactivity.py:277
 msgid "A image was created in the Journal"
 msgstr "Մատյանում ստեղծված է մի պատկեր:"
 
-#: historietaactivity.py:298
+#: historietaactivity.py:333
 msgid "A PDF was created in the Journal"
 msgstr "PDF ձևաչափը ստեղծված է մատյանում:"
 
-#: historietaactivity.py:305
+#: historietaactivity.py:340
 msgid "Show in Journal"
 msgstr "Ցուցադրել Մատյանում"
 
-#: historietaactivity.py:307
+#: historietaactivity.py:342
 msgid "Ok"
 msgstr "Շատ լավ"
 
-#: historietaactivity.py:590
+#: historietaactivity.py:613
 msgid "Title:"
 msgstr "Վերնագիր."
 
-#: toolbar.py:77
+#: reorderwindow.py:54
+msgid "Cancel"
+msgstr "Չեղարկել"
+
+#: reorderwindow.py:59
+msgid "Done"
+msgstr "Արված է"
+
+#: reorderwindow.py:69
+msgid "Drag the images to reorder"
+msgstr "Քարշիր նկարները դասավորելու համար"
+
+#: reorderwindow.py:438
+msgid "Drag to move or resize using the marked corners"
+msgstr "Քարշիր, որ շարժես կամ փոխես չափը օգտագործելով նշված անկյունները"
+
+#: reorderwindow.py:443
+msgid "Reset to box size"
+msgstr "Դնել տուփի չափսին"
+
+#: toolbar.py:79
 msgid "Add Photo"
 msgstr "Ավելացնել լուսանկար"
 
-#: toolbar.py:81
+#: toolbar.py:83
 msgid "Globe"
 msgstr "Գունդ"
 
-#: toolbar.py:81
+#: toolbar.py:83
 msgid "Think"
 msgstr "Մտածել"
 
-#: toolbar.py:82
+#: toolbar.py:84
 msgid "Whisper"
 msgstr "Շշնջալ"
 
-#: toolbar.py:82
+#: toolbar.py:84
 msgid "Exclamation"
 msgstr "Բացականչություն"
 
-#: toolbar.py:83
+#: toolbar.py:85
 msgid "Box"
 msgstr "Տուփ"
 
-#: toolbar.py:86
+#: toolbar.py:88
 msgid "Add a globe"
 msgstr "Ավելացնել գունդ"
 
-#: toolbar.py:105
+#: toolbar.py:107
 msgid "Curves"
 msgstr "Կորագծեր"
 
-#: toolbar.py:105
+#: toolbar.py:107
 msgid "Straight"
 msgstr "Ուղիղ"
 
-#: toolbar.py:106
+#: toolbar.py:108
 msgid "Highlight"
 msgstr "Ընդգծել"
 
-#: toolbar.py:106
+#: toolbar.py:108
 msgid "Idea"
 msgstr "Գաղափար"
 
-#: toolbar.py:109
+#: toolbar.py:111
 msgid "Choose a movement line"
 msgstr "Ընտրել շարժման գիծը"
 
-#: toolbar.py:132
+#: toolbar.py:134
 msgid "Turn"
 msgstr "Պտտել"
 
-#: toolbar.py:138
+#: toolbar.py:141
 msgid "Delete"
 msgstr "Ջնջել"
 
-#: toolbar.py:253
+#: toolbar.py:259
 msgid "Bold"
 msgstr "Թավ"
 
-#: toolbar.py:258
+#: toolbar.py:264
 msgid "Italic"
 msgstr "Շեղագիր"
 
-#: toolbar.py:272
+#: toolbar.py:278
 msgid "Text Color"
 msgstr "Տեքստի գույնը"
 
