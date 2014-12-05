@@ -31,6 +31,7 @@ from slideview import SlideView
 from reorderwindow import ReorderView
 from reorderwindow import ImageEditorView
 
+test_for_pootle = _('Hello pootle')
 
 class HistorietaActivity(activity.Activity):
 
