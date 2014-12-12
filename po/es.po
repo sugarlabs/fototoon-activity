@@ -30,8 +30,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-05 18:15+0000\n"
-"PO-Revision-Date: 2014-12-05 18:24+0000\n"
+"POT-Creation-Date: 2014-12-12 16:41+0000\n"
+"PO-Revision-Date: 2014-12-12 16:43+0000\n"
 "Last-Translator: Gonzalo <godiard@gmail.com>\n"
 "Language-Team: Spanish\n"
 "Language: es\n"
@@ -40,73 +40,81 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Pootle 2.5.1.1\n"
-"X-POOTLE-MTIME: 1417803858.000000\n"
+"X-POOTLE-MTIME: 1418402599.000000\n"
 
 #: ../historietaactivity.py:34
 msgid "Hello pootle"
 msgstr "Hola pootle"
 
-#: ../historietaactivity.py:38 ../historietaactivity.py:127
+#: ../historietaactivity.py:35
+msgid "Hello again pootle"
+msgstr "Hola de nuevo, pootle"
+
+#: ../historietaactivity.py:36
+msgid "Hasta la vista, pootle!"
+msgstr "Hasta la vista, pootle!"
+
+#: ../historietaactivity.py:40 ../historietaactivity.py:129
 msgid "Save as Image"
 msgstr "Guardar como imagen"
 
-#: ../historietaactivity.py:38
+#: ../historietaactivity.py:40
 msgid "PNG"
 msgstr "PNG"
 
-#: ../historietaactivity.py:55
+#: ../historietaactivity.py:57
 msgid "Edit"
 msgstr "Editar"
 
-#: ../historietaactivity.py:62
+#: ../historietaactivity.py:64
 msgid "View"
 msgstr "Vista"
 
-#: ../historietaactivity.py:66
+#: ../historietaactivity.py:68
 msgid "Slideshow"
 msgstr "Presentación"
 
-#: ../historietaactivity.py:72
+#: ../historietaactivity.py:74
 msgid "Fullscreen"
 msgstr "Pantalla completa"
 
-#: ../historietaactivity.py:90
+#: ../historietaactivity.py:92
 msgid "Text"
 msgstr "Texto"
 
-#: ../historietaactivity.py:96
+#: ../historietaactivity.py:98
 msgid "Change image order"
 msgstr "Cambiar el orden de las imágenes"
 
-#: ../historietaactivity.py:102
+#: ../historietaactivity.py:104
 msgid "Edit background image"
 msgstr "Editar imagen de fondo"
 
-#: ../historietaactivity.py:134
+#: ../historietaactivity.py:136
 msgid "Save as a Book (PDF)"
 msgstr "Guardar como Libro (PDF)"
 
-#: ../historietaactivity.py:277 ../historietaactivity.py:333
+#: ../historietaactivity.py:279 ../historietaactivity.py:335
 msgid "Success"
 msgstr "Éxito"
 
-#: ../historietaactivity.py:278
+#: ../historietaactivity.py:280
 msgid "A image was created in the Journal"
 msgstr "Se ha creado una imagen en el Diario"
 
-#: ../historietaactivity.py:334
+#: ../historietaactivity.py:336
 msgid "A PDF was created in the Journal"
 msgstr "Se ha creado un PDF en el Diario"
 
-#: ../historietaactivity.py:341
+#: ../historietaactivity.py:343
 msgid "Show in Journal"
 msgstr "Mostrar en el Diario"
 
-#: ../historietaactivity.py:343
+#: ../historietaactivity.py:345
 msgid "Ok"
 msgstr "Ok"
 
-#: ../historietaactivity.py:614
+#: ../historietaactivity.py:616
 msgid "Title:"
 msgstr "Título:"
 
