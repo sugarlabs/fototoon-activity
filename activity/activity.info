@@ -9,3 +9,4 @@ host_version = 2
 mime_types = application/x-fototoon-activity;
 summary = Interested in telling a story? Easy! Use your pictures and your imagination to create your own comics!
 categories = media language art
+repository = git@github.com:godiard/fototoon-activity.git
