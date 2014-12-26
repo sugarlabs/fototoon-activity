@@ -22,6 +22,7 @@ from sugar3 import profile
 from sugar3.graphics import style
 from sugar3.graphics.alert import Alert
 from sugar3.graphics.icon import Icon
+from sugar3.graphics.palette import Palette
 
 import globos
 import persistencia
@@ -30,6 +31,11 @@ from toolbar import GlobesManager
 from slideview import SlideView
 from reorderwindow import ReorderView
 from reorderwindow import ImageEditorView
+
+
+DEFAULT_TIME = 10
+MIN_TIME = 1
+MAX_TIME = 60
 
 
 class HistorietaActivity(activity.Activity):
@@ -66,6 +72,30 @@ class HistorietaActivity(activity.Activity):
         slideview_btn.set_active(False)
         view_toolbar.insert(slideview_btn, -1)
         slideview_btn.show()
+
+        time_button = ToolButton('stopwatch')
+        time_button.set_tooltip(_('Set Image Duration in Slideshow (Seconds)'))
+        view_toolbar.insert(time_button, -1)
+        time_button.show()
+
+        self._time_spin = Gtk.SpinButton.new_with_range(MIN_TIME, MAX_TIME, 1)
+        self._time_spin.connect('value-changed', self.__time_spin_changed_cb)
+        self._time_spin.props.value = DEFAULT_TIME
+        self._time_spin.props.update_policy = \
+            Gtk.SpinButtonUpdatePolicy.IF_VALID
+
+        palette = time_button.get_palette()
+        palette.connect('popup', self.__time_button_popup_cb)
+        time_button.connect('clicked', lambda *args:
+            palette.popup(immediate=True, state=Palette.SECONDARY))
+
+        alignment = Gtk.Alignment()
+        alignment.set_padding(style.DEFAULT_PADDING, style.DEFAULT_PADDING,
+                              style.DEFAULT_PADDING, style.DEFAULT_PADDING)
+        alignment.add(self._time_spin)
+        self._time_spin.show()
+        palette.set_content(alignment)
+        alignment.show()
 
         fullscreen_btn = ToolButton('view-fullscreen')
         fullscreen_btn.set_tooltip(_('Fullscreen'))
@@ -401,6 +431,14 @@ class HistorietaActivity(activity.Activity):
         self.globes_manager.set_buttons_sensitive(not widget.get_active())
         textbutton.set_sensitive(not widget.get_active())
 
+    def __time_button_popup_cb(self, palette):
+        self._time_spin.props.value = \
+            self.page.get_active_box().slideshow_duration
+
+    def __time_spin_changed_cb(self, button):
+        self.page.get_active_box().slideshow_duration = \
+            self._time_spin.props.value
+
 
 DEF_SPACING = 6
 DEF_WIDTH = 4
@@ -526,6 +564,7 @@ class ComicBox(Gtk.EventBox):
         self.image_saved = False
         self.title_globe = None
         self.thumbnail = None
+        self.slideshow_duration = DEFAULT_TIME
 
         self.width = (int)(SCREEN_WIDTH - DEF_SPACING) / 2
         self.height = BOX_HEIGHT

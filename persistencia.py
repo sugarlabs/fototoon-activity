@@ -46,6 +46,7 @@ class Persistence:
             boxData['img_w'] = box.img_w
             boxData['img_h'] = box.img_h
             boxData['image_name'] = box.image_name
+            boxData['slideshow_duration'] = box.slideshow_duration
             boxData['globes'] = []
             for globo in box.globos:
                 globoData = {}
@@ -191,4 +192,6 @@ class Persistence:
                     if globoData['title_globe']:
                         box.title_globe = globo
 
+            if 'slideshow_duration' in boxData:
+                box.slideshow_duration = boxData['slideshow_duration']
             #box.redraw()
