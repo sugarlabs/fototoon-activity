@@ -1,12 +1,16 @@
 # -*- coding: UTF-8 -*-
 
 import os
+import tempfile
+import shutil
 import cairo
 import dbus
 import logging
 from gettext import gettext as _
 import time
+from fractions import gcd
 
+from gi.repository import Gst
 from gi.repository import Gtk
 from gi.repository import Gdk
 from gi.repository import GdkPixbuf
@@ -36,6 +40,11 @@ from reorderwindow import ImageEditorView
 DEFAULT_TIME = 10
 MIN_TIME = 1
 MAX_TIME = 60
+
+VIDEO_PIPELINE = ('multifilesrc location="{}" index=0 '
+                  'caps="image/png,framerate=\(fraction\)1/{}" '
+                  '! pngdec ! videoconvert ! videorate ! theoraenc '
+                  '! oggmux ! filesink location={}')
 
 
 class HistorietaActivity(activity.Activity):
@@ -170,6 +179,13 @@ class HistorietaActivity(activity.Activity):
         save_as_pdf.set_tooltip(_('Save as a Book (PDF)'))
         activity_toolbar.insert(save_as_pdf, -1)
         save_as_pdf.show()
+
+        save_as_ogg = ToolButton()
+        save_as_ogg.props.icon_name = 'save-as-ogg'
+        save_as_ogg.connect('clicked', self.__save_as_ogg_cb)
+        save_as_ogg.set_tooltip(_('Save as a Movie (OGG)'))
+        activity_toolbar.insert(save_as_ogg, -1)
+        save_as_ogg.show()
 
         activity_button.page.title.connect("focus-in-event", self.on_title)
 
@@ -368,6 +384,61 @@ class HistorietaActivity(activity.Activity):
 
         self._show_journal_alert(_('Success'),
                                  _('A PDF was created in the Journal'))
+
+    def __save_as_ogg_cb(self, button):
+        self._commit_all_changes()
+
+        directory = tempfile.mkdtemp()
+        output_path = os.path.join(directory, 'output.ogv')
+
+        first_box = self.page.boxs[1]
+        width = first_box.width
+        height = first_box.height
+
+        framerate = first_box.slideshow_duration
+        if len(self.page.boxs) > 2:
+            for box in self.page.boxs[1:]:
+                framerate = gcd(framerate, box.slideshow_duration)
+        framerate = int(framerate)
+
+        i = 0
+        for box in self.page.boxs[1:]:
+            surface = cairo.ImageSurface(cairo.FORMAT_ARGB32, width, height)
+            context = cairo.Context(surface)
+
+            context.set_source_rgb(1.0, 1.0, 1.0)
+            context.paint()
+            box.draw_in_context(context)
+
+            for __ in range(int(box.slideshow_duration / framerate)):
+                path = os.path.join(directory, '{}.png'.format(i))
+                surface.write_to_png(path)
+                i += 1
+
+        Gst.init(None)
+        pipeline_string = VIDEO_PIPELINE.format(
+            os.path.join(directory, '%d.png'), framerate, output_path)
+        pipeline = Gst.parse_launch(pipeline_string)
+
+        pipeline.set_state(Gst.State.PLAYING)
+        pipeline.get_bus().timed_pop_filtered(
+            Gst.CLOCK_TIME_NONE, Gst.MessageType.ERROR | Gst.MessageType.EOS)
+        pipeline.set_state(Gst.State.NULL)
+
+        jobject = datastore.create()
+        jobject.metadata['icon-color'] = profile.get_color().to_string()
+        jobject.metadata['mime_type'] = 'video/ogg'
+        jobject.metadata['title'] = \
+             _('{} as a movie').format(self.metadata['title'])
+        jobject.file_path = output_path
+
+        datastore.write(jobject, transfer_ownership=True)
+        self._object_id = jobject.object_id
+
+        self._show_journal_alert(_('Success'),
+                                 _('A movie was saved in the Journal'))
+        shutil.rmdir(directory)
+
 
     def _show_journal_alert(self, title, msg):
         _stop_alert = Alert()
