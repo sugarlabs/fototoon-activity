@@ -1,12 +1,16 @@
 # -*- coding: UTF-8 -*-
 
 import os
+import tempfile
+import shutil
 import cairo
 import dbus
 import logging
 from gettext import gettext as _
 import time
+from fractions import gcd
 
+from gi.repository import Gst
 from gi.repository import Gtk
 from gi.repository import Gdk
 from gi.repository import GdkPixbuf
@@ -22,6 +26,7 @@ from sugar3 import profile
 from sugar3.graphics import style
 from sugar3.graphics.alert import Alert
 from sugar3.graphics.icon import Icon
+from sugar3.graphics.palette import Palette
 
 import globos
 import persistencia
@@ -30,6 +35,16 @@ from toolbar import GlobesManager
 from slideview import SlideView
 from reorderwindow import ReorderView
 from reorderwindow import ImageEditorView
+
+
+DEFAULT_TIME = 10
+MIN_TIME = 1
+MAX_TIME = 60
+
+VIDEO_PIPELINE = ('multifilesrc location="{}" index=0 '
+                  'caps="image/png,framerate=\(fraction\)1/{}" '
+                  '! pngdec ! videoconvert ! videorate ! theoraenc '
+                  '! oggmux ! filesink location={}')
 
 
 class HistorietaActivity(activity.Activity):
@@ -64,8 +79,40 @@ class HistorietaActivity(activity.Activity):
         slideview_btn = ToggleToolButton('slideshow')
         slideview_btn.set_tooltip(_('Slideshow'))
         slideview_btn.set_active(False)
+        slideview_btn.connect('clicked', self._switch_view_mode, False)
         view_toolbar.insert(slideview_btn, -1)
         slideview_btn.show()
+
+        slideview_timings_btn = ToggleToolButton('slideshow-stopwatch')
+        slideview_timings_btn.set_tooltip(_('Slideshow with Timings'))
+        slideview_timings_btn.set_active(False)
+        slideview_timings_btn.connect('clicked', self._switch_view_mode, True)
+        view_toolbar.insert(slideview_timings_btn, -1)
+        slideview_timings_btn.show()
+
+        time_button = ToolButton('stopwatch')
+        time_button.set_tooltip(_('Set Image Duration in Slideshow (Seconds)'))
+        view_toolbar.insert(time_button, -1)
+        time_button.show()
+
+        self._time_spin = Gtk.SpinButton.new_with_range(MIN_TIME, MAX_TIME, 1)
+        self._time_spin.connect('value-changed', self.__time_spin_changed_cb)
+        self._time_spin.props.value = DEFAULT_TIME
+        self._time_spin.props.update_policy = \
+            Gtk.SpinButtonUpdatePolicy.IF_VALID
+
+        palette = time_button.get_palette()
+        palette.connect('popup', self.__time_button_popup_cb)
+        time_button.connect('clicked', lambda *args:
+            palette.popup(immediate=True, state=Palette.SECONDARY))
+
+        alignment = Gtk.Alignment()
+        alignment.set_padding(style.DEFAULT_PADDING, style.DEFAULT_PADDING,
+                              style.DEFAULT_PADDING, style.DEFAULT_PADDING)
+        alignment.add(self._time_spin)
+        self._time_spin.show()
+        palette.set_content(alignment)
+        alignment.show()
 
         fullscreen_btn = ToolButton('view-fullscreen')
         fullscreen_btn.set_tooltip(_('Fullscreen'))
@@ -83,12 +130,11 @@ class HistorietaActivity(activity.Activity):
         self.globes_manager = GlobesManager(toolbar, edit_toolbar, self)
 
         # fonts
-        text_button = ToolbarButton()
-        text_button.props.page = TextToolbar(self.page)
-        text_button.props.icon_name = 'format-text-size'
-        text_button.props.label = _('Text')
-        slideview_btn.connect('clicked', self._switch_view_mode, text_button)
-        toolbar_box.toolbar.insert(text_button, -1)
+        self._text_button = ToolbarButton()
+        self._text_button.props.page = TextToolbar(self.page)
+        self._text_button.props.icon_name = 'format-text-size'
+        self._text_button.props.label = _('Text')
+        self._toolbar_box.toolbar.insert(self._text_button, -1)
 
         reorder_img_btn = ToolButton('thumbs-view')
         reorder_img_btn.set_icon_name('thumbs-view')
@@ -133,6 +179,13 @@ class HistorietaActivity(activity.Activity):
         save_as_pdf.set_tooltip(_('Save as a Book (PDF)'))
         activity_toolbar.insert(save_as_pdf, -1)
         save_as_pdf.show()
+
+        save_as_ogg = ToolButton()
+        save_as_ogg.props.icon_name = 'save-as-ogg'
+        save_as_ogg.connect('clicked', self.__save_as_ogg_cb)
+        save_as_ogg.set_tooltip(_('Save as a Movie (OGG)'))
+        activity_toolbar.insert(save_as_ogg, -1)
+        save_as_ogg.show()
 
         activity_button.page.title.connect("focus-in-event", self.on_title)
 
@@ -332,6 +385,61 @@ class HistorietaActivity(activity.Activity):
         self._show_journal_alert(_('Success'),
                                  _('A PDF was created in the Journal'))
 
+    def __save_as_ogg_cb(self, button):
+        self._commit_all_changes()
+
+        directory = tempfile.mkdtemp()
+        output_path = os.path.join(directory, 'output.ogv')
+
+        first_box = self.page.boxs[1]
+        width = first_box.width
+        height = first_box.height
+
+        framerate = first_box.slideshow_duration
+        if len(self.page.boxs) > 2:
+            for box in self.page.boxs[1:]:
+                framerate = gcd(framerate, box.slideshow_duration)
+        framerate = int(framerate)
+
+        i = 0
+        for box in self.page.boxs[1:]:
+            surface = cairo.ImageSurface(cairo.FORMAT_ARGB32, width, height)
+            context = cairo.Context(surface)
+
+            context.set_source_rgb(1.0, 1.0, 1.0)
+            context.paint()
+            box.draw_in_context(context)
+
+            for __ in range(int(box.slideshow_duration / framerate)):
+                path = os.path.join(directory, '{}.png'.format(i))
+                surface.write_to_png(path)
+                i += 1
+
+        Gst.init(None)
+        pipeline_string = VIDEO_PIPELINE.format(
+            os.path.join(directory, '%d.png'), framerate, output_path)
+        pipeline = Gst.parse_launch(pipeline_string)
+
+        pipeline.set_state(Gst.State.PLAYING)
+        pipeline.get_bus().timed_pop_filtered(
+            Gst.CLOCK_TIME_NONE, Gst.MessageType.ERROR | Gst.MessageType.EOS)
+        pipeline.set_state(Gst.State.NULL)
+
+        jobject = datastore.create()
+        jobject.metadata['icon-color'] = profile.get_color().to_string()
+        jobject.metadata['mime_type'] = 'video/ogg'
+        jobject.metadata['title'] = \
+             _('{} as a movie').format(self.metadata['title'])
+        jobject.file_path = output_path
+
+        datastore.write(jobject, transfer_ownership=True)
+        self._object_id = jobject.object_id
+
+        self._show_journal_alert(_('Success'),
+                                 _('A movie was saved in the Journal'))
+        shutil.rmdir(directory)
+
+
     def _show_journal_alert(self, title, msg):
         _stop_alert = Alert()
         _stop_alert.props.title = title
@@ -383,11 +491,13 @@ class HistorietaActivity(activity.Activity):
         succes, preview_data = pixbuf2.save_to_bufferv('png', [], [])
         return dbus.ByteArray(preview_data)
 
-    def _switch_view_mode(self, widget, textbutton):
+    def _switch_view_mode(self, widget, use_timings):
         if widget.get_active():
             self._notebook.set_current_page(1)
+            self._slideview.stop()
             self._slideview.set_boxes(self.page.boxs)
             self._slideview.set_current_box(0)
+            self._slideview.start(use_timings)
             #disable edition mode in the globes
             for box in self.page.boxs:
                 box.set_globo_activo(None)
@@ -395,11 +505,20 @@ class HistorietaActivity(activity.Activity):
             self._key_press_signal_id = self.connect(
                 'key_press_event', self._slideview.key_press_cb)
         else:
+            self._slideview.stop()
             self._notebook.set_current_page(0)
             if self._key_press_signal_id is not None:
                 self.disconnect(self._key_press_signal_id)
         self.globes_manager.set_buttons_sensitive(not widget.get_active())
-        textbutton.set_sensitive(not widget.get_active())
+        self._text_button.set_sensitive(not widget.get_active())
+
+    def __time_button_popup_cb(self, palette):
+        self._time_spin.props.value = \
+            self.page.get_active_box().slideshow_duration
+
+    def __time_spin_changed_cb(self, button):
+        self.page.get_active_box().slideshow_duration = \
+            self._time_spin.props.value
 
 
 DEF_SPACING = 6
@@ -526,6 +645,7 @@ class ComicBox(Gtk.EventBox):
         self.image_saved = False
         self.title_globe = None
         self.thumbnail = None
+        self.slideshow_duration = DEFAULT_TIME
 
         self.width = (int)(SCREEN_WIDTH - DEF_SPACING) / 2
         self.height = BOX_HEIGHT
