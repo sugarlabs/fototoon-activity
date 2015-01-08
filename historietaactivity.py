@@ -56,6 +56,7 @@ class HistorietaActivity(activity.Activity):
         self.set_title('FotoToon')
 
         self._max_participants = 1
+        self.page = None
 
         toolbar_box = ToolbarBox()
         activity_button = ActivityToolbarButton(self)
@@ -517,8 +518,9 @@ class HistorietaActivity(activity.Activity):
             self.page.get_active_box().slideshow_duration
 
     def __time_spin_changed_cb(self, button):
-        self.page.get_active_box().slideshow_duration = \
-            self._time_spin.props.value
+        if self.page:
+            self.page.get_active_box().slideshow_duration = \
+                self._time_spin.props.value
 
 
 DEF_SPACING = 6
