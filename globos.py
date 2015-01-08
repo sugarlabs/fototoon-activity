@@ -49,24 +49,24 @@ class Globo:
 
         self.globe_type = "GLOBE"
         self.box = box
-        #determina tamanio minimo
+        # determina tamanio minimo
         self.radio = 30
-        #dimensiones de la elipse
+        # dimensiones de la elipse
         self.ancho = ancho
         self.alto = alto
         self.punto = [ancho / 2, alto * 2]
-        #determina si esta seleccionado
+        # determina si esta seleccionado
         # TODO: make private
         self.selec = False
         self.direccion = direccion
-        #2 tipos de globos: "normal" o "despacio"
+        # 2 tipos de globos: "normal" o "despacio"
         self.modo = modo
-        #Centro de la elipse
+        # Centro de la elipse
         self.x = x * self.ancho / (self.radio * 1.0)
         self.y = y * self.alto / (self.radio * 1.0)
 
         ancho_text, alto_text = self.calc_area_texto(self.ancho, self.alto)
-        #es el contenedor del texto
+        # es el contenedor del texto
         self.texto = CuadroTexto(self, ancho_text, alto_text,
                                  font_name)
 
@@ -80,7 +80,7 @@ class Globo:
             self.texto.set_edition_mode(selected)
 
     def imprimir(self, context):
-        #dibujo al globo de dialogo
+        # dibujo al globo de dialogo
 
         context.save()
 
@@ -234,7 +234,7 @@ class Globo:
         return cursor
 
     def is_selec(self, x, y):
-        #devuelve True si es seleccionado
+        # devuelve True si es seleccionado
         if (self.x - self.ancho) < x < (self.x + self.ancho) and \
                 (self.y - self.alto) < y < (self.y + self.alto):
 
@@ -242,12 +242,12 @@ class Globo:
             if self.texto is not None:
                 self.texto.mostrar_cursor = True
 
-            #Obtiene la posicion donde se selecciono con el mouse
+            # Obtiene la posicion donde se selecciono con el mouse
             self.dx = self.x - x
             self.dy = self.y - y
             return True
         else:
-            #self.selec=False
+            # self.selec=False
             return False
 
     def is_selec_tam(self, x, y):
@@ -417,16 +417,16 @@ class Rectangulo(Globo):
 
         self.globe_type = "RECTANGLE"
         self.box = box
-        #determina tamanio minimo
+        # determina tamanio minimo
         self.radio = 15
-        #dimensiones del rectangulo
+        # dimensiones del rectangulo
         self.ancho = ancho
         self.alto = alto
         self.punto = None
         self.direccion = None
         self.selec = False
 
-        #Centro del rectangulo
+        # Centro del rectangulo
         self.x = x
         self.y = y
 
@@ -435,7 +435,7 @@ class Rectangulo(Globo):
                                  font_name)
 
     def imprimir(self, context):
-        #imprimimos el rectangulo
+        # imprimimos el rectangulo
         context.set_line_width(3)
         context.rectangle(self.x - self.ancho, self.y - self.alto,
                           2 * self.ancho, 2 * self.alto)
@@ -499,12 +499,12 @@ class Nube(Globo):
         self.radio = 30
         self.box = box
 
-        #dimensiones de la elipse
+        # dimensiones de la elipse
         self.ancho = ancho
         self.alto = alto
 
         self.punto = [ancho / 2, alto * 2]
-        #determina si esta seleccionado
+        # determina si esta seleccionado
         self.selec = False
 
         self.direccion = direccion
@@ -804,7 +804,7 @@ class CuadroTexto:
 
     def __init__(self, globe, ancho=50, alto=30, font_name=DEFAULT_FONT):
 
-        #Ancho del cuadro = 2*self.ancho
+        # Ancho del cuadro = 2*self.ancho
         self._globe = globe
         self._box = globe.box
         self.ancho = ancho
@@ -812,7 +812,7 @@ class CuadroTexto:
 
         self.text = ''
 
-        #Caracteristicas de la tipografia
+        # Caracteristicas de la tipografia
         self.font_description = '%s 10' % font_name
         self.bold = False
         self.italic = False

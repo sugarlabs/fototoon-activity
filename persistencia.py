@@ -194,4 +194,3 @@ class Persistence:
 
             if 'slideshow_duration' in boxData:
                 box.slideshow_duration = boxData['slideshow_duration']
-            #box.redraw()

@@ -41,9 +41,9 @@ from fontcombobox import FontSize
 import globos
 
 
-##Class to manage the Text Color
+# Class to manage the Text Color
 class TextButtonColor(ColorToolButton):
-    ##The Constructor
+
     def __init__(self, page):
         ColorToolButton.__init__(self)
         self._page = page
@@ -180,7 +180,7 @@ class GlobesManager():
             self.add_image()
 
     def girar(self, boton):
-        #veo cual es el globo seleccionado y o giro
+        # veo cual es el globo seleccionado y o giro
         box = self._page.get_active_box()
         if box.get_globo_activo() is not None:
             globe = box.get_globo_activo()

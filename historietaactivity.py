@@ -103,7 +103,8 @@ class HistorietaActivity(activity.Activity):
 
         palette = time_button.get_palette()
         palette.connect('popup', self.__time_button_popup_cb)
-        time_button.connect('clicked', lambda *args:
+        time_button.connect(
+            'clicked', lambda *args:
             palette.popup(immediate=True, state=Palette.SECONDARY))
 
         alignment = Gtk.Alignment()
@@ -190,7 +191,7 @@ class HistorietaActivity(activity.Activity):
         activity_button.page.title.connect("focus-in-event", self.on_title)
 
         scrolled = Gtk.ScrolledWindow()
-        #scrolled.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.ALWAYS)
+        # scrolled.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.ALWAYS)
         scrolled.add_with_viewport(self.page)
         scrolled.set_kinetic_scrolling(False)
         scrolled.show_all()
@@ -246,7 +247,7 @@ class HistorietaActivity(activity.Activity):
                 try:
                     reng = int((posi + 1) / 2)
                     column = (posi + 1) - (reng * 2)
-                    #logging.error("reng %d column %d" % (reng, column))
+                    # logging.error("reng %d column %d" % (reng, column))
                     if column == 0:
                         image_height = image_height + box.height
                 except:
@@ -376,7 +377,7 @@ class HistorietaActivity(activity.Activity):
             self.metadata['title'] + " as book"
         jobject.file_path = file_name
 
-        #jobject.metadata['preview'] = \
+        # jobject.metadata['preview'] = \
         #    self._get_preview_image(file_name)
 
         datastore.write(jobject, transfer_ownership=True)
@@ -429,7 +430,7 @@ class HistorietaActivity(activity.Activity):
         jobject.metadata['icon-color'] = profile.get_color().to_string()
         jobject.metadata['mime_type'] = 'video/ogg'
         jobject.metadata['title'] = \
-             _('{} as a movie').format(self.metadata['title'])
+            _('{} as a movie').format(self.metadata['title'])
         jobject.file_path = output_path
 
         datastore.write(jobject, transfer_ownership=True)
@@ -438,7 +439,6 @@ class HistorietaActivity(activity.Activity):
         self._show_journal_alert(_('Success'),
                                  _('A movie was saved in the Journal'))
         shutil.rmdir(directory)
-
 
     def _show_journal_alert(self, title, msg):
         _stop_alert = Alert()
@@ -498,7 +498,7 @@ class HistorietaActivity(activity.Activity):
             self._slideview.set_boxes(self.page.boxs)
             self._slideview.set_current_box(0)
             self._slideview.start(use_timings)
-            #disable edition mode in the globes
+            # disable edition mode in the globes
             for box in self.page.boxs:
                 box.set_globo_activo(None)
 
@@ -633,7 +633,7 @@ class ComicBox(Gtk.EventBox):
             Gdk.EventMask.BUTTON_RELEASE_MASK |
             Gdk.EventMask.BUTTON_MOTION_MASK)
 
-        #self.globos is a list with the globes in the box
+        # self.globos is a list with the globes in the box
         self.globos = []
         self.posi = posi
 
@@ -847,7 +847,7 @@ class ComicBox(Gtk.EventBox):
         if (self._page.get_active_box() != self):
             self._page.set_active_box(self)
 
-        #Check if clicked over a globe
+        # Check if clicked over a globe
         if self._globo_activo is not None:
             if self._globo_activo.is_selec_tam(event.x, event.y) or \
                     self._globo_activo.get_cursor_type(event.x, event.y) \
