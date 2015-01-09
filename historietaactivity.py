@@ -500,7 +500,7 @@ class HistorietaActivity(activity.Activity):
 
         self._show_journal_alert(_('Success'),
                                  _('A movie was saved in the Journal'))
-        shutil.rmdir(directory)
+        shutil.rmtree(directory)
 
     def _show_journal_alert(self, title, msg):
         _stop_alert = Alert()
