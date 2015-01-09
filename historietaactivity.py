@@ -13,6 +13,7 @@ from fractions import gcd
 from gi.repository import Gst
 from gi.repository import Gtk
 from gi.repository import Gdk
+from gi.repository import GObject
 from gi.repository import GdkPixbuf
 
 from sugar3.activity import activity
@@ -45,6 +46,53 @@ VIDEO_PIPELINE = ('multifilesrc location="{}" index=0 '
                   'caps="image/png,framerate=\(fraction\)1/{}" '
                   '! pngdec ! videoconvert ! videorate ! theoraenc '
                   '! oggmux ! filesink location={}')
+
+
+class EmptyWidget(Gtk.EventBox):
+
+    __gsignals__ = {
+        'choose-image': (GObject.SIGNAL_RUN_FIRST, None, [])
+        }
+
+    def __init__(self):
+        Gtk.EventBox.__init__(self)
+
+        self.modify_bg(Gtk.StateType.NORMAL,
+                       style.COLOR_WHITE.get_gdk_color())
+
+        vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
+        mvbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
+        vbox.pack_start(mvbox, True, False, 0)
+
+        image_icon = Icon(pixel_size=style.LARGE_ICON_SIZE,
+                          icon_name='empty-icon',
+                          stroke_color=style.COLOR_BUTTON_GREY.get_svg(),
+                          fill_color=style.COLOR_TRANSPARENT.get_svg())
+        mvbox.pack_start(image_icon, False, False, style.DEFAULT_PADDING)
+
+        label = Gtk.Label('<span foreground="%s"><b>%s</b></span>' %
+                          (style.COLOR_BUTTON_GREY.get_html(),
+                           _('Add an image and start creating your FotoToon')))
+        label.set_use_markup(True)
+        mvbox.pack_start(label, False, False, style.DEFAULT_PADDING)
+
+        hbox = Gtk.Box()
+        open_image_btn = Gtk.Button()
+        open_image_btn.connect('clicked', self._emit)
+        add_image = Gtk.Image.new_from_stock(Gtk.STOCK_ADD,
+                                             Gtk.IconSize.BUTTON)
+        buttonbox = Gtk.Box()
+        buttonbox.pack_start(add_image, False, True, 0)
+        buttonbox.pack_end(Gtk.Label(_('Choose an image')), True, True, 5)
+        open_image_btn.add(buttonbox)
+        hbox.pack_start(open_image_btn, True, False, 0)
+        mvbox.pack_start(hbox, False, False, style.DEFAULT_PADDING)
+
+        self.add(vbox)
+        self.show_all()
+
+    def _emit(self, widget):
+        self.emit('choose-image')
 
 
 class HistorietaActivity(activity.Activity):
@@ -206,12 +254,22 @@ class HistorietaActivity(activity.Activity):
         self._notebook.append_page(self._slideview, None)
         self._notebook.show_all()
 
-        self.set_canvas(self._notebook)
+        if self._jobject.file_path is None or self._jobject.file_path == '':
+            empty_widget = EmptyWidget()
+            empty_widget.connect('choose-image', self.__add_image)
+            self.set_canvas(empty_widget)
+        else:
+            self.set_canvas(self._notebook)
+
         self.show()
         self.metadata['mime_type'] = 'application/x-fototoon-activity'
 
         self.page.empty_page = handle.object_id is None
         self._key_press_signal_id = None
+
+    def __add_image(self, button):
+        self.set_canvas(self._notebook)
+        self.globes_manager.add_image()
 
     def on_title(self, widget, event):
         # unselect the active globe when editting the title
@@ -226,6 +284,9 @@ class HistorietaActivity(activity.Activity):
             logging.debug('After edit the title')
 
     def write_file(self, file_path):
+        if len(self.page.boxs) == 1:
+            return
+
         self._commit_all_changes()
         persistence = persistencia.Persistence()
         persistence.write(file_path, self.page)
