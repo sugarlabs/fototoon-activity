@@ -30,8 +30,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-24 14:11+0000\n"
-"PO-Revision-Date: 2014-12-24 14:13+0000\n"
+"POT-Creation-Date: 2015-01-09 19:19+0000\n"
+"PO-Revision-Date: 2015-01-09 19:44+0000\n"
 "Last-Translator: Gonzalo <godiard@gmail.com>\n"
 "Language-Team: Spanish\n"
 "Language: es\n"
@@ -40,73 +40,98 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Pootle 2.5.1.1\n"
-"X-POOTLE-MTIME: 1419430407.000000\n"
+"X-POOTLE-MTIME: 1420832692.000000\n"
 
-#: ../historietaactivity.py:34
-msgid "Merry Christmas!"
-msgstr "Feliz Navidad"
+#: ../historietaactivity.py:75
+msgid "Add an image and start creating your FotoToon"
+msgstr "Agrega una imagen y comienza a crear tu FotoToon"
 
-#: ../historietaactivity.py:38 ../historietaactivity.py:127
+#: ../historietaactivity.py:86
+msgid "Choose an image"
+msgstr "Elegir Imagen"
+
+#: ../historietaactivity.py:100 ../historietaactivity.py:222
 msgid "Save as Image"
 msgstr "Guardar como imagen"
 
-#: ../historietaactivity.py:38
+#: ../historietaactivity.py:100
 msgid "PNG"
 msgstr "PNG"
 
-#: ../historietaactivity.py:55
+#: ../historietaactivity.py:118
 msgid "Edit"
 msgstr "Editar"
 
-#: ../historietaactivity.py:62
+#: ../historietaactivity.py:125
 msgid "View"
 msgstr "Vista"
 
-#: ../historietaactivity.py:66
+#: ../historietaactivity.py:129
 msgid "Slideshow"
 msgstr "Presentación"
 
-#: ../historietaactivity.py:72
+#: ../historietaactivity.py:136
+msgid "Slideshow with Timings"
+msgstr "Presentación automática"
+
+#: ../historietaactivity.py:143
+msgid "Set Image Duration in Slideshow (Seconds)"
+msgstr "Definir duración de la imagen en presentación (segundos)"
+
+#: ../historietaactivity.py:168
 msgid "Fullscreen"
 msgstr "Pantalla completa"
 
-#: ../historietaactivity.py:90
+#: ../historietaactivity.py:186
 msgid "Text"
 msgstr "Texto"
 
-#: ../historietaactivity.py:96
+#: ../historietaactivity.py:191
 msgid "Change image order"
 msgstr "Cambiar el orden de las imágenes"
 
-#: ../historietaactivity.py:102
+#: ../historietaactivity.py:197
 msgid "Edit background image"
 msgstr "Editar imagen de fondo"
 
-#: ../historietaactivity.py:134
+#: ../historietaactivity.py:229
 msgid "Save as a Book (PDF)"
 msgstr "Guardar como Libro (PDF)"
 
-#: ../historietaactivity.py:277 ../historietaactivity.py:333
+#: ../historietaactivity.py:236
+msgid "Save as a Movie (OGG)"
+msgstr "Grabar como video (OGG)"
+
+#: ../historietaactivity.py:392 ../historietaactivity.py:448
+#: ../historietaactivity.py:501
 msgid "Success"
 msgstr "Éxito"
 
-#: ../historietaactivity.py:278
+#: ../historietaactivity.py:393
 msgid "A image was created in the Journal"
 msgstr "Se ha creado una imagen en el Diario"
 
-#: ../historietaactivity.py:334
+#: ../historietaactivity.py:449
 msgid "A PDF was created in the Journal"
 msgstr "Se ha creado un PDF en el Diario"
 
-#: ../historietaactivity.py:341
+#: ../historietaactivity.py:495
+msgid "{} as a movie"
+msgstr "{} como video"
+
+#: ../historietaactivity.py:502
+msgid "A movie was saved in the Journal"
+msgstr "Se ha creado una imagen en el Diario"
+
+#: ../historietaactivity.py:510
 msgid "Show in Journal"
 msgstr "Mostrar en el Diario"
 
-#: ../historietaactivity.py:343
+#: ../historietaactivity.py:512
 msgid "Ok"
 msgstr "Ok"
 
-#: ../historietaactivity.py:614
+#: ../historietaactivity.py:796
 msgid "Title:"
 msgstr "Título:"
 
@@ -202,6 +227,9 @@ msgstr "Arrastra para mover o redimensionar usando las esquinas marcadas"
 #: ../fontcombobox.py:90
 msgid "Select font"
 msgstr "Seleccionar fuente"
+
+#~ msgid "Merry Christmas!"
+#~ msgstr "Feliz Navidad"
 
 #~ msgid "Hello pootle"
 #~ msgstr "Hola pootle"
