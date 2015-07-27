@@ -85,42 +85,41 @@ class Globo:
         context.save()
 
         context.set_line_width(2)
-        context.scale(self.ancho / (self.radio * 1.0),
-                      self.alto / (self.radio * 1.0))
+        scale_x = self.ancho / (self.radio * 1.0)
+        scale_y = self.alto / (self.radio * 1.0)
 
-        x = self.x * self.radio / (self.ancho * 1.0)
-        y = self.y * self.radio / (self.alto * 1.0)
+        context.scale(scale_x, scale_y)
+
+        x = self.x / scale_x
+        y = self.y / scale_y
 
         if self.direccion == DIR_ABAJO:
 
             context.arc(x, y, self.radio, 100 / (180.0) * math.pi,
                         80 / (180.0) * math.pi)
             context.line_to(
-                x + self.punto[0] * self.radio / (self.ancho * 1.0),
-                y + self.radio +
-                self.punto[1] * self.radio / (self.alto * 1.0))
+                x + self.punto[0] / scale_x,
+                y + self.radio + self.punto[1] / scale_y)
 
         elif self.direccion == DIR_DER:
             context.arc(x, y, self.radio,
                         10 / 180.0 * math.pi, 350 / 180.0 * math.pi)
-            context.line_to(x + self.radio +
-                            self.punto[0] * self.radio / (self.ancho * 1.0),
-                            y + self.punto[1] * self.radio / (self.alto * 1.0))
+            context.line_to(x + self.radio + self.punto[0] / scale_x,
+                            y + self.punto[1] / scale_y)
 
         elif self.direccion == DIR_IZQ:
             context.arc(x, y, self.radio, 190 / 180.0 * math.pi,
                         530 / 180.0 * math.pi)
-            context.line_to(x - self.radio -
-                            self.punto[0] * self.radio / (self.ancho * 1.0),
-                            y + self.punto[1] * self.radio / (self.alto * 1.0))
+            context.line_to(x - self.radio - self.punto[0] / scale_x,
+                            y + self.punto[1] / scale_y)
 
         else:
             context.arc(x, y, self.radio,
                         280 / 180.0 * math.pi, 620 / 180.0 * math.pi)
             context.line_to(
-                x + self.punto[0] * self.radio / (self.ancho * 1.0),
+                x + self.punto[0] / scale_x,
                 y - self.radio -
-                self.punto[1] * self.radio / (self.alto * 1.0))
+                self.punto[1] / scale_y)
 
         context.close_path()
         context.set_source_rgb(1, 1, 1)
