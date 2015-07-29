@@ -399,8 +399,7 @@ class Globo:
 
         elif (self.direccion == DIR_DER):
             self.direccion = DIR_ABAJO
-        self.punto[0] = self.punto[1]
-        self.punto[1] = self.punto[0]
+        self.punto[0], self.punto[1] = self.punto[1], self.punto[0]
 
         if (self.__class__ == Imagen):
             self.ancho, self.alto = self.alto, self.ancho
