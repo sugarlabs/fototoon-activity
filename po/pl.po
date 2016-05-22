@@ -6,9 +6,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-12 00:33-0400\n"
-"PO-Revision-Date: 2013-12-26 15:57+0200\n"
-"Last-Translator: Chris <cjl@laptop.org>\n"
+"POT-Creation-Date: 2015-01-09 19:19+0000\n"
+"PO-Revision-Date: 2015-02-19 09:12+0000\n"
+"Last-Translator: Tymon <dwgipk@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -16,159 +16,219 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Pootle 2.0.5\n"
+"X-Generator: Pootle 2.5.1.1\n"
+"X-POOTLE-MTIME: 1424337176.000000\n"
 
-#. TRANS: "name" option from activity.info file
-msgid "FotoToon"
-msgstr "FotoKomiks"
+#: ../historietaactivity.py:75
+msgid "Add an image and start creating your FotoToon"
+msgstr "Dodaj zdjęcie i zacznij tworzenie swojego FotoToon"
 
-#. TRANS: "summary" option from activity.info file
-#. TRANS: "description" option from activity.info file
-msgid ""
-"Interested in telling a story? Easy! Use your pictures and your imagination "
-"to create your own comics!"
-msgstr ""
-"Zainteresowany opowiedzeniem historyjki? To proste! Użyj swoich zdjęć i "
-"wyobraźni aby stworzyć nowe komiksy!"
+#: ../historietaactivity.py:86
+msgid "Choose an image"
+msgstr "Wybierz obraz"
 
-#: fontcombobox.py:90
-msgid "Select font"
-msgstr "Wybierz czcionkę"
-
-#: historietaactivity.py:37 historietaactivity.py:108
+#: ../historietaactivity.py:100 ../historietaactivity.py:222
 msgid "Save as Image"
-msgstr "Zapisz jako obraz"
+msgstr "Zapisz jako zdjęcie"
 
-#: historietaactivity.py:37
+#: ../historietaactivity.py:100
 msgid "PNG"
 msgstr "PNG"
 
-#: historietaactivity.py:55
+#: ../historietaactivity.py:118
+msgid "Edit"
+msgstr "Edytuj"
+
+#: ../historietaactivity.py:125
 msgid "View"
 msgstr "Widok"
 
-#: historietaactivity.py:59
+#: ../historietaactivity.py:129
 msgid "Slideshow"
 msgstr "Pokaz slajdów"
 
-#: historietaactivity.py:65
+#: ../historietaactivity.py:136
+msgid "Slideshow with Timings"
+msgstr "Pokaz slajdów z rytmem czasowym"
+
+#: ../historietaactivity.py:143
+msgid "Set Image Duration in Slideshow (Seconds)"
+msgstr "Ustaw długość trwania zdjęcia w pokazie slajdów (w sekundach)"
+
+#: ../historietaactivity.py:168
 msgid "Fullscreen"
 msgstr "Pełny ekran"
 
-#: historietaactivity.py:84
+#: ../historietaactivity.py:186
 msgid "Text"
 msgstr "Tekst"
 
-#: historietaactivity.py:115
-msgid "Save as a Book (PDF)"
-msgstr "Zapisz jako książkę (PDF)"
+#: ../historietaactivity.py:191
+msgid "Change image order"
+msgstr "Zmień kolejność obrazów"
 
-#: historietaactivity.py:260 historietaactivity.py:297
+#: ../historietaactivity.py:197
+msgid "Edit background image"
+msgstr "Edytuj obrazek tła"
+
+#: ../historietaactivity.py:229
+msgid "Save as a Book (PDF)"
+msgstr "Zapisz jako książka (PDF)"
+
+#: ../historietaactivity.py:236
+msgid "Save as a Movie (OGG)"
+msgstr "Zapisz jako film (OGG)"
+
+#: ../historietaactivity.py:392 ../historietaactivity.py:448
+#: ../historietaactivity.py:501
 msgid "Success"
 msgstr "Sukces"
 
-#: historietaactivity.py:261
+#: ../historietaactivity.py:393
 msgid "A image was created in the Journal"
-msgstr "W Dzienniku został zapisany obrazek"
+msgstr "Obraz został stworzony w Dzienniku"
 
-#: historietaactivity.py:298
+#: ../historietaactivity.py:449
 msgid "A PDF was created in the Journal"
-msgstr "W Dzienniku został zapisany PDF"
+msgstr "PDF został stworzony w Dzienniku"
 
-#: historietaactivity.py:305
+#: ../historietaactivity.py:495
+msgid "{} as a movie"
+msgstr "{} jako film"
+
+#: ../historietaactivity.py:502
+msgid "A movie was saved in the Journal"
+msgstr "Film został zapisany w Dzienniku"
+
+#: ../historietaactivity.py:510
 msgid "Show in Journal"
 msgstr "Pokaż w Dzienniku"
 
-#: historietaactivity.py:307
+#: ../historietaactivity.py:512
 msgid "Ok"
-msgstr "Ok"
+msgstr "OK"
 
-#: historietaactivity.py:590
+#: ../historietaactivity.py:796
 msgid "Title:"
 msgstr "Tytuł:"
 
-#: toolbar.py:77
+#: ../toolbar.py:79
 msgid "Add Photo"
 msgstr "Dodaj zdjęcie"
 
-#: toolbar.py:81
+#: ../toolbar.py:83
 msgid "Globe"
 msgstr "Kula ziemska"
 
-#: toolbar.py:81
+#: ../toolbar.py:83
 msgid "Think"
-msgstr "Myśl"
+msgstr "Pomyśl"
 
-#: toolbar.py:82
+#: ../toolbar.py:84
 msgid "Whisper"
 msgstr "Szept"
 
-#: toolbar.py:82
+#: ../toolbar.py:84
 msgid "Exclamation"
 msgstr "Wykrzyknik"
 
-#: toolbar.py:83
+#: ../toolbar.py:85
 msgid "Box"
 msgstr "Pudełko"
 
-#: toolbar.py:86
+#: ../toolbar.py:88
 msgid "Add a globe"
 msgstr "Dodaj kulę ziemską"
 
-#: toolbar.py:105
+#: ../toolbar.py:107
 msgid "Curves"
 msgstr "Krzywe"
 
-#: toolbar.py:105
+#: ../toolbar.py:107
 msgid "Straight"
-msgstr "Prosto"
+msgstr "Prosta"
 
-#: toolbar.py:106
+#: ../toolbar.py:108
 msgid "Highlight"
-msgstr "Wyróżnienie"
+msgstr "Podświetlenie"
 
-#: toolbar.py:106
+#: ../toolbar.py:108
 msgid "Idea"
 msgstr "Pomysł"
 
-#: toolbar.py:109
+#: ../toolbar.py:111
 msgid "Choose a movement line"
 msgstr "Wybierz linię ruchu"
 
-#: toolbar.py:132
+#: ../toolbar.py:134
 msgid "Turn"
-msgstr "Przekręć"
+msgstr "Obróć się"
 
-#: toolbar.py:138
+#: ../toolbar.py:141
 msgid "Delete"
 msgstr "Usuń"
 
-#: toolbar.py:253
+#: ../toolbar.py:259
 msgid "Bold"
-msgstr "Pogrubione"
+msgstr "Pogrubienie"
 
-#: toolbar.py:258
+#: ../toolbar.py:264
 msgid "Italic"
 msgstr "Kursywa"
 
-#: toolbar.py:272
+#: ../toolbar.py:278
 msgid "Text Color"
 msgstr "Kolor tekstu"
 
+#: ../reorderwindow.py:54
+msgid "Cancel"
+msgstr "Anuluj"
+
+#: ../reorderwindow.py:59
+msgid "Done"
+msgstr "Gotowe"
+
+#: ../reorderwindow.py:74
+msgid "Drag the images to reorder"
+msgstr "Przeciągnij zdjęcia, żeby zmienić kolejność"
+
+#: ../reorderwindow.py:446
+msgid "Reset to box size"
+msgstr "Resetuj do wielkości pudełka"
+
+#: ../reorderwindow.py:457
+msgid "Drag to move or resize using the marked corners"
+msgstr ""
+"Przeciągnij, żeby poruszyć lub zmienić rozmiar przy użyciu zaznaczonych rogów"
+
+#: ../fontcombobox.py:90
+msgid "Select font"
+msgstr "Wybierz czcionkę"
+
+#~ msgid "FotoToon"
+#~ msgstr "FotoTegneseriefigur"
+
+#~ msgid ""
+#~ "Interested in telling a story? Easy! Use your pictures and your imagination "
+#~ "to create your own comics!"
+#~ msgstr ""
+#~ "Har du lyst til at fortælle en historie? Det er nemt! Brug dine billeder og "
+#~ "din fantasi til at skabe din egen tegneserie!"
+
 #~ msgid "Add Globe"
-#~ msgstr "Dodaj dymek"
+#~ msgstr "Tilføj globe"
 
 #~ msgid "Add Think"
-#~ msgstr "Dodaj myśl"
+#~ msgstr "Tilføj tanke"
 
 #~ msgid "Add Whisper"
-#~ msgstr "Dodaj szept"
+#~ msgstr "Tilføj hvisken"
 
 #~ msgid "Add Exclamation"
-#~ msgstr "Dodaj okrzyk"
+#~ msgstr "Tilføj udråb"
 
 #~ msgid "Add Box"
-#~ msgstr "Dodaj pole"
+#~ msgstr "Tilføj boks"
 
 #~ msgid "Choose image"
-#~ msgstr "Wybierz obraz"
+#~ msgstr "Vælg billede"

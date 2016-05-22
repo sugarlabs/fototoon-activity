@@ -31,8 +31,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-01-09 19:19+0000\n"
-"PO-Revision-Date: 2015-01-09 19:44+0000\n"
-"Last-Translator: Gonzalo <godiard@gmail.com>\n"
+"PO-Revision-Date: 2016-05-19 23:45+0000\n"
+"Last-Translator: Chris <cjl@sugarlabs.org>\n"
 "Language-Team: Spanish\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -40,7 +40,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Pootle 2.5.1.1\n"
-"X-POOTLE-MTIME: 1420832692.000000\n"
+"X-POOTLE-MTIME: 1463701553.000000\n"
 
 #: ../historietaactivity.py:75
 msgid "Add an image and start creating your FotoToon"
@@ -48,7 +48,7 @@ msgstr "Agrega una imagen y comienza a crear tu FotoToon"
 
 #: ../historietaactivity.py:86
 msgid "Choose an image"
-msgstr "Elegir Imagen"
+msgstr "Elegir imagen"
 
 #: ../historietaactivity.py:100 ../historietaactivity.py:222
 msgid "Save as Image"
