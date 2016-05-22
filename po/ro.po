@@ -2,152 +2,269 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#, fuzzy
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Spanish translations for PACKAGE package.
+# Copyright (C) 2010 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Gonzalo Odiard <godiard@gmail.com>, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-12 00:33-0400\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2015-01-09 19:19+0000\n"
+"PO-Revision-Date: 2016-05-19 23:44+0000\n"
+"Last-Translator: Chris <cjl@sugarlabs.org>\n"
+"Language-Team: Spanish\n"
+"Language: ro\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 1.6.0\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
+"20)) ? 1 : 2);;\n"
+"X-Generator: Pootle 2.5.1.1\n"
+"X-POOTLE-MTIME: 1463701457.000000\n"
 
-#. TRANS: "name" option from activity.info file
-msgid "FotoToon"
-msgstr ""
+#: ../historietaactivity.py:75
+msgid "Add an image and start creating your FotoToon"
+msgstr "Adaugă o imagine și începe crearea FotoToon tău"
 
-#. TRANS: "summary" option from activity.info file
-#. TRANS: "description" option from activity.info file
-msgid ""
-"Interested in telling a story? Easy! Use your pictures and your imagination "
-"to create your own comics!"
-msgstr ""
+#: ../historietaactivity.py:86
+msgid "Choose an image"
+msgstr "Alegeți o imagine"
 
-#: fontcombobox.py:90
-msgid "Select font"
-msgstr ""
-
-#: historietaactivity.py:37 historietaactivity.py:108
+#: ../historietaactivity.py:100 ../historietaactivity.py:222
 msgid "Save as Image"
-msgstr ""
+msgstr "Guardar como imagen"
 
-#: historietaactivity.py:37
+#: ../historietaactivity.py:100
 msgid "PNG"
-msgstr ""
+msgstr "PNG"
 
-#: historietaactivity.py:55
+#: ../historietaactivity.py:118
+msgid "Edit"
+msgstr "Editar"
+
+#: ../historietaactivity.py:125
 msgid "View"
-msgstr ""
+msgstr "Vista"
 
-#: historietaactivity.py:59
+#: ../historietaactivity.py:129
 msgid "Slideshow"
-msgstr ""
+msgstr "Presentación"
 
-#: historietaactivity.py:65
+#: ../historietaactivity.py:136
+msgid "Slideshow with Timings"
+msgstr "Prezentare automatica"
+
+#: ../historietaactivity.py:143
+msgid "Set Image Duration in Slideshow (Seconds)"
+msgstr "Definiti timpul imaginii in prezentare (secunde)"
+
+#: ../historietaactivity.py:168
 msgid "Fullscreen"
-msgstr ""
+msgstr "Pantalla completa"
 
-#: historietaactivity.py:84
+#: ../historietaactivity.py:186
 msgid "Text"
-msgstr ""
+msgstr "Texto"
 
-#: historietaactivity.py:115
+#: ../historietaactivity.py:191
+msgid "Change image order"
+msgstr "Cambiar el orden de las imágenes"
+
+#: ../historietaactivity.py:197
+msgid "Edit background image"
+msgstr "Editar imagen de fondo"
+
+#: ../historietaactivity.py:229
 msgid "Save as a Book (PDF)"
-msgstr ""
+msgstr "Guardar como Libro (PDF)"
 
-#: historietaactivity.py:260 historietaactivity.py:297
+#: ../historietaactivity.py:236
+msgid "Save as a Movie (OGG)"
+msgstr "Înregistrare ca film (OGG)"
+
+#: ../historietaactivity.py:392 ../historietaactivity.py:448
+#: ../historietaactivity.py:501
 msgid "Success"
-msgstr ""
+msgstr "Éxito"
 
-#: historietaactivity.py:261
+#: ../historietaactivity.py:393
 msgid "A image was created in the Journal"
-msgstr ""
+msgstr "Se ha creado una imagen en el Diario"
 
-#: historietaactivity.py:298
+#: ../historietaactivity.py:449
 msgid "A PDF was created in the Journal"
-msgstr ""
+msgstr "Se ha creado un PDF en el Diario"
 
-#: historietaactivity.py:305
+#: ../historietaactivity.py:495
+msgid "{} as a movie"
+msgstr "{} ca video"
+
+#: ../historietaactivity.py:502
+msgid "A movie was saved in the Journal"
+msgstr "S-a creat o imagine in Jurnal"
+
+#: ../historietaactivity.py:510
 msgid "Show in Journal"
-msgstr ""
+msgstr "Mostrar en el Diario"
 
-#: historietaactivity.py:307
+#: ../historietaactivity.py:512
 msgid "Ok"
-msgstr ""
+msgstr "Ok"
 
-#: historietaactivity.py:590
+#: ../historietaactivity.py:796
 msgid "Title:"
-msgstr ""
+msgstr "Título:"
 
-#: toolbar.py:77
+#: ../toolbar.py:79
 msgid "Add Photo"
-msgstr ""
+msgstr "Agregar Foto"
 
-#: toolbar.py:81
+#: ../toolbar.py:83
 msgid "Globe"
-msgstr ""
+msgstr "Globo"
 
-#: toolbar.py:81
+#: ../toolbar.py:83
 msgid "Think"
-msgstr ""
+msgstr "Pensamiento"
 
-#: toolbar.py:82
+#: ../toolbar.py:84
 msgid "Whisper"
-msgstr ""
+msgstr "Susurro"
 
-#: toolbar.py:82
+#: ../toolbar.py:84
 msgid "Exclamation"
-msgstr ""
+msgstr "Exclamación"
 
-#: toolbar.py:83
+#: ../toolbar.py:85
 msgid "Box"
-msgstr ""
+msgstr "Caja"
 
-#: toolbar.py:86
+#: ../toolbar.py:88
 msgid "Add a globe"
-msgstr ""
+msgstr "Agregar un globo"
 
-#: toolbar.py:105
+#: ../toolbar.py:107
 msgid "Curves"
-msgstr ""
+msgstr "Curvas"
 
-#: toolbar.py:105
+#: ../toolbar.py:107
 msgid "Straight"
-msgstr ""
+msgstr "Recto"
 
-#: toolbar.py:106
+# puede ser Subrayado
+#: ../toolbar.py:108
 msgid "Highlight"
-msgstr ""
+msgstr "Resaltado"
 
-#: toolbar.py:106
+#: ../toolbar.py:108
 msgid "Idea"
-msgstr ""
+msgstr "Idea"
 
-#: toolbar.py:109
+#: ../toolbar.py:111
 msgid "Choose a movement line"
-msgstr ""
+msgstr "Elige una linea de movimiento"
 
-#: toolbar.py:132
+#: ../toolbar.py:134
 msgid "Turn"
-msgstr ""
+msgstr "Girar"
 
-#: toolbar.py:138
+#: ../toolbar.py:141
 msgid "Delete"
-msgstr ""
+msgstr "Borrar"
 
-#: toolbar.py:253
+#: ../toolbar.py:259
 msgid "Bold"
-msgstr ""
+msgstr "Negrita"
 
-#: toolbar.py:258
+#: ../toolbar.py:264
 msgid "Italic"
-msgstr ""
+msgstr "Italica"
 
-#: toolbar.py:272
+#: ../toolbar.py:278
 msgid "Text Color"
-msgstr ""
+msgstr "Color del texto"
+
+#: ../reorderwindow.py:54
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: ../reorderwindow.py:59
+msgid "Done"
+msgstr "Hecho"
+
+#: ../reorderwindow.py:74
+msgid "Drag the images to reorder"
+msgstr "Arrastra las imágenes para ordenarlas"
+
+#: ../reorderwindow.py:446
+msgid "Reset to box size"
+msgstr "Reiniciar al tamaño de la caja"
+
+#: ../reorderwindow.py:457
+msgid "Drag to move or resize using the marked corners"
+msgstr "Arrastra para mover o redimensionar usando las esquinas marcadas"
+
+#: ../fontcombobox.py:90
+msgid "Select font"
+msgstr "Seleccionar fuente"
+
+#~ msgid "Merry Christmas!"
+#~ msgstr "Feliz Navidad"
+
+#~ msgid "Hello pootle"
+#~ msgstr "Hola pootle"
+
+#~ msgid "Hello again pootle"
+#~ msgstr "Hola de nuevo, pootle"
+
+#~ msgid "Hasta la vista, pootle!"
+#~ msgstr "Hasta la vista, pootle!"
+
+#~ msgid "FotoToon"
+#~ msgstr "FotoToon"
+
+#~ msgid ""
+#~ "Interested in telling a story? Easy! Use your pictures and your imagination "
+#~ "to create your own comics!"
+#~ msgstr ""
+#~ "¿Interesado en contar una historia? ¡Fácil! ¡Usa tus imágenes y tu "
+#~ "imaginación para crear tus propias historietas!"
+
+#~ msgid "Add Globe"
+#~ msgstr "Agregar Globo"
+
+#~ msgid "Add Think"
+#~ msgstr "Agregar Pensamiento"
+
+#~ msgid "Add Whisper"
+#~ msgstr "Agregar Susurro"
+
+#~ msgid "Add Exclamation"
+#~ msgstr "Agregar Exclamación"
+
+#~ msgid "Add Box"
+#~ msgstr "Agregar Caja"
+
+#~ msgid "Choose image"
+#~ msgstr "Elegir Imagen"

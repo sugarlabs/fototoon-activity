@@ -6,148 +6,203 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-12 00:33-0400\n"
-"PO-Revision-Date: 2011-02-11 11:40+0200\n"
-"Last-Translator: Carlo Falciola <cfalciola@yahoo.it>\n"
+"POT-Creation-Date: 2015-01-09 19:19+0000\n"
+"PO-Revision-Date: 2016-05-16 21:00+0000\n"
+"Last-Translator: Chris <cjl@sugarlabs.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Pootle 2.0.3\n"
+"X-Generator: Pootle 2.5.1.1\n"
+"X-POOTLE-MTIME: 1463432439.000000\n"
 
-#. TRANS: "name" option from activity.info file
-msgid "FotoToon"
-msgstr "FotoCartoni"
+#: ../historietaactivity.py:75
+msgid "Add an image and start creating your FotoToon"
+msgstr "Aggiungi una immagine ed inizia a creare il tuo FotoToon"
 
-#. TRANS: "summary" option from activity.info file
-#. TRANS: "description" option from activity.info file
-msgid ""
-"Interested in telling a story? Easy! Use your pictures and your imagination "
-"to create your own comics!"
-msgstr ""
+#: ../historietaactivity.py:86
+msgid "Choose an image"
+msgstr "Seleziona una immagine"
 
-#: fontcombobox.py:90
-msgid "Select font"
-msgstr ""
-
-#: historietaactivity.py:37 historietaactivity.py:108
+#: ../historietaactivity.py:100 ../historietaactivity.py:222
 msgid "Save as Image"
-msgstr ""
+msgstr "Salva come immagine"
 
-#: historietaactivity.py:37
+#: ../historietaactivity.py:100
 msgid "PNG"
-msgstr ""
+msgstr "PNG"
 
-#: historietaactivity.py:55
+#: ../historietaactivity.py:118
+msgid "Edit"
+msgstr "Modifica"
+
+#: ../historietaactivity.py:125
 msgid "View"
-msgstr ""
+msgstr "Visualizza"
 
-#: historietaactivity.py:59
+#: ../historietaactivity.py:129
 msgid "Slideshow"
-msgstr ""
+msgstr "Presentazione"
 
-#: historietaactivity.py:65
+#: ../historietaactivity.py:136
+msgid "Slideshow with Timings"
+msgstr "Presentazione con intervalli"
+
+#: ../historietaactivity.py:143
+msgid "Set Image Duration in Slideshow (Seconds)"
+msgstr "Seleziona la durata della visualizzazione nella presentazione (secondi)"
+
+#: ../historietaactivity.py:168
 msgid "Fullscreen"
-msgstr ""
+msgstr "A tutto schermo"
 
-#: historietaactivity.py:84
+#: ../historietaactivity.py:186
 msgid "Text"
-msgstr ""
+msgstr "Testo"
 
-#: historietaactivity.py:115
+#: ../historietaactivity.py:191
+msgid "Change image order"
+msgstr "Cambia l'ordine delle immagini"
+
+#: ../historietaactivity.py:197
+msgid "Edit background image"
+msgstr "Modifica l'immagine di sfondo"
+
+#: ../historietaactivity.py:229
 msgid "Save as a Book (PDF)"
-msgstr ""
+msgstr "Salva come Libro (PDF)"
 
-#: historietaactivity.py:260 historietaactivity.py:297
+#: ../historietaactivity.py:236
+msgid "Save as a Movie (OGG)"
+msgstr "Salva come Video (OGG)"
+
+#: ../historietaactivity.py:392 ../historietaactivity.py:448
+#: ../historietaactivity.py:501
 msgid "Success"
-msgstr ""
+msgstr "Riuscito"
 
-#: historietaactivity.py:261
+#: ../historietaactivity.py:393
 msgid "A image was created in the Journal"
-msgstr ""
+msgstr "Una immagine è stata creata nel Journal"
 
-#: historietaactivity.py:298
+#: ../historietaactivity.py:449
 msgid "A PDF was created in the Journal"
+msgstr "Un file PDF è stato creato nel Journal"
+
+#: ../historietaactivity.py:495
+msgid "{} as a movie"
 msgstr ""
 
-#: historietaactivity.py:305
+#: ../historietaactivity.py:502
+msgid "A movie was saved in the Journal"
+msgstr ""
+
+#: ../historietaactivity.py:510
 msgid "Show in Journal"
 msgstr ""
 
-#: historietaactivity.py:307
+#: ../historietaactivity.py:512
 msgid "Ok"
 msgstr ""
 
-#: historietaactivity.py:590
+#: ../historietaactivity.py:796
 msgid "Title:"
 msgstr ""
 
-#: toolbar.py:77
+#: ../toolbar.py:79
 msgid "Add Photo"
 msgstr ""
 
-#: toolbar.py:81
+#: ../toolbar.py:83
 msgid "Globe"
 msgstr ""
 
-#: toolbar.py:81
+#: ../toolbar.py:83
 msgid "Think"
 msgstr ""
 
-#: toolbar.py:82
+#: ../toolbar.py:84
 msgid "Whisper"
 msgstr ""
 
-#: toolbar.py:82
+#: ../toolbar.py:84
 msgid "Exclamation"
-msgstr ""
+msgstr "Esclamativo"
 
-#: toolbar.py:83
+#: ../toolbar.py:85
 msgid "Box"
-msgstr ""
+msgstr "Casella"
 
-#: toolbar.py:86
+#: ../toolbar.py:88
 msgid "Add a globe"
-msgstr ""
+msgstr "Aggiungi un globo"
 
-#: toolbar.py:105
+#: ../toolbar.py:107
 msgid "Curves"
-msgstr ""
+msgstr "Curve"
 
-#: toolbar.py:105
+#: ../toolbar.py:107
 msgid "Straight"
-msgstr ""
+msgstr "Retta"
 
-#: toolbar.py:106
+#: ../toolbar.py:108
 msgid "Highlight"
-msgstr ""
+msgstr "Evidenziato"
 
-#: toolbar.py:106
+#: ../toolbar.py:108
 msgid "Idea"
-msgstr ""
+msgstr "Idea"
 
-#: toolbar.py:109
+#: ../toolbar.py:111
 msgid "Choose a movement line"
-msgstr ""
+msgstr "Seleziona una linea di movimento"
 
-#: toolbar.py:132
+#: ../toolbar.py:134
 msgid "Turn"
-msgstr ""
+msgstr "Ruota"
 
-#: toolbar.py:138
+#: ../toolbar.py:141
 msgid "Delete"
-msgstr ""
+msgstr "Elimina"
 
-#: toolbar.py:253
+#: ../toolbar.py:259
 msgid "Bold"
-msgstr ""
+msgstr "Grassetto"
 
-#: toolbar.py:258
+#: ../toolbar.py:264
 msgid "Italic"
+msgstr "Corsivo"
+
+#: ../toolbar.py:278
+msgid "Text Color"
+msgstr "Colore del testo"
+
+#: ../reorderwindow.py:54
+msgid "Cancel"
+msgstr "Annulla"
+
+#: ../reorderwindow.py:59
+msgid "Done"
+msgstr "Fatto"
+
+#: ../reorderwindow.py:74
+msgid "Drag the images to reorder"
+msgstr "Trascina le immagini per riordinarle"
+
+#: ../reorderwindow.py:446
+#, fuzzy
+msgid "Reset to box size"
+msgstr "Reimposta la dimensione"
+
+#: ../reorderwindow.py:457
+msgid "Drag to move or resize using the marked corners"
 msgstr ""
 
-#: toolbar.py:272
-msgid "Text Color"
-msgstr ""
+#: ../fontcombobox.py:90
+msgid "Select font"
+msgstr "Seleziona carattere"
+
+#~ msgid "FotoToon"
+#~ msgstr "FotoCartoni"
