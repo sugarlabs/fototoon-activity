@@ -29,7 +29,6 @@ DEFAULT_GLOBE_HEIGHT = style.GRID_CELL_SIZE / 2
 def _get_screen_dpi():
     xft_dpi = Gtk.Settings.get_default().get_property('gtk-xft-dpi')
     dpi = float(xft_dpi / 1024)
-    logging.error('Setting dpi to: %f', dpi)
     return dpi
 
 

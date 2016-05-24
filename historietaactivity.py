@@ -614,9 +614,6 @@ class Page(Gtk.VBox):
         self._active_box = None
         self.selected_font_name = globos.DEFAULT_FONT
 
-        logging.error('SCREEN WIDTH %d DEF_SPACING %d', SCREEN_WIDTH,
-                      DEF_SPACING)
-
         # Add title box
         self.title_box = ComicBox(self, None, 0)
         self.title_box.set_size_request(SCREEN_WIDTH, 100)
