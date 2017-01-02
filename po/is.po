@@ -6,151 +6,220 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-12 00:33-0400\n"
-"PO-Revision-Date: 2011-03-27 14:29+0200\n"
-"Last-Translator: Chris <cjl@laptop.org>\n"
+"POT-Creation-Date: 2015-01-09 19:19+0000\n"
+"PO-Revision-Date: 2017-01-02 18:14+0000\n"
+"Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"Language: is\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Pootle 2.0.1\n"
+"X-Generator: Pootle 2.5.1.1\n"
+"X-POOTLE-MTIME: 1483380873.000000\n"
 
-#. TRANS: "name" option from activity.info file
-msgid "FotoToon"
+#: ../historietaactivity.py:75
+msgid "Add an image and start creating your FotoToon"
 msgstr ""
 
-#. TRANS: "summary" option from activity.info file
-#. TRANS: "description" option from activity.info file
-msgid ""
-"Interested in telling a story? Easy! Use your pictures and your imagination "
-"to create your own comics!"
-msgstr ""
+#: ../historietaactivity.py:86
+msgid "Choose an image"
+msgstr "Veldu mynd"
 
-#: fontcombobox.py:90
-msgid "Select font"
-msgstr ""
-
-#: historietaactivity.py:37 historietaactivity.py:108
+#: ../historietaactivity.py:100 ../historietaactivity.py:222
 msgid "Save as Image"
-msgstr ""
+msgstr "Vista sem mynd"
 
-#: historietaactivity.py:37
+#: ../historietaactivity.py:100
 msgid "PNG"
-msgstr ""
+msgstr "PNG"
 
-#: historietaactivity.py:55
+#: ../historietaactivity.py:118
+msgid "Edit"
+msgstr "Breyta"
+
+#: ../historietaactivity.py:125
 msgid "View"
-msgstr ""
+msgstr "Skoða"
 
-#: historietaactivity.py:59
+#: ../historietaactivity.py:129
 msgid "Slideshow"
-msgstr ""
+msgstr "Skyggnusýning"
 
-#: historietaactivity.py:65
+#: ../historietaactivity.py:136
+msgid "Slideshow with Timings"
+msgstr "Skyggnusýning með tímatöku"
+
+#: ../historietaactivity.py:143
+msgid "Set Image Duration in Slideshow (Seconds)"
+msgstr "Stilltu tímalengd hverrar skyggnu í sýningunni (sekúndur)"
+
+#: ../historietaactivity.py:168
 msgid "Fullscreen"
-msgstr ""
+msgstr "Fylla skjá"
 
-#: historietaactivity.py:84
+#: ../historietaactivity.py:186
 msgid "Text"
-msgstr ""
+msgstr "Texti"
 
-#: historietaactivity.py:115
+#: ../historietaactivity.py:191
+msgid "Change image order"
+msgstr "Breyta röðun mynda"
+
+#: ../historietaactivity.py:197
+msgid "Edit background image"
+msgstr "Breyta bakgrunnsmynd"
+
+#: ../historietaactivity.py:229
 msgid "Save as a Book (PDF)"
-msgstr ""
+msgstr "Vista sem bók (PDF)"
 
-#: historietaactivity.py:260 historietaactivity.py:297
+#: ../historietaactivity.py:236
+msgid "Save as a Movie (OGG)"
+msgstr "Vista sem myndskeið (OGG)"
+
+#: ../historietaactivity.py:392 ../historietaactivity.py:448
+#: ../historietaactivity.py:501
 msgid "Success"
-msgstr ""
+msgstr "Tókst"
 
-#: historietaactivity.py:261
+#: ../historietaactivity.py:393
 msgid "A image was created in the Journal"
-msgstr ""
+msgstr "Mynd var búin til í dagbókinni"
 
-#: historietaactivity.py:298
+#: ../historietaactivity.py:449
 msgid "A PDF was created in the Journal"
-msgstr ""
+msgstr "PDF-skjal var búið til í dagbókinni"
 
-#: historietaactivity.py:305
+#: ../historietaactivity.py:495
+msgid "{} as a movie"
+msgstr "{} sem myndskeið"
+
+#: ../historietaactivity.py:502
+msgid "A movie was saved in the Journal"
+msgstr "Myndskeið var vistað í dagbókinni"
+
+#: ../historietaactivity.py:510
 msgid "Show in Journal"
-msgstr ""
+msgstr "Birta í dagbókinni"
 
-#: historietaactivity.py:307
+#: ../historietaactivity.py:512
 msgid "Ok"
-msgstr ""
+msgstr "Í lagi"
 
-#: historietaactivity.py:590
+#: ../historietaactivity.py:796
 msgid "Title:"
-msgstr ""
+msgstr "Titill:"
 
-#: toolbar.py:77
+#: ../toolbar.py:79
 msgid "Add Photo"
-msgstr ""
+msgstr "Bæta við ljósmynd"
 
-#: toolbar.py:81
+#: ../toolbar.py:83
 msgid "Globe"
-msgstr ""
+msgstr "Hnöttur"
 
-#: toolbar.py:81
+#: ../toolbar.py:83
 msgid "Think"
-msgstr ""
+msgstr "Hugsaðu"
 
-#: toolbar.py:82
+#: ../toolbar.py:84
 msgid "Whisper"
-msgstr ""
+msgstr "Hvíslaðu"
 
-#: toolbar.py:82
+#: ../toolbar.py:84
 msgid "Exclamation"
-msgstr ""
+msgstr "Upphrópun"
 
-#: toolbar.py:83
+#: ../toolbar.py:85
 msgid "Box"
-msgstr ""
+msgstr "Kassi"
 
-#: toolbar.py:86
+#: ../toolbar.py:88
 msgid "Add a globe"
-msgstr ""
+msgstr "Bæta við hnetti"
 
-#: toolbar.py:105
+#: ../toolbar.py:107
 msgid "Curves"
-msgstr ""
+msgstr "Sveiglínur"
 
-#: toolbar.py:105
+#: ../toolbar.py:107
 msgid "Straight"
-msgstr ""
+msgstr "Beint"
 
-#: toolbar.py:106
+#: ../toolbar.py:108
 msgid "Highlight"
-msgstr ""
+msgstr "Áherslulita"
 
-#: toolbar.py:106
+#: ../toolbar.py:108
 msgid "Idea"
-msgstr ""
+msgstr "Hugmynd"
 
-#: toolbar.py:109
+#: ../toolbar.py:111
 msgid "Choose a movement line"
 msgstr ""
 
-#: toolbar.py:132
+#: ../toolbar.py:134
 msgid "Turn"
-msgstr ""
+msgstr "Beygja"
 
-#: toolbar.py:138
+#: ../toolbar.py:141
 msgid "Delete"
-msgstr ""
+msgstr "Eyða"
 
-#: toolbar.py:253
+#: ../toolbar.py:259
 msgid "Bold"
 msgstr "Feitletrað"
 
-#: toolbar.py:258
+#: ../toolbar.py:264
 msgid "Italic"
 msgstr "Skáletrað"
 
-#: toolbar.py:272
+#: ../toolbar.py:278
 msgid "Text Color"
+msgstr "Textalitur"
+
+#: ../reorderwindow.py:54
+msgid "Cancel"
+msgstr "Hætta við"
+
+#: ../reorderwindow.py:59
+msgid "Done"
+msgstr "Lokið"
+
+#: ../reorderwindow.py:74
+msgid "Drag the images to reorder"
+msgstr "Dragðu til að endurraða myndum"
+
+#: ../reorderwindow.py:446
+msgid "Reset to box size"
 msgstr ""
+
+#: ../reorderwindow.py:457
+msgid "Drag to move or resize using the marked corners"
+msgstr ""
+
+#: ../fontcombobox.py:90
+msgid "Select font"
+msgstr "Veldu letur"
 
 #~ msgid "Choose image"
 #~ msgstr "Veldu mynd"
+
+#~ msgid "FotoToon"
+#~ msgstr "picha Halisi"
+
+#~ msgid "Add Globe"
+#~ msgstr "kuongeza duniani"
+
+#~ msgid "Add Think"
+#~ msgstr "kuongeza mawazo"
+
+#~ msgid "Add Whisper"
+#~ msgstr "kuongeza sauti"
+
+#~ msgid "Add Exclamation"
+#~ msgstr "kuongeza moderators"
+
+#~ msgid "Add Box"
+#~ msgstr "kuongeza sanduku"
