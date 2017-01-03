@@ -7,28 +7,28 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-01-09 19:19+0000\n"
-"PO-Revision-Date: 2017-01-02 18:14+0000\n"
-"Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
+"PO-Revision-Date: 2016-05-26 02:26+0000\n"
+"Last-Translator: Chris <cjl@sugarlabs.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: is\n"
+"Language: gug\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
 "X-Generator: Pootle 2.5.1.1\n"
-"X-POOTLE-MTIME: 1483380873.000000\n"
+"X-POOTLE-MTIME: 1464229570.000000\n"
 
 #: ../historietaactivity.py:75
 msgid "Add an image and start creating your FotoToon"
-msgstr ""
+msgstr "Emoĩ peteĩ ta'anga ha eñepyrũ rejapo FotoToon nde mba'eva"
 
 #: ../historietaactivity.py:86
 msgid "Choose an image"
-msgstr "Veldu mynd"
+msgstr "Poravo ta'anga"
 
 #: ../historietaactivity.py:100 ../historietaactivity.py:222
 msgid "Save as Image"
-msgstr "Vista sem mynd"
+msgstr "Mba'éicha reñongatuta ta'anga"
 
 #: ../historietaactivity.py:100
 msgid "PNG"
@@ -36,190 +36,169 @@ msgstr "PNG"
 
 #: ../historietaactivity.py:118
 msgid "Edit"
-msgstr "Breyta"
+msgstr "Embo hasa pora jey"
 
 #: ../historietaactivity.py:125
 msgid "View"
-msgstr "Skoða"
+msgstr "Ehecha"
 
 #: ../historietaactivity.py:129
 msgid "Slideshow"
-msgstr "Skyggnusýning"
+msgstr "Jechauka"
 
 #: ../historietaactivity.py:136
 msgid "Slideshow with Timings"
-msgstr "Skyggnusýning með tímatöku"
+msgstr "Jechauka pyae"
 
 #: ../historietaactivity.py:143
 msgid "Set Image Duration in Slideshow (Seconds)"
-msgstr "Stilltu tímalengd hverrar skyggnu í sýningunni (sekúndur)"
+msgstr "Emyesakã mboy ãra ohechaukata ta'anga"
 
 #: ../historietaactivity.py:168
 msgid "Fullscreen"
-msgstr "Fylla skjá"
+msgstr "Emoĩ tuichave ta'anga"
 
 #: ../historietaactivity.py:186
 msgid "Text"
-msgstr "Texti"
+msgstr "Aranduka"
 
 #: ../historietaactivity.py:191
 msgid "Change image order"
-msgstr "Breyta röðun mynda"
+msgstr "Emyengovia ta'anga jechauka"
 
 #: ../historietaactivity.py:197
 msgid "Edit background image"
-msgstr "Breyta bakgrunnsmynd"
+msgstr "Ehechauka pora jey ta'anga"
 
 #: ../historietaactivity.py:229
 msgid "Save as a Book (PDF)"
-msgstr "Vista sem bók (PDF)"
+msgstr "Eñongatu arandukaicha (PDF)"
 
 #: ../historietaactivity.py:236
 msgid "Save as a Movie (OGG)"
-msgstr "Vista sem myndskeið (OGG)"
+msgstr "Eñongatu ta'angamyi (OGG)"
 
 #: ../historietaactivity.py:392 ../historietaactivity.py:448
 #: ../historietaactivity.py:501
 msgid "Success"
-msgstr "Tókst"
+msgstr "Osẽ porãmba"
 
 #: ../historietaactivity.py:393
 msgid "A image was created in the Journal"
-msgstr "Mynd var búin til í dagbókinni"
+msgstr "Oñeñongatu ta'anga tembiapokuera apytepe"
 
 #: ../historietaactivity.py:449
 msgid "A PDF was created in the Journal"
-msgstr "PDF-skjal var búið til í dagbókinni"
+msgstr "Oñeñongatu PDF tembiapokuera apytepe"
 
 #: ../historietaactivity.py:495
 msgid "{} as a movie"
-msgstr "{} sem myndskeið"
+msgstr "{} ta'ãnga momýicha"
 
 #: ../historietaactivity.py:502
 msgid "A movie was saved in the Journal"
-msgstr "Myndskeið var vistað í dagbókinni"
+msgstr "Eñongatu ta'ãnga tembiapo ryrupe"
 
 #: ../historietaactivity.py:510
 msgid "Show in Journal"
-msgstr "Birta í dagbókinni"
+msgstr "Ehechauka tembiapo ryrupe"
 
 #: ../historietaactivity.py:512
 msgid "Ok"
-msgstr "Í lagi"
+msgstr "Ok"
 
 #: ../historietaactivity.py:796
 msgid "Title:"
-msgstr "Titill:"
+msgstr "Téra:"
 
 #: ../toolbar.py:79
 msgid "Add Photo"
-msgstr "Bæta við ljósmynd"
+msgstr "Mbojo'a ta'ãnga"
 
 #: ../toolbar.py:83
 msgid "Globe"
-msgstr "Hnöttur"
+msgstr "Mba'e apu'a"
 
 #: ../toolbar.py:83
 msgid "Think"
-msgstr "Hugsaðu"
+msgstr "Py'amongeta"
 
 #: ../toolbar.py:84
 msgid "Whisper"
-msgstr "Hvíslaðu"
+msgstr "Ñe'ẽguy"
 
 #: ../toolbar.py:84
 msgid "Exclamation"
-msgstr "Upphrópun"
+msgstr "Mbotuichaha"
 
 #: ../toolbar.py:85
 msgid "Box"
-msgstr "Kassi"
+msgstr "Mbaeru ryepy"
 
 #: ../toolbar.py:88
 msgid "Add a globe"
-msgstr "Bæta við hnetti"
+msgstr "Emoive nde arandura"
 
 #: ../toolbar.py:107
 msgid "Curves"
-msgstr "Sveiglínur"
+msgstr "Mohenda karẽ"
 
 #: ../toolbar.py:107
 msgid "Straight"
-msgstr "Beint"
+msgstr "Mohenda joja"
 
 #: ../toolbar.py:108
 msgid "Highlight"
-msgstr "Áherslulita"
+msgstr "Emohenda añete"
 
 #: ../toolbar.py:108
 msgid "Idea"
-msgstr "Hugmynd"
+msgstr "Temimo'ã"
 
 #: ../toolbar.py:111
 msgid "Choose a movement line"
-msgstr ""
+msgstr "Eiporavo linea o'kueva"
 
 #: ../toolbar.py:134
 msgid "Turn"
-msgstr "Beygja"
+msgstr "Embojere"
 
 #: ../toolbar.py:141
 msgid "Delete"
-msgstr "Eyða"
+msgstr "Eipea"
 
 #: ../toolbar.py:259
 msgid "Bold"
-msgstr "Feitletrað"
+msgstr "Emohũve tái"
 
 #: ../toolbar.py:264
 msgid "Italic"
-msgstr "Skáletrað"
+msgstr "Italica"
 
 #: ../toolbar.py:278
 msgid "Text Color"
-msgstr "Textalitur"
+msgstr "Say aranduka"
 
 #: ../reorderwindow.py:54
 msgid "Cancel"
-msgstr "Hætta við"
+msgstr "Eheja"
 
 #: ../reorderwindow.py:59
 msgid "Done"
-msgstr "Lokið"
+msgstr "Japopapyre"
 
 #: ../reorderwindow.py:74
 msgid "Drag the images to reorder"
-msgstr "Dragðu til að endurraða myndum"
+msgstr "Tembiapo"
 
 #: ../reorderwindow.py:446
 msgid "Reset to box size"
-msgstr ""
+msgstr "Emoĩ jey oĩhagueicha pe mba'eryru"
 
 #: ../reorderwindow.py:457
 msgid "Drag to move or resize using the marked corners"
-msgstr ""
+msgstr "Embo syryry hembe'y embo tuicha o embo michĩ hag̃ua"
 
 #: ../fontcombobox.py:90
 msgid "Select font"
-msgstr "Veldu letur"
-
-#~ msgid "Choose image"
-#~ msgstr "Veldu mynd"
-
-#~ msgid "FotoToon"
-#~ msgstr "picha Halisi"
-
-#~ msgid "Add Globe"
-#~ msgstr "kuongeza duniani"
-
-#~ msgid "Add Think"
-#~ msgstr "kuongeza mawazo"
-
-#~ msgid "Add Whisper"
-#~ msgstr "kuongeza sauti"
-
-#~ msgid "Add Exclamation"
-#~ msgstr "kuongeza moderators"
-
-#~ msgid "Add Box"
-#~ msgstr "kuongeza sanduku"
+msgstr "Eiporavo taí"
