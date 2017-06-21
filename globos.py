@@ -1,10 +1,12 @@
-# -*- coding: UTF-8 -*-
+# -*- coding: utf-8 -*-
 
 import os
 import math
 import cairo
 import logging
 
+import gi
+gi.require_version('PangoCairo', '1.0')
 from gi.repository import Gtk, Gdk, GObject
 from gi.repository import Pango
 from gi.repository import PangoCairo

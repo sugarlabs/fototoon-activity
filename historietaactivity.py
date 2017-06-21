@@ -1,4 +1,4 @@
-# -*- coding: UTF-8 -*-
+# -*- coding: utf-8 -*-
 
 import os
 import tempfile
@@ -10,6 +10,9 @@ from gettext import gettext as _
 import time
 from fractions import gcd
 
+import gi
+gi.require_version('Gst', '1.0')
+gi.require_version('Gtk', '3.0')
 from gi.repository import Gst
 from gi.repository import Gtk
 from gi.repository import Gdk
