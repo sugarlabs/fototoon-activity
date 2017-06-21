@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-12 00:33-0400\n"
+"POT-Creation-Date: 2015-01-09 19:19+0000\n"
 "PO-Revision-Date: 2012-05-22 02:34+0200\n"
 "Last-Translator: Chris <cjl@laptop.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,145 +15,206 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Pootle 2.0.5\n"
+"X-Generator: Pootle 2.5.1.1\n"
+"X-POOTLE-MTIME: 1418937899.000000\n"
 
-#. TRANS: "name" option from activity.info file
-msgid "FotoToon"
+#: ../historietaactivity.py:75
+msgid "Add an image and start creating your FotoToon"
 msgstr ""
 
-#. TRANS: "summary" option from activity.info file
-#. TRANS: "description" option from activity.info file
-msgid ""
-"Interested in telling a story? Easy! Use your pictures and your imagination "
-"to create your own comics!"
+#: ../historietaactivity.py:86
+msgid "Choose an image"
 msgstr ""
 
-#: fontcombobox.py:90
-msgid "Select font"
-msgstr ""
-
-#: historietaactivity.py:37 historietaactivity.py:108
+#: ../historietaactivity.py:100 ../historietaactivity.py:222
 msgid "Save as Image"
-msgstr ""
+msgstr "Spara som bild"
 
-#: historietaactivity.py:37
+#: ../historietaactivity.py:100
 msgid "PNG"
 msgstr "PNG"
 
-#: historietaactivity.py:55
+#: ../historietaactivity.py:118
+msgid "Edit"
+msgstr "Redigera"
+
+#: ../historietaactivity.py:125
 msgid "View"
 msgstr ""
 
-#: historietaactivity.py:59
+#: ../historietaactivity.py:129
 msgid "Slideshow"
+msgstr "Bildspel"
+
+#: ../historietaactivity.py:136
+msgid "Slideshow with Timings"
 msgstr ""
 
-#: historietaactivity.py:65
+#: ../historietaactivity.py:143
+msgid "Set Image Duration in Slideshow (Seconds)"
+msgstr ""
+
+#: ../historietaactivity.py:168
 msgid "Fullscreen"
 msgstr ""
 
-#: historietaactivity.py:84
+#: ../historietaactivity.py:186
+#, fuzzy
 msgid "Text"
-msgstr "Teks"
+msgstr "Text"
 
-#: historietaactivity.py:115
+#: ../historietaactivity.py:191
+msgid "Change image order"
+msgstr ""
+
+#: ../historietaactivity.py:197
+msgid "Edit background image"
+msgstr ""
+
+#: ../historietaactivity.py:229
 msgid "Save as a Book (PDF)"
 msgstr ""
 
-#: historietaactivity.py:260 historietaactivity.py:297
-msgid "Success"
+#: ../historietaactivity.py:236
+msgid "Save as a Movie (OGG)"
 msgstr ""
 
-#: historietaactivity.py:261
+#: ../historietaactivity.py:392 ../historietaactivity.py:448
+#: ../historietaactivity.py:501
+msgid "Success"
+msgstr "Lyckades"
+
+#: ../historietaactivity.py:393
 msgid "A image was created in the Journal"
 msgstr ""
 
-#: historietaactivity.py:298
+#: ../historietaactivity.py:449
 msgid "A PDF was created in the Journal"
 msgstr ""
 
-#: historietaactivity.py:305
+#: ../historietaactivity.py:495
+msgid "{} as a movie"
+msgstr ""
+
+#: ../historietaactivity.py:502
+msgid "A movie was saved in the Journal"
+msgstr ""
+
+#: ../historietaactivity.py:510
 msgid "Show in Journal"
 msgstr ""
 
-#: historietaactivity.py:307
+#: ../historietaactivity.py:512
 msgid "Ok"
 msgstr ""
 
-#: historietaactivity.py:590
+#: ../historietaactivity.py:796
 #, fuzzy
 msgid "Title:"
 msgstr "Judul:"
 
-#: toolbar.py:77
+#: ../toolbar.py:79
 msgid "Add Photo"
 msgstr ""
 
-#: toolbar.py:81
+#: ../toolbar.py:83
 msgid "Globe"
 msgstr ""
 
-#: toolbar.py:81
+#: ../toolbar.py:83
 msgid "Think"
 msgstr ""
 
-#: toolbar.py:82
+#: ../toolbar.py:84
 msgid "Whisper"
 msgstr ""
 
-#: toolbar.py:82
+#: ../toolbar.py:84
 msgid "Exclamation"
 msgstr ""
 
-#: toolbar.py:83
+#: ../toolbar.py:85
 msgid "Box"
 msgstr ""
 
-#: toolbar.py:86
+#: ../toolbar.py:88
 msgid "Add a globe"
 msgstr ""
 
-#: toolbar.py:105
+#: ../toolbar.py:107
 msgid "Curves"
 msgstr ""
 
-#: toolbar.py:105
+#: ../toolbar.py:107
 msgid "Straight"
 msgstr ""
 
-#: toolbar.py:106
+#: ../toolbar.py:108
 msgid "Highlight"
 msgstr ""
 
-#: toolbar.py:106
+#: ../toolbar.py:108
 msgid "Idea"
 msgstr ""
 
-#: toolbar.py:109
+#: ../toolbar.py:111
 msgid "Choose a movement line"
 msgstr ""
 
-#: toolbar.py:132
+#: ../toolbar.py:134
 #, fuzzy
 msgid "Turn"
 msgstr "belok"
 
-#: toolbar.py:138
+#: ../toolbar.py:141
 #, fuzzy
 msgid "Delete"
 msgstr "Hapus"
 
-#: toolbar.py:253
+#: ../toolbar.py:259
 #, fuzzy
 msgid "Bold"
 msgstr "Tebal"
 
-#: toolbar.py:258
+#: ../toolbar.py:264
 #, fuzzy
 msgid "Italic"
 msgstr "Miring"
 
-#: toolbar.py:272
+#: ../toolbar.py:278
 #, fuzzy
 msgid "Text Color"
 msgstr "Warna Teks"
+
+#: ../reorderwindow.py:54
+msgid "Cancel"
+msgstr ""
+
+#: ../reorderwindow.py:59
+msgid "Done"
+msgstr ""
+
+#: ../reorderwindow.py:74
+msgid "Drag the images to reorder"
+msgstr ""
+
+#: ../reorderwindow.py:446
+msgid "Reset to box size"
+msgstr ""
+
+#: ../reorderwindow.py:457
+msgid "Drag to move or resize using the marked corners"
+msgstr ""
+
+#: ../fontcombobox.py:90
+msgid "Select font"
+msgstr ""
+
+#~ msgid "Hello pootle"
+#~ msgstr "Hej pootle"
+
+#~ msgid "Hello again pootle"
+#~ msgstr "Hej igen pootle"
+
+#~ msgid "Hasta la vista, pootle!"
+#~ msgstr "Vi ses snart, pootle!"

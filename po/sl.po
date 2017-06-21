@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-12 00:33-0400\n"
+"POT-Creation-Date: 2015-01-09 19:19+0000\n"
 "PO-Revision-Date: 2013-01-11 05:32+0200\n"
 "Last-Translator: Chris <cjl@laptop.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,142 +16,224 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
 "n%100==4 ? 2 : 3);\n"
-"X-Generator: Pootle 2.0.5\n"
+"X-Generator: Pootle 2.5.1.1\n"
+"X-POOTLE-MTIME: 1417804308.000000\n"
 
-#. TRANS: "name" option from activity.info file
-msgid "FotoToon"
+#: ../historietaactivity.py:75
+msgid "Add an image and start creating your FotoToon"
 msgstr ""
 
-#. TRANS: "summary" option from activity.info file
-#. TRANS: "description" option from activity.info file
-msgid ""
-"Interested in telling a story? Easy! Use your pictures and your imagination "
-"to create your own comics!"
+#: ../historietaactivity.py:86
+msgid "Choose an image"
 msgstr ""
 
-#: fontcombobox.py:90
-msgid "Select font"
-msgstr ""
-
-#: historietaactivity.py:37 historietaactivity.py:108
+#: ../historietaactivity.py:100 ../historietaactivity.py:222
 msgid "Save as Image"
-msgstr ""
+msgstr "Enregistrer sous une image"
 
-#: historietaactivity.py:37
+#: ../historietaactivity.py:100
 msgid "PNG"
-msgstr ""
+msgstr "PNG"
 
-#: historietaactivity.py:55
+#: ../historietaactivity.py:118
+msgid "Edit"
+msgstr "Éditer"
+
+#: ../historietaactivity.py:125
 #, fuzzy
 msgid "View"
 msgstr "Pogled"
 
-#: historietaactivity.py:59
+#: ../historietaactivity.py:129
 msgid "Slideshow"
+msgstr "Diaporama"
+
+#: ../historietaactivity.py:136
+msgid "Slideshow with Timings"
 msgstr ""
 
-#: historietaactivity.py:65
+#: ../historietaactivity.py:143
+msgid "Set Image Duration in Slideshow (Seconds)"
+msgstr ""
+
+#: ../historietaactivity.py:168
 msgid "Fullscreen"
-msgstr ""
+msgstr "Plein écran"
 
-#: historietaactivity.py:84
+#: ../historietaactivity.py:186
 #, fuzzy
 msgid "Text"
 msgstr "Besedilo"
 
-#: historietaactivity.py:115
+#: ../historietaactivity.py:191
+msgid "Change image order"
+msgstr "Changer l'ordre des images"
+
+#: ../historietaactivity.py:197
+msgid "Edit background image"
+msgstr "Éditer l'image d'arrière-plan"
+
+#: ../historietaactivity.py:229
 msgid "Save as a Book (PDF)"
+msgstr "Enregistrer au format livre (PDF)"
+
+#: ../historietaactivity.py:236
+msgid "Save as a Movie (OGG)"
 msgstr ""
 
-#: historietaactivity.py:260 historietaactivity.py:297
+#: ../historietaactivity.py:392 ../historietaactivity.py:448
+#: ../historietaactivity.py:501
 msgid "Success"
-msgstr ""
+msgstr "Succès"
 
-#: historietaactivity.py:261
+#: ../historietaactivity.py:393
 msgid "A image was created in the Journal"
-msgstr ""
+msgstr "Une image a été créée dans le Journal"
 
-#: historietaactivity.py:298
+#: ../historietaactivity.py:449
 msgid "A PDF was created in the Journal"
+msgstr "Un document PDF a été créé dans le Journal"
+
+#: ../historietaactivity.py:495
+msgid "{} as a movie"
 msgstr ""
 
-#: historietaactivity.py:305
+#: ../historietaactivity.py:502
+msgid "A movie was saved in the Journal"
+msgstr ""
+
+#: ../historietaactivity.py:510
 msgid "Show in Journal"
-msgstr ""
+msgstr "Montrer dans le Journal"
 
-#: historietaactivity.py:307
+#: ../historietaactivity.py:512
 msgid "Ok"
-msgstr ""
+msgstr "D'accord"
 
-#: historietaactivity.py:590
+#: ../historietaactivity.py:796
 msgid "Title:"
-msgstr ""
+msgstr "Titre :"
 
-#: toolbar.py:77
+#: ../toolbar.py:79
 msgid "Add Photo"
-msgstr ""
+msgstr "Ajouter une photo"
 
-#: toolbar.py:81
+#: ../toolbar.py:83
 msgid "Globe"
-msgstr ""
+msgstr "Bulle"
 
-#: toolbar.py:81
+#: ../toolbar.py:83
 msgid "Think"
-msgstr ""
+msgstr "Pensée"
 
-#: toolbar.py:82
+#: ../toolbar.py:84
 msgid "Whisper"
-msgstr ""
+msgstr "Chuchotement"
 
-#: toolbar.py:82
+#: ../toolbar.py:84
 msgid "Exclamation"
-msgstr ""
+msgstr "Exclamation"
 
-#: toolbar.py:83
+#: ../toolbar.py:85
 msgid "Box"
-msgstr ""
+msgstr "Case"
 
-#: toolbar.py:86
+#: ../toolbar.py:88
 msgid "Add a globe"
-msgstr ""
+msgstr "Ajouter une bulle"
 
-#: toolbar.py:105
+#: ../toolbar.py:107
 msgid "Curves"
-msgstr ""
+msgstr "Courbes"
 
-#: toolbar.py:105
+#: ../toolbar.py:107
 msgid "Straight"
-msgstr ""
+msgstr "Direct"
 
-#: toolbar.py:106
+#: ../toolbar.py:108
 msgid "Highlight"
-msgstr ""
+msgstr "Surligné"
 
-#: toolbar.py:106
+#: ../toolbar.py:108
 msgid "Idea"
-msgstr ""
+msgstr "Idée"
 
-#: toolbar.py:109
+#: ../toolbar.py:111
 msgid "Choose a movement line"
-msgstr ""
+msgstr "Choisir une ligne de mouvement"
 
-#: toolbar.py:132
+#: ../toolbar.py:134
 msgid "Turn"
-msgstr ""
+msgstr "Tourner l'extension"
 
-#: toolbar.py:138
+#: ../toolbar.py:141
 #, fuzzy
 msgid "Delete"
 msgstr "Izbriši"
 
-#: toolbar.py:253
+#: ../toolbar.py:259
 msgid "Bold"
-msgstr ""
+msgstr "Gras"
 
-#: toolbar.py:258
+#: ../toolbar.py:264
 msgid "Italic"
-msgstr ""
+msgstr "Italique"
 
-#: toolbar.py:272
+#: ../toolbar.py:278
 msgid "Text Color"
-msgstr ""
+msgstr "Couleur du texte"
+
+#: ../reorderwindow.py:54
+msgid "Cancel"
+msgstr "Annuler"
+
+#: ../reorderwindow.py:59
+msgid "Done"
+msgstr "Terminé"
+
+#: ../reorderwindow.py:74
+msgid "Drag the images to reorder"
+msgstr "Glisser les images pour les réorganiser"
+
+#: ../reorderwindow.py:446
+msgid "Reset to box size"
+msgstr "Rétablir les dimensions de la boîte"
+
+#: ../reorderwindow.py:457
+msgid "Drag to move or resize using the marked corners"
+msgstr "Faire glisser ou redimensionner à l'aide des coins sélectionnés"
+
+#: ../fontcombobox.py:90
+msgid "Select font"
+msgstr "Sélectionner la police"
+
+#~ msgid "Hello pootle"
+#~ msgstr "bonjour pootle"
+
+#~ msgid "FotoToon"
+#~ msgstr "FotoToon"
+
+#~ msgid ""
+#~ "Interested in telling a story? Easy! Use your pictures and your imagination "
+#~ "to create your own comics!"
+#~ msgstr ""
+#~ "Tu as envie de raconter une histoire ? Utilise tes images et ton imagination "
+#~ "pour créer tes propres bandes dessinées !"
+
+#~ msgid "Add Globe"
+#~ msgstr "Ajouter une bulle"
+
+#~ msgid "Add Think"
+#~ msgstr "Ajouter une pensée"
+
+#~ msgid "Add Whisper"
+#~ msgstr "Ajouter un chuchotement"
+
+#~ msgid "Add Exclamation"
+#~ msgstr "Ajouter une exclamation"
+
+#~ msgid "Add Box"
+#~ msgstr "Ajouter un cartouche"
+
+#~ msgid "Choose image"
+#~ msgstr "Choisir l'image"
