@@ -215,6 +215,7 @@ class GlobesManager():
             last_box.globos = []
             last_box.redraw()
             self._page.boxs.pop()
+            self._page.table.remove(last_box)
 
     def add_image(self):
         try:
