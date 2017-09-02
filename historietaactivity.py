@@ -238,7 +238,9 @@ class HistorietaActivity(activity.Activity):
         save_as_ogg.connect('clicked', self.__save_as_ogg_cb)
         save_as_ogg.set_tooltip(_('Save as a Movie (OGG)'))
         activity_toolbar.insert(save_as_ogg, -1)
-        save_as_ogg.show()
+        Gst.init(None)
+        if Gst.version_string() != 'GStreamer 1.0.10':
+            save_as_ogg.show()
 
         activity_button.page.title.connect("focus-in-event", self.on_title)
 
@@ -481,7 +483,6 @@ class HistorietaActivity(activity.Activity):
                 surface.write_to_png(path)
                 i += 1
 
-        Gst.init(None)
         pipeline_string = VIDEO_PIPELINE.format(
             os.path.join(directory, '%d.png'), framerate, output_path)
         pipeline = Gst.parse_launch(pipeline_string)
