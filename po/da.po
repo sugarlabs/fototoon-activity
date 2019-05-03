@@ -6,243 +6,216 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-09 19:19+0000\n"
-"PO-Revision-Date: 2013-12-26 15:57+0200\n"
-"Last-Translator: Chris <cjl@laptop.org>\n"
+"POT-Creation-Date: 2017-06-21 16:04+1000\n"
+"PO-Revision-Date: 2018-10-20 18:38+0000\n"
+"Last-Translator: scootergrisen <scootergrisen@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: da\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
-"|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Pootle 2.0.5\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.5.1.1\n"
+"X-POOTLE-MTIME: 1540060701.000000\n"
 
-#: ../historietaactivity.py:75
-msgid "Add an image and start creating your FotoToon"
+#: activity/activity.info:2
+msgid "FotoToon"
+msgstr "FotoTegneseriefigur"
+
+#: activity/activity.info:3
+msgid ""
+"Interested in telling a story? Easy! Use your pictures and your imagination "
+"to create your own comics!"
 msgstr ""
+"Har du lyst til at fortælle en historie? Det er nemt! Brug dine billeder og "
+"din fantasi til at skabe din egen tegneserie!"
 
-#: ../historietaactivity.py:86
-msgid "Choose an image"
-msgstr ""
-
-#: ../historietaactivity.py:100 ../historietaactivity.py:222
-#, fuzzy
-msgid "Save as Image"
-msgstr "Gem som billede"
-
-#: ../historietaactivity.py:100
-msgid "PNG"
-msgstr "PNG"
-
-#: ../historietaactivity.py:118
-msgid "Edit"
-msgstr "Redigér"
-
-#: ../historietaactivity.py:125
-#, fuzzy
-msgid "View"
-msgstr "Vis"
-
-#: ../historietaactivity.py:129
-#, fuzzy
-msgid "Slideshow"
-msgstr "Diasshow"
-
-#: ../historietaactivity.py:136
-msgid "Slideshow with Timings"
-msgstr ""
-
-#: ../historietaactivity.py:143
-msgid "Set Image Duration in Slideshow (Seconds)"
-msgstr ""
-
-#: ../historietaactivity.py:168
-#, fuzzy
-msgid "Fullscreen"
-msgstr "Fuldskærm"
-
-#: ../historietaactivity.py:186
-msgid "Text"
-msgstr "Tekst"
-
-#: ../historietaactivity.py:191
-msgid "Change image order"
-msgstr "Skift billedrækkefølgen"
-
-#: ../historietaactivity.py:197
-msgid "Edit background image"
-msgstr "Redigér baggrundsbillede"
-
-#: ../historietaactivity.py:229
-#, fuzzy
-msgid "Save as a Book (PDF)"
-msgstr "Gem som en Bog (PDF)"
-
-#: ../historietaactivity.py:236
-msgid "Save as a Movie (OGG)"
-msgstr ""
-
-#: ../historietaactivity.py:392 ../historietaactivity.py:448
-#: ../historietaactivity.py:501
-#, fuzzy
-msgid "Success"
-msgstr "Succes"
-
-#: ../historietaactivity.py:393
-#, fuzzy
-msgid "A image was created in the Journal"
-msgstr "Et billede blev oprettet i journalen"
-
-#: ../historietaactivity.py:449
-#, fuzzy
-msgid "A PDF was created in the Journal"
-msgstr "En PDF blev oprettet i journalen"
-
-#: ../historietaactivity.py:495
-msgid "{} as a movie"
-msgstr ""
-
-#: ../historietaactivity.py:502
-msgid "A movie was saved in the Journal"
-msgstr ""
-
-#: ../historietaactivity.py:510
-#, fuzzy
-msgid "Show in Journal"
-msgstr "Vis i journal"
-
-#: ../historietaactivity.py:512
-#, fuzzy
-msgid "Ok"
-msgstr "O.k."
-
-#: ../historietaactivity.py:796
-#, fuzzy
-msgid "Title:"
-msgstr "Titel:"
-
-#: ../toolbar.py:79
-#, fuzzy
+#: toolbar.py:79
 msgid "Add Photo"
 msgstr "Tilføj foto"
 
-#: ../toolbar.py:83
-#, fuzzy
+#: toolbar.py:83
 msgid "Globe"
 msgstr "Globus"
 
-#: ../toolbar.py:83
-#, fuzzy
+#: toolbar.py:83
 msgid "Think"
 msgstr "Tænk"
 
-#: ../toolbar.py:84
-#, fuzzy
+#: toolbar.py:84
 msgid "Whisper"
 msgstr "Hvisk"
 
-#: ../toolbar.py:84
-#, fuzzy
+#: toolbar.py:84
 msgid "Exclamation"
 msgstr "Udråb"
 
-#: ../toolbar.py:85
-#, fuzzy
+#: toolbar.py:85
 msgid "Box"
-msgstr "Kasse"
+msgstr "Boks"
 
-#: ../toolbar.py:88
-#, fuzzy
+#: toolbar.py:88
 msgid "Add a globe"
 msgstr "Tilføj en globus"
 
-#: ../toolbar.py:107
-#, fuzzy
+#: toolbar.py:107
 msgid "Curves"
 msgstr "Kurver"
 
-#: ../toolbar.py:107
-#, fuzzy
+#: toolbar.py:107
 msgid "Straight"
 msgstr "Ret"
 
-#: ../toolbar.py:108
-#, fuzzy
+#: toolbar.py:108
 msgid "Highlight"
 msgstr "Fremhæv"
 
-#: ../toolbar.py:108
-#, fuzzy
+#: toolbar.py:108
 msgid "Idea"
 msgstr "Idé"
 
-#: ../toolbar.py:111
-#, fuzzy
+#: toolbar.py:111
 msgid "Choose a movement line"
 msgstr "Vælg en bevægelseslinje"
 
-#: ../toolbar.py:134
-#, fuzzy
+#: toolbar.py:134
 msgid "Turn"
 msgstr "Vend"
 
-#: ../toolbar.py:141
-#, fuzzy
+#: toolbar.py:141
 msgid "Delete"
 msgstr "Slet"
 
-#: ../toolbar.py:259
-#, fuzzy
+#: toolbar.py:259
 msgid "Bold"
 msgstr "Fed"
 
-#: ../toolbar.py:264
-#, fuzzy
+#: toolbar.py:264
 msgid "Italic"
 msgstr "Kursiv"
 
-#: ../toolbar.py:278
-#, fuzzy
+#: toolbar.py:278
 msgid "Text Color"
 msgstr "Tekstfarve"
 
-#: ../reorderwindow.py:54
+#: reorderwindow.py:54
 msgid "Cancel"
 msgstr "Annullér"
 
-#: ../reorderwindow.py:59
+#: reorderwindow.py:59
 msgid "Done"
 msgstr "Fuldført"
 
-#: ../reorderwindow.py:74
+#: reorderwindow.py:74
 msgid "Drag the images to reorder"
 msgstr "Træk billederne for at ændre rækkefølge"
 
-#: ../reorderwindow.py:446
+#: reorderwindow.py:446
 msgid "Reset to box size"
 msgstr "Nulstil til boksstørrelse"
 
-#: ../reorderwindow.py:457
+#: reorderwindow.py:457
 msgid "Drag to move or resize using the marked corners"
 msgstr ""
 "Træk for at flytte eller ændre størrelsen, ved at benytte de markerede "
 "hjørner"
 
-#: ../fontcombobox.py:90
-#, fuzzy
+#: fontcombobox.py:90
 msgid "Select font"
 msgstr "Vælg skrifttype"
 
-#~ msgid "FotoToon"
-#~ msgstr "FotoTegneseriefigur"
+#: historietaactivity.py:78
+msgid "Add an image and start creating your FotoToon"
+msgstr "Tilføj et billede og begynd at oprette din FotoTegneseriefigur"
 
-#~ msgid ""
-#~ "Interested in telling a story? Easy! Use your pictures and your imagination "
-#~ "to create your own comics!"
-#~ msgstr ""
-#~ "Har du lyst til at fortælle en historie? Det er nemt! Brug dine billeder og "
-#~ "din fantasi til at skabe din egen tegneserie!"
+#: historietaactivity.py:89
+msgid "Choose an image"
+msgstr "Vælg et billede"
+
+#: historietaactivity.py:103 historietaactivity.py:225
+msgid "Save as Image"
+msgstr "Gem som billede"
+
+#: historietaactivity.py:103
+msgid "PNG"
+msgstr "PNG"
+
+#: historietaactivity.py:121
+msgid "Edit"
+msgstr "Redigér"
+
+#: historietaactivity.py:128
+msgid "View"
+msgstr "Vis"
+
+#: historietaactivity.py:132
+msgid "Slideshow"
+msgstr "Diasshow"
+
+#: historietaactivity.py:139
+msgid "Slideshow with Timings"
+msgstr "Diasshow med timinger"
+
+#: historietaactivity.py:146
+msgid "Set Image Duration in Slideshow (Seconds)"
+msgstr "Indstil varighed for billede i diasshow (sekunder)"
+
+#: historietaactivity.py:171
+msgid "Fullscreen"
+msgstr "Fuldskærm"
+
+#: historietaactivity.py:189
+msgid "Text"
+msgstr "Tekst"
+
+#: historietaactivity.py:194
+msgid "Change image order"
+msgstr "Skift billedrækkefølgen"
+
+#: historietaactivity.py:200
+msgid "Edit background image"
+msgstr "Redigér baggrundsbillede"
+
+#: historietaactivity.py:232
+msgid "Save as a Book (PDF)"
+msgstr "Gem som en bog (PDF)"
+
+#: historietaactivity.py:239
+msgid "Save as a Movie (OGG)"
+msgstr "Gem som en video (OGG)"
+
+#: historietaactivity.py:395 historietaactivity.py:451
+#: historietaactivity.py:504
+msgid "Success"
+msgstr "Succes"
+
+#: historietaactivity.py:396
+msgid "A image was created in the Journal"
+msgstr "Et billede blev oprettet i journalen"
+
+#: historietaactivity.py:452
+msgid "A PDF was created in the Journal"
+msgstr "En PDF blev oprettet i journalen"
+
+#: historietaactivity.py:498
+msgid "{} as a movie"
+msgstr "{} som en video"
+
+#: historietaactivity.py:505
+msgid "A movie was saved in the Journal"
+msgstr "Et video blev gemt i journalen"
+
+#: historietaactivity.py:513
+msgid "Show in Journal"
+msgstr "Vis i journal"
+
+#: historietaactivity.py:515
+msgid "Ok"
+msgstr "Ok"
+
+#: historietaactivity.py:799
+msgid "Title:"
+msgstr "Titel:"
 
 #~ msgid "Add Globe"
 #~ msgstr "Tilføj globe"

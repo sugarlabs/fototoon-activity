@@ -6,209 +6,213 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-09 19:19+0000\n"
-"PO-Revision-Date: 2012-05-22 02:34+0200\n"
-"Last-Translator: Chris <cjl@laptop.org>\n"
+"POT-Creation-Date: 2017-06-21 16:04+1000\n"
+"PO-Revision-Date: 2017-04-02 18:00+0000\n"
+"Last-Translator: Anders <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Pootle 2.5.1.1\n"
-"X-POOTLE-MTIME: 1418937899.000000\n"
+"X-POOTLE-MTIME: 1491156004.000000\n"
 
-#: ../historietaactivity.py:75
+#: activity/activity.info:2
+msgid "FotoToon"
+msgstr ""
+
+#: activity/activity.info:3
+msgid ""
+"Interested in telling a story? Easy! Use your pictures and your imagination "
+"to create your own comics!"
+msgstr ""
+
+#: toolbar.py:79
+msgid "Add Photo"
+msgstr "Lägg till foto"
+
+# TODO: Globe -> Speech balloon
+#: toolbar.py:83
+msgid "Globe"
+msgstr "Pratbubbla"
+
+#: toolbar.py:83
+msgid "Think"
+msgstr "Tanke"
+
+#: toolbar.py:84
+msgid "Whisper"
+msgstr "Viskning"
+
+#: toolbar.py:84
+msgid "Exclamation"
+msgstr "Utrop"
+
+#: toolbar.py:85
+msgid "Box"
+msgstr "Ruta"
+
+#: toolbar.py:88
+msgid "Add a globe"
+msgstr "Lägg till en pratbubbla"
+
+#: toolbar.py:107
+msgid "Curves"
+msgstr "Kurvor"
+
+#: toolbar.py:107
+msgid "Straight"
+msgstr "Rak"
+
+#: toolbar.py:108
+msgid "Highlight"
+msgstr "Markering"
+
+#: toolbar.py:108
+msgid "Idea"
+msgstr "Idé"
+
+#: toolbar.py:111
+msgid "Choose a movement line"
+msgstr "Välj en rörelselinje"
+
+#: toolbar.py:134
+msgid "Turn"
+msgstr "Rotera"
+
+#: toolbar.py:141
+msgid "Delete"
+msgstr "Ta bort"
+
+#: toolbar.py:259
+msgid "Bold"
+msgstr "Fet"
+
+#: toolbar.py:264
+msgid "Italic"
+msgstr "Kursiv"
+
+#: toolbar.py:278
+msgid "Text Color"
+msgstr "Textfärg"
+
+#: reorderwindow.py:54
+msgid "Cancel"
+msgstr "Avbryt"
+
+#: reorderwindow.py:59
+msgid "Done"
+msgstr "Färdig"
+
+#: reorderwindow.py:74
+msgid "Drag the images to reorder"
+msgstr "Dra bilderna för att ändra ordning"
+
+#: reorderwindow.py:446
+msgid "Reset to box size"
+msgstr "Återställ till rutstorlek"
+
+#: reorderwindow.py:457
+msgid "Drag to move or resize using the marked corners"
+msgstr "Dra för att flytta eller ändra storlek med de markerade hörnen"
+
+#: fontcombobox.py:90
+msgid "Select font"
+msgstr "Välj typsnitt"
+
+#: historietaactivity.py:78
 msgid "Add an image and start creating your FotoToon"
-msgstr ""
+msgstr "Lägg till en bild och börja skapa din FotoToon"
 
-#: ../historietaactivity.py:86
+#: historietaactivity.py:89
 msgid "Choose an image"
-msgstr ""
+msgstr "Välj en bild"
 
-#: ../historietaactivity.py:100 ../historietaactivity.py:222
+#: historietaactivity.py:103 historietaactivity.py:225
 msgid "Save as Image"
 msgstr "Spara som bild"
 
-#: ../historietaactivity.py:100
+#: historietaactivity.py:103
 msgid "PNG"
 msgstr "PNG"
 
-#: ../historietaactivity.py:118
+#: historietaactivity.py:121
 msgid "Edit"
 msgstr "Redigera"
 
-#: ../historietaactivity.py:125
+#: historietaactivity.py:128
 msgid "View"
-msgstr ""
+msgstr "Visa"
 
-#: ../historietaactivity.py:129
+#: historietaactivity.py:132
 msgid "Slideshow"
 msgstr "Bildspel"
 
-#: ../historietaactivity.py:136
+#: historietaactivity.py:139
 msgid "Slideshow with Timings"
-msgstr ""
+msgstr "Bildspel med tidsangivelser"
 
-#: ../historietaactivity.py:143
+#: historietaactivity.py:146
 msgid "Set Image Duration in Slideshow (Seconds)"
-msgstr ""
+msgstr "Ställ in bildlängd i bildspel (sekunder)"
 
-#: ../historietaactivity.py:168
+#: historietaactivity.py:171
 msgid "Fullscreen"
-msgstr ""
+msgstr "Helskärm"
 
-#: ../historietaactivity.py:186
-#, fuzzy
+#: historietaactivity.py:189
 msgid "Text"
 msgstr "Text"
 
-#: ../historietaactivity.py:191
+#: historietaactivity.py:194
 msgid "Change image order"
-msgstr ""
+msgstr "Ändra bildordning"
 
-#: ../historietaactivity.py:197
+#: historietaactivity.py:200
 msgid "Edit background image"
-msgstr ""
+msgstr "Redigera bakgrundsbild"
 
-#: ../historietaactivity.py:229
+#: historietaactivity.py:232
 msgid "Save as a Book (PDF)"
-msgstr ""
+msgstr "Spara som en bok (PDF)"
 
-#: ../historietaactivity.py:236
+#: historietaactivity.py:239
 msgid "Save as a Movie (OGG)"
-msgstr ""
+msgstr "Spara som en film (OGG)"
 
-#: ../historietaactivity.py:392 ../historietaactivity.py:448
-#: ../historietaactivity.py:501
+#: historietaactivity.py:395 historietaactivity.py:451
+#: historietaactivity.py:504
 msgid "Success"
 msgstr "Lyckades"
 
-#: ../historietaactivity.py:393
+#: historietaactivity.py:396
 msgid "A image was created in the Journal"
-msgstr ""
+msgstr "En bild skapades i dagboken"
 
-#: ../historietaactivity.py:449
+#: historietaactivity.py:452
 msgid "A PDF was created in the Journal"
-msgstr ""
+msgstr "En PDF-fil skapades i dagboken"
 
-#: ../historietaactivity.py:495
+#: historietaactivity.py:498
 msgid "{} as a movie"
-msgstr ""
+msgstr "{} som en film"
 
-#: ../historietaactivity.py:502
+#: historietaactivity.py:505
 msgid "A movie was saved in the Journal"
-msgstr ""
+msgstr "En film sparades i dagboken"
 
-#: ../historietaactivity.py:510
+#: historietaactivity.py:513
 msgid "Show in Journal"
-msgstr ""
+msgstr "Visa i dagbok"
 
-#: ../historietaactivity.py:512
+#: historietaactivity.py:515
 msgid "Ok"
-msgstr ""
+msgstr "Ok"
 
-#: ../historietaactivity.py:796
-#, fuzzy
+#: historietaactivity.py:799
 msgid "Title:"
-msgstr "Judul:"
-
-#: ../toolbar.py:79
-msgid "Add Photo"
-msgstr ""
-
-#: ../toolbar.py:83
-msgid "Globe"
-msgstr ""
-
-#: ../toolbar.py:83
-msgid "Think"
-msgstr ""
-
-#: ../toolbar.py:84
-msgid "Whisper"
-msgstr ""
-
-#: ../toolbar.py:84
-msgid "Exclamation"
-msgstr ""
-
-#: ../toolbar.py:85
-msgid "Box"
-msgstr ""
-
-#: ../toolbar.py:88
-msgid "Add a globe"
-msgstr ""
-
-#: ../toolbar.py:107
-msgid "Curves"
-msgstr ""
-
-#: ../toolbar.py:107
-msgid "Straight"
-msgstr ""
-
-#: ../toolbar.py:108
-msgid "Highlight"
-msgstr ""
-
-#: ../toolbar.py:108
-msgid "Idea"
-msgstr ""
-
-#: ../toolbar.py:111
-msgid "Choose a movement line"
-msgstr ""
-
-#: ../toolbar.py:134
-#, fuzzy
-msgid "Turn"
-msgstr "belok"
-
-#: ../toolbar.py:141
-#, fuzzy
-msgid "Delete"
-msgstr "Hapus"
-
-#: ../toolbar.py:259
-#, fuzzy
-msgid "Bold"
-msgstr "Tebal"
-
-#: ../toolbar.py:264
-#, fuzzy
-msgid "Italic"
-msgstr "Miring"
-
-#: ../toolbar.py:278
-#, fuzzy
-msgid "Text Color"
-msgstr "Warna Teks"
-
-#: ../reorderwindow.py:54
-msgid "Cancel"
-msgstr ""
-
-#: ../reorderwindow.py:59
-msgid "Done"
-msgstr ""
-
-#: ../reorderwindow.py:74
-msgid "Drag the images to reorder"
-msgstr ""
-
-#: ../reorderwindow.py:446
-msgid "Reset to box size"
-msgstr ""
-
-#: ../reorderwindow.py:457
-msgid "Drag to move or resize using the marked corners"
-msgstr ""
-
-#: ../fontcombobox.py:90
-msgid "Select font"
-msgstr ""
+msgstr "Titel:"
 
 #~ msgid "Hello pootle"
 #~ msgstr "Hej pootle"
