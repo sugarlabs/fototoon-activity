@@ -90,14 +90,14 @@ class Persistence:
         logging.debug('file_name %s', file_name)
 
         z = zipfile.ZipFile(file_name, 'w')
-        z.write(os.path.join(instance_path, data_file_name).encode(
-            'ascii', 'ignore'), data_file_name.encode('ascii', 'ignore'))
+        z.write(os.path.join(instance_path, data_file_name),
+                data_file_name)
         for box in page.boxs:
             if (box.image_name != ''):
                 z.write(os.path.join(
                     instance_path,
-                    box.image_name).encode('ascii', 'ignore'),
-                    box.image_name.encode('ascii', 'ignore'))
+                    box.image_name),
+                    box.image_name)
         z.close()
 
     def read(self, file_name, page):

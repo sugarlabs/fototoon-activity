@@ -2,7 +2,7 @@
 name = FotoToon
 bundle_id = org.eq.FotoToon
 icon = historieta
-exec = sugar-activity historietaactivity.HistorietaActivity
+exec = sugar-activity3 historietaactivity.HistorietaActivity
 show_launcher = yes
 activity_version = 23
 host_version = 2

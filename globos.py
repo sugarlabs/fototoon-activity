@@ -895,7 +895,7 @@ class CuadroTexto:
 
     def initialize_textview(self, ctx):
         tbuffer = self.textview.get_buffer()
-        tbuffer.set_text(unicode(self.text))
+        tbuffer.set_text(self.text)
         self.textview.set_cursor_visible(False)
         self.textview.modify_font(Pango.FontDescription(
             self.font_description))

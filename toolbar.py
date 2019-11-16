@@ -93,7 +93,7 @@ class GlobesManager():
         self._globes_menu.props.palette.set_content(menu_box)
         menu_box.show()
 
-        for globe in self._globes.keys():
+        for globe in list(self._globes.keys()):
             menu_item = PaletteMenuItem(icon_name=globe,
                                         text_label=self._globes[globe])
             menu_item.connect('activate', self.__activate_add_globe_cb, globe)
@@ -116,7 +116,7 @@ class GlobesManager():
         self._lines_menu.props.palette.set_content(menu_box)
         menu_box.show()
 
-        for line in self._lines.keys():
+        for line in list(self._lines.keys()):
             menu_item = PaletteMenuItem(icon_name=line,
                                         text_label=self._lines[line])
             menu_item.connect('activate', self.__activate_add_line_cb, line)
