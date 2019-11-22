@@ -362,8 +362,8 @@ class CanvasEditor(Gtk.EventBox):
         def size_allocate(widget, allocation):
             self._drawingarea.set_size_request(allocation.width,
                                                allocation.height)
-            self.image.margin_x = (allocation.width - self.width) / 2
-            self.image.margin_y = (allocation.height - self.height) / 2
+            self.image.margin_x = (allocation.width - self.width) // 2
+            self.image.margin_y = (allocation.height - self.height) // 2
             self.image.box_width = self.width
             self.image.box_height = self.height
 

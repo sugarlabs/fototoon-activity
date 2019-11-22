@@ -312,7 +312,7 @@ class HistorietaActivity(activity.Activity):
         for box in self.page.boxs:
             if posi > 0:
                 try:
-                    reng = int((posi + 1) / 2)
+                    reng = int((posi + 1) // 2)
                     column = (posi + 1) - (reng * 2)
                     # logging.error("reng %d column %d" % (reng, column))
                     if column == 0:
@@ -349,7 +349,7 @@ class HistorietaActivity(activity.Activity):
 
             if posi > 0:
                 try:
-                    reng = int((posi + 1) / 2)
+                    reng = int((posi + 1) // 2)
                     column = (posi + 1) - (reng * 2)
                     ctx.rectangle(column * box.width, y_posi,
                                   (column + 1) * box.width,
@@ -424,7 +424,7 @@ class HistorietaActivity(activity.Activity):
             if box.width != page_width:
                 # for the first box, scale and center
                 scale = float(page_width) / float(box.width)
-                top_margin = (page_height - box.height) / 2
+                top_margin = (page_height - box.height) // 2
                 context.translate(0, top_margin)
                 context.scale(scale, scale)
 
@@ -478,7 +478,7 @@ class HistorietaActivity(activity.Activity):
             context.paint()
             box.draw_in_context(context)
 
-            for __ in range(int(box.slideshow_duration / framerate)):
+            for __ in range(int(box.slideshow_duration // framerate)):
                 path = os.path.join(directory, '{}.png'.format(i))
                 surface.write_to_png(path)
                 i += 1
@@ -545,8 +545,8 @@ class HistorietaActivity(activity.Activity):
             pixbuf.get_bits_per_sample(), preview_width, preview_height)
         pixbuf2.fill(style.COLOR_WHITE.get_int())
 
-        margin_x = int((preview_width - (width * scale)) / 2)
-        margin_y = int((preview_height - (height * scale)) / 2)
+        margin_x = int((preview_width - (width * scale)) // 2)
+        margin_y = int((preview_height - (height * scale)) // 2)
 
         pixbuf.scale(pixbuf2, margin_x, margin_y,
                      preview_width - (margin_x * 2),
@@ -711,7 +711,7 @@ class ComicBox(Gtk.EventBox):
         self.thumbnail = None
         self.slideshow_duration = DEFAULT_TIME
 
-        self.width = (int)(SCREEN_WIDTH - DEF_SPACING) / 2
+        self.width = (int)(SCREEN_WIDTH - DEF_SPACING) // 2
         self.height = BOX_HEIGHT
 
         if image_file_name is not None:
@@ -790,8 +790,8 @@ class ComicBox(Gtk.EventBox):
             self._page.empty_page = False
             # select title box
             rect = self.get_allocation()
-            x = rect.width / 2
-            y = rect.height / 2
+            x = rect.width // 2
+            y = rect.height // 2
             self.add_rectangulo(x, y)
             self.title_globe = self.globos[0]
             self.title_globe.texto.set_text(_('Title:'))

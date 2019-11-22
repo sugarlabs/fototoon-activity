@@ -16,7 +16,7 @@ from sugar3.graphics.icon import _IconBuffer
 from sugar3.graphics import style
 
 ANCHO_LINEAS_CONTROLES = 2
-SIZE_RESIZE_AREA = style.GRID_CELL_SIZE / 2
+SIZE_RESIZE_AREA = style.GRID_CELL_SIZE // 2
 
 DIR_ABAJO = "abajo"
 DIR_ARRIBA = "arriba"
@@ -25,12 +25,12 @@ DIR_DER = "der"
 
 DEFAULT_FONT = 'Sans'
 DEFAULT_GLOBE_WIDTH = style.GRID_CELL_SIZE * 1.5
-DEFAULT_GLOBE_HEIGHT = style.GRID_CELL_SIZE / 2
+DEFAULT_GLOBE_HEIGHT = style.GRID_CELL_SIZE // 2
 
 
 def _get_screen_dpi():
     xft_dpi = Gtk.Settings.get_default().get_property('gtk-xft-dpi')
-    dpi = float(xft_dpi / 1024)
+    dpi = float(xft_dpi // 1024)
     return dpi
 
 
@@ -159,8 +159,8 @@ class Globo:
             context.save()
             context.set_line_width(ANCHO_LINEAS_CONTROLES)
             context.set_source_rgb(1, 1, 1)
-            context.rectangle(self.x - self.ancho - (SIZE_RESIZE_AREA / 2),
-                              self.y - self.alto - (SIZE_RESIZE_AREA / 2),
+            context.rectangle(self.x - self.ancho - (SIZE_RESIZE_AREA // 2),
+                              self.y - self.alto - (SIZE_RESIZE_AREA // 2),
                               SIZE_RESIZE_AREA, SIZE_RESIZE_AREA)
             context.stroke_preserve()
             context.set_source_rgb(0, 0, 0)
@@ -251,7 +251,7 @@ class Globo:
             return False
 
     def is_selec_tam(self, x, y):
-        width = SIZE_RESIZE_AREA / 2
+        width = SIZE_RESIZE_AREA // 2
         if self.x - self.ancho - width < x < self.x - self.ancho + width and \
                 self.y - self.alto - width < y < self.y - self.alto + width:
             return True
@@ -259,7 +259,7 @@ class Globo:
             return False
 
     def is_selec_punto(self, x, y):
-        width = SIZE_RESIZE_AREA / 2
+        width = SIZE_RESIZE_AREA // 2
         x_circle, y_circle = self.get_circle_position()
         return x_circle - width < x < x_circle + width and \
             y_circle - width < y < y_circle + width
@@ -463,8 +463,8 @@ class Rectangulo(Globo):
 
             context.set_source_rgb(1, 1, 1)
             context.rectangle(
-                self.x - self.ancho - (SIZE_RESIZE_AREA / 2),
-                self.y - self.alto - (SIZE_RESIZE_AREA / 2),
+                self.x - self.ancho - (SIZE_RESIZE_AREA // 2),
+                self.y - self.alto - (SIZE_RESIZE_AREA // 2),
                 SIZE_RESIZE_AREA, SIZE_RESIZE_AREA)
             context.stroke_preserve()
             context.set_source_rgb(0, 0, 0)
@@ -502,7 +502,7 @@ class Nube(Globo):
         self.ancho = ancho
         self.alto = alto
 
-        self.punto = [ancho / 2, alto * 2]
+        self.punto = [ancho // 2, alto * 2]
         # determina si esta seleccionado
         self.selec = False
 
@@ -603,16 +603,16 @@ class Nube(Globo):
 
     def get_second_circle_position(self):
         if self.direccion == DIR_ABAJO:
-            return self.x + self.punto[0] / 2, \
-                self.y + self.alto + self.punto[1] / 2
+            return self.x + self.punto[0] // 2, \
+                self.y + self.alto + self.punto[1] // 2
         elif self.direccion == DIR_DER:
             return self.x + self.ancho + self.punto[0] / 2, \
-                self.y + self.punto[1] / 2
+                self.y + self.punto[1] // 2
         elif self.direccion == DIR_IZQ:
-            return self.x - self.ancho - self.punto[0] / 2, \
-                self.y + self.punto[1] / 2
+            return self.x - self.ancho - self.punto[0] // 2, \
+                self.y + self.punto[1] // 2
         else:
-            return self.x + self.punto[0] / 2, \
+            return self.x + self.punto[0] // 2, \
                 self.y - self.alto - self.punto[1] / 2
 
 
@@ -629,7 +629,7 @@ class Grito(Globo):
         self.ancho = ancho
         self.alto = alto
 
-        self.punto = [ancho / 2, alto * 2]
+        self.punto = [ancho // 2, alto * 2]
         self.selec = False
 
         self.direccion = direccion
@@ -745,8 +745,8 @@ class Imagen(Globo):
             self.icon_buffer.height = self.ancho * 2
 
         surface = self.icon_buffer.get_surface()
-        x = self.x - surface.get_width() / 2
-        y = self.y - surface.get_height() / 2
+        x = self.x - surface.get_width() // 2
+        y = self.y - surface.get_height() // 2
 
         context.translate(x, y)
 
@@ -759,14 +759,14 @@ class Imagen(Globo):
             elif self.direccion == DIR_IZQ:
                 context.rotate(3.14 / 2.0)  # 90 degrees
                 context.translate(
-                    (self.icon_buffer.height - self.icon_buffer.width) / 2,
-                    -(self.icon_buffer.width + self.icon_buffer.height) / 2)
+                    (self.icon_buffer.height - self.icon_buffer.width) // 2,
+                    -(self.icon_buffer.width + self.icon_buffer.height) // 2)
 
             elif self.direccion == DIR_DER:
                 context.rotate(3.0 * 3.14 / 2.0)  # 270 degrees
                 context.translate(
-                    -(self.icon_buffer.height + self.icon_buffer.width) / 2,
-                    (self.icon_buffer.width - self.icon_buffer.height) / 2)
+                    -(self.icon_buffer.height + self.icon_buffer.width) // 2,
+                    (self.icon_buffer.width - self.icon_buffer.height) // 2)
 
         context.set_source_surface(surface, 0, 0)
 
@@ -913,7 +913,7 @@ class CuadroTexto:
             else:
                 ctx.save()
                 x = self._globe.x - self._text_surface.get_width() / 2
-                y = self._globe.y - self._text_surface.get_height() / 2
+                y = self._globe.y - self._text_surface.get_height() // 2
                 ctx.set_source_surface(self._text_surface, x, y)
                 ctx.paint()
                 ctx.restore()
@@ -941,8 +941,8 @@ class CuadroTexto:
 
     def _textview_size_allocate(self, widget, alloc):
         # recalculate size and position with the real size allocated
-        self.ancho = alloc.width / 2
-        self.alto = alloc.height / 2
+        self.ancho = alloc.width // 2
+        self.alto = alloc.height // 2
 
         self._globe.calc_area(self.ancho, self.alto)
         x = self._globe.x - self.ancho
