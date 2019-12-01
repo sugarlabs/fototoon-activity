@@ -406,7 +406,7 @@ class HistorietaActivity(activity.Activity):
     def _save_as_pdf(self, widget):
         self._commit_all_changes()
 
-        file_name = os.path.join(self.get_activity_root(), 'instance',
+        file_name = os.path.join(activity.get_activity_root(), 'instance',
                                  'tmp-%i.pdf' % time.time())
         file_obj = open(file_name, 'w')
 

@@ -24,6 +24,7 @@ import time
 
 from gi.repository import Gtk, Gdk
 
+from sugar3.activity import activity
 from sugar3.graphics.toolbutton import ToolButton
 from sugar3.graphics.toggletoolbutton import ToggleToolButton
 from sugar3.graphics.toolcombobox import ToolComboBox
@@ -235,7 +236,7 @@ class GlobesManager():
                     logging.error("imagen seleccionada: %s",
                                   jobject.file_path)
                     tempfile_name = \
-                        os.path.join(self._activity.get_activity_root(),
+                        os.path.join(activity.get_activity_root(),
                                      'instance', 'tmp%i' % time.time())
                     os.link(jobject.file_path, tempfile_name)
                     logging.error("tempfile_name: %s", tempfile_name)
