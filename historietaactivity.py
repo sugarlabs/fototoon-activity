@@ -408,7 +408,7 @@ class HistorietaActivity(activity.Activity):
 
         file_name = os.path.join(activity.get_activity_root(), 'instance',
                                  'tmp-%i.pdf' % time.time())
-        file_obj = open(file_name, 'w')
+        file_obj = open(file_name, 'wb')
 
         page_width = self.page.boxs[1].width
         page_height = self.page.boxs[1].height
