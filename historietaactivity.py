@@ -715,7 +715,7 @@ class ComicBox(Gtk.EventBox):
         self.height = BOX_HEIGHT
 
         if image_file_name is not None:
-            logging.error('seting image_name %s', image_file_name)
+            logging.debug('seting image_name %s', image_file_name)
             self.image_name = image_file_name
 
         self._globo_activo = None

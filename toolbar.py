@@ -232,13 +232,13 @@ class GlobesManager():
             if result == Gtk.ResponseType.ACCEPT:
                 jobject = chooser.get_selected_object()
                 if jobject and jobject.file_path:
-                    logging.error("imagen seleccionada: %s",
+                    logging.debug("imagen seleccionada: %s",
                                   jobject.file_path)
                     tempfile_name = \
                         os.path.join(activity.get_activity_root(),
                                      'instance', 'tmp%i' % time.time())
                     os.link(jobject.file_path, tempfile_name)
-                    logging.error("tempfile_name: %s", tempfile_name)
+                    logging.debug("tempfile_name: %s", tempfile_name)
                     self._page.add_box_from_journal_image(tempfile_name)
                 jobject.destroy()
         finally:
@@ -367,7 +367,7 @@ class TextToolbar(Gtk.Toolbar):
         # color
         self._text_color.set_color(Gdk.Color(*globeText.color))
         # font size
-        logging.error('Setting font size from globe %s %s',
+        logging.debug('Setting font size from globe %s %s',
                       globeText.font_size, globeText.font_size.__class__)
         self._font_size_combo.handler_block(self._font_size_changed_id)
         self._font_size_combo.set_font_size(int(globeText.font_size))
