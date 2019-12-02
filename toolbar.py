@@ -229,8 +229,6 @@ class GlobesManager():
         try:
             result = chooser.run()
             if result == Gtk.ResponseType.ACCEPT:
-                logging.error('ObjectChooser: %r' %
-                              chooser.get_selected_object())
                 jobject = chooser.get_selected_object()
                 if jobject and jobject.file_path:
                     logging.error("imagen seleccionada: %s",
@@ -241,6 +239,7 @@ class GlobesManager():
                     os.link(jobject.file_path, tempfile_name)
                     logging.error("tempfile_name: %s", tempfile_name)
                     self._page.add_box_from_journal_image(tempfile_name)
+                jobject.destroy()
         finally:
             chooser.destroy()
             del chooser
