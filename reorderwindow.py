@@ -137,7 +137,7 @@ class ReorderObjects(Gtk.ScrolledWindow):
             reng = int(i / 2)
             column = i - (reng * 2)
             self.activity.page.table.attach(
-                self.comicboxes[i+1], column, column + 1, reng, reng + 1)
+                self.comicboxes[i + 1], column, column + 1, reng, reng + 1)
 
 
 class ImageElement:

@@ -55,7 +55,7 @@ class EmptyWidget(Gtk.EventBox):
 
     __gsignals__ = {
         'choose-image': (GObject.SIGNAL_RUN_FIRST, None, [])
-        }
+    }
 
     def __init__(self):
         Gtk.EventBox.__init__(self)
