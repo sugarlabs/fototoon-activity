@@ -39,6 +39,7 @@ def _set_screen_dpi():
     font_map_default = PangoCairo.font_map_get_default()
     font_map_default.set_resolution(dpi)
 
+
 _set_screen_dpi()
 
 

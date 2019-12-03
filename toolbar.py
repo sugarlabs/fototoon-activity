@@ -32,10 +32,7 @@ from sugar3.graphics.palettemenu import PaletteMenuItem
 from sugar3.graphics.palettemenu import PaletteMenuBox
 from sugar3.graphics.colorbutton import ColorToolButton
 from sugar3.graphics.objectchooser import ObjectChooser
-try:
-    from sugar3.graphics.objectchooser import FILTER_TYPE_GENERIC_MIME
-except:
-    FILTER_TYPE_GENERIC_MIME = 'generic_mime'
+from sugar3.graphics.objectchooser import FILTER_TYPE_GENERIC_MIME
 
 from fontcombobox import FontComboBox
 from fontcombobox import FontSize
