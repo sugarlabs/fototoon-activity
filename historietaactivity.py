@@ -312,7 +312,7 @@ class HistorietaActivity(activity.Activity):
         for box in self.page.boxs:
             if posi > 0:
                 try:
-                    reng = int((posi + 1) // 2)
+                    reng = (posi + 1) // 2
                     column = (posi + 1) - (reng * 2)
                     # logging.error("reng %d column %d" % (reng, column))
                     if column == 0:
@@ -349,7 +349,7 @@ class HistorietaActivity(activity.Activity):
 
             if posi > 0:
                 try:
-                    reng = int((posi + 1) // 2)
+                    reng = (posi + 1) // 2
                     column = (posi + 1) - (reng * 2)
                     ctx.rectangle(column * box.width, y_posi,
                                   (column + 1) * box.width,
