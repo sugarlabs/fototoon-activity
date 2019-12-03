@@ -1,3 +1,15 @@
+24
+
+* Fix image delete (James Cameron),
+* Avoid save as movie when GStreamer bugs present (James Cameron),
+* New translations (Chris Leonard et al),
+* Port to Python 3 (Ibiam Chihurumnaya),
+* Use activity.get_activity_root (Ibiam Chihurumnaya),
+* Demote unnecessary errors (Ibiam Chihurumnaya),
+* Fix flake8 warnings (James Cameron),
+* Fix repository metadata (James Cameron),
+* Remove empty translations (James Cameron).
+
 23
 
 * Fix warnings and errors (James Cameron),
