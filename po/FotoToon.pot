@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-21 16:04+1000\n"
+"POT-Creation-Date: 2019-12-03 17:43+1100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,94 +25,6 @@ msgstr ""
 msgid ""
 "Interested in telling a story? Easy! Use your pictures and your imagination "
 "to create your own comics!"
-msgstr ""
-
-#: toolbar.py:79
-msgid "Add Photo"
-msgstr ""
-
-#: toolbar.py:83
-msgid "Globe"
-msgstr ""
-
-#: toolbar.py:83
-msgid "Think"
-msgstr ""
-
-#: toolbar.py:84
-msgid "Whisper"
-msgstr ""
-
-#: toolbar.py:84
-msgid "Exclamation"
-msgstr ""
-
-#: toolbar.py:85
-msgid "Box"
-msgstr ""
-
-#: toolbar.py:88
-msgid "Add a globe"
-msgstr ""
-
-#: toolbar.py:107
-msgid "Curves"
-msgstr ""
-
-#: toolbar.py:107
-msgid "Straight"
-msgstr ""
-
-#: toolbar.py:108
-msgid "Highlight"
-msgstr ""
-
-#: toolbar.py:108
-msgid "Idea"
-msgstr ""
-
-#: toolbar.py:111
-msgid "Choose a movement line"
-msgstr ""
-
-#: toolbar.py:134
-msgid "Turn"
-msgstr ""
-
-#: toolbar.py:141
-msgid "Delete"
-msgstr ""
-
-#: toolbar.py:259
-msgid "Bold"
-msgstr ""
-
-#: toolbar.py:264
-msgid "Italic"
-msgstr ""
-
-#: toolbar.py:278
-msgid "Text Color"
-msgstr ""
-
-#: reorderwindow.py:54
-msgid "Cancel"
-msgstr ""
-
-#: reorderwindow.py:59
-msgid "Done"
-msgstr ""
-
-#: reorderwindow.py:74
-msgid "Drag the images to reorder"
-msgstr ""
-
-#: reorderwindow.py:446
-msgid "Reset to box size"
-msgstr ""
-
-#: reorderwindow.py:457
-msgid "Drag to move or resize using the marked corners"
 msgstr ""
 
 #: fontcombobox.py:90
@@ -179,35 +91,123 @@ msgstr ""
 msgid "Save as a Movie (OGG)"
 msgstr ""
 
-#: historietaactivity.py:395 historietaactivity.py:451
-#: historietaactivity.py:504
+#: historietaactivity.py:397 historietaactivity.py:453
+#: historietaactivity.py:505
 msgid "Success"
 msgstr ""
 
-#: historietaactivity.py:396
+#: historietaactivity.py:398
 msgid "A image was created in the Journal"
 msgstr ""
 
-#: historietaactivity.py:452
+#: historietaactivity.py:454
 msgid "A PDF was created in the Journal"
 msgstr ""
 
-#: historietaactivity.py:498
+#: historietaactivity.py:499
 msgid "{} as a movie"
 msgstr ""
 
-#: historietaactivity.py:505
+#: historietaactivity.py:506
 msgid "A movie was saved in the Journal"
 msgstr ""
 
-#: historietaactivity.py:513
+#: historietaactivity.py:514
 msgid "Show in Journal"
 msgstr ""
 
-#: historietaactivity.py:515
+#: historietaactivity.py:516
 msgid "Ok"
 msgstr ""
 
-#: historietaactivity.py:799
+#: historietaactivity.py:797
 msgid "Title:"
+msgstr ""
+
+#: reorderwindow.py:54
+msgid "Cancel"
+msgstr ""
+
+#: reorderwindow.py:59
+msgid "Done"
+msgstr ""
+
+#: reorderwindow.py:74
+msgid "Drag the images to reorder"
+msgstr ""
+
+#: reorderwindow.py:446
+msgid "Reset to box size"
+msgstr ""
+
+#: reorderwindow.py:457
+msgid "Drag to move or resize using the marked corners"
+msgstr ""
+
+#: toolbar.py:77
+msgid "Add Photo"
+msgstr ""
+
+#: toolbar.py:81
+msgid "Globe"
+msgstr ""
+
+#: toolbar.py:81
+msgid "Think"
+msgstr ""
+
+#: toolbar.py:82
+msgid "Whisper"
+msgstr ""
+
+#: toolbar.py:82
+msgid "Exclamation"
+msgstr ""
+
+#: toolbar.py:83
+msgid "Box"
+msgstr ""
+
+#: toolbar.py:86
+msgid "Add a globe"
+msgstr ""
+
+#: toolbar.py:105
+msgid "Curves"
+msgstr ""
+
+#: toolbar.py:105
+msgid "Straight"
+msgstr ""
+
+#: toolbar.py:106
+msgid "Highlight"
+msgstr ""
+
+#: toolbar.py:106
+msgid "Idea"
+msgstr ""
+
+#: toolbar.py:109
+msgid "Choose a movement line"
+msgstr ""
+
+#: toolbar.py:132
+msgid "Turn"
+msgstr ""
+
+#: toolbar.py:139
+msgid "Delete"
+msgstr ""
+
+#: toolbar.py:257
+msgid "Bold"
+msgstr ""
+
+#: toolbar.py:262
+msgid "Italic"
+msgstr ""
+
+#: toolbar.py:276
+msgid "Text Color"
 msgstr ""
