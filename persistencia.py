@@ -108,13 +108,7 @@ class Persistence:
             if (file_name != './'):
                 try:
                     logging.debug('extracting %s', file_name)
-                    # la version de python en las xo no permite hacer
-                    # extract :(
-                    # z.extract(file_name,instance_path)
-                    data = z.read(file_name)
-                    fout = open(os.path.join(instance_path, file_name), 'w')
-                    fout.write(data)
-                    fout.close()
+                    z.extract(file_name, instance_path)
                 except:
                     logging.error('Error extracting %s', file_name)
         z.close()
