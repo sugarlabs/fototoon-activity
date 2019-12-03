@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-06-21 16:04+1000\n"
-"PO-Revision-Date: 2016-03-27 08:38+0000\n"
+"PO-Revision-Date: 2019-11-16 10:53+0000\n"
 "Last-Translator: lxlalexlxl <pilipchukap@rambler.ru>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: uk\n"
@@ -17,17 +17,19 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Pootle 2.5.1.1\n"
-"X-POOTLE-MTIME: 1459067896.000000\n"
+"X-POOTLE-MTIME: 1573901602.000000\n"
 
 #: activity/activity.info:2
 msgid "FotoToon"
-msgstr ""
+msgstr "Фотокомікс"
 
 #: activity/activity.info:3
 msgid ""
 "Interested in telling a story? Easy! Use your pictures and your imagination "
 "to create your own comics!"
 msgstr ""
+"Бажаєте розповісти історію? Легко! Використовуйте свої малюнки та свою "
+"фантазію для створення власних коміксів!"
 
 #: toolbar.py:79
 msgid "Add Photo"
