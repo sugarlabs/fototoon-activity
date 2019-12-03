@@ -311,14 +311,10 @@ class HistorietaActivity(activity.Activity):
         posi = 0
         for box in self.page.boxs:
             if posi > 0:
-                try:
-                    reng = (posi + 1) // 2
-                    column = (posi + 1) - (reng * 2)
-                    # logging.error("reng %d column %d" % (reng, column))
-                    if column == 0:
-                        image_height = image_height + box.height
-                except:
-                    pass
+                reng = (posi + 1) // 2
+                column = (posi + 1) - (reng * 2)
+                if column == 0:
+                    image_height = image_height + box.height
             else:
                 image_width = box.width
                 image_height = image_height + box.height
