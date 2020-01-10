@@ -44,6 +44,7 @@ from reorderwindow import ImageEditorView
 DEFAULT_TIME = 10
 MIN_TIME = 1
 MAX_TIME = 60
+TITLE_HEIGHT = 100
 
 VIDEO_PIPELINE = ('multifilesrc location="{}" index=0 '
                   'caps="image/png,framerate=\(fraction\)1/{}" '
@@ -263,13 +264,14 @@ class HistorietaActivity(activity.Activity):
             empty_widget = EmptyWidget()
             empty_widget.connect('choose-image', self.__add_image)
             self.set_canvas(empty_widget)
+            self.page.empty_page = True
         else:
             self.set_canvas(self._notebook)
+            self.page.empty_page = False
 
         self.show()
         self.metadata['mime_type'] = 'application/x-fototoon-activity'
 
-        self.page.empty_page = handle.object_id is None
         self._key_press_signal_id = None
 
     def __add_image(self, button):
@@ -616,8 +618,9 @@ class Page(Gtk.VBox):
 
         # Add title box
         self.title_box = ComicBox(self, None, 0)
-        self.title_box.set_size_request(SCREEN_WIDTH, 100)
-        self.title_box.width, self.title_box.height = SCREEN_WIDTH, 100
+        self.title_box.set_size_request(SCREEN_WIDTH, TITLE_HEIGHT)
+        self.title_box.width = SCREEN_WIDTH
+        self.title_box.height = TITLE_HEIGHT
         self._internal_box.pack_start(self.title_box, False, False, 0)
         self.set_active_box(self.title_box)
         self.boxs.append(self.title_box)
@@ -787,7 +790,7 @@ class ComicBox(Gtk.EventBox):
             # select title box
             rect = self.get_allocation()
             x = rect.width // 2
-            y = rect.height // 2
+            y = TITLE_HEIGHT // 2
             self.add_rectangulo(x, y)
             self.title_globe = self.globos[0]
             self.title_globe.texto.set_text(_('Title:'))
