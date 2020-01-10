@@ -643,7 +643,6 @@ class Grito(Globo):
                                  font_name)
 
     def imprimir(self, context):
-        context.save()
         self.draw_exclamation(context, self.x, self.y, self.ancho, self.alto,
                               self.direccion, self.punto)
         # se dibuja el correspondiente texto
