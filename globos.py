@@ -830,13 +830,15 @@ class CuadroTexto:
         self.textview.set_justification(Gtk.Justification.CENTER)
         self.textview.modify_bg(Gtk.StateType.NORMAL,
                                 style.COLOR_WHITE.get_gdk_color())
-
         self._textview_x = 0
         self._textview_y = 0
         self._box.fixed.put(self.textviewbox, 0, 0)
         self.textviewbox.pack_start(self.textview, True, False, 0)
         self.textviewbox.connect(
             'size_allocate', self._textview_size_allocate)
+
+        # avoid race condition between imprimir and _finalize_text methods
+        self.set_dimension(self.ancho, self.alto)
 
     def move_textview(self, x, y):
         if self._textview_x != x or self._textview_y != y:
@@ -878,19 +880,18 @@ class CuadroTexto:
             GObject.idle_add(self._finalize_text)
 
     def _finalize_text(self):
-        textview = self.textview
-        window = textview.get_window(Gtk.TextWindowType.TEXT)
+        alloc = Gdk.Rectangle()
+        alloc.width = self.ancho * 2
+        alloc.height = self.alto * 2
 
-        # create a temporary surface with a print of the text in the textview
-        tv_alloc = textview.get_allocation()
         self._text_surface = cairo.ImageSurface(cairo.FORMAT_ARGB32,
-                                                tv_alloc.width,
-                                                tv_alloc.height)
-        ctx = cairo.Context(self._text_surface)
-        Gdk.cairo_set_source_window(ctx, window, 0, 0)
-        ctx.paint()
+                                                alloc.width,
+                                                alloc.height)
+        context = cairo.Context(self._text_surface)
 
-        self.textviewbox.hide()
+        self.textview.size_allocate(alloc)
+        self.textview.draw(context)
+
         self._box.redraw()
 
     def initialize_textview(self, ctx):
@@ -907,16 +908,22 @@ class CuadroTexto:
     def imprimir(self, ctx):
         self._update_font()
 
+        x = self._globe.x - self.ancho
+        y = self._globe.y - self.alto
+
         if not self._in_edition:
             if self._text_surface is None:
                 self.initialize_textview(ctx)
             else:
                 ctx.save()
-                x = self._globe.x - self._text_surface.get_width() / 2
-                y = self._globe.y - self._text_surface.get_height() // 2
                 ctx.set_source_surface(self._text_surface, x, y)
                 ctx.paint()
                 ctx.restore()
+        else:
+            ctx.save()
+            ctx.translate(x, y)
+            self.textview.draw(ctx)
+            ctx.restore()
 
     def mover_a(self, x, y):
         "Mueve el centro del cuadro a la posicion (x,y)"
@@ -936,8 +943,8 @@ class CuadroTexto:
         """
         self.ancho = ancho
         self.alto = alto
-        self.textviewbox.set_size_request(self.ancho * 2,
-                                          self.alto * 2)
+        self.textview.set_size_request(self.ancho * 2,
+                                       self.alto * 2)
 
     def _textview_size_allocate(self, widget, alloc):
         # recalculate size and position with the real size allocated
