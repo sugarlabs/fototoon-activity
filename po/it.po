@@ -7,9 +7,9 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-06-21 16:04+1000\n"
-"PO-Revision-Date: 2016-05-16 21:00+0000\n"
-"Last-Translator: Chris <cjl@sugarlabs.org>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2020-01-13 21:00+0100\n"
+"Last-Translator: <Albano Battistella>\n"
+"Language-Team: Italian <albano_battistella@hotmail.com>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -27,22 +27,24 @@ msgid ""
 "Interested in telling a story? Easy! Use your pictures and your imagination "
 "to create your own comics!"
 msgstr ""
+"Interessato a raccontare una storia? Facile! Usa le tue foto e la tua immaginazione"
+"per creare i tuoi fumetti!"
 
 #: toolbar.py:79
 msgid "Add Photo"
-msgstr ""
+msgstr "Aggiungi Foto"
 
 #: toolbar.py:83
 msgid "Globe"
-msgstr ""
+msgstr "Globo"
 
 #: toolbar.py:83
 msgid "Think"
-msgstr ""
+msgstr "Pensa"
 
 #: toolbar.py:84
 msgid "Whisper"
-msgstr ""
+msgstr "Sussurro"
 
 #: toolbar.py:84
 msgid "Exclamation"
@@ -111,11 +113,11 @@ msgstr "Trascina le immagini per riordinarle"
 #: reorderwindow.py:446
 #, fuzzy
 msgid "Reset to box size"
-msgstr "Reimposta la dimensione"
+msgstr "Ripristina dimensioni"
 
 #: reorderwindow.py:457
 msgid "Drag to move or resize using the marked corners"
-msgstr ""
+msgstr "Trascina per spostare o ridimensionare utilizzando gli angoli contrassegnati"
 
 #: fontcombobox.py:90
 msgid "Select font"
@@ -196,20 +198,20 @@ msgstr "Un file PDF è stato creato nel Journal"
 
 #: historietaactivity.py:498
 msgid "{} as a movie"
-msgstr ""
+msgstr "{} come film"
 
 #: historietaactivity.py:505
 msgid "A movie was saved in the Journal"
-msgstr ""
+msgstr "Un film è stato salvato nel Journal"
 
 #: historietaactivity.py:513
 msgid "Show in Journal"
-msgstr ""
+msgstr "Mostra nel Journal"
 
 #: historietaactivity.py:515
 msgid "Ok"
-msgstr ""
+msgstr "Ok"
 
 #: historietaactivity.py:799
 msgid "Title:"
-msgstr ""
+msgstr "Titolo:"
