@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-03 17:16+1100\n"
+"POT-Creation-Date: 2020-02-19 17:18+1100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -31,96 +31,96 @@ msgstr ""
 msgid "Select font"
 msgstr ""
 
-#: historietaactivity.py:78
+#: historietaactivity.py:79
 msgid "Add an image and start creating your FotoToon"
 msgstr ""
 
-#: historietaactivity.py:89
+#: historietaactivity.py:90
 msgid "Choose an image"
 msgstr ""
 
-#: historietaactivity.py:103 historietaactivity.py:225
+#: historietaactivity.py:104 historietaactivity.py:226
 msgid "Save as Image"
 msgstr ""
 
-#: historietaactivity.py:103
+#: historietaactivity.py:104
 msgid "PNG"
 msgstr ""
 
-#: historietaactivity.py:121
+#: historietaactivity.py:122
 msgid "Edit"
 msgstr ""
 
-#: historietaactivity.py:128
+#: historietaactivity.py:129
 msgid "View"
 msgstr ""
 
-#: historietaactivity.py:132
+#: historietaactivity.py:133
 msgid "Slideshow"
 msgstr ""
 
-#: historietaactivity.py:139
+#: historietaactivity.py:140
 msgid "Slideshow with Timings"
 msgstr ""
 
-#: historietaactivity.py:146
+#: historietaactivity.py:147
 msgid "Set Image Duration in Slideshow (Seconds)"
 msgstr ""
 
-#: historietaactivity.py:171
+#: historietaactivity.py:172
 msgid "Fullscreen"
 msgstr ""
 
-#: historietaactivity.py:189
+#: historietaactivity.py:190
 msgid "Text"
 msgstr ""
 
-#: historietaactivity.py:194
+#: historietaactivity.py:195
 msgid "Change image order"
 msgstr ""
 
-#: historietaactivity.py:200
+#: historietaactivity.py:201
 msgid "Edit background image"
 msgstr ""
 
-#: historietaactivity.py:232
+#: historietaactivity.py:233
 msgid "Save as a Book (PDF)"
 msgstr ""
 
-#: historietaactivity.py:239
+#: historietaactivity.py:240
 msgid "Save as a Movie (OGG)"
 msgstr ""
 
-#: historietaactivity.py:393 historietaactivity.py:449
-#: historietaactivity.py:501
+#: historietaactivity.py:395 historietaactivity.py:451
+#: historietaactivity.py:503
 msgid "Success"
 msgstr ""
 
-#: historietaactivity.py:394
+#: historietaactivity.py:396
 msgid "A image was created in the Journal"
 msgstr ""
 
-#: historietaactivity.py:450
+#: historietaactivity.py:452
 msgid "A PDF was created in the Journal"
 msgstr ""
 
-#: historietaactivity.py:495
+#: historietaactivity.py:497
 msgid "{} as a movie"
 msgstr ""
 
-#: historietaactivity.py:502
+#: historietaactivity.py:504
 msgid "A movie was saved in the Journal"
 msgstr ""
 
-#: historietaactivity.py:510
+#: historietaactivity.py:512
 msgid "Show in Journal"
 msgstr ""
 
-#: historietaactivity.py:512
+#: historietaactivity.py:514
 msgid "Ok"
 msgstr ""
 
-#: historietaactivity.py:793
+#: historietaactivity.py:796
 msgid "Title:"
 msgstr ""
 
