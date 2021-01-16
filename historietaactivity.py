@@ -8,7 +8,7 @@ import dbus
 import logging
 from gettext import gettext as _
 import time
-from fractions import gcd
+from math import gcd
 
 import gi
 gi.require_version('Gst', '1.0')
