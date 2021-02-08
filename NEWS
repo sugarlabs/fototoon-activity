@@ -1,3 +1,9 @@
+26
+
+* use math.gcd, supports Python 3.9 (Ibiam Chihurumnaya),
+* remove unused metadata key (James Cameron),
+* new translations (Besnik),
+
 25
 
 * Fix title box vertical position (Martin Abente Lahaye),
