@@ -1,0 +1,221 @@
+# Turkish translation for org.sugarlabs.FotoToon.
+# Copyright (C) 2022 org.sugarlabs.FotoToon's COPYRIGHT HOLDER
+# This file is distributed under the same license as the org.sugarlabs.FotoToon package.
+#
+# Sabri Ünal <libreajans@gmail.com>, 2022.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: org.sugarlabs.FotoToon master\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-09-12 15:21+0300\n"
+"PO-Revision-Date: 2022-09-12 15:44+0300\n"
+"Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
+"Language-Team: Türkçe <gnome-turk@gnome.org>\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.1.1\n"
+
+#: activity/activity.info:2
+msgid "FotoToon"
+msgstr "FotoToon"
+
+#: activity/activity.info:3
+msgid ""
+"Interested in telling a story? Easy! Use your pictures and your imagination "
+"to create your own comics!"
+msgstr ""
+"Bir hikaye anlatmakla ilgileniyor musun? Kolay! Kendi çizgi romanlarınızı "
+"yaratmak için resimleri ve hayal gücünüzü kullanın!"
+
+#: fontcombobox.py:90
+msgid "Select font"
+msgstr "Yazı tipi seç"
+
+#: historietaactivity.py:79
+msgid "Add an image and start creating your FotoToon"
+msgstr "Bir resim ekleyip FotoToon'unuzu oluşturmaya başlayın"
+
+#: historietaactivity.py:90
+msgid "Choose an image"
+msgstr "Resim seç"
+
+#: historietaactivity.py:104 historietaactivity.py:226
+msgid "Save as Image"
+msgstr "Resmi Farklı Kaydet"
+
+#: historietaactivity.py:104
+msgid "PNG"
+msgstr "PNG"
+
+#: historietaactivity.py:122
+msgid "Edit"
+msgstr "Düzenle"
+
+#: historietaactivity.py:129
+msgid "View"
+msgstr "Görünüm"
+
+# Menü öğesi olduğu için Başlık Düzeni tercih edildi
+#: historietaactivity.py:133
+msgid "Slideshow"
+msgstr "Slayt Gösterisi"
+
+#: historietaactivity.py:140
+msgid "Slideshow with Timings"
+msgstr "Süreli Slayt Gösterisi"
+
+#: historietaactivity.py:147
+msgid "Set Image Duration in Slideshow (Seconds)"
+msgstr "Slayt Gösterisindeki Resim Süresini Ayarla (Saniye)"
+
+# Menü öğesi olduğu için Başlık Düzeni tercih edildi
+#: historietaactivity.py:172
+msgid "Fullscreen"
+msgstr "Tam Ekran"
+
+#: historietaactivity.py:190
+msgid "Text"
+msgstr "Metin"
+
+#: historietaactivity.py:195
+msgid "Change image order"
+msgstr "Resim sırasını değiştir"
+
+#: historietaactivity.py:201
+msgid "Edit background image"
+msgstr "Arka plan resmini düzenle"
+
+#: historietaactivity.py:233
+msgid "Save as a Book (PDF)"
+msgstr "Kitap Olarak Kaydet (PDF)"
+
+#: historietaactivity.py:240
+msgid "Save as a Movie (OGG)"
+msgstr "Film Olarak Kaydet (OGG)"
+
+#: historietaactivity.py:395 historietaactivity.py:451
+#: historietaactivity.py:503
+msgid "Success"
+msgstr "Başarılı"
+
+#: historietaactivity.py:396
+msgid "A image was created in the Journal"
+msgstr "Günlükte bir resim oluşturuldu"
+
+#: historietaactivity.py:452
+msgid "A PDF was created in the Journal"
+msgstr "Günlükte bir PDF oluşturuldu"
+
+#: historietaactivity.py:497
+msgid "{} as a movie"
+msgstr "{} film olarak"
+
+#: historietaactivity.py:504
+msgid "A movie was saved in the Journal"
+msgstr "Günlük'e bir film kaydedildi"
+
+#: historietaactivity.py:512
+msgid "Show in Journal"
+msgstr "Günlükte göster"
+
+#: historietaactivity.py:514
+msgid "Ok"
+msgstr "Tamam"
+
+#: historietaactivity.py:796
+msgid "Title:"
+msgstr "Başlık:"
+
+#: reorderwindow.py:54
+msgid "Cancel"
+msgstr "İptal"
+
+#: reorderwindow.py:59
+msgid "Done"
+msgstr "Bitti"
+
+#: reorderwindow.py:74
+msgid "Drag the images to reorder"
+msgstr "Yeniden sıralamak için resimleri sürükle"
+
+#: reorderwindow.py:446
+msgid "Reset to box size"
+msgstr "Kutu boyutuna sıfırla"
+
+#: reorderwindow.py:457
+msgid "Drag to move or resize using the marked corners"
+msgstr ""
+"Taşımak veya yeniden boyutlandırmak için işaretli köşeleri kullanarak "
+"sürükleyin"
+
+#: toolbar.py:77
+msgid "Add Photo"
+msgstr "Resim Ekle"
+
+#: toolbar.py:81
+msgid "Globe"
+msgstr "Balon"
+
+#: toolbar.py:81
+msgid "Think"
+msgstr "Düşünce"
+
+#: toolbar.py:82
+msgid "Whisper"
+msgstr "Fısıltı"
+
+#: toolbar.py:82
+msgid "Exclamation"
+msgstr "Ünlem"
+
+#: toolbar.py:83
+msgid "Box"
+msgstr "Kutu"
+
+#: toolbar.py:86
+msgid "Add a globe"
+msgstr "Balon ekle"
+
+#: toolbar.py:105
+msgid "Curves"
+msgstr "Eğri çizgiler"
+
+#: toolbar.py:105
+msgid "Straight"
+msgstr "Düz çizgiler"
+
+#: toolbar.py:106
+msgid "Highlight"
+msgstr "Vurgulama"
+
+#: toolbar.py:106
+msgid "Idea"
+msgstr "Fikir"
+
+#: toolbar.py:109
+msgid "Choose a movement line"
+msgstr "Hareket çizgisi seç"
+
+#: toolbar.py:132
+msgid "Turn"
+msgstr "Döndür"
+
+#: toolbar.py:139
+msgid "Delete"
+msgstr "Sil"
+
+#: toolbar.py:257
+msgid "Bold"
+msgstr "Kalın"
+
+#: toolbar.py:262
+msgid "Italic"
+msgstr "Eğik"
+
+#: toolbar.py:276
+msgid "Text Color"
+msgstr "Metin Rengi"
