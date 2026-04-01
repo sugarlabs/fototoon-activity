@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-02-19 17:18+1100\n"
-"PO-Revision-Date: 2026-03-18 06:28+0000\n"
+"PO-Revision-Date: 2026-04-01 08:11+0000\n"
 "Last-Translator: NF <rkavt@smartprojects.ge>\n"
 "Language-Team: Georgian <http://weblate.sugarlabs.org/projects/"
 "sugar-activities/fototoon/ka/>\n"
@@ -71,7 +71,7 @@ msgstr ""
 
 #: historietaactivity.py:172
 msgid "Fullscreen"
-msgstr ""
+msgstr "სრულ ეკრანზე"
 
 #: historietaactivity.py:190
 msgid "Text"
@@ -96,7 +96,7 @@ msgstr ""
 #: historietaactivity.py:395 historietaactivity.py:451
 #: historietaactivity.py:503
 msgid "Success"
-msgstr ""
+msgstr "წარმატება"
 
 #: historietaactivity.py:396
 msgid "A image was created in the Journal"
