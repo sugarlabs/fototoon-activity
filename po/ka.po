@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-02-19 17:18+1100\n"
-"PO-Revision-Date: 2026-05-04 07:03+0000\n"
+"PO-Revision-Date: 2026-05-19 07:09+0000\n"
 "Last-Translator: NF <rkavt@smartprojects.ge>\n"
 "Language-Team: Georgian <http://weblate.sugarlabs.org/projects/"
 "sugar-activities/fototoon/ka/>\n"
@@ -132,7 +132,7 @@ msgstr "გაუქმება"
 
 #: reorderwindow.py:59
 msgid "Done"
-msgstr ""
+msgstr "მზადაა"
 
 #: reorderwindow.py:74
 msgid "Drag the images to reorder"
