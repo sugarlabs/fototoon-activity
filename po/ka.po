@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-02-19 17:18+1100\n"
-"PO-Revision-Date: 2026-06-15 07:48+0000\n"
+"PO-Revision-Date: 2026-06-15 16:05+0000\n"
 "Last-Translator: NF <rkavt@smartprojects.ge>\n"
 "Language-Team: Georgian <http://weblate.sugarlabs.org/projects/"
 "sugar-activities/fototoon/ka/>\n"
@@ -21,7 +21,7 @@ msgstr ""
 
 #: activity/activity.info:2
 msgid "FotoToon"
-msgstr ""
+msgstr "ფოტოკომიქსი"
 
 #: activity/activity.info:3
 msgid ""
@@ -47,7 +47,7 @@ msgstr ""
 
 #: historietaactivity.py:104
 msgid "PNG"
-msgstr ""
+msgstr "PNG"
 
 #: historietaactivity.py:122
 msgid "Edit"
@@ -59,7 +59,7 @@ msgstr "ხედი"
 
 #: historietaactivity.py:133
 msgid "Slideshow"
-msgstr ""
+msgstr "სლაიდშოუ"
 
 #: historietaactivity.py:140
 msgid "Slideshow with Timings"
@@ -152,19 +152,19 @@ msgstr ""
 
 #: toolbar.py:81
 msgid "Globe"
-msgstr ""
+msgstr "გლობუსი"
 
 #: toolbar.py:81
 msgid "Think"
-msgstr ""
+msgstr "ფიქრი"
 
 #: toolbar.py:82
 msgid "Whisper"
-msgstr ""
+msgstr "ჩურჩული"
 
 #: toolbar.py:82
 msgid "Exclamation"
-msgstr ""
+msgstr "წამოძახება"
 
 #: toolbar.py:83
 msgid "Box"
@@ -176,19 +176,19 @@ msgstr ""
 
 #: toolbar.py:105
 msgid "Curves"
-msgstr ""
+msgstr "მრუდები"
 
 #: toolbar.py:105
 msgid "Straight"
-msgstr ""
+msgstr "სწორი"
 
 #: toolbar.py:106
 msgid "Highlight"
-msgstr ""
+msgstr "გამოკვეთა"
 
 #: toolbar.py:106
 msgid "Idea"
-msgstr ""
+msgstr "იდეა"
 
 #: toolbar.py:109
 msgid "Choose a movement line"
@@ -196,7 +196,7 @@ msgstr ""
 
 #: toolbar.py:132
 msgid "Turn"
-msgstr ""
+msgstr "მოხვევა"
 
 #: toolbar.py:139
 msgid "Delete"
