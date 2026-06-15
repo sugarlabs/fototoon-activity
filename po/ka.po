@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-02-19 17:18+1100\n"
-"PO-Revision-Date: 2026-05-19 07:09+0000\n"
+"PO-Revision-Date: 2026-06-15 04:31+0000\n"
 "Last-Translator: NF <rkavt@smartprojects.ge>\n"
 "Language-Team: Georgian <http://weblate.sugarlabs.org/projects/"
 "sugar-activities/fototoon/ka/>\n"
@@ -168,7 +168,7 @@ msgstr ""
 
 #: toolbar.py:83
 msgid "Box"
-msgstr ""
+msgstr "ყუთი"
 
 #: toolbar.py:86
 msgid "Add a globe"
